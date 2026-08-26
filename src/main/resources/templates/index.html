@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title th:text="${profil.nama} + ' | Portfolio'">Portfolio</title>
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+
+    <body class="bg-hitam text-light">
+
+        <header class="border-bottom border-secondary">
+            <div class="container">
+                <nav class="navbar navbar-expand">
+                    <a href="#beranda" class="navbar-brand fw-bold text-light">
+                        Portfolio<span class="text-merah">.</span>
+                    </a>
+
+                    <div class="ms-auto">
+                        <a href="#beranda"
+                            class="nav-link d-inline-block text-light mx-2">
+                            Beranda
+                        </a>
+
+                        <a href="#tentang"
+                            class="nav-link d-inline-block text-light mx-2">
+                            Tentang
+                        </a>
+
+                        <a href="#kontak"
+                            class="nav-link d-inline-block text-light mx-2">
+                            Kontak
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+
+            <section id="beranda" class="py-5">
+                <div class="container py-5">
+
+                    <div class="row align-items-center g-5">
+
+                        <div class="col-md-4 text-center">
+
+                            <img th:src="@{'/images/' + ${profil.foto}}"
+                                alt="Foto Profil"
+                                class="foto-profil img-fluid">
+
+                        </div>
+
+                        <div class="col-md-8">
+                            <p class="teks-merah fw-bold mb-2">
+                                HALO, SAYA
+                            </p>
+
+                            <h1 class="display-3 fw-bold mb-3"
+                                th:text="${profil.nama}">
+                                Nama Saya
+                            </h1>
+
+                            <p class="text-secondary fs-5"
+                                th:text="${profil.deskripsi}">
+                                Deskripsi
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tentang" class="bagian-gelap py-5">
+                <div class="container py-5">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold"><span class="text-merah">Tentang
+                            </span>Saya.</h2>
+                        <p class="teks-merah fw-bold mb-2">Profil &
+                            Pendidikan</p>
+                    </div>
+
+                    <div class="row g-5">
+
+                        <div class="col-md-6">
+
+                            <h3 class="fw-bold mb-4">
+                                Halo, saya
+                                <span class="text-merah">Bintang.</span>
+                            </h3>
+                            <p class="text-secondary">
+                                Saya adalah siswa di SMK Assalaam Bandung
+                                dengan Jurusan Rekayasa Perangkat Lunak (RPL).
+                                Saya sangat tertarik dengan teknologi dan
+                                informatika.
+                            </p>
+                            <p class="text-secondary">
+                                Saya memiliki semangat tinggi untuk terus
+                                belajar dan mengembangkan skill yang saya
+                                miliki.
+                                Saya juga senang bekerja dalam tim dan mencoba
+                                berbagai hal baru di bidang teknologi.
+                            </p>
+                            <p class="text-secondary">
+                                Di luar kegiatan belajar, saya memiliki beberapa
+                                hobi seperti berolahraga dan travelling.
+                                Bagi saya, olahraga membuat tubuh tetap bugar,
+                                sedangkan travelling memberikan pengalaman dan
+                                cerita baru.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="fw-bold mb-4">Pendidikan</h3>
+
+
+                            <div class="list-group">
+                            <div th:each="p : ${pendidikan}" class="text-secondary py-2">
+                            <a class="list-group-item list-group-item-action list-group-item-danger">
+                                <span th:text="${p.tingkat + ' ' + p.nama}">tingkat</span>
+                                <span>
+                                    (
+                                    <span th:text="${p.tahunMulai}">2010</span>
+                                    -
+                                    <span th:if="${p.tahunSelsai != null}"
+                                        th:text="${p.tahunSelsai}">
+                                        2013
+                                    </span>
+                                    <span th:if="${p.tahunSelsai == null}">
+                                        Sekarang
+                                    </span>
+                                    )
+                             </span>
+                             </a>
+                            </div>
+                            </div>
+
+
+
+                        </div>
+                        <span class="teks-merah"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="kontak" class="py-5">
+                <div class="container py-5">
+                    <div class="row g-5">
+
+                        <div class="col-md-5">
+                            <div class="col-md-7">
+                                <div class="border-top border-secondary">
+                                    <a th:href="'mailto:' + ${kontak.email}"
+                                        class="kontak-item">
+                                        <div>
+                                            <small
+                                                class="text-secondary">EMAIL</small>
+                                            <strong
+                                                th:text="${kontak.email}">email@gmail.com
+                                            </strong>
+                                        </div>
+                                        <span>↗</span>
+                                    </a>
+
+                                    <a th:href="'tel:' + ${kontak.telepon}"
+                                        class="kontak-item">
+                                        <div>
+                                            <small
+                                                class="text-secondary">TELEPON</small>
+                                            <strong th:text="${kontak.telepon}">
+                                                08xxxxxxxxxx</strong>
+                                        </div>
+                                        <span>↗</span>
+                                    </a>
+
+                                    <a th:href="${kontak.github}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="kontak-item">
+                                        <div>
+                                            <small
+                                                class="text-secondary">GITHUB</small>
+                                            <strong>github.com</strong>
+                                        </div>
+                                        <span>↗</span>
+                                    </a>
+
+                                    <a th:href="${kontak.instagram}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="kontak-item">
+                                        <div>
+                                            <small
+                                                class="text-secondary">INSTAGRAM</small>
+                                            <strong> instagram.com</strong>
+                                        </div>
+                                        <span>↗</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                       
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="border-top border-secondary">
+            <div class="container">
+                <div
+                    class="d-flex justify-content-between align-items-center py-4">
+                    <span class="text-secondary"
+                        th:text="${profil.nama}">Nama Saya</span>
+
+                    <span class="text-secondary">Portfolio</span>
+                </div>
+            </div>
+        </footer>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

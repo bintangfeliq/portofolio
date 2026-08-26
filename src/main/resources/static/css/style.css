@@ -1,0 +1,90 @@
+
+body {
+    background: #0b0b0b;
+    color: #fff;
+}
+
+.bg-hitam {
+    background: #0b0b0b;
+}
+
+.bagian-gelap {
+    background: #111;
+}
+
+.text-merah,
+.teks-merah {
+    color: #e63946 !important;
+}
+
+
+
+.foto-profil {
+    width: 280px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #e63946;
+}
+
+
+
+.map-container {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+.kontak-item {
+    min-height: 80px;
+    padding: 18px 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #fff;
+    text-decoration: none;
+
+    border-bottom: 1px solid #333;
+
+    transition: 0.2s;
+}
+
+.kontak-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.kontak-item strong {
+    font-weight: 500;
+}
+
+.kontak-item span {
+    color: #e63946;
+    font-size: 22px;
+}
+
+.kontak-item:hover {
+    color: #e63946;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+@media (max-width: 768px) {
+
+    .foto-profil {
+        width: 220px;
+        height: 270px;
+    }
+
+}
