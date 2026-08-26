@@ -34,6 +34,11 @@
                             Tentang
                         </a>
 
+                        <a href="#skill"
+                            class="nav-link d-inline-block text-light mx-2">
+                            Skill
+                        </a>
+
                         <a href="#kontak"
                             class="nav-link d-inline-block text-light mx-2">
                             Kontak
@@ -116,114 +121,156 @@
                             </p>
                         </div>
                         <div class="col-md-6">
+
                             <h3 class="fw-bold mb-4">Pendidikan</h3>
 
+                            <div th:each="p : ${pendidikan}"
+                                class="pendidikan-item">
 
-                            <div class="list-group">
-                            <div th:each="p : ${pendidikan}" class="text-secondary py-2">
-                            <a class="list-group-item list-group-item-action list-group-item-danger">
-                                <span th:text="${p.tingkat + ' ' + p.nama}">tingkat</span>
-                                <span>
-                                    (
-                                    <span th:text="${p.tahunMulai}">2010</span>
-                                    -
+                                <div class="pendidikan-nama">
+
+                                    <strong
+                                        th:text="${p.tingkat + '  ' + p.nama}">
+                                        SMK - SMK Assalaam Bandung
+                                    </strong>
+
+                                </div>
+
+                                <div class="pendidikan-tahun">
+
+                                    <span th:text="${p.tahunMulai}">
+                                        2022
+                                    </span>
+
+                                    <span> - </span>
+
                                     <span th:if="${p.tahunSelsai != null}"
                                         th:text="${p.tahunSelsai}">
-                                        2013
+                                        2025
                                     </span>
-                                    <span th:if="${p.tahunSelsai == null}">
+
+                                    <span th:if="${p.tahunSelsai == null}"
+                                        class="teks-merah">
                                         Sekarang
                                     </span>
-                                    )
-                             </span>
-                             </a>
-                            </div>
-                            </div>
 
-
-
-                        </div>
-                        <span class="teks-merah"></span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="kontak" class="py-5">
-                <div class="container py-5">
-                    <div class="row g-5">
-
-                        <div class="col-md-5">
-                            <div class="col-md-7">
-                                <div class="border-top border-secondary">
-                                    <a th:href="'mailto:' + ${kontak.email}"
-                                        class="kontak-item">
-                                        <div>
-                                            <small
-                                                class="text-secondary">EMAIL</small>
-                                            <strong
-                                                th:text="${kontak.email}">email@gmail.com
-                                            </strong>
-                                        </div>
-                                        <span>↗</span>
-                                    </a>
-
-                                    <a th:href="'tel:' + ${kontak.telepon}"
-                                        class="kontak-item">
-                                        <div>
-                                            <small
-                                                class="text-secondary">TELEPON</small>
-                                            <strong th:text="${kontak.telepon}">
-                                                08xxxxxxxxxx</strong>
-                                        </div>
-                                        <span>↗</span>
-                                    </a>
-
-                                    <a th:href="${kontak.github}"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="kontak-item">
-                                        <div>
-                                            <small
-                                                class="text-secondary">GITHUB</small>
-                                            <strong>github.com</strong>
-                                        </div>
-                                        <span>↗</span>
-                                    </a>
-
-                                    <a th:href="${kontak.instagram}"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="kontak-item">
-                                        <div>
-                                            <small
-                                                class="text-secondary">INSTAGRAM</small>
-                                            <strong> instagram.com</strong>
-                                        </div>
-                                        <span>↗</span>
-                                    </a>
                                 </div>
+
                             </div>
 
                         </div>
-                       
+                    </div>
+                </section>
+
+                <section id="skill" class="py-5">
+                    <div class="container py-5">
+
+                        <div class="text-center mb-5">
+                            <span class="teks-merah">SKILLS</span>
+                            <h2 class="fw-bold mb-4">Skill & Keahlian</h2>
+                        </div>
+
+                        <div class="skill-list">
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Laravel</span>
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Canva</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Microsoft Power point</span>
+                            <span class="skill-tag">Microsoft Word</span>
+                            <span class="skill-tag">Microsoft Excel</span>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="kontak" class="py-5">
+                    <div class="container py-5">
+                        <div class="row g-5">
+
+                            <div class="col-md-5">
+                                <div class="col-md-7">
+                                    <div class="border-top border-secondary">
+                                        <a th:href="'mailto:' + ${kontak.email}"
+                                            class="kontak-item">
+                                            <div>
+                                                <small
+                                                    class="text-secondary">EMAIL</small>
+                                                <strong
+                                                    th:text="${kontak.email}">email@gmail.com
+                                                </strong>
+                                            </div>
+                                            <span>↗</span>
+                                        </a>
+
+                                        <a th:href="'tel:' + ${kontak.telepon}"
+                                            class="kontak-item">
+                                            <div>
+                                                <small
+                                                    class="text-secondary">TELEPON</small>
+                                                <strong
+                                                    th:text="${kontak.telepon}">
+                                                    08xxxxxxxxxx</strong>
+                                            </div>
+                                            <span>↗</span>
+                                        </a>
+
+                                        <a th:href="${kontak.github}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="kontak-item">
+                                            <div>
+                                                <small
+                                                    class="text-secondary">GITHUB</small>
+                                                <strong>github.com</strong>
+                                            </div>
+                                            <span>↗</span>
+                                        </a>
+
+                                        <a th:href="${kontak.instagram}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="kontak-item">
+                                            <div>
+                                                <small
+                                                    class="text-secondary">INSTAGRAM</small>
+                                                <strong> instagram.com</strong>
+                                            </div>
+                                            <span>↗</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-7">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="border-top border-secondary">
+                <div class="container">
+                    <div
+                        class="d-flex justify-content-between align-items-center py-4">
+                        <span class="text-secondary"
+                            th:text="${profil.nama}">Nama Saya</span>
+
+                        <span class="text-secondary">Portfolio</span>
                     </div>
                 </div>
-            </section>
-        </main>
+            </footer>
 
-        <footer class="border-top border-secondary">
-            <div class="container">
-                <div
-                    class="d-flex justify-content-between align-items-center py-4">
-                    <span class="text-secondary"
-                        th:text="${profil.nama}">Nama Saya</span>
-
-                    <span class="text-secondary">Portfolio</span>
-                </div>
-            </div>
-        </footer>
-
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-</html>
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        </body>
+    </html>
