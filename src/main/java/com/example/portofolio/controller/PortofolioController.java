@@ -39,8 +39,23 @@ public class PortofolioController {
 
     @GetMapping("/")
     public String index(Model model){
-        Profil profil = profilService.cariSesuaiId(1L).orElse(null);
-        Kontak kontak = kontakService.cariSesuaiId(1L).orElse(null);
+        Profil profil = profilService.cariSesuaiId(1L).orElseGet(() -> {
+            Profil p = new Profil();
+            p.setNama("Bintang");
+            p.setDeskripsi("Saya adalah siswa di SMK Assalaam Bandung dengan Jurusan Rekayasa Perangkat Lunak (RPL).");
+            p.setFoto("profil.jpg");
+            return p;
+        });
+
+        Kontak kontak = kontakService.cariSesuaiId(1L).orElseGet(() -> {
+            Kontak k = new Kontak();
+            k.setEmail("email@gmail.com");
+            k.setTelepon("08xxxxxxxxxx");
+            k.setGithub("https://github.com");
+            k.setInstagram("https://instagram.com");
+            return k;
+        });
+
         List<Pendidikan> pendidikan = pendidikanRepository.findAllByOrderByTahunMulaiAsc();
         List<Keahlian> keahlian = keahlianService.semuaKeahlian();
 
@@ -50,5 +65,33 @@ public class PortofolioController {
         model.addAttribute("keahlian", keahlian);
         return "index";
     }
-    
+
+    @GetMapping("/tentang")
+    public String tentang(Model model){
+        Profil profil = profilService.cariSesuaiId(1L).orElseGet(() -> {
+            Profil p = new Profil();
+            p.setNama("Bintang");
+            p.setDeskripsi("Saya adalah siswa di SMK Assalaam Bandung dengan Jurusan Rekayasa Perangkat Lunak (RPL).");
+            p.setFoto("profil.jpg");
+            return p;
+        });
+
+        Kontak kontak = kontakService.cariSesuaiId(1L).orElseGet(() -> {
+            Kontak k = new Kontak();
+            k.setEmail("email@gmail.com");
+            k.setTelepon("08xxxxxxxxxx");
+            k.setGithub("https://github.com");
+            k.setInstagram("https://instagram.com");
+            return k;
+        });
+
+        List<Pendidikan> pendidikan = pendidikanRepository.findAllByOrderByTahunMulaiAsc();
+        List<Keahlian> keahlian = keahlianService.semuaKeahlian();
+
+        model.addAttribute("pendidikan", pendidikan);
+        model.addAttribute("profil", profil);
+        model.addAttribute("kontak", kontak);
+        model.addAttribute("keahlian", keahlian);
+        return "tentang";
+    }
 }

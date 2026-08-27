@@ -1,4 +1,8 @@
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #0b0b0b;
     color: #fff;
@@ -17,30 +21,23 @@ body {
     color: #fa1226 !important;
 }
 
-
-
 .foto-profil {
     width: 280px;
     height: 340px;
     object-fit: cover;
     border-radius: 20px;
-    border: 2px solid #e63946;
+    border: 2px solid #fa1226;
 }
-
 
 .kontak-item {
     min-height: 80px;
     padding: 18px 5px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     color: #fff;
     text-decoration: none;
-
     border-bottom: 1px solid #333;
-
     transition: 0.2s;
 }
 
@@ -54,12 +51,12 @@ body {
 }
 
 .kontak-item span {
-    color: #e63946;
+    color: #fa1226;
     font-size: 22px;
 }
 
 .kontak-item:hover {
-    color: #e63946;
+    color: #fa1226;
     padding-left: 12px;
     padding-right: 12px;
 }
@@ -83,6 +80,39 @@ body {
     white-space: nowrap;
 }
 
+/* Timeline Pendidikan Minimalis */
+.timeline-pendidikan {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid #222;
+    margin-top: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 24px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fa1226;
+}
+
+.timeline-year {
+    color: #888;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
 .skill-card {
     background: #141414;
     border: 1px solid #282828;
@@ -98,9 +128,10 @@ body {
 }
 
 .skill-card:hover {
-    border-color: #e63946;
+    border-color: #fa1226;
     transform: translateY(-2px);
 }
+
 .tombol {
     background: #141414;
     border: 1px solid #282828;
@@ -126,17 +157,16 @@ body {
     font-size: 11.5px;
     font-weight: 500;
 }
-.btn-danger{
+
+.btn-danger {
     background-color: #f31426;
 }
 
 @media (max-width: 768px) {
-
     .foto-profil {
         width: 220px;
         height: 270px;
     }
-
 }
 
 /* Full Height Sneat-style Admin Sidebar */

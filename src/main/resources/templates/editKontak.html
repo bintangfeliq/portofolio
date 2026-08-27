@@ -31,7 +31,7 @@
                     <div class="card-body p-4">
                         <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2"><i class="bi bi-pencil-square text-merah"></i>Update Kontak</h4>
 
-                        <form th:action="@{/editKontak}" th:object="${kontak}" method="POST">
+                        <form th:action="@{/dashboard/editKontak}" th:object="${kontak}" method="POST">
                             <div class="mb-3">
                                 <label class="form-label text-secondary small">Email</label>
                                 <input type="email" name="email" th:value="${kontak != null ? kontak.email : ''}" class="form-control bg-dark text-light border-secondary" placeholder="contoh@gmail.com" required>

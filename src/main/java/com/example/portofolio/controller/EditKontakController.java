@@ -36,6 +36,6 @@ public class EditKontakController {
         } else {
             kontakService.tambahKontak(kontak);
         }
-        return "redirect:/editKontak";
+        return "redirect:/dashboard/editKontak";
     }
 }

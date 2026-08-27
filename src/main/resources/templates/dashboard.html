@@ -5,85 +5,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body class="bg-hitam text-light">
 
     <div class="d-flex min-vh-100">
         
+        <!-- Sidebar Kiri -->
         <aside class="sidebar-sneat d-flex flex-column border-end border-secondary">  
-            <div class="px-4 py-3 border-bottom border-secondary d-flex align-items-center justify-content-between">
-                <a th:href="@{/dashboard}" class="text-decoration-none d-flex align-items-center gap-2">
+            <div class="px-4 py-4 border-bottom border-secondary">
+                <a th:href="@{/dashboard}" class="text-decoration-none">
                     <span class="fs-4 fw-bold text-light">Portfolio<span class="text-merah">.</span></span>
                 </a>
+                <div class="text-secondary small mt-1" style="font-size: 11px; letter-spacing: 0.5px;">ADMINISTRATOR</div>
             </div>
 
             <div class="flex-grow-1 py-3 px-3 overflow-y-auto">
-                <div class="text-uppercase text-secondary small fw-bold px-3 mb-2" style="font-size: 11px; letter-spacing: 0.8px;">Menu Utama</div>
-
+                
+                <!-- Menu Admin -->
+                <div class="text-secondary small text-uppercase px-3 mb-2" style="font-size: 10px; letter-spacing: 1px;">Menu Utama</div>
                 <ul class="nav nav-pills flex-column gap-1 mb-4">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active bg-danger text-white d-flex align-items-center gap-3 py-2 px-3 rounded-2">
-                            <i class="bi bi-grid-fill fs-5"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-light d-flex align-items-center gap-3 py-2 px-3 rounded-2">
-                            <i class="bi bi-person-fill fs-5"></i>
-                            <span>Profil</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-light d-flex align-items-center gap-3 py-2 px-3 rounded-2">
-                            <i class="bi bi-mortarboard-fill fs-5"></i>
-                            <span>Pendidikan</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-light d-flex align-items-center gap-3 py-2 px-3 rounded-2">
-                            <i class="bi bi-code-slash fs-5"></i>
-                            <span>Keahlian</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a th:href="@{/dashboard/editKontak}" class="nav-link text-light d-flex align-items-center gap-3 py-2 px-3 rounded-2">
-                            <i class="bi bi-envelope-fill fs-5"></i>
-                            <span>Kontak</span>
+                        <a th:href="@{/dashboard}" class="nav-link active bg-danger text-white py-2 px-3 rounded-3 fw-medium">
+                            Dashboard
                         </a>
                     </li>
                 </ul>
+
+                <!-- Kelola Data CRUD Sesuai Navbar -->
+                <div class="text-secondary small text-uppercase px-3 mb-2" style="font-size: 10px; letter-spacing: 1px;">Kelola Data (CRUD)</div>
+                <ul class="nav nav-pills flex-column gap-1">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light py-2 px-3 rounded-3">
+                            Beranda / Profil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light py-2 px-3 rounded-3">
+                            Tentang Saya
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light py-2 px-3 rounded-3">
+                            Pendidikan
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light py-2 px-3 rounded-3">
+                            Skill / Keahlian
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/dashboard/editKontak}" class="nav-link text-light py-2 px-3 rounded-3">
+                            Kontak
+                        </a>
+                    </li>
+                </ul>
+
             </div>
 
             <div class="p-3 border-top border-secondary mt-auto">
-                <div class="d-flex align-items-center gap-2 px-2">
-                        <a th:href="@{/login}" class="nav-link text-danger d-flex align-items-center gap-3 py-2 px-3 rounded-2">
-                            <i class="bi bi-box-arrow-right fs-5"></i>
-                            <span>Logout</span>
-                        </a>
+                <a th:href="@{/login}" class="btn btn-outline-danger w-100 py-2 btn-sm rounded-3">
+                    Keluar / Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Workspace (Tanpa Navbar) -->
+        <div class="flex-grow-1 p-4 p-lg-5 overflow-y-auto">
+            
+            <!-- Header Halaman -->
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-3 border-bottom border-secondary gap-3">
+                <div>
+                    <h3 class="fw-bold mb-1 text-light">
+                        Dashboard <span class="text-merah">Admin</span>
+                    </h3>
+                    <p class="text-secondary small mb-0">
+                        Kelola data profil, pendidikan, keahlian, dan kontak portfolio.
+                    </p>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <a th:href="@{/dashboard/editKontak}" class="btn btn-danger btn-sm px-3 py-2 rounded-3 fw-medium">
+                        Edit Kontak
+                    </a>
+                    <a th:href="@{/}" target="_blank" class="btn btn-outline-light btn-sm px-3 py-2 rounded-3">
+                        Lihat Beranda ↗
+                    </a>
                 </div>
             </div>
 
-        </aside>
+            <!-- Baris 1: Profil & Kontak -->
+            <div class="row g-4 mb-4">
+                
+                <!-- Card Profil Singkat -->
+                <div class="col-lg-6">
+                    <div class="card bagian-gelap border-secondary text-light h-100 rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0">Profil Pengguna</h5>
+                            <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 px-2 py-1 small">Aktif</span>
+                        </div>
 
-        <!-- Main Content Area -->
-        <div class="flex-grow-1 d-flex flex-column">
-            
-            <!-- Topbar Header -->
-            <header class="border-bottom border-secondary py-3 px-4 d-flex justify-content-between align-items-center bg-hitam">
-                <h5 class="mb-0 fw-bold">Dashboard <span class="text-merah">Admin</span></h5>
-                <div>
-                    <a th:href="@{/login}" class="btn btn-outline-danger btn-sm">
-                        <i class="bi bi-box-arrow-right me-1"></i> Logout
-                    </a>
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <img th:src="@{'/images/' + ${profil != null and profil.foto != null ? profil.foto : 'profil.jpg'}}" 
+                                 alt="Foto Profil" 
+                                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 12px; border: 1px solid #fa1226;">
+                            <div>
+                                <h6 class="fw-bold text-light mb-1" th:text="${profil != null ? profil.nama : 'Bintang'}">Bintang</h6>
+                                <p class="text-secondary small mb-0">Pengembang / Siswa RPL</p>
+                            </div>
+                        </div>
+
+                        <p class="text-secondary small lh-base mb-0" th:text="${profil != null ? profil.deskripsi : 'Belum ada deskripsi profil.'}">
+                            Deskripsi profil.
+                        </p>
+                    </div>
                 </div>
-            </header>
 
-            <!-- Main Workspace Body -->
-            <main class="p-4 flex-grow-1">
-                <!-- Konten halaman dashboard / form dikelola di sini -->
-            </main>
+                <!-- Card Kontak Utama -->
+                <div class="col-lg-6">
+                    <div class="card bagian-gelap border-secondary text-light h-100 rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0">Informasi Kontak</h5>
+                            <a th:href="@{/dashboard/editKontak}" class="text-merah text-decoration-none small">Ubah Data →</a>
+                        </div>
+
+                        <div class="row g-2 small">
+                            <div class="col-12 p-2 border-bottom border-secondary border-opacity-50 d-flex justify-content-between">
+                                <span class="text-secondary">Email:</span>
+                                <strong class="text-light text-break" th:text="${kontak != null and kontak.email != null ? kontak.email : '-'}">-</strong>
+                            </div>
+                            <div class="col-12 p-2 border-bottom border-secondary border-opacity-50 d-flex justify-content-between">
+                                <span class="text-secondary">Telepon:</span>
+                                <strong class="text-light" th:text="${kontak != null and kontak.telepon != null ? kontak.telepon : '-'}">-</strong>
+                            </div>
+                            <div class="col-12 p-2 border-bottom border-secondary border-opacity-50 d-flex justify-content-between">
+                                <span class="text-secondary">GitHub:</span>
+                                <strong class="text-light text-break" th:text="${kontak != null and kontak.github != null ? kontak.github : '-'}">-</strong>
+                            </div>
+                            <div class="col-12 p-2 d-flex justify-content-between">
+                                <span class="text-secondary">Instagram:</span>
+                                <strong class="text-light text-break" th:text="${kontak != null and kontak.instagram != null ? kontak.instagram : '-'}">-</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Baris 2: Riwayat Pendidikan & Keahlian -->
+            <div class="row g-4">
+                
+                <!-- Riwayat Pendidikan -->
+                <div class="col-lg-6">
+                    <div class="card bagian-gelap border-secondary text-light h-100 rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0">Riwayat Pendidikan</h5>
+                            <span class="text-secondary small" th:text="${#lists.size(pendidikan)} + ' Entri'">0 Entri</span>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover align-middle mb-0" style="background: transparent;">
+                                <thead>
+                                    <tr class="text-secondary border-bottom border-secondary small">
+                                        <th scope="col" style="background: transparent;">Institusi</th>
+                                        <th scope="col" style="background: transparent;">Tingkat</th>
+                                        <th scope="col" class="text-end" style="background: transparent;">Periode</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="p : ${pendidikan}" class="border-bottom border-secondary border-opacity-25">
+                                        <td style="background: transparent;" class="fw-medium text-light" th:text="${p.nama}">SMK Assalaam Bandung</td>
+                                        <td style="background: transparent;" class="text-secondary small" th:text="${p.tingkat}">SMK</td>
+                                        <td style="background: transparent;" class="text-end small">
+                                            <span th:text="${p.tahunMulai}">2022</span>
+                                            <span> - </span>
+                                            <span th:if="${p.tahunSelsai != null}" th:text="${p.tahunSelsai}">2025</span>
+                                            <span th:if="${p.tahunSelsai == null}" class="text-merah">Sekarang</span>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${#lists.isEmpty(pendidikan)}">
+                                        <td colspan="3" class="text-center text-secondary small py-3" style="background: transparent;">
+                                            Belum ada data pendidikan.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keahlian & Teknologi -->
+                <div class="col-lg-6">
+                    <div class="card bagian-gelap border-secondary text-light h-100 rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0">Skill & Keahlian</h5>
+                            <span class="text-secondary small" th:text="${#lists.size(keahlian)} + ' Skill'">0 Skill</span>
+                        </div>
+
+                        <div class="row g-2">
+                            <div th:each="k : ${keahlian}" class="col-sm-6">
+                                <div class="p-3 border border-secondary rounded-3 bg-black bg-opacity-25 d-flex justify-content-between align-items-center">
+                                    <span class="fw-medium text-light small" th:text="${k.nama}">Skill</span>
+                                    <span th:if="${k.deskripsi != null and #strings.contains(#strings.toLowerCase(k.deskripsi), 'masih')}" 
+                                          class="badge-kuning" style="font-size: 10.5px;" 
+                                          th:text="${k.deskripsi}">
+                                        Masih dipelajari
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div th:if="${#lists.isEmpty(keahlian)}" class="col-12 text-center text-secondary small py-3">
+                                Belum ada data keahlian.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
