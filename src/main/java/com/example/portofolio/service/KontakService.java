@@ -1,6 +1,5 @@
 package com.example.portofolio.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +20,6 @@ public class KontakService {
 
     public Kontak tambahKontak(Kontak kontak){
         return kontakRepository.save(kontak);
-    }
-
-    public List<Kontak> semuKontak(){
-        return kontakRepository.findAll();
     }
 
     public Optional<Kontak> cariSesuaiId(Long id){

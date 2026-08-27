@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Kontak - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bg-hitam text-light min-vh-100 py-5">
+    
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-secondary">
+            <div>
+                <h2 class="fw-bold mb-1">Kelola <span class="text-merah">Kontak</span></h2>
+                <p class="text-secondary small mb-0">Ubah informasi kontak Anda</p>
+            </div>
+            <div>
+                <a th:href="@{/dashboard}" class="btn btn-outline-danger btn-sm me-2">
+                    <i class="bi bi-speedometer2 me-1"></i> Kembali
+                </a>
+            </div>
+        </div>
+
+       
+
+        <div class="row g-4 align-items-stretch">      
+            <div class="col-lg-6">
+                <div class="card bagian-gelap text-light border-secondary shadow h-100 p-2">
+                    <div class="card-body p-4">
+                        <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2"><i class="bi bi-pencil-square text-merah"></i>Update Kontak</h4>
+
+                        <form th:action="@{/editKontak}" th:object="${kontak}" method="POST">
+                            <div class="mb-3">
+                                <label class="form-label text-secondary small">Email</label>
+                                <input type="email" name="email" th:value="${kontak != null ? kontak.email : ''}" class="form-control bg-dark text-light border-secondary" placeholder="contoh@gmail.com" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-secondary small">No. Telepon</label>
+                                <input type="text" name="telepon" th:value="${kontak != null ? kontak.telepon : ''}" class="form-control bg-dark text-light border-secondary" placeholder="08xxxxxxxxxx" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-secondary small">GitHub</label>
+                                <input type="text" name="github" th:value="${kontak != null ? kontak.github : ''}" class="form-control bg-dark text-light border-secondary" placeholder="https://github.com/username" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label text-secondary small">Instagram</label>
+                                <input type="text" name="instagram" th:value="${kontak != null ? kontak.instagram : ''}" class="form-control bg-dark text-light border-secondary" placeholder="https://instagram.com/username" required>
+                            </div>
+
+                            <button type="submit" class="tombol w-100 py-2 fw-semibold text-white">
+                                <i class="bi bi-save me-1"></i> Update Kontak</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card bagian-gelap text-light border-secondary shadow h-100 p-2">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2">
+                            <i class="bi bi-eye text-merah"></i> Kontak Saat ini
+                        </h4>
+
+                        <div class="border-top border-secondary flex-grow-1">
+                            <a th:href="${kontak != null and kontak.email != null ? 'mailto:' + kontak.email : '#'}"
+                               class="kontak-item">
+                                <div>
+                                    <small class="text-secondary">EMAIL</small>
+                                    <strong th:text="${kontak != null and kontak.email != null ? kontak.email : 'Belum diisi'}">email@gmail.com</strong>
+                                </div>
+                                <span>↗</span>
+                            </a>
+
+                            <a th:href="${kontak != null and kontak.telepon != null ? 'tel:' + kontak.telepon : '#'}"
+                               class="kontak-item">
+                                <div>
+                                    <small class="text-secondary">TELEPON</small>
+                                    <strong th:text="${kontak != null and kontak.telepon != null ? kontak.telepon : 'Belum diisi'}">08xxxxxxxxxx</strong>
+                                </div>
+                                <span>↗</span>
+                            </a>
+
+                            <a th:href="${kontak != null and kontak.github != null ? kontak.github : '#'}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="kontak-item">
+                                <div>
+                                    <small class="text-secondary">GITHUB</small>
+                                    <strong th:text="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github) ? kontak.github : 'github.com'}">github.com</strong>
+                                </div>
+                                <span>↗</span>
+                            </a>
+
+                            <a th:href="${kontak != null and kontak.instagram != null ? kontak.instagram : '#'}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="kontak-item">
+                                <div>
+                                    <small class="text-secondary">INSTAGRAM</small>
+                                    <strong th:text="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram) ? kontak.instagram : 'instagram.com'}">instagram.com</strong>
+                                </div>
+                                <span>↗</span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tentang</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+                <div class="container py-5">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold"><span class="text-merah">Tentang
+                            </span>Saya.</h2>
+                        <p class="teks-merah fw-bold mb-2">Profil &
+                            Pendidikan</p>
+                    </div>
+
+                    <div class="row g-5">
+
+                        <div class="col-md-6">
+
+                            <h3 class="fw-bold mb-4">
+                                Halo, saya
+                                <span class="text-merah">Bintang.</span>
+                            </h3>
+                            <p class="text-secondary">
+                                Saya adalah siswa di SMK Assalaam Bandung
+                                dengan Jurusan Rekayasa Perangkat Lunak (RPL).
+                                Saya sangat tertarik dengan teknologi dan
+                                informatika.
+                            </p>
+                            <p class="text-secondary">
+                                Saya memiliki semangat tinggi untuk terus
+                                belajar dan mengembangkan skill yang saya
+                                miliki.
+                                Saya juga senang bekerja dalam tim dan mencoba
+                                berbagai hal baru di bidang teknologi.
+                            </p>
+                            <p class="text-secondary">
+                                Di luar kegiatan belajar, saya memiliki beberapa
+                                hobi seperti berolahraga dan travelling.
+                                Bagi saya, olahraga membuat tubuh tetap bugar,
+                                sedangkan travelling memberikan pengalaman dan
+                                cerita baru.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+
+                            <h3 class="fw-bold mb-4">Pendidikan</h3>
+
+                            <div th:each="p : ${pendidikan}"
+                                class="pendidikan-item">
+
+                                <div class="pendidikan-nama">
+
+                                    <strong
+                                        th:text="${p.tingkat + '  ' + p.nama}">
+                                        SMK - SMK Assalaam Bandung
+                                    </strong>
+
+                                </div>
+
+                                <div class="pendidikan-tahun">
+
+                                    <span th:text="${p.tahunMulai}">
+                                        2022
+                                    </span>
+
+                                    <span> - </span>
+
+                                    <span th:if="${p.tahunSelsai != null}"
+                                        th:text="${p.tahunSelsai}">
+                                        2025
+                                    </span>
+
+                                    <span th:if="${p.tahunSelsai == null}"
+                                        class="teks-merah">
+                                        Sekarang
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+</body>
+</html>
