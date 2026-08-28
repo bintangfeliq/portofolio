@@ -20,15 +20,15 @@
                          alt="Foto Profil" class="foto-profil img-fluid shadow">
                 </div>
 
-                <div class="col-lg-7 col-md-7 text-center text-md-start">
-                    <p class="teks-merah fw-bold text-uppercase small mb-2" style="letter-spacing: 2px;">
-                        HALO, SAYA
-                    </p>
-
-                    <h1 class="display-4 fw-bold mb-3 text-light"
+                <div class="col-lg-7 col-md-7 text-center text-md-start">    
+                    <h1 class="display-4 fw-bold  text-light"
                         th:text="${profil != null ? profil.nama : 'Bintang'}">
                         Nama Saya
                     </h1>
+
+                    <p class="teks-merah fw-bold text-uppercase small mb-3" style="letter-spacing: 2px;">
+                        Student & Junior Web Developer
+                    </p>
 
                     <p class="text-secondary fs-5 mb-4 pe-lg-4 lh-base"
                         th:text="${profil != null ? profil.deskripsi : 'Selamat datang di portfolio saya.'}">
