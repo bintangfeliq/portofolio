@@ -1,60 +1,53 @@
 package com.example.portofolio.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.portofolio.model.Pendidikan;
 import com.example.portofolio.service.PendidikanService;
-import org.springframework.web.bind.annotation.PutMapping;
 
-
-
-@RestController
-@RequestMapping("/api/pendidikan")
+@Controller
 public class PendidikanController {
 
     @Autowired
     private PendidikanService pendidikanService;
 
-    public PendidikanController(PendidikanService pendidikanService){
+    PendidikanController(PendidikanService pendidikanService) {
         this.pendidikanService = pendidikanService;
     }
 
-    @PostMapping
-    public Pendidikan tambahPendidikan(@RequestBody Pendidikan pendidikan){
-        return pendidikanService.tambahPendidikan(pendidikan);
+    @GetMapping("/dashboard/dashboardPendidikan")
+    public String editPendidikan(Model model) {
+        model.addAttribute("pendidikan", pendidikanService.semuaPendidikan());
+        return "dashboardPendidikan";
     }
 
-    @GetMapping
-    public List<Pendidikan> semuPendidikan(){
-        return pendidikanService.semuPendidikan();
+    @PostMapping("/dashboard/pendidikan/tambah")
+    public String tambahPendidikan(@ModelAttribute Pendidikan pendidikan) {
+        pendidikanService.tambahPendidikan(pendidikan);
+        return "redirect:/dashboard/dashboardPendidikan";
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Pendidikan> cariSesuaiId(@PathVariable Long id) {
-        return pendidikanService.cariSesuaiId(id)
-        .map(ResponseEntity::ok)
-        .orElse(ResponseEntity.notFound().build());
+    @GetMapping("/dashboard/dashboardPendidikan/editPendidikan/{id}")
+    public String halamanUpdate(@PathVariable Long id, Model model) {
+        model.addAttribute("pendidikan", pendidikanService.cariSesuaiId(id).get());
+        return "editPendidikan";
     }
 
-    @PutMapping("/{id}")
-    public Pendidikan updatePendidikan(@PathVariable Long id, @RequestBody Pendidikan pendidikan) { 
-        return pendidikanService.updatPendidikan(id, pendidikan);
+    @PostMapping("/dashboard/dashboardPendidikan/editPendidikan/{id}")
+    public String updatePendidikan(@PathVariable Long id, @ModelAttribute Pendidikan pendidikan) {
+        pendidikanService.updatePendidikan(id, pendidikan);
+        return "redirect:/dashboard/dashboardPendidikan";
     }
 
-    @DeleteMapping("/{id}")
-    public String hapusPendidikan(@PathVariable Long id){
+    @GetMapping("/dashboard/dashboardPendidikan/hapusPendidikan/{id}")
+    public String hapusPendidikan(@PathVariable Long id) {
         pendidikanService.hapusPendidikan(id);
-        return "pendidikan dengan ID " + id + " Telah dihapus";
-    }   
-    
+        return "redirect:/dashboard/dashboardPendidikan";
+    }
 }

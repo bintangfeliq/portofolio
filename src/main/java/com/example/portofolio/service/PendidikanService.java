@@ -27,17 +27,25 @@ public class PendidikanService {
         return pendidikanRepository.findAll();
     }
 
+    public List<Pendidikan> semuaPendidikan(){
+        return pendidikanRepository.findAll();
+    }
+
     public Optional<Pendidikan> cariSesuaiId(Long id){
        return pendidikanRepository.findById(id);
     }
 
-    public Pendidikan updatPendidikan(Long id, Pendidikan databaru){
-        Pendidikan pendidikan = pendidikanRepository.findById(id).orElseThrow(() ->  new RuntimeException("Pendidikan tidak ada!!!"));
-        pendidikan.setTingkat(databaru.getTingkat());
-        pendidikan.setNama(databaru.getNama());
-        pendidikan.setTahunMulai(databaru.getTahunMulai());;
-        pendidikan.setTahunselsai(databaru.getTahunSelsai());
+    public Pendidikan updatePendidikan(Long id, Pendidikan dataBaru){
+        Pendidikan pendidikan = pendidikanRepository.findById(id).orElseThrow(() -> new RuntimeException("Pendidikan tidak ada"));
+        pendidikan.setTingkat(dataBaru.getTingkat());
+        pendidikan.setNama(dataBaru.getNama());
+        pendidikan.setTahunMulai(dataBaru.getTahunMulai());
+        pendidikan.setTahunSelsai(dataBaru.getTahunSelsai());
         return pendidikanRepository.save(pendidikan);
+    }
+
+    public Pendidikan updatPendidikan(Long id, Pendidikan dataBaru){
+        return updatePendidikan(id, dataBaru);
     }
 
     public void hapusPendidikan(Long id){

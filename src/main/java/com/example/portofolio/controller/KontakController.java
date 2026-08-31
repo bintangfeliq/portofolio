@@ -1,50 +1,41 @@
 package com.example.portofolio.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.portofolio.model.Kontak;
 import com.example.portofolio.service.KontakService;
 
-@RestController
-@RequestMapping("/api/kontak")
+@Controller
 public class KontakController {
-    
+
     @Autowired
     private KontakService kontakService;
 
-    public KontakController(KontakService kontakService){
+    KontakController(KontakService kontakService) {
         this.kontakService = kontakService;
     }
 
-    @PostMapping
-    public Kontak tambahKontak(@RequestBody Kontak kontak){
-        return kontakService.tambahKontak(kontak);
+    @GetMapping("/dashboard/editKontak")
+    public String editKontak(Model model) {
+        Kontak kontak = kontakService.cariSesuaiId(1L).orElse(new Kontak());
+        model.addAttribute("kontak", kontak);
+        return "editKontak";
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Kontak> cariSesuaiId(@PathVariable Long id){
-        return kontakService.cariSesuaiId(id)
-        .map(ResponseEntity::ok)
-        .orElse(ResponseEntity.notFound().build());
-    } 
-
-    @PutMapping("/{id}")
-    public Kontak updateKontak(@PathVariable Long id, @RequestBody Kontak kontak){
-        return kontakService.updateKontak(id, kontak);
-    }
-
-    @DeleteMapping("/{id}")
-    public String hapusKontak(@PathVariable Long id){
-        kontakService.hapusKontak(id);
-        return "Kontak dengan ID " + id + "telah dihapus";
+    @PostMapping("/dashboard/editKontak")
+    public String updateKontak(@ModelAttribute Kontak kontak, RedirectAttributes redirectAttributes) {
+        if (kontakService.cariSesuaiId(1L).isPresent()) {
+            kontakService.updateKontak(1L, kontak);
+        } else {
+            kontakService.tambahKontak(kontak);
+        }
+        redirectAttributes.addFlashAttribute("pesanSukses", "Kontak berhasil diperbarui!");
+        return "redirect:/dashboard/editKontak";
     }
 }

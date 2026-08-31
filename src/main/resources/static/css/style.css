@@ -30,35 +30,51 @@ body {
 }
 
 .kontak-item {
-    min-height: 80px;
-    padding: 18px 5px;
+    min-height: 72px;
+    padding: 16px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #fff;
     text-decoration: none;
-    border-bottom: 1px solid #333;
-    transition: 0.2s;
+    border-bottom: 1px solid #282828;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 
-.kontak-item div {
+.kontak-item .kontak-info {
     display: flex;
     flex-direction: column;
 }
 
-.kontak-item strong {
-    font-weight: 500;
-}
-
-.kontak-item span {
+.kontak-item .kontak-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(250, 18, 38, 0.1);
     color: #fa1226;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .kontak-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+    padding-left: 18px;
+    padding-right: 18px;
+    color: #fff;
+}
+
+.kontak-item .arrow-icon {
     color: #fa1226;
-    padding-left: 12px;
-    padding-right: 12px;
+    font-size: 20px;
+    transition: transform 0.2s ease;
+}
+
+.kontak-item:hover .arrow-icon {
+    transform: translate(3px, -3px);
 }
 
 .pendidikan-item {
@@ -188,4 +204,66 @@ body {
     background: rgba(255, 255, 255, 0.06);
     color: #ffffff !important;
 }
+
+/* Project Cards & Modal */
+.project-card {
+    cursor: pointer;
+    transition: 0.25s ease;
+    background: #141414;
+    border: 1px solid #282828;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #fa1226 !important;
+    box-shadow: 0 10px 25px rgba(250, 18, 38, 0.15) !important;
+}
+
+.modal-content {
+    background-color: #141414;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 16px;
+}
+
+.modal-header, .modal-footer {
+    border-color: #282828;
+}
+
+.modal-img {
+    max-height: 420px;
+    object-fit: contain;
+    background-color: #0b0b0b;
+    border-radius: 10px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(250, 18, 38, 0.85);
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+/* Navbar Links & Red Active / Hover Color */
+.navbar .nav-link {
+    transition: color 0.2s ease;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link:active,
+.navbar .nav-link.active {
+    color: #fa1226 !important;
+}
+
+/* Smooth anchor jump offset with sticky header */
+section[id], div[id] {
+    scroll-margin-top: 80px;
+}
+
+
 

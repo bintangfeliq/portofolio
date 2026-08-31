@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Saya - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bg-hitam text-light min-vh-100 py-5">
+    
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-secondary">
+            <div>
+                <h2 class="fw-bold mb-1">Kelola <span class="text-merah">Tentang Saya</span> & Profil</h2>
+                <p class="text-secondary small mb-0"></p>
+            </div>
+            <div>
+                <a th:href="@{/dashboard}" class="btn btn-outline-danger btn-sm me-2">Kembali</a>
+            </div>
+        </div>
+        
+        <div class="row g-4 align-items-stretch">      
+            <div class="col-lg-7">
+                <div class="card bagian-gelap text-light border-secondary shadow h-100 p-2 rounded-4">
+                    <div class="card-body p-4">
+                        <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2">
+                            <i class="bi bi-pencil-square text-merah"></i> Form Edit Profil & Tentang Saya
+                        </h4>
+
+                        <form th:action="@{/dashboard/editTentang}" th:object="${profil}" method="POST">
+                            <input type="hidden" name="id" th:value="${profil != null ? profil.id : 1}">
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-secondary small">Nama Lengkap</label>
+                                    <input type="text" name="nama" th:value="${profil != null ? profil.nama : ''}" class="form-control bg-dark text-light border-secondary" placeholder="Nama Anda" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-secondary small">File Foto (di folder images)</label>
+                                    <input type="text" name="foto" th:value="${profil != null ? profil.foto : 'profil.jpg'}" class="form-control bg-dark text-light border-secondary" placeholder="contoh: profil.jpg">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-secondary small">Alamat</label>
+                                <input type="text" name="alamat" th:value="${profil != null ? profil.alamat : ''}" class="form-control bg-dark text-light border-secondary" placeholder="Contoh: Bandung, Indonesia">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-secondary small">Deskripsi Profil</label>
+                                <textarea name="deskripsi" rows="2" class="form-control bg-dark text-light border-secondary" placeholder="Deskripsi ringkas yang tampil di beranda..." th:text="${profil != null ? profil.deskripsi : ''}"></textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label text-secondary small">Tentang Saya</label>
+                                <textarea name="tentangSaya" rows="7" class="form-control bg-dark text-light border-secondary" placeholder="Tulis cerita perjalanan, profil lengkap, minat, dan hobi Anda di sini..." th:text="${profil != null ? profil.tentangSaya : ''}"></textarea>
+                            </div>
+
+                            <button type="submit" class="tombol w-100 py-2 fw-semibold text-white">
+                                <i class="bi bi-save me-1"></i> Update
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="card bagian-gelap text-light border-secondary shadow h-100 p-2 rounded-4">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2">
+                            <i class="bi bi-eye text-merah"></i> Preview Profil Saat Ini
+                        </h4>
+
+                        <div class="d-flex align-items-center gap-3 mb-3 p-3 border border-secondary rounded-3 bg-black bg-opacity-25">
+                            <img th:src="@{'/images/' + ${profil != null and profil.foto != null ? profil.foto : 'profil.jpg'}}" 
+                                 alt="Foto Profil" 
+                                 style="width: 65px; height: 65px; object-fit: cover; border-radius: 12px; border: 1px solid #fa1226;">
+                            <div>
+                                <h6 class="fw-bold text-light mb-1" th:text="${profil != null ? profil.nama : 'Bintang'}">Bintang</h6>
+                                <p class="text-secondary small mb-0" th:text="${profil != null and profil.alamat != null ? profil.alamat : 'Bandung, Indonesia'}">Bandung, Indonesia</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px;">Ringkasan Beranda:</small>
+                            <p class="text-light small mt-1 p-2 border border-secondary border-opacity-50 rounded bg-black bg-opacity-25" th:text="${profil != null and profil.deskripsi != null ? profil.deskripsi : '-'}">-</p>
+                        </div>
+
+                        <div class="flex-grow-1 overflow-auto">
+                            <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px;">Isi Halaman Tentang Saya:</small>
+                            <div class="text-secondary small mt-1 p-2 border border-secondary border-opacity-50 rounded bg-black bg-opacity-25" style="white-space: pre-line; max-height: 220px; overflow-y: auto;" th:text="${profil != null and profil.tentangSaya != null ? profil.tentangSaya : (profil != null ? profil.deskripsi : '-')}">
+                                Belum ada isi tentang saya.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

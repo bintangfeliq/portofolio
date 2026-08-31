@@ -13,8 +13,9 @@ import com.example.portofolio.model.Pendidikan;
 import com.example.portofolio.model.Profil;
 import com.example.portofolio.repository.PendidikanRepository;
 import com.example.portofolio.service.KeahlianService;
-import com.example.portofolio.service.ProfilService;
 import com.example.portofolio.service.KontakService;
+import com.example.portofolio.service.ProfilService;
+import com.example.portofolio.service.ProjectService;
 
 @Controller
 public class PortofolioController {
@@ -26,35 +27,27 @@ public class PortofolioController {
     private PendidikanRepository pendidikanRepository;
     @Autowired
     private KeahlianService keahlianService;
+    @Autowired
+    private ProjectService projectService;
 
     public PortofolioController(ProfilService profilService, 
                                 KontakService kontakService, 
                                 PendidikanRepository pendidikanRepository,
-                                KeahlianService keahlianService){
+                                KeahlianService keahlianService,
+                                ProjectService projectService){
         this.profilService = profilService;
         this.kontakService = kontakService;
         this.pendidikanRepository = pendidikanRepository;
         this.keahlianService = keahlianService;
+        this.projectService = projectService;
     }
 
     @GetMapping("/")
     public String index(Model model){
-        Profil profil = profilService.cariSesuaiId(1L).orElseGet(() -> {
-            Profil p = new Profil();
-            p.setNama("Bintang");
-            p.setDeskripsi("Saya adalah siswa di SMK Assalaam Bandung dengan Jurusan Rekayasa Perangkat Lunak (RPL).");
-            p.setFoto("profil.jpg");
-            return p;
-        });
+        Profil profil = profilService.semuaProfil().stream().findFirst()
+                .orElseGet(() -> profilService.cariSesuaiId(1L).orElse(new Profil()));
 
-        Kontak kontak = kontakService.cariSesuaiId(1L).orElseGet(() -> {
-            Kontak k = new Kontak();
-            k.setEmail("email@gmail.com");
-            k.setTelepon("08xxxxxxxxxx");
-            k.setGithub("https://github.com");
-            k.setInstagram("https://instagram.com");
-            return k;
-        });
+        Kontak kontak = kontakService.cariSesuaiId(1L).orElse(new Kontak());
 
         List<Pendidikan> pendidikan = pendidikanRepository.findAllByOrderByTahunMulaiAsc();
         List<Keahlian> keahlian = keahlianService.semuaKeahlian();
@@ -63,27 +56,16 @@ public class PortofolioController {
         model.addAttribute("profil", profil);
         model.addAttribute("kontak", kontak);
         model.addAttribute("keahlian", keahlian);
+        model.addAttribute("projects", projectService.semuaProject());
         return "index";
     }
 
     @GetMapping("/tentang")
     public String tentang(Model model){
-        Profil profil = profilService.cariSesuaiId(1L).orElseGet(() -> {
-            Profil p = new Profil();
-            p.setNama("Bintang");
-            p.setDeskripsi("Saya adalah siswa di SMK Assalaam Bandung dengan Jurusan Rekayasa Perangkat Lunak (RPL).");
-            p.setFoto("profil.jpg");
-            return p;
-        });
+        Profil profil = profilService.semuaProfil().stream().findFirst()
+                .orElseGet(() -> profilService.cariSesuaiId(1L).orElse(new Profil()));
 
-        Kontak kontak = kontakService.cariSesuaiId(1L).orElseGet(() -> {
-            Kontak k = new Kontak();
-            k.setEmail("email@gmail.com");
-            k.setTelepon("08xxxxxxxxxx");
-            k.setGithub("https://github.com");
-            k.setInstagram("https://instagram.com");
-            return k;
-        });
+        Kontak kontak = kontakService.cariSesuaiId(1L).orElse(new Kontak());
 
         List<Pendidikan> pendidikan = pendidikanRepository.findAllByOrderByTahunMulaiAsc();
         List<Keahlian> keahlian = keahlianService.semuaKeahlian();
@@ -92,6 +74,7 @@ public class PortofolioController {
         model.addAttribute("profil", profil);
         model.addAttribute("kontak", kontak);
         model.addAttribute("keahlian", keahlian);
+        model.addAttribute("projects", projectService.semuaProject());
         return "tentang";
     }
 }

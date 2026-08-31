@@ -18,12 +18,12 @@ public class KeahlianService {
         this.keahlianRepository = keahlianRepository;
     }
 
-    public List<Keahlian> semuaKeahlian(){
-        return keahlianRepository.findAll();
-    }
-
     public Keahlian tambahKeahlian(Keahlian keahlian){
         return keahlianRepository.save(keahlian);
+    }
+
+    public List<Keahlian> semuaKeahlian(){
+        return keahlianRepository.findAll();
     }
 
     public Optional<Keahlian> cariSesuaiId(Long id){
@@ -31,13 +31,9 @@ public class KeahlianService {
     }
 
     public Keahlian updateKeahlian(Long id, Keahlian dataBaru){
-        Keahlian keahlian = keahlianRepository.findById(id).orElseThrow(()-> new RuntimeException("Keahlian tidak ada"));
-        if (dataBaru.getNama() != null) {
-            keahlian.setNama(dataBaru.getNama());
-        }
-        if (dataBaru.getDeskripsi() != null) {
-            keahlian.setDeskripsi(dataBaru.getDeskripsi());
-        }
+        Keahlian keahlian = keahlianRepository.findById(id).orElseThrow(() -> new RuntimeException("Keahlian tidak ada"));
+        keahlian.setNama(dataBaru.getNama());
+        keahlian.setDeskripsi(dataBaru.getDeskripsi());
         return keahlianRepository.save(keahlian);
     }
 

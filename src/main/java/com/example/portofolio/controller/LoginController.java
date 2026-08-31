@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
-    
+
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
@@ -18,10 +18,8 @@ public class LoginController {
     public String prosesLogin(@RequestParam String username, @RequestParam String password, Model model) {
         if ("admin".equals(username) && "12345678".equals(password)) {
             return "redirect:/dashboard";
-        } else {
-            model.addAttribute("pesanError", "Username atau password salah!");
-            return "login";
         }
+        model.addAttribute("pesanError", "Username atau password salah!");
+        return "login";
     }
-
 }

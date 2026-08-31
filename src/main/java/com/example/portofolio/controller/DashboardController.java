@@ -1,20 +1,17 @@
 package com.example.portofolio.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.portofolio.model.Keahlian;
 import com.example.portofolio.model.Kontak;
-import com.example.portofolio.model.Pendidikan;
 import com.example.portofolio.model.Profil;
 import com.example.portofolio.repository.PendidikanRepository;
 import com.example.portofolio.service.KeahlianService;
 import com.example.portofolio.service.KontakService;
 import com.example.portofolio.service.ProfilService;
+import com.example.portofolio.service.ProjectService;
 
 @Controller
 public class DashboardController {
@@ -27,14 +24,28 @@ public class DashboardController {
     private PendidikanRepository pendidikanRepository;
     @Autowired
     private KeahlianService keahlianService;
+    @Autowired
+    private ProjectService projectService;
+
+    public DashboardController(ProfilService profilService, KontakService kontakService,
+                        PendidikanRepository pendidikanRepository, KeahlianService keahlianService,
+                        ProjectService projectService) {
+        this.profilService = profilService;
+        this.kontakService = kontakService;
+        this.pendidikanRepository = pendidikanRepository;
+        this.keahlianService = keahlianService;
+        this.projectService = projectService;
+    }
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model){
+    public String dashboard(Model model) {
         Profil profil = profilService.cariSesuaiId(1L).orElseGet(() -> {
             Profil p = new Profil();
             p.setNama("Bintang");
             p.setDeskripsi("Siswa SMK Assalaam Bandung - RPL");
+            p.setTentangSaya("Saya adalah siswa di SMK Assalaam Bandung dengan Jurusan Rekayasa Perangkat Lunak (RPL).");
             p.setFoto("profil.jpg");
+            p.setAlamat("Bandung, Indonesia");
             return p;
         });
 
@@ -47,13 +58,11 @@ public class DashboardController {
             return k;
         });
 
-        List<Pendidikan> pendidikan = pendidikanRepository.findAllByOrderByTahunMulaiAsc();
-        List<Keahlian> keahlian = keahlianService.semuaKeahlian();
-
         model.addAttribute("profil", profil);
         model.addAttribute("kontak", kontak);
-        model.addAttribute("pendidikan", pendidikan);
-        model.addAttribute("keahlian", keahlian);
+        model.addAttribute("pendidikan", pendidikanRepository.findAllByOrderByTahunMulaiAsc());
+        model.addAttribute("keahlian", keahlianService.semuaKeahlian());
+        model.addAttribute("projects", projectService.semuaProject());
         return "dashboard";
     }
 }
