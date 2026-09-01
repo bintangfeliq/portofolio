@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +21,19 @@ import com.example.portofolio.model.Project;
 import com.example.portofolio.service.GambarService;
 import com.example.portofolio.service.ProjectService;
 
-import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequiredArgsConstructor
 public class ProjectController {
 
-    private final ProjectService projectService;
-    private final GambarService gambarService;
+    @Autowired
+    private ProjectService projectService;
+    @Autowired
+    private GambarService gambarService;
+
+   public ProjectController(ProjectService projectService, GambarService gambarService){
+    this.projectService = projectService;
+    this.gambarService = gambarService;
+   }
 
     @GetMapping("/project")
     public String project() {
@@ -41,8 +47,7 @@ public class ProjectController {
     }
 
     @PostMapping("/dashboard/project/tambah")
-    public String tambahProject(@ModelAttribute Project project, 
-                                @RequestParam(value = "files", required = false) MultipartFile[] files) throws IOException {
+    public String tambahProject(@ModelAttribute Project project, @RequestParam(value = "files", required = false) MultipartFile[] files) throws IOException {
         simpanGambar(projectService.tambahProject(project), files);
         return "redirect:/dashboard/dashboardProject";
     }
@@ -54,9 +59,7 @@ public class ProjectController {
     }
 
     @PostMapping("/dashboard/dashboardProject/editProject/{id}")
-    public String updateProject(@PathVariable Long id, 
-                                @ModelAttribute Project project,
-                                @RequestParam(value = "files", required = false) MultipartFile[] files) throws IOException {
+    public String updateProject(@PathVariable Long id, @ModelAttribute Project project,@RequestParam(value = "files", required = false) MultipartFile[] files) throws IOException {
         simpanGambar(projectService.updateProject(id, project), files);
         return "redirect:/dashboard/dashboardProject";
     }

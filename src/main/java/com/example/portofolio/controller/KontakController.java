@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.portofolio.model.Kontak;
 import com.example.portofolio.service.KontakService;
+
 
 @Controller
 public class KontakController {
@@ -17,25 +17,23 @@ public class KontakController {
     @Autowired
     private KontakService kontakService;
 
-    KontakController(KontakService kontakService) {
+    public KontakController(KontakService kontakService){
         this.kontakService = kontakService;
     }
 
     @GetMapping("/dashboard/editKontak")
     public String editKontak(Model model) {
-        Kontak kontak = kontakService.cariSesuaiId(1L).orElse(new Kontak());
-        model.addAttribute("kontak", kontak);
+        model.addAttribute("kontak", kontakService.cariSesuaiId(1L).orElse(new Kontak()));
         return "editKontak";
     }
 
     @PostMapping("/dashboard/editKontak")
-    public String updateKontak(@ModelAttribute Kontak kontak, RedirectAttributes redirectAttributes) {
+    public String updateKontak(@ModelAttribute Kontak kontak) {
         if (kontakService.cariSesuaiId(1L).isPresent()) {
             kontakService.updateKontak(1L, kontak);
         } else {
             kontakService.tambahKontak(kontak);
         }
-        redirectAttributes.addFlashAttribute("pesanSukses", "Kontak berhasil diperbarui!");
         return "redirect:/dashboard/editKontak";
     }
 }

@@ -17,7 +17,7 @@ public class KeahlianController {
     @Autowired
     private KeahlianService keahlianService;
 
-    KeahlianController(KeahlianService keahlianService) {
+    public KeahlianController(KeahlianService keahlianService) {
         this.keahlianService = keahlianService;
     }
 

@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,18 +14,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.portofolio.model.Profil;
 import com.example.portofolio.service.ProfilService;
 
-import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequiredArgsConstructor
 public class ProfilController {
 
-    private final ProfilService profilService;
+    @Autowired
+    private ProfilService profilService;
+
+    public ProfilController(ProfilService profilService){
+        this.profilService = profilService;
+    }
 
     @GetMapping("/dashboard/editTentang")
     public String editTentang(Model model) {
@@ -34,11 +37,7 @@ public class ProfilController {
     }
 
     @PostMapping("/dashboard/editTentang")
-    public String updateProfil(
-            @ModelAttribute Profil profil,
-            @RequestParam(value = "fileFoto", required = false) MultipartFile fileFoto,
-            @RequestParam(value = "fileCv", required = false) MultipartFile fileCv,
-            RedirectAttributes redirectAttributes
+    public String updateProfil(@ModelAttribute Profil profil, @RequestParam(value = "fileFoto", required = false) MultipartFile fileFoto, @RequestParam(value = "fileCv", required = false) MultipartFile fileCv
     ) throws IOException {
 
         Profil dataLama = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada"));
@@ -54,7 +53,6 @@ public class ProfilController {
             profil.setCv(dataLama.getCv());
         }
         profilService.updateProfil(1L, profil);
-        redirectAttributes.addFlashAttribute("pesanSukses", "Data profil & Tentang Saya berhasil diperbarui!");
         return "redirect:/dashboard/editTentang";
     }
 
@@ -66,18 +64,10 @@ public class ProfilController {
         if (!Files.exists(dirSrc)) {
             Files.createDirectories(dirSrc);
         }
-        Files.copy(
-                file.getInputStream(),
-                dirSrc.resolve(nama),
-                StandardCopyOption.REPLACE_EXISTING
-        );
+        Files.copy(file.getInputStream(), dirSrc.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
 
         if (Files.exists(dirTarget)) {
-            Files.copy(
-                    file.getInputStream(),
-                    dirTarget.resolve(nama),
-                    StandardCopyOption.REPLACE_EXISTING
-            );
+            Files.copy( file.getInputStream(), dirTarget.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
         }
         return nama;
     }
