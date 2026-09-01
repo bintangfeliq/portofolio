@@ -88,7 +88,7 @@
                         </div>
 
                         <div class="col-lg-8 col-md-7">
-                            <div class="border-top border-secondary">
+                            <div>
                                 <div th:each="p : ${pendidikan}" class="pendidikan-item py-3">
                                     <div class="pendidikan-nama d-flex align-items-center">
                                         <i class="bi bi-mortarboard text-merah me-2 fs-5"></i>
@@ -300,27 +300,27 @@
                                 <i class="bi bi-arrow-up-right arrow-icon"></i>
                             </a>
 
-                            <a th:if="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github)}" th:href="${kontak.github}" target="_blank" rel="noopener noreferrer" class="kontak-item">
+                            <a th:href="${kontak.github}" target="_blank" rel="noopener noreferrer" class="kontak-item">
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="kontak-icon">
                                         <i class="bi bi-github"></i>
                                     </div>
                                     <div class="kontak-info">
                                         <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.8px;">GITHUB</small>
-                                        <strong class="text-light" th:text="${kontak.github}">github.com</strong>
+                                        <strong class="text-light" th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">github.com</strong>
                                     </div>
                                 </div>
                                 <i class="bi bi-arrow-up-right arrow-icon"></i>
                             </a>
 
-                            <a th:if="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram)}" th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer" class="kontak-item">
+                            <a th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer" class="kontak-item">
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="kontak-icon">
                                         <i class="bi bi-instagram"></i>
                                     </div>
                                     <div class="kontak-info">
                                         <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.8px;">INSTAGRAM</small>
-                                        <strong class="text-light" th:text="${kontak.instagram}">instagram.com</strong>
+                                        <strong class="text-light" th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">instagram.com</strong>
                                     </div>
                                 </div>
                                 <i class="bi bi-arrow-up-right arrow-icon"></i>

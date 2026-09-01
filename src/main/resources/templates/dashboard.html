@@ -121,11 +121,11 @@
                             </div>
                             <div class="col-12 p-2 border-bottom border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
                                 <span class="text-secondary"><i class="bi bi-github text-merah me-2"></i>GitHub:</span>
-                                <strong class="text-light text-break" th:text="${kontak.github}">-</strong>
+                                <strong class="text-light text-break" th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">-</strong>
                             </div>
                             <div class="col-12 p-2 d-flex justify-content-between align-items-center">
                                 <span class="text-secondary"><i class="bi bi-instagram text-merah me-2"></i>Instagram:</span>
-                                <strong class="text-light text-break" th:text="${kontak.instagram}">-</strong>
+                                <strong class="text-light text-break" th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">-</strong>
                             </div>
                         </div>
                     </div>
