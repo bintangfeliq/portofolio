@@ -19,12 +19,10 @@ public class ProjectService {
         this.projectRepository = projectRepository;
     }
 
-    //create
     public Project tambahProject(Project project){
         return projectRepository.save(project);
     }
 
-    //read semua
     public List<Project> semuaProject(){
         return projectRepository.findAll();
     }
@@ -33,12 +31,10 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    //read berdasarkan id
     public Optional<Project> cariSesuaiId(Long id){
         return projectRepository.findById(id);
     }
 
-    //update
     public Project updateProject(Long id, Project dataBaru){
         Project project = projectRepository.findById(id).orElseThrow(() -> new RuntimeException("Project Tidak Ada"));
         project.setNamaProject(dataBaru.getNamaProject());
@@ -47,7 +43,6 @@ public class ProjectService {
         return projectRepository.save(project);
     }
 
-    //delete
     public void hapusProject(Long id){
         projectRepository.deleteById(id);
     }

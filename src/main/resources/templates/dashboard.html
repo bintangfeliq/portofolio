@@ -80,24 +80,19 @@
             <div class="card bagian-gelap border-secondary text-light rounded-4 p-4 mb-4 shadow-sm position-relative overflow-hidden">
                 <div class="row align-items-center g-4">
                     <div class="col-lg-8 col-md-7 col-12 d-flex align-items-center gap-4">
-                        <img th:src="@{'/images/' + ${profil != null and profil.foto != null ? profil.foto : 'profil.jpg'}}" 
+                        <img th:src="@{'/images/' + ${profil.foto}}" 
                              alt="Foto Profil" 
                              class="rounded-4 shadow flex-shrink-0"
                              style="width: 85px; height: 90px; object-fit: cover; border: 2px solid #fa1226;">
                         <div>
                             <div class="d-flex align-items-center gap-2 mb-1">
                                 <h4 class="fw-bold text-light mb-0">
-                                    Selamat Datang, <span class="text-merah" th:text="${profil != null ? profil.nama : 'Bintang'}">Bintang</span>
+                                    Selamat Datang, <span class="text-merah" th:text="${profil.nama}">Bintang</span>
                                 </h4>
                             </div>
-                            <p class="text-secondary small mb-2 lh-base" th:text="${profil != null ? profil.deskripsi : 'Website portfolio Anda aktif dan siap diakses publik.'}">
+                            <p class="text-secondary small mb-2 lh-base" th:text="${profil.deskripsi}">
                                 Deskripsi profil portfolio Anda.
                             </p>
-                            <div class="d-flex flex-wrap gap-2">
-                                <a th:href="@{/dashboard/editTentang}" class="btn btn-outline-danger btn-sm rounded-3">
-                                    <i class="bi bi-pencil-square me-1"></i> Edit Profil
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,19 +113,19 @@
                         <div class="row g-2 small">
                             <div class="col-12 p-2 border-bottom border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
                                 <span class="text-secondary"><i class="bi bi-envelope text-merah me-2"></i>Email:</span>
-                                <strong class="text-light text-break" th:text="${kontak != null and kontak.email != null ? kontak.email : '-'}">-</strong>
+                                <strong class="text-light text-break" th:text="${kontak.email}">-</strong>
                             </div>
                             <div class="col-12 p-2 border-bottom border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
                                 <span class="text-secondary"><i class="bi bi-telephone text-merah me-2"></i>Telepon:</span>
-                                <strong class="text-light" th:text="${kontak != null and kontak.telepon != null ? kontak.telepon : '-'}">-</strong>
+                                <strong class="text-light" th:text="${kontak.telepon}">-</strong>
                             </div>
                             <div class="col-12 p-2 border-bottom border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
                                 <span class="text-secondary"><i class="bi bi-github text-merah me-2"></i>GitHub:</span>
-                                <strong class="text-light text-break" th:text="${kontak != null and kontak.github != null ? kontak.github : '-'}">-</strong>
+                                <strong class="text-light text-break" th:text="${kontak.github}">-</strong>
                             </div>
                             <div class="col-12 p-2 d-flex justify-content-between align-items-center">
                                 <span class="text-secondary"><i class="bi bi-instagram text-merah me-2"></i>Instagram:</span>
-                                <strong class="text-light text-break" th:text="${kontak != null and kontak.instagram != null ? kontak.instagram : '-'}">-</strong>
+                                <strong class="text-light text-break" th:text="${kontak.instagram}">-</strong>
                             </div>
                         </div>
                     </div>

@@ -33,22 +33,22 @@
                         <form th:action="@{/dashboard/editKontak}" th:object="${kontak}" method="POST">
                             <div class="mb-3">
                                 <label class="form-label text-secondary small">Email</label>
-                                <input type="email" name="email" th:value="${kontak != null ? kontak.email : ''}" class="form-control bg-dark text-light border-secondary" placeholder="contoh@gmail.com" required>
+                                <input type="email" name="email" th:value="${kontak.email}" class="form-control bg-dark text-light border-secondary" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label text-secondary small">No. Telepon</label>
-                                <input type="text" name="telepon" th:value="${kontak != null ? kontak.telepon : ''}" class="form-control bg-dark text-light border-secondary" placeholder="08xxxxxxxxxx" required>
+                                <input type="text" name="telepon" th:value="${kontak.telepon}" class="form-control bg-dark text-light border-secondary"  required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label text-secondary small">GitHub</label>
-                                <input type="text" name="github" th:value="${kontak != null ? kontak.github : ''}" class="form-control bg-dark text-light border-secondary" placeholder="https://github.com/username" required>
+                                <input type="text" name="github" th:value="${kontak.github}" class="form-control bg-dark text-light border-secondary"  required>
                             </div>
 
                             <div class="mb-4">
                                 <label class="form-label text-secondary small">Instagram</label>
-                                <input type="text" name="instagram" th:value="${kontak != null ? kontak.instagram : ''}" class="form-control bg-dark text-light border-secondary" placeholder="https://instagram.com/username" required>
+                                <input type="text" name="instagram" th:value="${kontak.instagram}" class="form-control bg-dark text-light border-secondary" required>
                             </div>
 
                             <button type="submit" class="tombol w-100 py-2 fw-semibold text-white">

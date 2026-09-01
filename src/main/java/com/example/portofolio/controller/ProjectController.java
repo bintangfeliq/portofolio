@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,44 +16,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.portofolio.model.Gambar;
-import com.example.portofolio.model.Kontak;
-import com.example.portofolio.model.Profil;
 import com.example.portofolio.model.Project;
 import com.example.portofolio.service.GambarService;
-import com.example.portofolio.service.KontakService;
-import com.example.portofolio.service.ProfilService;
 import com.example.portofolio.service.ProjectService;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class ProjectController {
 
-    @Autowired
-    private ProjectService projectService;
+    private final ProjectService projectService;
+    private final GambarService gambarService;
 
-    @Autowired
-    private GambarService gambarService;
-
-    @Autowired
-    private ProfilService profilService;
-
-    @Autowired
-    private KontakService kontakService;
-
-    public ProjectController(ProjectService projectService, GambarService gambarService,
-                             ProfilService profilService, KontakService kontakService) {
-        this.projectService = projectService;
-        this.gambarService = gambarService;
-        this.profilService = profilService;
-        this.kontakService = kontakService;
-    }
-
-    // === Halaman Publik Project (Dialihkan ke Section Project di Halaman Tentang) ===
     @GetMapping("/project")
     public String project() {
         return "redirect:/tentang#project";
     }
 
-    // === Dashboard Kelola Project ===
     @GetMapping("/dashboard/dashboardProject")
     public String editProject(Model model) {
         model.addAttribute("projects", projectService.semuaProject());
@@ -64,8 +43,7 @@ public class ProjectController {
     @PostMapping("/dashboard/project/tambah")
     public String tambahProject(@ModelAttribute Project project, 
                                 @RequestParam(value = "files", required = false) MultipartFile[] files) throws IOException {
-        Project saved = projectService.tambahProject(project);
-        simpanGambar(saved, files);
+        simpanGambar(projectService.tambahProject(project), files);
         return "redirect:/dashboard/dashboardProject";
     }
 
@@ -79,8 +57,7 @@ public class ProjectController {
     public String updateProject(@PathVariable Long id, 
                                 @ModelAttribute Project project,
                                 @RequestParam(value = "files", required = false) MultipartFile[] files) throws IOException {
-        Project updated = projectService.updateProject(id, project);
-        simpanGambar(updated, files);
+        simpanGambar(projectService.updateProject(id, project), files);
         return "redirect:/dashboard/dashboardProject";
     }
 
@@ -97,26 +74,20 @@ public class ProjectController {
     }
 
     private void simpanGambar(Project project, MultipartFile[] files) throws IOException {
-        if (files == null || files.length == 0) return;
-
+        if (files == null) return;
         Path dirSrc = Paths.get("src/main/resources/static/images/");
         Path dirTarget = Paths.get("target/classes/static/images/");
-
-        if (!Files.exists(dirSrc)) {
-            Files.createDirectories(dirSrc);
-        }
+        if (!Files.exists(dirSrc)) Files.createDirectories(dirSrc);
 
         for (MultipartFile file : files) {
-            if (!file.isEmpty()) {
-                String namaFile = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-                
-                Files.copy(file.getInputStream(), dirSrc.resolve(namaFile), StandardCopyOption.REPLACE_EXISTING);
+            if (file != null && !file.isEmpty()) {
+                String nama = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+                Files.copy(file.getInputStream(), dirSrc.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
                 if (Files.exists(dirTarget)) {
-                    Files.copy(file.getInputStream(), dirTarget.resolve(namaFile), StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(file.getInputStream(), dirTarget.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
                 }
-
                 Gambar g = new Gambar();
-                g.setGambar(namaFile);
+                g.setGambar(nama);
                 g.setProject(project);
                 gambarService.tambahGambar(g);
             }

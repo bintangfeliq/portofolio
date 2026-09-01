@@ -247,7 +247,6 @@ body {
     margin: 0 10px;
 }
 
-/* Navbar Links & Red Active / Hover Color */
 .navbar .nav-link {
     transition: color 0.2s ease;
     font-weight: 500;
@@ -260,7 +259,6 @@ body {
     color: #fa1226 !important;
 }
 
-/* Smooth anchor jump offset with sticky header */
 section[id], div[id] {
     scroll-margin-top: 80px;
 }

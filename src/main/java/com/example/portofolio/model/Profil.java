@@ -19,13 +19,10 @@ public class Profil {
     private Long id;
     private String nama;
     private String alamat;
-    private String mapUrl;
-    
     @Column(columnDefinition = "TEXT")
     private String deskripsi;
-    
     @Column(columnDefinition = "TEXT")
     private String tentangSaya;
-    
     private String foto;
+    private String cv;
 }

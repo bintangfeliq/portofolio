@@ -33,22 +33,22 @@
                         <form th:action="@{/dashboard/project/tambah}" method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label class="form-label text-secondary small">Nama Project</label>
-                                <input type="text" name="namaProject" class="form-control bg-dark text-light border-secondary" placeholder="Contoh: Aplikasi E-Commerce" required>
+                                <input type="text" name="namaProject" class="form-control bg-dark text-light border-secondary" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label text-secondary small">Teknologi yang Digunakan</label>
-                                <input type="text" name="teknologi" class="form-control bg-dark text-light border-secondary" placeholder="Contoh: Spring Boot, PostgreSQL, Bootstrap" required>
+                                <input type="text" name="teknologi" class="form-control bg-dark text-light border-secondary" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label text-secondary small">Gambar</label>
-                                <input type="file" name="files" multiple accept="image/*" class="form-control bg-dark text-light border-secondary">
+                                <input type="file" name="files"  class="form-control bg-dark text-light border-secondary">
                             </div>
 
                             <div class="mb-4">
                                 <label class="form-label text-secondary small">Deskripsi Project</label>
-                                <textarea name="deskripsi" rows="4" class="form-control bg-dark text-light border-secondary" placeholder="Jelaskan mengenai fitur, latar belakang, dan fungsi project ini..." required></textarea>
+                                <textarea name="deskripsi" rows="4" class="form-control bg-dark text-light border-secondary"  required></textarea>
                             </div>
 
                             <button type="submit" class="tombol w-100 py-2 fw-semibold text-white">

@@ -19,7 +19,7 @@ public class LoginController {
         if ("admin".equals(username) && "12345678".equals(password)) {
             return "redirect:/dashboard";
         }
-        model.addAttribute("pesanError", "Username atau password salah!");
+        model.addAttribute("pesanError", "Username atau password salah");
         return "login";
     }
 }

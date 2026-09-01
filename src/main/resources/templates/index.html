@@ -17,13 +17,13 @@
             <div class="row align-items-center justify-content-center g-5">
 
                 <div class="col-lg-4 col-md-5 text-center">
-                    <img th:src="@{'/images/' + ${profil != null and profil.foto != null ? profil.foto : 'profil.jpg'}}" 
+                    <img th:src="@{'/images/' + ${profil.foto}}" 
                          alt="Foto Profil" class="foto-profil img-fluid shadow">
                 </div>
 
                 <div class="col-lg-7 col-md-7 text-center text-md-start">    
-                    <h1 class="display-4 fw-bold  text-light"
-                        th:text="${profil != null ? profil.nama : 'Bintang'}">
+                    <h1 class="display-4 fw-bold  text-light" 
+                        th:text="${profil.nama}">
                         Nama Saya
                     </h1>
 
@@ -32,7 +32,7 @@
                     </p>
 
                     <p class="text-secondary fs-5 mb-4 pe-lg-4 lh-base"
-                        th:text="${profil != null ? profil.deskripsi : 'Selamat datang di portfolio saya.'}">
+                        th:text="${profil.deskripsi}">
                         Deskripsi
                     </p>
 

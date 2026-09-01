@@ -16,9 +16,7 @@
                 <p class="text-secondary small mb-0">Ubah & kelola data keahlian portfolio</p>
             </div>
             <div>
-                <a th:href="@{/dashboard/dashboardKeahlian}" class="btn btn-outline-danger btn-sm me-2">
-                    <i class="bi bi-arrow-left me-1"></i> Kembali
-                </a>
+                <a th:href="@{/dashboard/dashboardKeahlian}" class="btn btn-outline-danger btn-sm me-2">Kembali</a>
             </div>
         </div>
 
@@ -32,15 +30,15 @@
 
                         <form th:action="@{/dashboard/dashboardKeahlian/editKeahlian/{id}(id=${keahlian.id})}" th:object="${keahlian}" method="POST">
                             <div class="mb-3">
-                                <label class="form-label text-secondary small">Nama Skill / Keahlian</label>
+                                <label class="form-label text-secondary small">Skill</label>
                                 <input type="text" name="nama" class="form-control bg-dark text-light border-secondary" th:field="*{nama}" required>
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label text-secondary small">Keterangan / Deskripsi</label>
+                                <label class="form-label text-secondary small">Deskripsi</label>
                                 <input type="text" name="deskripsi" class="form-control bg-dark text-light border-secondary" th:field="*{deskripsi}">
                                 <div class="form-text text-secondary" style="font-size: 11px;">
-                                    Tips: Gunakan kata <em>"Masih dipelajari"</em> jika skill masih dalam tahap pembelajaran.
+                                    Gunakan kata <em>"Masih dipelajari"</em> jika skill masih dalam tahap pembelajaran.
                                 </div>
                             </div>
 

@@ -33,10 +33,10 @@ public class ProfilService {
         Profil profil = profilRepository.findById(id).orElseThrow(() -> new RuntimeException("Profil tidak ada"));
         profil.setNama(dataBaru.getNama());
         profil.setAlamat(dataBaru.getAlamat());
-        profil.setMapUrl(dataBaru.getMapUrl());
         profil.setDeskripsi(dataBaru.getDeskripsi());
         profil.setTentangSaya(dataBaru.getTentangSaya());
         profil.setFoto(dataBaru.getFoto());
+        profil.setCv(dataBaru.getCv());
         return profilRepository.save(profil);
     }
 
