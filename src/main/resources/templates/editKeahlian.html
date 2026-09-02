@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body class="bg-hitam text-light min-vh-100 py-5">
+<body class="latar-item text-light min-vh-100 py-5">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-secondary">
             <div>
-                <h2 class="fw-bold mb-1">Kelola Data <span class="text-merah">Keahlian</span></h2>
+                <h2 class="fw-bold mb-1">Kelola Data <span class="tulisan-merah">Keahlian</span></h2>
                 <p class="text-secondary small mb-0">Ubah & kelola data keahlian portfolio</p>
             </div>
             <div>
@@ -22,10 +22,10 @@
 
         <div class="row justify-content-center">      
             <div class="col-11 col-sm-9 col-md-7 col-lg-5">
-                <div class="card bagian-gelap text-light border-secondary shadow p-2 rounded-4">
+                <div class="card area-gelap text-light border-secondary shadow p-2 rounded-4">
                     <div class="card-body p-4">
                         <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2">
-                            <i class="bi bi-pencil-square text-merah"></i> Update Data Keahlian
+                            <i class="bi bi-pencil-square tulisan-merah"></i> Update Data Keahlian
                         </h4>
 
                         <form th:action="@{/dashboard/dashboardKeahlian/editKeahlian/{id}(id=${keahlian.id})}" th:object="${keahlian}" method="POST">
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="tombol w-100 py-2 fw-semibold text-white">
+                            <button type="submit" class="tombol-pencet w-100 py-2 fw-semibold text-white">
                                 <i class="bi bi-save me-1"></i> Update Keahlian
                             </button>
                         </form>

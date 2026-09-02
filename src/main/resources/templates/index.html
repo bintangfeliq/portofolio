@@ -10,7 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
-<body class="bg-hitam text-light d-flex flex-column min-vh-100">
+<body class="latar-item text-light d-flex flex-column min-vh-100">
 
     <main class="flex-grow-1 d-flex align-items-center py-5">
         <div class="container">
@@ -18,24 +18,21 @@
 
                 <div class="col-lg-4 col-md-5 text-center">
                     <img th:src="@{'/images/' + ${profil.foto}}" 
-                         alt="Foto Profil" class="foto-profil img-fluid shadow">
+                         alt="Foto Profil" class="poto-profil img-fluid shadow">
                 </div>
 
                 <div class="col-lg-7 col-md-7 text-center text-md-start">    
                     <h1 class="display-4 fw-bold  text-light" 
                         th:text="${profil.nama}">
-                        Nama Saya
+                        Nama 
                     </h1>
-
-                    <p class="teks-merah fw-bold text-uppercase small mb-3" style="letter-spacing: 2px;">
+                    <p class="tulisan-merah fw-bold text-uppercase small mb-3" style="letter-spacing: 2px;">
                         Student & Junior Web Developer
                     </p>
-
                     <p class="text-secondary fs-5 mb-4 pe-lg-4 lh-base"
                         th:text="${profil.deskripsi}">
                         Deskripsi
                     </p>
-
                     <div class="pt-2 d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
                         <a th:href="@{/tentang}" class="btn btn-danger px-4 py-2 fw-medium rounded-3">
                             <i class="bi bi-person-fill me-2"></i>Profil Saya
@@ -53,8 +50,8 @@
     <footer class="border-top border-secondary py-4 mt-auto">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <span class="text-secondary small" th:text="${profil != null ? profil.nama : 'Portfolio'}">Portfolio</span>
-                <span class="text-secondary small">Portfolio<span class="text-merah">.</span></span>
+                <span class="text-secondary small" th:text="${profil.nama}">Portfolio</span>
+                <span class="text-secondary small">Portfolio<span class="tulisan-merah">.</span></span>
             </div>
         </div>
     </footer>

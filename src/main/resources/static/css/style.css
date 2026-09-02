@@ -1,4 +1,3 @@
-
 html {
     scroll-behavior: smooth;
 }
@@ -8,20 +7,19 @@ body {
     color: #fff;
 }
 
-.bg-hitam {
+.latar-item {
     background: #0b0b0b;
 }
 
-.bagian-gelap {
+.area-gelap {
     background: #111;
 }
 
-.text-merah,
-.teks-merah {
-    color: #fa1226 !important;
+.tulisan-merah {
+    color: #fa1226;
 }
 
-.foto-profil {
+.poto-profil {
     width: 280px;
     height: 340px;
     object-fit: cover;
@@ -29,7 +27,7 @@ body {
     border: 2px solid #fa1226;
 }
 
-.kontak-item {
+.kartu-kontak {
     min-height: 72px;
     padding: 16px 12px;
     display: flex;
@@ -38,16 +36,15 @@ body {
     color: #fff;
     text-decoration: none;
     border-bottom: 1px solid #282828;
-    border-radius: 8px;
     transition: all 0.2s ease;
 }
 
-.kontak-item .kontak-info {
+.kartu-kontak .info-kontak {
     display: flex;
     flex-direction: column;
 }
 
-.kontak-item .kontak-icon {
+.kartu-kontak .ikon-kontak {
     width: 40px;
     height: 40px;
     min-width: 40px;
@@ -60,24 +57,24 @@ body {
     font-size: 20px;
 }
 
-.kontak-item:hover {
+.kartu-kontak:hover {
     background: rgba(255, 255, 255, 0.03);
     padding-left: 18px;
     padding-right: 18px;
     color: #fff;
 }
 
-.kontak-item .arrow-icon {
+.kartu-kontak .ikon-panah {
     color: #fa1226;
     font-size: 20px;
     transition: transform 0.2s ease;
 }
 
-.kontak-item:hover .arrow-icon {
+.kartu-kontak:hover .ikon-panah {
     transform: translate(3px, -3px);
 }
 
-.pendidikan-item {
+.baris-sekolah {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -86,50 +83,17 @@ body {
     gap: 20px;
 }
 
-.pendidikan-nama {
+.nama-sekolah {
     color: white;
     font-size: 16px;
 }
 
-.pendidikan-tahun {
+.tahun-sekolah {
     color: #999;
     white-space: nowrap;
 }
 
-/* Timeline Pendidikan Minimalis */
-.timeline-pendidikan {
-    position: relative;
-    padding-left: 20px;
-    border-left: 2px solid #222;
-    margin-top: 10px;
-}
-
-.timeline-item {
-    position: relative;
-    padding-bottom: 24px;
-}
-
-.timeline-item:last-child {
-    padding-bottom: 0;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: -26px;
-    top: 6px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #fa1226;
-}
-
-.timeline-year {
-    color: #888;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-}
-
-.skill-card {
+.kartu-skill {
     background: #141414;
     border: 1px solid #282828;
     border-radius: 12px;
@@ -143,12 +107,12 @@ body {
     transition: 0.2s ease;
 }
 
-.skill-card:hover {
+.kartu-skill:hover {
     border-color: #fa1226;
     transform: translateY(-2px);
 }
 
-.tombol {
+.tombol-pencet {
     background: #141414;
     border: 1px solid #282828;
     border-radius: 12px;
@@ -158,13 +122,12 @@ body {
     transition: 0.2s ease;
 }
 
-.tombol:hover {
+.tombol-pencet:hover {
     background-color: #ff0a1f;
     transform: translateY(-2px);
 }
 
-.badge-kuning {
-    display: inline-block;
+.stiker-kuning {
     padding: 3px 10px;
     background: rgba(255, 193, 7, 0.12);
     border: 1px solid rgba(255, 193, 7, 0.35);
@@ -175,17 +138,17 @@ body {
 }
 
 .btn-danger {
-    background-color: #f31426;
+    background-color: #f90a1e;
 }
 
 @media (max-width: 768px) {
-    .foto-profil {
+    .poto-profil {
         width: 220px;
         height: 270px;
     }
 }
 
-.sidebar-sneat {
+.menu-samping {
     width: 260px;
     min-width: 260px;
     height: 100vh;
@@ -195,25 +158,24 @@ body {
     z-index: 1000;
 }
 
-.sidebar-sneat .nav-link {
+.menu-samping .nav-link {
     transition: 0.2s ease;
     font-size: 14px;
 }
 
-.sidebar-sneat .nav-link:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.06);
+.menu-samping .nav-link:hover:not(.active) {
+    background: rgba(195, 48, 48, 0.06);
     color: #ffffff !important;
 }
 
-/* Project Cards & Modal */
-.project-card {
+.kartu-projek {
     cursor: pointer;
     transition: 0.25s ease;
     background: #141414;
     border: 1px solid #282828;
 }
 
-.project-card:hover {
+.kartu-projek:hover {
     transform: translateY(-5px);
     border-color: #fa1226 !important;
     box-shadow: 0 10px 25px rgba(250, 18, 38, 0.15) !important;
@@ -230,7 +192,7 @@ body {
     border-color: #282828;
 }
 
-.modal-img {
+.poto-projek {
     max-height: 420px;
     object-fit: contain;
     background-color: #0b0b0b;
@@ -242,7 +204,7 @@ body {
     height: 40px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(250, 18, 38, 0.85);
+    background: rgba(250, 18, 37, 0.381);
     border-radius: 50%;
     margin: 0 10px;
 }
@@ -262,6 +224,3 @@ body {
 section[id], div[id] {
     scroll-margin-top: 80px;
 }
-
-
-

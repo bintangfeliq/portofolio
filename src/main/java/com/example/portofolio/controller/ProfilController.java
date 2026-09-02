@@ -56,19 +56,10 @@ public class ProfilController {
         return "redirect:/dashboard/editTentang";
     }
 
-    private String simpanBerkas(MultipartFile file) throws IOException {
-
-        String nama = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        Path dirSrc = Paths.get("src/main/resources/static/images/");
-        Path dirTarget = Paths.get("target/classes/static/images/");
-        if (!Files.exists(dirSrc)) {
-            Files.createDirectories(dirSrc);
-        }
-        Files.copy(file.getInputStream(), dirSrc.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
-
-        if (Files.exists(dirTarget)) {
-            Files.copy( file.getInputStream(), dirTarget.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
-        }
-        return nama;
-    }
+   public String simpanBerkas(MultipartFile file) throws IOException {
+    String nama = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+    Path folder = Paths.get("src/main/resources/static/images/");
+    Files.copy(file.getInputStream(), folder.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
+    return nama;
+     }
 }

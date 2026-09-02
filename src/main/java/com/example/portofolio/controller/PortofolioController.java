@@ -30,11 +30,7 @@ public class PortofolioController {
     @Autowired
     private ProjectService projectService;
 
-    public PortofolioController(ProfilService profilService, 
-                                KontakService kontakService, 
-                                PendidikanRepository pendidikanRepository,
-                                KeahlianService keahlianService,
-                                ProjectService projectService){
+    public PortofolioController(ProfilService profilService,  KontakService kontakService,  PendidikanRepository pendidikanRepository, KeahlianService keahlianService, ProjectService projectService){
         this.profilService = profilService;
         this.kontakService = kontakService;
         this.pendidikanRepository = pendidikanRepository;
@@ -44,14 +40,10 @@ public class PortofolioController {
 
     @GetMapping("/")
     public String index(Model model){
-        Profil profil = profilService.semuaProfil().stream().findFirst()
-                .orElseGet(() -> profilService.cariSesuaiId(1L).orElse(new Profil()));
-
-        Kontak kontak = kontakService.cariSesuaiId(1L).orElse(new Kontak());
-
+        Profil profil = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada")); 
+        Kontak kontak = kontakService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Kontak tidak ada"));
         List<Pendidikan> pendidikan = pendidikanRepository.findAllByOrderByTahunMulaiAsc();
         List<Keahlian> keahlian = keahlianService.semuaKeahlian();
-
         model.addAttribute("pendidikan", pendidikan);
         model.addAttribute("profil", profil);
         model.addAttribute("kontak", kontak);
@@ -62,14 +54,10 @@ public class PortofolioController {
 
     @GetMapping("/tentang")
     public String tentang(Model model){
-        Profil profil = profilService.semuaProfil().stream().findFirst()
-                .orElseGet(() -> profilService.cariSesuaiId(1L).orElse(new Profil()));
-
-        Kontak kontak = kontakService.cariSesuaiId(1L).orElse(new Kontak());
-
+        Profil profil = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada")); 
+        Kontak kontak = kontakService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Kontak tidak ada"));
         List<Pendidikan> pendidikan = pendidikanRepository.findAllByOrderByTahunMulaiAsc();
         List<Keahlian> keahlian = keahlianService.semuaKeahlian();
-
         model.addAttribute("pendidikan", pendidikan);
         model.addAttribute("profil", profil);
         model.addAttribute("kontak", kontak);

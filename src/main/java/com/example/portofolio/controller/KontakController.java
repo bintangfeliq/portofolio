@@ -29,11 +29,7 @@ public class KontakController {
 
     @PostMapping("/dashboard/editKontak")
     public String updateKontak(@ModelAttribute Kontak kontak) {
-        if (kontakService.cariSesuaiId(1L).isPresent()) {
-            kontakService.updateKontak(1L, kontak);
-        } else {
-            kontakService.tambahKontak(kontak);
-        }
+        kontakService.updateKontak(1L, kontak);
         return "redirect:/dashboard/editKontak";
     }
 }

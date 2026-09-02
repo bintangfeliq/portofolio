@@ -8,17 +8,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body class="bg-hitam text-light">
+<body class="latar-item text-light">
 
     <div class="d-flex min-vh-100">
         
-        <aside class="sidebar-sneat d-flex flex-column border-end border-secondary">  
+        <aside class="menu-samping d-flex flex-column border-end border-secondary">  
             <div class="px-4 py-4 border-bottom border-secondary d-flex align-items-center justify-content-between">
                 <div>
                     <a th:href="@{/dashboard}" class="text-decoration-none">
-                        <span class="fs-4 fw-bold text-light">Portfolio<span class="text-merah">.</span></span>
+                        <span class="fs-4 fw-bold text-light">Portfolio<span class="tulisan-merah">.</span></span>
                     </a>
-                    <div class="text-secondary small mt-1" style="font-size: 11px; letter-spacing: 0.5px;">ADMINISTRATOR</div>
                 </div>
             </div>
 
@@ -59,7 +58,7 @@
             </div>
 
             <div class="p-3 border-top border-secondary mt-auto">
-                <a th:href="@{/login}" class="btn btn-outline-danger w-100 py-2 btn-sm rounded-3 d-flex align-items-center justify-content-center gap-1">
+                <a th:href="@{/}" class="btn btn-outline-danger w-100 py-2 btn-sm rounded-3 d-flex align-items-center justify-content-center gap-1">
                     <i class="bi bi-box-arrow-right"></i> Logout
                 </a>
             </div>
@@ -69,7 +68,7 @@
             <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-3 border-bottom border-secondary gap-3">
                 <div>
                     <h3 class="fw-bold mb-1 text-light">
-                        Dashboard <span class="text-merah">Admin</span>
+                        Dashboard <span class="tulisan-merah">Admin</span>
                     </h3>
                     <p class="text-secondary small mb-0">
                         Kelola data profil, pendidikan, keahlian, project, dan kontak portfolio.
@@ -77,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="card bagian-gelap border-secondary text-light rounded-4 p-4 mb-4 shadow-sm position-relative overflow-hidden">
+            <div class="card area-gelap border-secondary text-light rounded-4 p-4 mb-4 shadow-sm position-relative overflow-hidden">
                 <div class="row align-items-center g-4">
                     <div class="col-lg-8 col-md-7 col-12 d-flex align-items-center gap-4">
                         <img th:src="@{'/images/' + ${profil.foto}}" 
@@ -87,7 +86,7 @@
                         <div>
                             <div class="d-flex align-items-center gap-2 mb-1">
                                 <h4 class="fw-bold text-light mb-0">
-                                    Selamat Datang, <span class="text-merah" th:text="${profil.nama}">Bintang</span>
+                                    Selamat Datang, <span class="tulisan-merah" th:text="${profil.nama}">Bintang</span>
                                 </h4>
                             </div>
                             <p class="text-secondary small mb-2 lh-base" th:text="${profil.deskripsi}">
@@ -100,31 +99,31 @@
 
             <div class="row g-4 mb-4">          
                 <div class="col-lg-6">
-                    <div class="card bagian-gelap border-secondary text-light h-100 rounded-4 p-4 shadow-sm">
+                    <div class="card area-gelap border-secondary text-light h-100 rounded-4 p-4 shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary border-opacity-50">
                             <h5 class="fw-bold mb-0 d-flex align-items-center gap-2">
-                                <i class="bi bi-envelope-at text-merah"></i> Informasi Kontak
+                                <i class="bi bi-envelope-at tulisan-merah"></i> Informasi Kontak
                             </h5>
-                            <a th:href="@{/dashboard/editKontak}" class="text-merah text-decoration-none small">
+                            <a th:href="@{/dashboard/editKontak}" class="tulisan-merah text-decoration-none small">
                                 Ubah Data <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
 
                         <div class="row g-2 small">
                             <div class="col-12 p-2 border-bottom border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
-                                <span class="text-secondary"><i class="bi bi-envelope text-merah me-2"></i>Email:</span>
+                                <span class="text-secondary"><i class="bi bi-envelope tulisan-merah me-2"></i>Email:</span>
                                 <strong class="text-light text-break" th:text="${kontak.email}">-</strong>
                             </div>
                             <div class="col-12 p-2 border-bottom border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
-                                <span class="text-secondary"><i class="bi bi-telephone text-merah me-2"></i>Telepon:</span>
+                                <span class="text-secondary"><i class="bi bi-telephone tulisan-merah me-2"></i>Telepon:</span>
                                 <strong class="text-light" th:text="${kontak.telepon}">-</strong>
                             </div>
                             <div class="col-12 p-2 border-bottom border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
-                                <span class="text-secondary"><i class="bi bi-github text-merah me-2"></i>GitHub:</span>
+                                <span class="text-secondary"><i class="bi bi-github tulisan-merah me-2"></i>GitHub:</span>
                                 <strong class="text-light text-break" th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">-</strong>
                             </div>
                             <div class="col-12 p-2 d-flex justify-content-between align-items-center">
-                                <span class="text-secondary"><i class="bi bi-instagram text-merah me-2"></i>Instagram:</span>
+                                <span class="text-secondary"><i class="bi bi-instagram tulisan-merah me-2"></i>Instagram:</span>
                                 <strong class="text-light text-break" th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">-</strong>
                             </div>
                         </div>
@@ -132,12 +131,12 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="card bagian-gelap border-secondary text-light h-100 rounded-4 p-4 shadow-sm">
+                    <div class="card area-gelap border-secondary text-light h-100 rounded-4 p-4 shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary border-opacity-50">
                             <h5 class="fw-bold mb-0 d-flex align-items-center gap-2">
-                                <i class="bi bi-mortarboard text-merah"></i> Riwayat Pendidikan
+                                <i class="bi bi-mortarboard tulisan-merah"></i> Riwayat Pendidikan
                             </h5>
-                            <a th:href="@{/dashboard/dashboardPendidikan}" class="text-merah text-decoration-none small">
+                            <a th:href="@{/dashboard/dashboardPendidikan}" class="tulisan-merah text-decoration-none small">
                                 Kelola Pendidikan <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -156,15 +155,10 @@
                                         <td style="background: transparent;" class="fw-medium text-light" th:text="${p.nama}">SMK Assalaam Bandung</td>
                                         <td style="background: transparent;" class="text-secondary small" th:text="${p.tingkat}">SMK</td>
                                         <td style="background: transparent;" class="text-end small">
-                                            <span th:text="${p.tahunMulai}">2022</span>
+                                             <span th:text="${p.tahunMulai}">mulai</span>
                                             <span> - </span>
-                                            <span th:if="${p.tahunSelsai != null}" th:text="${p.tahunSelsai}">2025</span>
-                                            <span th:if="${p.tahunSelsai == null}" class="text-merah">Sekarang</span>
-                                        </td>
-                                    </tr>
-                                    <tr th:if="${#lists.isEmpty(pendidikan)}">
-                                        <td colspan="3" class="text-center text-secondary small py-3" style="background: transparent;">
-                                            <i class="bi bi-info-circle me-1"></i> Belum ada data pendidikan.
+                                            <span th:if="${p.tahunSelsai != null}" th:text="${p.tahunSelsai}">tahun</span>
+                                            <span th:if="${p.tahunSelsai == null}" class="tulisan-merah">Sekarang</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -177,12 +171,12 @@
 
             <div class="row g-4 mb-4">
                 <div class="col-12">
-                    <div class="card bagian-gelap border-secondary text-light rounded-4 p-4 shadow-sm">
+                    <div class="card area-gelap border-secondary text-light rounded-4 p-4 shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary border-opacity-50">
                             <h5 class="fw-bold mb-0 d-flex align-items-center gap-2">
-                                <i class="bi bi-layers text-merah"></i> Project Portofolio
+                                <i class="bi bi-layers tulisan-merah"></i> Project Portofolio
                             </h5>
-                            <a th:href="@{/dashboard/dashboardProject}" class="text-merah text-decoration-none small">
+                            <a th:href="@{/dashboard/dashboardProject}" class="tulisan-merah text-decoration-none small">
                                 Kelola Project <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -205,7 +199,7 @@
                                         </td>
                                         <td style="background: transparent;">
                                             <span class="badge bg-dark border border-secondary text-secondary small">
-                                                <i class="bi bi-image text-merah me-1"></i>
+                                                <i class="bi bi-image tulisan-merah me-1"></i>
                                                 <span th:text="${p.gambar != null ? #lists.size(p.gambar) : 0}">0</span> Foto
                                             </span>
                                         </td>
@@ -229,13 +223,13 @@
 
             <div class="row g-4">               
                 <div class="col-12">
-                    <div class="card bagian-gelap border-secondary text-light rounded-4 p-4 shadow-sm">
+                    <div class="card area-gelap border-secondary text-light rounded-4 p-4 shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary border-opacity-50">
                             <h5 class="fw-bold mb-0 d-flex align-items-center gap-2">
-                                <i class="bi bi-code-slash text-merah"></i> Skill & Keahlian
+                                <i class="bi bi-code-slash tulisan-merah"></i> Skill & Keahlian
                             </h5>
                             <div>
-                                <a th:href="@{/dashboard/dashboardKeahlian}" class="text-merah text-decoration-none small">
+                                <a th:href="@{/dashboard/dashboardKeahlian}" class="tulisan-merah text-decoration-none small">
                                     Kelola Skill <i class="bi bi-arrow-right"></i>
                                 </a>
                             </div>
@@ -246,15 +240,11 @@
                                 <div class="p-3 border border-secondary rounded-3 bg-black bg-opacity-25 d-flex justify-content-between align-items-center">
                                     <span class="fw-medium text-light small" th:text="${k.nama}">Skill</span>
                                     <span th:if="${k.deskripsi != null and #strings.contains(#strings.toLowerCase(k.deskripsi), 'masih')}" 
-                                          class="badge-kuning" style="font-size: 10.5px;" 
+                                          class="stiker-kuning" style="font-size: 10.5px;" 
                                           th:text="${k.deskripsi}">
                                         Masih dipelajari
                                     </span>
                                 </div>
-                            </div>
-
-                            <div th:if="${#lists.isEmpty(keahlian)}" class="col-12 text-center text-secondary small py-3">
-                                <i class="bi bi-info-circle me-1"></i> Belum ada data keahlian.
                             </div>
                         </div>
                     </div>

@@ -35,11 +35,6 @@ public class ProjectController {
     this.gambarService = gambarService;
    }
 
-    @GetMapping("/project")
-    public String project() {
-        return "redirect:/tentang#project";
-    }
-
     @GetMapping("/dashboard/dashboardProject")
     public String editProject(Model model) {
         model.addAttribute("projects", projectService.semuaProject());
@@ -76,23 +71,17 @@ public class ProjectController {
         return "redirect:/dashboard/dashboardProject";
     }
 
-    private void simpanGambar(Project project, MultipartFile[] files) throws IOException {
-        if (files == null) return;
-        Path dirSrc = Paths.get("src/main/resources/static/images/");
-        Path dirTarget = Paths.get("target/classes/static/images/");
-        if (!Files.exists(dirSrc)) Files.createDirectories(dirSrc);
+    public void simpanGambar(Project project, MultipartFile[] files) throws IOException {
+    Path folder = Paths.get("src/main/resources/static/images/");
+    for (MultipartFile file : files) {
+        if (!file.isEmpty()) {
+            String nama = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+            Files.copy(file.getInputStream(), folder.resolve(nama),StandardCopyOption.REPLACE_EXISTING);
 
-        for (MultipartFile file : files) {
-            if (file != null && !file.isEmpty()) {
-                String nama = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-                Files.copy(file.getInputStream(), dirSrc.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
-                if (Files.exists(dirTarget)) {
-                    Files.copy(file.getInputStream(), dirTarget.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
-                }
-                Gambar g = new Gambar();
-                g.setGambar(nama);
-                g.setProject(project);
-                gambarService.tambahGambar(g);
+            Gambar gambar = new Gambar();
+            gambar.setGambar(nama);
+            gambar.setProject(project);
+            gambarService.tambahGambar(gambar);
             }
         }
     }

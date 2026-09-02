@@ -10,13 +10,12 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
-<body class="bg-hitam text-light" data-bs-spy="scroll" data-bs-target="#navbar-portfolio" data-bs-smooth-scroll="true">
-
-    <header class="border-bottom border-secondary sticky-top bg-hitam">
+<body class="latar-item text-light" data-bs-spy="scroll" data-bs-target="#navbar-portfolio" data-bs-smooth-scroll="true">
+    <header class="border-bottom border-secondary sticky-top latar-item">
         <div class="container">
             <nav id="navbar-portfolio" class="navbar navbar-expand py-3">
                 <a th:href="@{/}" class="navbar-brand fw-bold text-light fs-4">
-                    Portfolio<span class="text-merah">.</span>
+                    Portfolio<span class="tulisan-merah">.</span>
                 </a>
 
                 <div class="ms-auto d-flex align-items-center">
@@ -44,21 +43,20 @@
     </header>
 
     <main>
-        <section id="tentang" class="bagian-gelap py-5">
+        <section id="tentang" class="area-gelap py-5">
             <div class="container py-5">
                 
                 <div class="row g-5 align-items-center mb-5 pb-4">
                     <div class="col-lg-4 col-md-5 text-center text-md-start">
-                        <img th:src="@{'/images/' + ${profil.foto}}" 
-                             alt="Foto Profil" class="foto-profil img-fluid shadow">
+                        <img th:src="@{'/images/' + ${profil.foto}}" alt="Foto Profil" class="poto-profil img-fluid shadow">
                     </div>
 
                     <div class="col-lg-8 col-md-7">
-                        <p class="teks-merah fw-bold text-uppercase small mb-2" style="letter-spacing: 2px;">
+                        <p class="tulisan-merah fw-bold text-uppercase small mb-2" style="letter-spacing: 2px;">
                             <i class="bi bi-person-badge-fill me-1"></i> TENTANG SAYA
                         </p>
                         <h2 class="display-6 fw-bold mb-4 text-light">
-                            Halo, saya <span class="text-merah" th:text="${profil.nama}"></span>
+                            Halo, saya <span class="tulisan-merah" th:text="${profil.nama}"></span>
                         </h2>
                         
                         <div class="text-secondary fs-5 lh-lg mb-4" style="white-space: pre-line;"
@@ -76,44 +74,39 @@
                 <div id="pendidikan" class="pt-5 border-top border-secondary">
                     <div class="row g-5 align-items-start">
                         <div class="col-lg-4 col-md-5">
-                            <p class="teks-merah fw-bold text-uppercase small mb-2" style="letter-spacing: 2px;">
+                            <p class="tulisan-merah fw-bold text-uppercase small mb-2" style="letter-spacing: 2px;">
                                 <i class="bi bi-mortarboard-fill me-1"></i> RIWAYAT
                             </p>
                             <h3 class="fw-bold display-6 mb-3 text-light">
-                                <span class="text-merah">Pendidikan</span>.
+                                <span class="tulisan-merah">Pendidikan</span>.
                             </h3>
                             <p class="text-secondary lh-base">
-                                Jejak pendidikan yang telah saya tempuh dan sedang saya tempuh.
+                                Jejak pendidikan yang telah saya tempuh dan sedang saya tempuh Saat ini.
                             </p>
                         </div>
 
                         <div class="col-lg-8 col-md-7">
                             <div>
-                                <div th:each="p : ${pendidikan}" class="pendidikan-item py-3">
-                                    <div class="pendidikan-nama d-flex align-items-center">
-                                        <i class="bi bi-mortarboard text-merah me-2 fs-5"></i>
+                                <div th:each="p : ${pendidikan}" class="baris-sekolah py-3">
+                                    <div class="nama-sekolah d-flex align-items-center">
+                                        <i class="bi bi-mortarboard tulisan-merah me-2 fs-5"></i>
                                         <strong class="fs-6" th:text="${p.tingkat + ' - ' + p.nama}">
-                                            SMK - SMK Assalaam Bandung
+                                             SMK - SMK Assalaam Bandung
                                         </strong>
                                     </div>
 
-                                    <div class="pendidikan-tahun">
+                                    <div class="tahun-sekolah">
                                         <i class="bi bi-calendar3 me-1 small"></i>
                                         <span th:text="${p.tahunMulai}">2022</span>
                                         <span> - </span>
                                         <span th:if="${p.tahunSelsai != null}" th:text="${p.tahunSelsai}">2025</span>
-                                        <span th:if="${p.tahunSelsai == null}" class="teks-merah fw-bold">Sekarang</span>
+                                        <span th:if="${p.tahunSelsai == null}" class="tulisan-merah fw-bold">Sekarang</span>
                                     </div>
-                                </div>
-
-                                <div th:if="${#lists.isEmpty(pendidikan)}" class="text-secondary py-3">
-                                    <i class="bi bi-info-circle me-1"></i> Belum ada data riwayat pendidikan.
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -121,14 +114,14 @@
             <div class="container py-5">
                 <div class="text-center mb-5">
                     <h2 class="fw-bold display-6">
-                        <span class="text-merah">Skill</span> & Keahlian
+                        <span class="tulisan-merah">Skill</span> & Keahlian
                     </h2>
                     <p class="text-secondary">Teknologi dan keahlian yang saya gunakan.</p>
                 </div>
 
                 <div class="row g-3 justify-content-center">
                     <div th:each="k : ${keahlian}" class="col-6 col-md-4 col-lg-3">
-                        <div class="skill-card h-100">
+                        <div class="kartu-skill h-100">
                             <h5 class="fw-bold text-light mb-0" th:text="${k.nama}">Nama Keahlian</h5>
                         </div>
                     </div>
@@ -136,58 +129,50 @@
             </div>
         </section>
 
-        <section id="project" class="bagian-gelap py-5">
+        <section id="project" class="area-gelap py-5">
             <div class="container py-5">
                 <div class="mb-5 text-center text-md-start">
-                    <p class="teks-merah fw-bold text-uppercase small mb-2" style="letter-spacing: 1.5px;">
+                    <p class="tulisan-merah fw-bold text-uppercase small mb-2" style="letter-spacing: 1.5px;">
                         <i class="bi bi-collection-play-fill me-1"></i> PORTFOLIO KARYA
                     </p>
                     <h2 class="fw-bold display-6">
-                        <span class="text-merah">Project</span> Saya.
+                        <span class="tulisan-merah">Project</span> Saya.
                     </h2>
                 </div>
 
                 <div class="row g-4">
                     <div th:each="p : ${projects}" class="col-md-6 col-lg-4">
-                        
-                        <div class="card project-card text-light h-100 rounded-4 overflow-hidden shadow-sm d-flex flex-column p-4"
+                        <div class="card kartu-projek text-light h-100 rounded-4 overflow-hidden shadow-sm d-flex flex-column p-4"
                              data-bs-toggle="modal" 
                              th:data-bs-target="'#modalProject-' + ${p.id}">
-                            
+
                             <div class="d-flex justify-content-between align-items-start mb-3">
-                                <span th:if="${p.teknologi != null and !#strings.isEmpty(p.teknologi)}" 
-                                      class="badge bg-danger bg-opacity-25 text-danger border border-danger border-opacity-50 px-2 py-1 small rounded-2">
+                                <span th:if="${p.teknologi != null and !#strings.isEmpty(p.teknologi)}" class="badge bg-danger bg-opacity-25 text-danger border border-danger border-opacity-50 px-2 py-1 small rounded-2">
                                     <i class="bi bi-braces me-1"></i>
                                     <span th:text="${p.teknologi}">Teknologi</span>
                                 </span>
                                 
                                 <span class="badge bg-dark border border-secondary text-secondary small px-2 py-1 rounded-2">
-                                    <i class="bi bi-images text-merah me-1"></i>
+                                    <i class="bi bi-images tulisan-merah me-1"></i>
                                     <span th:text="${p.gambar != null ? #lists.size(p.gambar) : 0}">0</span> Foto
                                 </span>
                             </div>
 
-                            <h4 class="fw-bold text-light mb-2" th:text="${p.namaProject}">
-                                Nama Project
-                            </h4>
-
-                            <p class="text-secondary small lh-base mb-4 flex-grow-1" th:text="${p.deskripsi}">
-                                Deskripsi project.
-                            </p>
-
+                            <h4 class="fw-bold text-light mb-2" th:text="${p.namaProject}"> Nama Project </h4>
+                            <p class="text-secondary small lh-base mb-4 flex-grow-1" th:text="${p.deskripsi}"> Deskripsi project.</p>
                             <div class="pt-3 border-top border-secondary border-opacity-50 d-flex justify-content-between align-items-center mt-auto">
-                                <span class="text-merah small fw-semibold">
+                                <span class="tulisan-merah small fw-semibold">
                                     <i class="bi bi-eye me-1"></i> Lihat Foto
                                 </span>
-                                <i class="bi bi-arrow-up-right text-merah"></i>
+                                <i class="bi bi-arrow-up-right tulisan-merah"></i>
                             </div>
                         </div>
+
 
                         <div class="modal fade" th:id="'modalProject-' + ${p.id}" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
                                 <div class="modal-content shadow-lg">
-                                    
-                                    <div class="modal-header px-4 py-3">
+                                     <div class="modal-header px-4 py-3">
                                         <div>
                                             <h5 class="modal-title fw-bold text-light mb-1" th:text="${p.namaProject}">Nama Project</h5>
                                             <span class="badge bg-danger bg-opacity-25 text-danger border border-danger border-opacity-50 px-2 py-1 small rounded-2"
@@ -195,9 +180,7 @@
                                                 Teknologi
                                             </span>
                                         </div>
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-
                                     <div class="modal-body p-4">
                                         
                                         <div th:if="${p.gambar != null and !#lists.isEmpty(p.gambar)}">
@@ -206,7 +189,7 @@
                                                     <div th:each="g, gStat : ${p.gambar}" 
                                                          th:class="${gStat.first} ? 'carousel-item active text-center' : 'carousel-item text-center'">
                                                         <img th:src="@{'/images/' + ${g.gambar}}" 
-                                                             class="d-block w-100 modal-img" 
+                                                             class="d-block w-100 poto-projek" 
                                                              th:alt="${p.namaProject}">
                                                     </div>
                                                 </div>
@@ -228,11 +211,6 @@
                                             </div>
                                         </div>
 
-                                        <div th:if="${p.gambar == null or #lists.isEmpty(p.gambar)}" class="text-center py-5 text-secondary border border-secondary border-opacity-25 rounded-3 bg-black">
-                                            <i class="bi bi-image fs-1 d-block mb-2 text-secondary"></i>
-                                            <p class="mb-0 small">Belum ada foto untuk project ini.</p>
-                                        </div>
-
                                         <div class="mt-4 p-3 bg-dark rounded-3 border border-secondary border-opacity-25">
                                             <h6 class="fw-bold text-light mb-1">Deskripsi Lengkap:</h6>
                                             <p class="text-secondary small mb-0 lh-base" style="white-space: pre-line;" th:text="${p.deskripsi}">
@@ -245,15 +223,13 @@
                                     <div class="modal-footer px-4 py-3">
                                         <button type="button" class="btn btn-outline-danger btn-sm px-4" data-bs-dismiss="modal">Tutup</button>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
 
+
                     </div>
-
                 </div>
-
             </div>
         </section>
 
@@ -261,11 +237,11 @@
             <div class="container py-5">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-5">
-                        <p class="teks-merah fw-bold text-uppercase small mb-2" style="letter-spacing: 1.5px;">
+                        <p class="tulisan-merah fw-bold text-uppercase small mb-2" style="letter-spacing: 1.5px;">
                             <i class="bi bi-chat-dots-fill me-1"></i> KONTAK
                         </p>
                         <h2 class="fw-bold display-6 mb-3">
-                            Mari <span class="text-merah">Terhubung.</span>
+                            Mari <span class="tulisan-merah">Terhubung.</span>
                         </h2>
                         <p class="text-secondary lh-lg pe-lg-4">
                             Tertarik untuk berkolaborasi atau memiliki pertanyaan, Jangan ragu untuk menghubungi saya melalui kontak atau media sosial berikut.
@@ -274,56 +250,56 @@
 
                     <div class="col-lg-7">
                         <div class="border-top border-secondary">
-                            <a th:if="${kontak != null and kontak.email != null}" th:href="'mailto:' + ${kontak.email}" class="kontak-item">
+                            <a th:if="${kontak != null and kontak.email != null}" th:href="'mailto:' + ${kontak.email}" class="kartu-kontak">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div class="kontak-icon">
+                                    <div class="ikon-kontak">
                                         <i class="bi bi-envelope-at"></i>
                                     </div>
-                                    <div class="kontak-info">
+                                    <div class="info-kontak">
                                         <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.8px;">EMAIL</small>
                                         <strong class="text-light" th:text="${kontak.email}">email@gmail.com</strong>
                                     </div>
                                 </div>
-                                <i class="bi bi-arrow-up-right arrow-icon"></i>
+                                <i class="bi bi-arrow-up-right ikon-panah"></i>
                             </a>
 
-                            <a th:if="${kontak != null and kontak.telepon != null}" th:href="'tel:' + ${kontak.telepon}" class="kontak-item">
+                            <a th:if="${kontak != null and kontak.telepon != null}" th:href="'tel:' + ${kontak.telepon}" class="kartu-kontak">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div class="kontak-icon">
+                                    <div class="ikon-kontak">
                                         <i class="bi bi-telephone"></i>
                                     </div>
-                                    <div class="kontak-info">
+                                    <div class="info-kontak">
                                         <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.8px;">TELEPON</small>
                                         <strong class="text-light" th:text="${kontak.telepon}">08xxxxxxxxxx</strong>
                                     </div>
                                 </div>
-                                <i class="bi bi-arrow-up-right arrow-icon"></i>
+                                <i class="bi bi-arrow-up-right ikon-panah"></i>
                             </a>
 
-                            <a th:href="${kontak.github}" target="_blank" rel="noopener noreferrer" class="kontak-item">
+                            <a th:href="${kontak.github}" target="_blank" rel="noopener noreferrer" class="kartu-kontak">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div class="kontak-icon">
+                                    <div class="ikon-kontak">
                                         <i class="bi bi-github"></i>
                                     </div>
-                                    <div class="kontak-info">
+                                    <div class="info-kontak">
                                         <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.8px;">GITHUB</small>
                                         <strong class="text-light" th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">github.com</strong>
                                     </div>
                                 </div>
-                                <i class="bi bi-arrow-up-right arrow-icon"></i>
+                                <i class="bi bi-arrow-up-right ikon-panah"></i>
                             </a>
 
-                            <a th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer" class="kontak-item">
+                            <a th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer" class="kartu-kontak">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div class="kontak-icon">
+                                    <div class="ikon-kontak">
                                         <i class="bi bi-instagram"></i>
                                     </div>
-                                    <div class="kontak-info">
+                                    <div class="info-kontak">
                                         <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.8px;">INSTAGRAM</small>
                                         <strong class="text-light" th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">instagram.com</strong>
                                     </div>
                                 </div>
-                                <i class="bi bi-arrow-up-right arrow-icon"></i>
+                                <i class="bi bi-arrow-up-right ikon-panah"></i>
                             </a>
                         </div>
                     </div>
@@ -336,7 +312,7 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <span class="text-secondary small" th:text="${profil != null ? profil.nama : 'Nama Saya'}">Nama Saya</span>
-                <span class="text-secondary small">Portfolio<span class="text-merah">.</span></span>
+                <span class="text-secondary small">Portfolio<span class="tulisan-merah">.</span></span>
             </div>
         </div>
     </footer>
