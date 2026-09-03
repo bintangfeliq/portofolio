@@ -142,22 +142,17 @@
 
                 <div class="row g-4">
                     <div th:each="p : ${projects}" class="col-md-6 col-lg-4">
-                        <div class="card kartu-projek text-light h-100 rounded-4 overflow-hidden shadow-sm d-flex flex-column p-4"
-                             data-bs-toggle="modal" 
-                             th:data-bs-target="'#modalProject-' + ${p.id}">
-
+                        <div class="card kartu-projek text-light h-100 rounded-4 overflow-hidden shadow-sm d-flex flex-column p-4" data-bs-toggle="modal" th:data-bs-target="'#modalProject-' + ${p.id}">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <span th:if="${p.teknologi != null and !#strings.isEmpty(p.teknologi)}" class="badge bg-danger bg-opacity-25 text-danger border border-danger border-opacity-50 px-2 py-1 small rounded-2">
                                     <i class="bi bi-braces me-1"></i>
                                     <span th:text="${p.teknologi}">Teknologi</span>
                                 </span>
-                                
                                 <span class="badge bg-dark border border-secondary text-secondary small px-2 py-1 rounded-2">
                                     <i class="bi bi-images tulisan-merah me-1"></i>
                                     <span th:text="${p.gambar != null ? #lists.size(p.gambar) : 0}">0</span> Foto
                                 </span>
                             </div>
-
                             <h4 class="fw-bold text-light mb-2" th:text="${p.namaProject}"> Nama Project </h4>
                             <p class="text-secondary small lh-base mb-4 flex-grow-1" th:text="${p.deskripsi}"> Deskripsi project.</p>
                             <div class="pt-3 border-top border-secondary border-opacity-50 d-flex justify-content-between align-items-center mt-auto">
@@ -175,51 +170,33 @@
                                      <div class="modal-header px-4 py-3">
                                         <div>
                                             <h5 class="modal-title fw-bold text-light mb-1" th:text="${p.namaProject}">Nama Project</h5>
-                                            <span class="badge bg-danger bg-opacity-25 text-danger border border-danger border-opacity-50 px-2 py-1 small rounded-2"
-                                                  th:text="${p.teknologi}">
-                                                Teknologi
-                                            </span>
+                                            <span class="badge bg-danger bg-opacity-25 text-danger border border-danger border-opacity-50 px-2 py-1 small rounded-2" th:text="${p.teknologi}">Teknologi</span>
                                         </div>
                                     </div>
                                     <div class="modal-body p-4">
-                                        
                                         <div th:if="${p.gambar != null and !#lists.isEmpty(p.gambar)}">
                                             <div th:id="'carouselProject-' + ${p.id}" class="carousel slide" data-bs-ride="false">
                                                 <div class="carousel-inner rounded-3">
                                                     <div th:each="g, gStat : ${p.gambar}" 
                                                          th:class="${gStat.first} ? 'carousel-item active text-center' : 'carousel-item text-center'">
-                                                        <img th:src="@{'/images/' + ${g.gambar}}" 
-                                                             class="d-block w-100 poto-projek" 
-                                                             th:alt="${p.namaProject}">
+                                                        <img th:src="@{'/images/' + ${g.gambar}}" class="d-block w-100 poto-projek" th:alt="${p.namaProject}">
                                                     </div>
                                                 </div>
-
-                                                <button th:if="${#lists.size(p.gambar) > 1}" 
-                                                        class="carousel-control-prev" 
-                                                        type="button" 
-                                                        th:data-bs-target="'#carouselProject-' + ${p.id}" 
-                                                        data-bs-slide="prev">
+                                                <button th:if="${#lists.size(p.gambar) > 1}" class="carousel-control-prev" type="button"th:data-bs-target="'#carouselProject-' + ${p.id}" data-bs-slide="prev">
                                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 </button>
-                                                <button th:if="${#lists.size(p.gambar) > 1}" 
-                                                        class="carousel-control-next" 
-                                                        type="button" 
-                                                        th:data-bs-target="'#carouselProject-' + ${p.id}" 
-                                                        data-bs-slide="next">
+                                                <button th:if="${#lists.size(p.gambar) > 1}" class="carousel-control-next"  type="button" th:data-bs-target="'#carouselProject-' + ${p.id}" data-bs-slide="next">
                                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 </button>
                                             </div>
                                         </div>
-
                                         <div class="mt-4 p-3 bg-dark rounded-3 border border-secondary border-opacity-25">
-                                            <h6 class="fw-bold text-light mb-1">Deskripsi Lengkap:</h6>
+                                            <h6 class="fw-bold text-light mb-1">Deskripsi:</h6>
                                             <p class="text-secondary small mb-0 lh-base" style="white-space: pre-line;" th:text="${p.deskripsi}">
                                                 Deskripsi project.
                                             </p>
                                         </div>
-
                                     </div>
-
                                     <div class="modal-footer px-4 py-3">
                                         <button type="button" class="btn btn-outline-danger btn-sm px-4" data-bs-dismiss="modal">Tutup</button>
                                     </div>

@@ -42,13 +42,13 @@ public class ProfilController {
 
         Profil dataLama = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada"));
         if (fileFoto != null && !fileFoto.isEmpty()) {
-            profil.setFoto(simpanBerkas(fileFoto));
+            profil.setFoto(simpanFoto(fileFoto));
         } else {
             profil.setFoto(dataLama.getFoto());
         }
 
         if (fileCv != null && !fileCv.isEmpty()) {
-            profil.setCv(simpanBerkas(fileCv));
+            profil.setCv(simpanFoto(fileCv));
         } else {
             profil.setCv(dataLama.getCv());
         }
@@ -56,10 +56,10 @@ public class ProfilController {
         return "redirect:/dashboard/editTentang";
     }
 
-   public String simpanBerkas(MultipartFile file) throws IOException {
+   public String simpanFoto(MultipartFile file) throws IOException {
     String nama = System.currentTimeMillis() + "_" + file.getOriginalFilename();
     Path folder = Paths.get("src/main/resources/static/images/");
     Files.copy(file.getInputStream(), folder.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
     return nama;
-     }
+    }
 }
