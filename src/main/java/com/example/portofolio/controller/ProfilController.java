@@ -39,7 +39,6 @@ public class ProfilController {
     @PostMapping("/dashboard/editTentang")
     public String updateProfil(@ModelAttribute Profil profil, @RequestParam(value = "fileFoto", required = false) MultipartFile fileFoto, @RequestParam(value = "fileCv", required = false) MultipartFile fileCv
     ) throws IOException {
-
         Profil dataLama = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada"));
         if (fileFoto != null && !fileFoto.isEmpty()) {
             profil.setFoto(simpanFoto(fileFoto));
