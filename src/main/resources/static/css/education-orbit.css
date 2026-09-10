@@ -1,0 +1,398 @@
+:root {
+    --edu-orbit-size: 350px;
+    --edu-node-size: 52px;
+    --edu-core-size: 66px;
+}
+
+.education-section {
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 1.25rem;
+    border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+.education-info-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.education-info-col .folio-section-header {
+    margin-bottom: 1.5rem;
+}
+
+.education-info-col .folio-section-lead {
+    max-width: 520px;
+    line-height: 1.75;
+}
+
+.education-hint-wrap {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+}
+
+.education-orbit-hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.45rem 1.15rem;
+    border-radius: 999px;
+}
+
+.education-orbit-hint i {
+    color: #DE6E35;
+    font-size: 0.95rem;
+}
+
+.education-orbit-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.education-orbit-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.education-orbit-stage {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.education-orbit-track-outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--edu-orbit-size) + 60px);
+    height: calc(var(--edu-orbit-size) + 60px);
+    margin-left: calc((var(--edu-orbit-size) + 60px) / -2);
+    margin-top: calc((var(--edu-orbit-size) + 60px) / -2);
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.education-orbit-track-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--edu-orbit-size) - 110px);
+    height: calc(var(--edu-orbit-size) - 110px);
+    margin-left: calc((var(--edu-orbit-size) - 110px) / -2);
+    margin-top: calc((var(--edu-orbit-size) - 110px) / -2);
+    border-radius: 50%;
+    border: 1px dashed rgba(222, 110, 53, 0.18);
+    pointer-events: none;
+}
+
+.education-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--edu-core-size);
+    height: var(--edu-core-size);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #F3A472 0%, #DE6E35 45%, #B85320 75%, #7D300E 100%);
+    box-shadow: 0 0 24px rgba(222, 110, 53, 0.38),
+                0 0 45px rgba(222, 110, 53, 0.15),
+                inset 0 2px 6px rgba(255, 255, 255, 0.45),
+                inset 0 -4px 10px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 8;
+    cursor: default;
+}
+
+.education-core-glow {
+    position: absolute;
+    inset: -16px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(222, 110, 53, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.education-core-center-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 8px #ffffff;
+    pointer-events: none;
+}
+
+.education-orbit-track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--edu-orbit-size);
+    height: var(--edu-orbit-size);
+    margin-left: calc(var(--edu-orbit-size) / -2);
+    margin-top: calc(var(--edu-orbit-size) / -2);
+    border-radius: 50%;
+    border: 1.5px dashed rgba(222, 110, 53, 0.3);
+    animation: educationOrbitRotate 40s linear infinite;
+    transform-origin: center center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.education-orbit-track:hover,
+.education-orbit-track.is-paused {
+    animation-play-state: paused;
+}
+
+@keyframes educationOrbitRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.education-orbit-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: rotate(var(--angle)) translate(calc(var(--edu-orbit-size) / 2));
+    pointer-events: auto;
+}
+
+.education-orbit-node {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: var(--edu-node-size);
+    height: var(--edu-node-size);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #202028 0%, #111115 100%);
+    border: 2px solid rgba(222, 110, 53, 0.55);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55), 0 0 10px rgba(222, 110, 53, 0.18);
+    transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    outline: none;
+    padding: 0;
+}
+
+.education-orbit-node:hover {
+    background: #DE6E35;
+    border-color: #F3A472;
+    box-shadow: 0 0 20px rgba(222, 110, 53, 0.5), 0 6px 16px rgba(0, 0, 0, 0.65);
+    transform: translate(-50%, -50%) scale(1.15);
+}
+
+.education-node-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    animation: educationNodeCounterRotate 40s linear infinite;
+    transform-origin: center center;
+}
+
+.education-orbit-track:hover .education-node-inner,
+.education-orbit-track.is-paused .education-node-inner {
+    animation-play-state: paused;
+}
+
+@keyframes educationNodeCounterRotate {
+    from {
+        transform: rotate(calc(-1 * var(--angle)));
+    }
+    to {
+        transform: rotate(calc(-360deg - var(--angle)));
+    }
+}
+
+.education-node-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    pointer-events: none;
+    user-select: none;
+}
+
+.education-modal .modal-content.education-modal-box {
+    background: #141418;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 20px rgba(222, 110, 53, 0.12);
+    color: #ffffff;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.education-modal-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #DE6E35;
+    background: rgba(222, 110, 53, 0.12);
+    border: 1px solid rgba(222, 110, 53, 0.25);
+    padding: 0.2rem 0.65rem;
+    border-radius: 6px;
+}
+
+.education-modal-status {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.education-modal-status.status-done {
+    color: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.education-modal-detail-card {
+    background: rgba(10, 10, 12, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.35rem 1.5rem;
+}
+
+.education-modal-sublabel {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.35rem;
+}
+
+.education-modal-school {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.35;
+    margin: 0 0 1.15rem 0;
+    letter-spacing: -0.01em;
+}
+
+.education-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.education-modal-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.education-modal-item-label {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.education-modal-item-val {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+@media (max-width: 991.98px) {
+    :root {
+        --edu-orbit-size: 320px;
+        --edu-node-size: 48px;
+        --edu-core-size: 60px;
+    }
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
+    .education-info-col {
+        align-items: center;
+        text-align: center;
+    }
+    .education-info-col .folio-section-lead {
+        margin: 0 auto;
+    }
+    .education-hint-wrap {
+        justify-content: center;
+    }
+    .education-orbit-stage {
+        height: 380px;
+        max-width: 380px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --edu-orbit-size: 260px;
+        --edu-node-size: 44px;
+        --edu-core-size: 54px;
+    }
+    .education-section {
+        padding: 3.5rem 1rem 4rem 1rem;
+    }
+    .education-orbit-stage {
+        height: 330px;
+        max-width: 320px;
+    }
+    .education-node-label {
+        font-size: 0.7rem;
+    }
+    .education-modal-school {
+        font-size: 1.15rem;
+    }
+    .education-modal-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+}

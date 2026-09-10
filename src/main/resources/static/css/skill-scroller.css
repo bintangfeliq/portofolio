@@ -1,0 +1,202 @@
+.brand-scroller-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.brand-scroller-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 1.5rem 0;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.brand-scroller-row {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    user-select: none;
+}
+
+.brand-scroller-row:last-child {
+    margin-bottom: 0;
+}
+
+.brand-scroller-track {
+    display: flex;
+    width: max-content;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    will-change: transform;
+}
+
+.brand-scroller-track.track-left {
+    animation: brandScrollLeft 40s linear infinite;
+}
+
+.brand-scroller-track.track-right {
+    animation: brandScrollRight 40s linear infinite;
+}
+
+.brand-scroller-row:hover .brand-scroller-track,
+.brand-scroller-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes brandScrollLeft {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@keyframes brandScrollRight {
+    0% {
+        transform: translate3d(-50%, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.brand-scroller-group {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+}
+
+.brand-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 1.4rem;
+    background: rgba(18, 18, 24, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    color: #ffffff;
+    white-space: nowrap;
+    opacity: 0.88;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.28s ease,
+                border-color 0.28s ease,
+                background-color 0.28s ease,
+                box-shadow 0.28s ease;
+    cursor: default;
+}
+
+.brand-item:hover {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.03);
+    background: rgba(26, 26, 34, 0.95);
+    border-color: rgba(222, 110, 53, 0.45);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 14px rgba(222, 110, 53, 0.16);
+}
+
+.brand-icon {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.brand-icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand-icon i {
+    font-size: 1.45rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-icon i:not(.colored) {
+    color: #DE6E35;
+}
+
+.brand-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.92);
+    transition: color 0.2s ease;
+}
+
+.brand-item:hover .brand-name {
+    color: #ffffff;
+}
+
+@media (max-width: 991.98px) {
+    .brand-scroller-container {
+        padding: 1.25rem 0;
+        mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+    .brand-scroller-row {
+        margin-bottom: 1rem;
+    }
+    .brand-scroller-track {
+        gap: 1rem;
+    }
+    .brand-scroller-group {
+        gap: 1rem;
+    }
+    .brand-item {
+        padding: 0.65rem 1.15rem;
+        gap: 0.75rem;
+    }
+    .brand-icon {
+        width: 22px;
+        height: 22px;
+    }
+    .brand-icon i {
+        font-size: 1.15rem;
+    }
+    .brand-name {
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .brand-scroller-container {
+        padding: 1rem 0;
+        mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    }
+    .brand-scroller-row {
+        margin-bottom: 0.85rem;
+    }
+    .brand-scroller-track {
+        gap: 0.85rem;
+    }
+    .brand-scroller-group {
+        gap: 0.85rem;
+    }
+    .brand-item {
+        padding: 0.55rem 0.95rem;
+        gap: 0.65rem;
+        border-radius: 10px;
+    }
+    .brand-icon {
+        width: 20px;
+        height: 20px;
+    }
+    .brand-icon i {
+        font-size: 1.05rem;
+    }
+    .brand-name {
+        font-size: 0.82rem;
+    }
+}

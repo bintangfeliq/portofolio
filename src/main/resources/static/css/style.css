@@ -1,131 +1,77 @@
+/* =========================================================
+   style.css — Portfolio Project
+   Berlaku untuk: tentang.html, index.html, dashboard.html,
+                  login.html, semua halaman edit/admin
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   GLOBALS — Dipakai semua halaman
+   --------------------------------------------------------- */
+
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
-    background: #0b0b0b;
+    background: #0f0f0f;
     color: #fff;
+    overflow-x: hidden;
 }
 
-.latar-item {
-    background: #0b0b0b;
+/* Warna background utility */
+.latar-item  { background: #0f0f0f; }
+.area-gelap  { background: #151515; }
+
+/* Warna accent merah — dipakai semua halaman */
+.tulisan-merah { color: #fa1226; }
+
+/* Scroll offset untuk sticky header */
+section[id],
+div[id] {
+    scroll-margin-top: 72px;
 }
 
-.area-gelap {
+
+/* ---------------------------------------------------------
+   DASHBOARD — Sidebar admin
+   --------------------------------------------------------- */
+
+.menu-samping {
+    width: 260px;
+    min-width: 260px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
     background: #111;
+    z-index: 1000;
 }
 
-.tulisan-merah {
-    color: #fa1226;
-}
-
-.poto-profil {
-    width: 280px;
-    height: 340px;
-    object-fit: cover;
-    border-radius: 20px;
-    border: 2px solid #fa1226;
-}
-
-.kartu-kontak {
-    min-height: 72px;
-    padding: 16px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #fff;
-    text-decoration: none;
-    border-bottom: 1px solid #282828;
-    transition: all 0.2s ease;
-}
-
-.kartu-kontak .info-kontak {
-    display: flex;
-    flex-direction: column;
-}
-
-.kartu-kontak .ikon-kontak {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    background: rgba(250, 18, 38, 0.1);
-    color: #fa1226;
-    font-size: 20px;
-}
-
-.kartu-kontak:hover {
-    background: rgba(255, 255, 255, 0.03);
-    padding-left: 18px;
-    padding-right: 18px;
-    color: #fff;
-}
-
-.kartu-kontak .ikon-panah {
-    color: #fa1226;
-    font-size: 20px;
-    transition: transform 0.2s ease;
-}
-
-.kartu-kontak:hover .ikon-panah {
-    transform: translate(3px, -3px);
-}
-
-.baris-sekolah {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #333;
-    gap: 20px;
-}
-
-.nama-sekolah {
-    color: white;
-    font-size: 16px;
-}
-
-.tahun-sekolah {
-    color: #999;
-    white-space: nowrap;
-}
-
-.kartu-skill {
-    background: #141414;
-    border: 1px solid #282828;
-    border-radius: 12px;
-    padding: 16px 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 72px;
+.menu-samping .nav-link {
     transition: 0.2s ease;
+    font-size: 14px;
 }
 
-.kartu-skill:hover {
-    border-color: #fa1226;
-    transform: translateY(-2px);
+.menu-samping .nav-link:hover:not(.active) {
+    background: rgba(195, 48, 48, 0.06);
+    color: #fff !important;
 }
 
-.tombol-pencet {
-    background: #141414;
-    border: 1px solid #282828;
-    border-radius: 12px;
-    padding: 20px 22px;
-    text-align: center;
-    min-height: 40px;
-    transition: 0.2s ease;
+/* Navbar global (dashboard pakai .navbar .nav-link) */
+.navbar .nav-link {
+    transition: color 0.2s ease;
+    font-weight: 500;
 }
 
-.tombol-pencet:hover {
-    background-color: #ff0a1f;
-    transform: translateY(-2px);
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+    color: #fa1226 !important;
 }
+
+/* ---------------------------------------------------------
+   MISC — Dipakai beberapa halaman
+   --------------------------------------------------------- */
 
 .stiker-kuning {
     padding: 3px 10px;
@@ -137,90 +83,23 @@ body {
     font-weight: 500;
 }
 
-.btn-danger {
-    background-color: #f90a1e;
-}
-
-@media (max-width: 768px) {
-    .poto-profil {
-        width: 220px;
-        height: 270px;
-    }
-}
-
-.menu-samping {
-    width: 260px;
-    min-width: 260px;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    background: #111111;
-    z-index: 1000;
-}
-
-.menu-samping .nav-link {
+.tombol-pencet {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px 22px;
+    text-align: center;
     transition: 0.2s ease;
-    font-size: 14px;
-}
-
-.menu-samping .nav-link:hover:not(.active) {
-    background: rgba(195, 48, 48, 0.06);
-    color: #ffffff !important;
-}
-
-.kartu-projek {
     cursor: pointer;
-    transition: 0.25s ease;
-    background: #141414;
-    border: 1px solid #282828;
 }
 
-.kartu-projek:hover {
-    transform: translateY(-5px);
-    border-color: #fa1226 !important;
-    box-shadow: 0 10px 25px rgba(250, 18, 38, 0.15) !important;
+.tombol-pencet:hover {
+    background: #fa1226;
+    transform: translateY(-2px);
 }
 
-.modal-content {
-    background-color: #141414;
-    border: 1px solid #333;
-    color: #fff;
-    border-radius: 16px;
-}
-
-.modal-header, .modal-footer {
-    border-color: #282828;
-}
-
-.poto-projek {
-    max-height: 420px;
-    object-fit: contain;
-    background-color: #0b0b0b;
-    border-radius: 10px;
-}
-
-.carousel-control-prev, .carousel-control-next {
-    width: 40px;
-    height: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(250, 18, 37, 0.381);
-    border-radius: 50%;
-    margin: 0 10px;
-}
-
-.navbar .nav-link {
-    transition: color 0.2s ease;
-    font-weight: 500;
-}
-
-.navbar .nav-link:hover,
-.navbar .nav-link:focus,
-.navbar .nav-link:active,
-.navbar .nav-link.active {
-    color: #fa1226 !important;
-}
-
-section[id], div[id] {
-    scroll-margin-top: 80px;
-}
+/* Bootstrap override tipis — hanya warna */
+.btn-danger          { background-color: #fa1226; border-color: #fa1226; }
+.btn-danger:hover    { background-color: #d4001f; border-color: #d4001f; }
+.btn-outline-danger  { color: #fa1226; border-color: #fa1226; }
+.btn-outline-danger:hover { background-color: #fa1226; color: #fff; }
