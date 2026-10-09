@@ -3,119 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Saya - Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Kelola Tentang Saya - Dashboard Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
 </head>
-<body class="latar-item text-light min-vh-100 py-5">
-    
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-secondary">
-            <div>
-                <h2 class="fw-bold mb-1">Kelola <span class="tulisan-merah">Tentang Saya</span> & Profil</h2>
-                <p class="text-secondary small mb-0"></p>
-            </div>
-            <div>
-                <a th:href="@{/dashboard}" class="btn btn-outline-danger btn-sm me-2">Kembali</a>
-            </div>
-        </div>
+<body class="comic-dash-body">
+
+    <div class="comic-dash-wrapper">
         
-        <div class="row g-4 align-items-stretch">      
-            <div class="col-lg-7">
-                <div class="card area-gelap text-light border-secondary shadow h-100 p-2 rounded-4">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2">
-                            <i class="bi bi-pencil-square tulisan-merah"></i> Form Edit Profil & Tentang Saya
-                        </h4>
+        <aside class="comic-dash-sidebar">
+            <div class="comic-dash-brand">
+                <a th:href="@{/dashboard}" class="comic-brand-title">
+                    Portfolio<span>.</span>
+                </a>
+            </div>
 
+            <nav class="comic-dash-nav">
+                <span class="comic-nav-section-title">Menu Utama</span>
+                <a th:href="@{/dashboard}" class="comic-nav-item">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a th:href="@{/dashboard/editTentang}" class="comic-nav-item active">
+                    <i class="bi bi-person"></i>
+                    <span>Tentang Saya</span>
+                </a>
+                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-nav-item">
+                    <i class="bi bi-mortarboard"></i>
+                    <span>Pendidikan</span>
+                </a>
+                <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-nav-item">
+                    <i class="bi bi-code-slash"></i>
+                    <span>Skill</span>
+                </a>
+                <a th:href="@{/dashboard/dashboardProject}" class="comic-nav-item">
+                    <i class="bi bi-layers"></i>
+                    <span>Project</span>
+                </a>
+                <a th:href="@{/dashboard/editKontak}" class="comic-nav-item">
+                    <i class="bi bi-envelope"></i>
+                    <span>Kontak</span>
+                </a>
+            </nav>
+
+            <div class="comic-dash-sidebar-footer">
+                <a th:href="@{/}" class="comic-logout-btn">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Keluar</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="comic-dash-main">
+            
+            <div class="comic-dash-header">
+                <div>
+                    <h1 class="comic-dash-header-title">
+                        Kelola <span>Tentang Saya</span> &amp; Profil
+                    </h1>
+                    <p class="comic-dash-header-desc">
+                        Perbarui informasi biodata, deskripsi, foto profil, dan dokumen CV Anda.
+                    </p>
+                </div>
+            </div>
+
+            <div class="comic-dash-single">
+                
+                <div class="comic-panel">
+                    <div class="comic-panel-header">
+                        <h2 class="comic-panel-title">
+                            <i class="bi bi-person-lines-fill"></i>
+                            <span>Form Ubah Data Profil &amp; Tentang Saya</span>
+                        </h2>
+                    </div>
+                    <div class="comic-panel-body">
                         <form th:action="@{/dashboard/editTentang}" th:object="${profil}" method="POST" enctype="multipart/form-data">
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">Nama Lengkap</label>
-                                <input type="text" name="nama" th:value="${profil.nama}" class="form-control bg-dark text-light border-secondary" required>
+                            
+                            <div class="comic-form-section">
+                                <h3 class="comic-form-section-title">
+                                    <i class="bi bi-images"></i>
+                                    <span>Foto Profil &amp; Berkas CV</span>
+                                </h3>
+                                <div class="comic-form-row">
+                                    <div class="comic-file-card">
+                                        <div class="comic-file-card-header">
+                                            <img th:src="@{'/images/' + ${profil != null and profil.foto != null ? profil.foto : 'profil.jpg'}}" 
+                                                 alt="Foto Profil" 
+                                                 class="comic-avatar-preview">
+                                            <div>
+                                                <label for="fileFoto" class="comic-form-label" style="margin-bottom: 0.2rem;">Ganti Foto Profil</label>
+                                                <span class="comic-file-hint" style="display: block;">JPG, PNG, atau WEBP</span>
+                                            </div>
+                                        </div>
+                                        <input type="file"
+                                               id="fileFoto"
+                                               name="fileFoto"
+                                               class="comic-form-control"
+                                               accept="image/*">
+                                    </div>
+
+                                    <div class="comic-file-card">
+                                        <div class="comic-file-card-header">
+                                            <div style="width: 64px; height: 64px; border-radius: 8px; border: 2px solid var(--border-ink); box-shadow: 2px 2px 0 var(--border-ink); background: #000; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--red-primary); flex-shrink: 0;">
+                                                <i class="bi bi-file-earmark-pdf-fill"></i>
+                                            </div>
+                                            <div style="flex: 1; min-width: 0;">
+                                                <label for="fileCv" class="comic-form-label" style="margin-bottom: 0.2rem;">Ganti Berkas CV</label>
+                                                <div style="font-size: 0.78rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" 
+                                                     th:text="${profil != null and profil.cv != null and !#strings.isEmpty(profil.cv) ? profil.cv : 'Belum ada berkas CV'}">CV.pdf</div>
+                                                <a th:if="${profil != null and profil.cv != null and !#strings.isEmpty(profil.cv)}"
+                                                   th:href="@{'/images/' + ${profil.cv}}" 
+                                                   target="_blank" 
+                                                   class="comic-cv-link"
+                                                   style="margin-top: 0.35rem; display: inline-flex;">
+                                                    <i class="bi bi-box-arrow-up-right"></i>
+                                                    <span>Lihat CV</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <input type="file"
+                                               id="fileCv"
+                                               name="fileCv"
+                                               class="comic-form-control"
+                                               accept=".pdf,.doc,.docx">
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">Foto Profil</label>
-                                <input type="file" name="fileFoto"  class="form-control bg-dark text-light border-secondary">
+                            <div class="comic-form-section">
+                                <h3 class="comic-form-section-title">
+                                    <i class="bi bi-person-vcard"></i>
+                                    <span>Informasi Biodata</span>
+                                </h3>
+                                <div class="comic-form-row">
+                                    <div class="comic-form-group" style="margin-bottom: 0;">
+                                        <label for="nama" class="comic-form-label">Nama Lengkap</label>
+                                        <input type="text"
+                                               id="nama"
+                                               name="nama"
+                                               th:value="${profil.nama}"
+                                               class="comic-form-control"
+                                               placeholder="Masukkan nama lengkap Anda"
+                                               required>
+                                    </div>
+                                    <div class="comic-form-group" style="margin-bottom: 0;">
+                                        <label for="alamat" class="comic-form-label">Alamat Domisili</label>
+                                        <input type="text"
+                                               id="alamat"
+                                               name="alamat"
+                                               th:value="${profil.alamat}"
+                                               class="comic-form-control"
+                                               placeholder="Contoh: Bandung, Jawa Barat">
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">CV</label>
-                                <input type="file" name="fileCv"  class="form-control bg-dark text-light border-secondary">
+                            <div class="comic-form-section" style="margin-bottom: 1.5rem;">
+                                <h3 class="comic-form-section-title">
+                                    <i class="bi bi-card-text"></i>
+                                    <span>Ringkasan &amp; Biografi</span>
+                                </h3>
+                                <div class="comic-form-group">
+                                    <label for="deskripsi" class="comic-form-label">Deskripsi Singkat</label>
+                                    <span class="comic-file-hint" style="display: block; margin-bottom: 0.4rem;">Ringkasan 1 atau 2 kalimat tentang profesi atau fokus Anda yang tampil di beranda.</span>
+                                    <textarea id="deskripsi"
+                                              name="deskripsi"
+                                              rows="2"
+                                              class="comic-form-control"
+                                              th:text="${profil.deskripsi}"
+                                              placeholder="Tuliskan ringkasan singkat..."></textarea>
+                                </div>
+
+                                <div class="comic-form-group" style="margin-bottom: 0;">
+                                    <label for="tentangSaya" class="comic-form-label">Tentang Saya (Biografi Lengkap)</label>
+                                    <span class="comic-file-hint" style="display: block; margin-bottom: 0.4rem;">Ceritakan latar belakang, perjalanan ketertarikan teknologi, dan visi profesional Anda secara mendalam.</span>
+                                    <textarea id="tentangSaya"
+                                              name="tentangSaya"
+                                              rows="6"
+                                              class="comic-form-control"
+                                              th:text="${profil.tentangSaya}"
+                                              placeholder="Tuliskan biografi lengkap Anda di sini..."></textarea>
+                                </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">Alamat</label>
-                                <textarea name="alamat" rows="2" class="form-control bg-dark text-light border-secondary" th:text="${profil.alamat}"></textarea>
+                            <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1.5px solid var(--border-subtle); display: flex; justify-content: flex-end;">
+                                <button type="submit" class="comic-submit-btn" style="min-width: 240px;">
+                                    <i class="bi bi-check-circle"></i>
+                                    <span>Simpan Perubahan Profil</span>
+                                </button>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">Deskripsi Profil</label>
-                                <textarea name="deskripsi" rows="2" class="form-control bg-dark text-light border-secondary" th:text="${profil.deskripsi}"></textarea>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="form-label text-secondary small">Tentang Saya</label>
-                                <textarea name="tentangSaya" rows="7" class="form-control bg-dark text-light border-secondary"  th:text="${profil.tentangSaya}"></textarea>
-                            </div>
-
-                            <button type="submit" class="tombol-pencet w-100 py-2 fw-semibold text-white">
-                                <i class="bi bi-save me-1"></i> Update
-                            </button>
                         </form>
                     </div>
                 </div>
+
             </div>
 
-            <div class="col-lg-5">
-                <div class="card area-gelap text-light border-secondary shadow h-100 p-2 rounded-4">
-                    <div class="card-body p-4 d-flex flex-column">
-                        <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2">
-                            <i class="bi bi-eye tulisan-merah"></i>Profil Saat Ini
-                        </h4>
+        </main>
 
-                        <div class="d-flex align-items-center gap-3 mb-3 p-3 border border-secondary rounded-3 bg-black bg-opacity-25">
-                            <img th:src="@{'/images/' + ${profil != null and profil.foto != null ? profil.foto : 'profil.jpg'}}" 
-                                 alt="Foto Profil" 
-                                 style="width: 65px; height: 65px; object-fit: cover; border-radius: 12px; border: 1px solid #fa1226;">
-                            <div>
-                                <h6 class="fw-bold text-light mb-1" th:text="${profil.nama}">Bintang</h6>
-                                <p class="text-secondary small mb-0" th:text="${profil.alamat}">Bandung, Indonesia</p>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px;">Deskripsi</small>
-                            <p class="text-light small mt-1 p-2 border border-secondary border-opacity-50 rounded bg-black bg-opacity-25" th:text="${profil.deskripsi}">-</p>
-                        </div>
-
-                        <div class="mb-3">
-                            <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px;">File CV Saat Ini</small>
-                            <div class="d-flex align-items-center justify-content-between mt-1 p-2 border border-secondary border-opacity-50 rounded bg-black bg-opacity-25">
-                                <span class="text-light small d-flex align-items-center gap-2">
-                                    <i class="bi bi-file-earmark-person tulisan-merah fs-5"></i>
-                                    <span th:text="${profil.cv}">CV.jpg</span>
-                                </span>
-                                <a th:href="@{'/images/' + ${profil.cv}}" 
-                                   target="_blank" 
-                                   class="btn btn-outline-danger btn-sm py-1 px-2">Lihat</a>
-                            </div>
-                        </div>
-
-                        <div class="flex-grow-1 overflow-auto">
-                            <small class="text-secondary text-uppercase fw-semibold" style="font-size: 11px;">Tentang Saya</small>
-                            <div class="text-secondary small mt-1 p-2 border border-secondary border-opacity-50 rounded bg-black bg-opacity-25" style="white-space: pre-line; max-height: 170px; overflow-y: auto;" th:text="${profil.tentangSaya}">
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

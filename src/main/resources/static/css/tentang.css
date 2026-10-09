@@ -5,10 +5,12 @@
     --bg-card: #141418;
     --bg-card-hover: #1a1a20;
     --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(222, 110, 53, 0.35);
-    --orange-primary: #DE6E35;
-    --orange-gradient: linear-gradient(135deg, #E87F4A 0%, #DE6E35 50%, #B8501E 100%);
-    --orange-glow: rgba(222, 110, 53, 0.22);
+    --border-hover: rgba(250, 18, 38, 0.4);
+    --red-primary: #fa1226;
+    --red-hover: #d90417;
+    --red-gradient: linear-gradient(135deg, #ff2a3b 0%, #fa1226 50%, #b80010 100%);
+    --red-glow: rgba(250, 18, 38, 0.28);
+    --red-dark: #d90417;
     --text-primary: #ffffff;
     --text-secondary: #9ea0a8;
     --text-muted: #6b6d76;
@@ -36,8 +38,8 @@ body.about-page {
     height: 100vh;
     pointer-events: none;
     z-index: 0;
-    background: radial-gradient(circle at 50% -10%, rgba(222, 110, 53, 0.08) 0%, transparent 60%),
-                radial-gradient(circle at 100% 60%, rgba(222, 110, 53, 0.04) 0%, transparent 50%),
+    background: radial-gradient(circle at 50% -10%, rgba(250, 18, 38, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 100% 60%, rgba(250, 18, 38, 0.04) 0%, transparent 50%),
                 #0b0b0e;
 }
 
@@ -58,27 +60,6 @@ body.about-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-}
-
-.folio-brand {
-    font-size: 1.25rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-}
-
-.folio-brand-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--orange-primary);
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 12px var(--orange-primary);
 }
 
 .folio-nav-links {
@@ -112,49 +93,12 @@ body.about-page {
 
 .folio-link.active {
     color: #fff;
-    background: rgba(222, 110, 53, 0.12);
-    border: 1px solid rgba(222, 110, 53, 0.25);
-}
-
-.folio-nav-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    background: #ffffff;
-    color: #0b0b0e;
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 700;
-    padding: 0.45rem 0.5rem 0.45rem 1.15rem;
-    border-radius: 999px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.folio-nav-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.18);
-    color: #0b0b0e;
-}
-
-.folio-nav-cta-icon {
-    width: 28px;
-    height: 28px;
-    background: var(--orange-primary);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    transition: transform 0.2s ease;
-}
-
-.folio-nav-cta:hover .folio-nav-cta-icon {
-    transform: rotate(45deg);
+    background: rgba(250, 18, 38, 0.14);
+    border: 1px solid rgba(250, 18, 38, 0.3);
 }
 
 .folio-intro-section {
-    min-height: calc(88vh - 65px);
+    min-height: calc(85vh - 65px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,103 +115,92 @@ body.about-page {
     align-items: center;
 }
 
-.folio-intro-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    font-weight: 700;
+.comic-intro-tag {
+    background: var(--red-primary);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--orange-primary);
-    background: rgba(222, 110, 53, 0.12);
-    border: 1px solid rgba(222, 110, 53, 0.25);
-    padding: 0.45rem 1.15rem;
-    border-radius: 999px;
-    margin-bottom: 1.5rem;
+    padding: 3px 14px 2px 14px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 #000000;
+    border: 1.5px solid #000000;
+    margin-bottom: 1.25rem;
+    display: inline-block;
+    animation: introTagPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
 }
 
 .folio-intro-title {
-    font-size: clamp(2.5rem, 6vw, 4.75rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 800;
     line-height: 1.15;
     letter-spacing: -0.035em;
     color: #ffffff;
     margin-bottom: 1.25rem;
+    animation: introFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
 }
 
 .folio-intro-desc {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.75;
     max-width: 640px;
     margin: 0 auto 2.5rem auto;
+    margin: 0 auto 2rem auto;
+    animation: introFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.36s both;
 }
 
-.folio-intro-scroll {
-    margin-top: 0.5rem;
+.folio-intro-scroll-hint {
+    animation: introFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
 }
 
-.folio-scroll-indicator {
+.folio-scroll-btn {
     display: inline-flex;
-    flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.2s, transform 0.2s;
-}
-
-.folio-scroll-indicator:hover {
-    color: #ffffff;
-    transform: translateY(3px);
-}
-
-.folio-scroll-mouse {
-    width: 24px;
-    height: 38px;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    border-radius: 999px;
-    position: relative;
-    display: flex;
     justify-content: center;
-    padding-top: 6px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #14141d;
+    border: 2px solid rgba(250, 18, 38, 0.35);
+    color: var(--red-primary);
+    box-shadow: 3px 3px 0 #000000;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    animation: introBounce 2s ease-in-out infinite;
 }
 
-.folio-scroll-dot {
-    width: 4px;
-    height: 8px;
-    background: var(--orange-primary);
-    border-radius: 999px;
-    animation: folioScrollWheel 1.6s ease-in-out infinite;
+.folio-scroll-btn:hover {
+    color: #ffffff;
+    background: var(--red-primary);
+    border-color: var(--red-primary);
 }
 
-@keyframes folioScrollWheel {
+@keyframes introTagPop {
     0% {
-        transform: translateY(0);
-        opacity: 1;
+        opacity: 0;
+        transform: scale(0.7) translateY(-8px);
     }
     100% {
-        transform: translateY(14px);
-        opacity: 0;
+        opacity: 1;
+        transform: scale(1) translateY(0);
     }
 }
 
-.folio-scroll-label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
+@keyframes introFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.folio-scroll-arrow {
-    font-size: 1rem;
-    color: var(--orange-primary);
-    animation: folioBounceDown 1.6s infinite ease-in-out;
-}
-
-@keyframes folioBounceDown {
+@keyframes introBounce {
     0%, 100% {
         transform: translateY(0);
     }
@@ -284,13 +217,13 @@ body.about-page {
 .folio-hero-banner {
     max-width: 1240px;
     margin: 0 auto;
-    border-radius: 32px;
-    background: radial-gradient(110% 120% at 50% 15%, #E67A42 0%, #D4672E 28%, #9E4317 55%, #4A1B0B 82%, #140704 100%);
-    box-shadow: 0 25px 60px -15px rgba(212, 103, 46, 0.22),
-                0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+    border-radius: 20px;
+    background: #12121a;
+    border: 3px solid var(--red-primary);
+    box-shadow: 8px 8px 0 #000000;
     overflow: hidden;
     position: relative;
-    padding: 3.5rem 3.5rem;
+    padding: 3.5rem 3.5rem 3.5rem 3.5rem;
 }
 
 .folio-hero-banner::before {
@@ -300,9 +233,9 @@ body.about-page {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 0);
-    background-size: 28px 28px;
-    opacity: 0.35;
+    background-image: radial-gradient(rgba(250, 18, 38, 0.1) 1.5px, transparent 1.5px), radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 28px 28px, 14px 14px;
+    opacity: 0.7;
     pointer-events: none;
 }
 
@@ -321,15 +254,83 @@ body.about-page {
     align-items: center;
 }
 
+.comic-dossier-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 330px;
+    background: #14141d;
+    border: 2.5px solid #000000;
+    box-shadow: 6px 6px 0 var(--red-primary), 10px 10px 0 #000000;
+    border-radius: 12px;
+    padding: 0.85rem;
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.comic-dossier-card:hover {
+    border-color: var(--red-primary);
+    transform: translateY(-3px);
+}
+
+.comic-dossier-header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0.65rem;
+}
+
+.comic-dossier-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: var(--red-primary);
+    padding: 2px 9px;
+    border-radius: 3px;
+    border: 1px solid #000000;
+    box-shadow: 2px 2px 0 #000000;
+}
+
+.comic-dossier-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.comic-dossier-name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.comic-dossier-loc {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.comic-dossier-loc i {
+    color: var(--red-primary);
+}
+
 .folio-about-avatar-wrap {
     position: relative;
     width: 100%;
-    max-width: 330px;
     aspect-ratio: 4 / 5;
-    border-radius: 26px;
-    padding: 6px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(222, 110, 53, 0.35), rgba(0, 0, 0, 0.3));
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(222, 110, 53, 0.22);
+    border-radius: 8px;
+    background: #09090d;
+    border: 2px solid var(--border-subtle);
+    padding: 0;
+    overflow: hidden;
 }
 
 .folio-about-img {
@@ -337,74 +338,143 @@ body.about-page {
     height: 100%;
     object-fit: cover;
     object-position: top center;
-    border-radius: 20px;
+    border-radius: 6px;
     display: block;
 }
 
 .folio-about-info-col {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
-.folio-about-badge {
+.comic-about-tag {
+    background: var(--red-primary);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 12px 2px 14px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 #000000;
+    border: 1.5px solid #000000;
+    margin-bottom: 0.75rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #ffffff;
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    margin-bottom: 1rem;
-    width: fit-content;
-    backdrop-filter: blur(10px);
+    gap: 0.4rem;
 }
 
 .folio-about-title {
-    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-size: clamp(1.85rem, 3.5vw, 2.75rem);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.2;
     letter-spacing: -0.03em;
     color: #ffffff;
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.25rem 0;
 }
 
 .folio-title-highlight {
-    background: linear-gradient(135deg, #ffffff 0%, #F6DDD1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--red-primary);
     display: inline-block;
 }
 
-.folio-about-role {
-    margin-bottom: 1.25rem;
+.comic-about-speech-box {
+    background: #181824;
+    border: 2px solid rgba(250, 18, 38, 0.35);
+    border-left: 4px solid var(--red-primary);
+    box-shadow: 5px 5px 0 #000000;
+    border-radius: 10px;
+    padding: 1.6rem 1.75rem 1.4rem 1.75rem;
+    margin-bottom: 1.5rem;
+    margin-bottom: 2.25rem;
+    width: 100%;
+    position: relative;
 }
 
-.folio-role-tag {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.95);
-    background: rgba(0, 0, 0, 0.22);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    padding: 0.4rem 0.95rem;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+.comic-about-speech-box .comic-speech-tail {
+    position: absolute;
+    left: -12px;
+    top: 28px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 12px solid var(--red-primary);
 }
 
 .folio-about-bio {
     font-size: 1.02rem;
-    color: rgba(255, 255, 255, 0.88);
-    line-height: 1.85;
-    margin-bottom: 2rem;
+    color: #e4e4eb;
+    line-height: 1.8;
+    margin: 0;
     white-space: pre-line;
+}
+
+.comic-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+    width: 100%;
+    margin-bottom: 1.75rem;
+}
+
+.comic-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #181824;
+    border: 1.5px solid rgba(250, 18, 38, 0.3);
+    border-left: 3px solid var(--red-primary);
+    box-shadow: 3px 3px 0 #000000;
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.comic-stat-item:hover {
+    background: #1f1f30;
+    border-color: var(--red-primary);
+    transform: translateY(-2px);
+}
+
+.comic-stat-icon {
+    font-size: 1.25rem;
+    color: var(--red-primary);
+    flex-shrink: 0;
+}
+
+.comic-stat-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.comic-stat-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.comic-stat-val {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 991px) {
+    .comic-about-speech-box .comic-speech-tail {
+        display: none;
+    }
+    .comic-stat-grid {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+    }
 }
 
 .folio-about-actions {
@@ -414,68 +484,48 @@ body.about-page {
     gap: 1rem;
 }
 
-.folio-btn-pill {
+.comic-btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    background: #ffffff;
-    color: #0b0b0e;
-    text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 700;
-    padding: 0.55rem 0.65rem 0.55rem 1.45rem;
-    border-radius: 999px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease;
-    border: none;
-}
-
-.folio-btn-pill:hover {
-    background: #f4f4f5;
-    color: #0b0b0e;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25);
-}
-
-.folio-btn-pill-icon {
-    width: 32px;
-    height: 32px;
-    background: var(--orange-primary);
-    color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    transition: transform 0.2s ease;
-}
-
-.folio-btn-pill:hover .folio-btn-pill-icon {
-    transform: rotate(45deg);
-}
-
-.folio-btn-ghost-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.12);
+    gap: 0.6rem;
+    background: var(--red-primary);
     color: #ffffff;
     text-decoration: none;
     font-size: 0.92rem;
     font-weight: 700;
-    padding: 0.65rem 1.45rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: all 0.2s ease;
+    padding: 0.85rem 1.75rem;
+    border-radius: 6px;
+    border: 2px solid var(--red-primary);
+    box-shadow: 4px 4px 0 #000000;
+    transition: background 0.15s ease, border-color 0.15s ease;
 }
 
-.folio-btn-ghost-pill:hover {
-    background: rgba(255, 255, 255, 0.2);
+.comic-btn-primary:hover {
+    background: var(--red-hover);
+    border-color: var(--red-hover);
     color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-2px);
+}
+
+.comic-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #181824;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 700;
+    padding: 0.85rem 1.75rem;
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 4px 4px 0 #000000;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.comic-btn-secondary:hover {
+    border-color: var(--red-primary);
+    color: #ffffff;
+    background: #20202e;
 }
 
 .folio-section {
@@ -497,12 +547,17 @@ body.about-page {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    font-size: 0.82rem;
-    font-weight: 700;
+    font-size: 0.76rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--orange-primary);
-    margin-bottom: 0.75rem;
+    letter-spacing: 0.12em;
+    color: #ffffff;
+    background: var(--red-primary);
+    padding: 3px 12px 2px 14px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 #000000;
+    border: 1.5px solid #000000;
+    margin-bottom: 0.85rem;
 }
 
 .folio-section-heading {
@@ -521,322 +576,433 @@ body.about-page {
     margin: 0;
 }
 
-.folio-edu-wrapper {
+/* ==========================================================================
+   PROJECT SECTION (MODERN SHOWCASE GRID)
+   ========================================================================== */
+.project-section-area {
+    position: relative;
+    padding: 5.5rem 1.25rem 6.5rem 1.25rem;
+}
+
+.project-showcase-grid {
     display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 4rem;
-    align-items: flex-start;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.25rem;
 }
 
-.folio-edu-intro {
-    position: sticky;
-    top: 6rem;
-}
-
-.folio-edu-timeline {
-    position: relative;
-    border-left: 2px solid rgba(255, 255, 255, 0.12);
-    padding-left: 2.25rem;
-    margin-left: 0.75rem;
-}
-
-.folio-edu-item {
-    position: relative;
-    margin-bottom: 2.75rem;
-}
-
-.folio-edu-item:last-child {
-    margin-bottom: 0;
-}
-
-.folio-edu-dot {
-    position: absolute;
-    left: -2.625rem;
-    top: 0.35rem;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--orange-primary);
-}
-
-.folio-edu-content {
+.project-card-item {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
-.folio-edu-year {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: #E88B58;
-    letter-spacing: 0.04em;
-    margin-bottom: 0.35rem;
-}
-
-.folio-edu-title {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    margin: 0 0 0.35rem 0;
-}
-
-.folio-edu-school {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin: 0;
-    line-height: 1.6;
-}
-
-.folio-skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 1.25rem;
-}
-
-.folio-skill-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 1.35rem 1.5rem;
+.project-card-inner {
+    background: #14141e;
+    border: 1.5px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    box-shadow: 3px 3px 0 #000000;
+    overflow: hidden;
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: all 0.2s ease;
-    cursor: default;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 0.22s ease,
+                box-shadow 0.22s ease;
+    position: relative;
 }
 
-.folio-skill-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--border-hover);
-    background: var(--bg-card-hover);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+.project-card-inner:hover {
+    transform: translate(-3px, -3px);
+    border-color: rgba(250, 18, 38, 0.7);
+    box-shadow: 6px 6px 0 #000000, 0 0 22px rgba(250, 18, 38, 0.22);
 }
 
-.folio-skill-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--orange-primary);
-    box-shadow: 0 0 10px var(--orange-primary);
-    flex-shrink: 0;
-}
-
-.folio-skill-name {
-    font-size: 0.98rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0;
-    letter-spacing: -0.01em;
-}
-
-.folio-projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    gap: 2rem;
-}
-
-.folio-project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 24px;
+/* Media Preview */
+.project-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #09090e;
     overflow: hidden;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.folio-project-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--border-hover);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 25px rgba(222, 110, 53, 0.15);
-}
-
-.folio-project-preview {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    background: #000;
-    position: relative;
-}
-
-.folio-project-img {
+.project-card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
     transition: transform 0.4s ease;
 }
 
-.folio-project-card:hover .folio-project-img {
+.project-card-inner:hover .project-card-img {
     transform: scale(1.05);
 }
 
-.folio-project-placeholder {
+.project-card-placeholder {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #181822 0%, #111116 100%);
+    gap: 0.45rem;
     color: var(--text-muted);
-    font-size: 3rem;
+    background: radial-gradient(circle at center, #1a1a24 0%, #0d0d14 100%);
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
-.folio-project-body {
-    padding: 1.75rem;
+.project-card-placeholder i {
+    font-size: 2.2rem;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.project-card-badges {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.project-num-badge {
+    background: rgba(10, 10, 16, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 1.5px 1.5px 0 #000000;
+}
+
+.project-photo-badge {
+    background: rgba(10, 10, 16, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    box-shadow: 1.5px 1.5px 0 #000000;
+}
+
+.project-media-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 10, 16, 0.85) 0%, rgba(10, 10, 16, 0.2) 60%, transparent 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.22s ease;
+    z-index: 2;
+}
+
+.project-card-inner:hover .project-media-hover-overlay {
+    opacity: 1;
+}
+
+.hover-preview-btn {
+    background: var(--red-primary);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0.42rem 0.9rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1.5px solid #000000;
+    box-shadow: 2px 2px 0 #000000;
+    transform: translateY(6px);
+    transition: transform 0.22s ease;
+}
+
+.project-card-inner:hover .hover-preview-btn {
+    transform: translateY(0);
+}
+
+/* Card Content */
+.project-card-content {
+    padding: 1.15rem 1.15rem 1.15rem 1.15rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.folio-project-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-.folio-project-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.3rem 0.75rem;
-    border-radius: 999px;
-    background: rgba(222, 110, 53, 0.12);
-    color: var(--orange-primary);
-    border: 1px solid rgba(222, 110, 53, 0.25);
-}
-
-.folio-project-photos {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-}
-
-.folio-project-title {
-    font-size: 1.35rem;
+.project-card-title {
+    font-size: 1.1rem;
     font-weight: 800;
     color: #ffffff;
-    margin-bottom: 0.65rem;
-    letter-spacing: -0.02em;
+    margin: 0 0 0.45rem 0;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-.folio-project-desc {
-    font-size: 0.92rem;
+.project-card-title:hover {
+    color: var(--red-primary);
+}
+
+.project-card-desc {
+    font-size: 0.84rem;
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+    line-height: 1.55;
+    margin-bottom: 0.95rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.6rem;
 }
 
-.folio-project-link {
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-subtle);
+.project-card-tech {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #ffffff;
-    font-size: 0.88rem;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 1.1rem;
+}
+
+.project-tech-pill {
+    font-size: 0.68rem;
     font-weight: 700;
+    padding: 0.22rem 0.55rem;
+    border-radius: 5px;
+    background: rgba(250, 18, 38, 0.1);
+    color: #ffccd1;
+    border: 1px solid rgba(250, 18, 38, 0.25);
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 1.5px 1.5px 0 #000000;
+    line-height: 1.25;
 }
 
-.folio-project-arrow {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
+/* Card Actions */
+.project-card-actions {
     display: flex;
     align-items: center;
+    margin-top: auto;
+    padding-top: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-btn-view {
+    width: 100%;
     justify-content: center;
-    font-size: 0.75rem;
-    transition: transform 0.2s ease, background 0.2s ease;
+    padding: 0.55rem 1rem;
+    font-size: 0.82rem;
+    cursor: pointer;
 }
 
-.folio-project-card:hover .folio-project-arrow {
-    background: var(--orange-primary);
-    color: #fff;
-    transform: rotate(45deg);
-}
-
-.folio-contact-wrap {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.folio-contact-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    padding: 1.75rem;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    transition: all 0.25s ease;
-}
-
-.folio-contact-card:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--border-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-}
-
-.folio-contact-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.folio-contact-icon {
-    width: 48px;
-    height: 48px;
+/* Empty State */
+.project-empty-state {
+    text-align: center;
+    padding: 3.5rem 1.25rem;
+    background: #14141e;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
     border-radius: 14px;
-    background: rgba(222, 110, 53, 0.12);
-    color: var(--orange-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    flex-shrink: 0;
+    box-shadow: 3px 3px 0 #000000;
+    max-width: 520px;
+    margin: 2.5rem auto 0 auto;
 }
 
-.folio-contact-details {
+.project-empty-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+    background: rgba(250, 18, 38, 0.1);
+    border: 1.5px solid rgba(250, 18, 38, 0.3);
+    color: var(--red-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    box-shadow: 2.5px 2.5px 0 #000000;
+}
+
+.project-empty-state h3 {
+    font-size: 1.18rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+}
+
+.project-empty-state p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .project-showcase-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 1.15rem;
+    }
+    .project-card-content {
+        padding: 1rem;
+    }
+    .project-btn-view {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.contact-section {
+    padding: 5rem 1.25rem 6.5rem 1.25rem;
+    position: relative;
+}
+
+.contact-two-col-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+.contact-info-col {
     display: flex;
     flex-direction: column;
 }
 
-.folio-contact-label {
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
+.contact-info-col .folio-section-heading {
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
 }
 
-.folio-contact-val {
-    font-size: 0.95rem;
+.contact-info-col .folio-section-lead {
+    margin-bottom: 0;
+}
+
+.contact-comic-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.contact-comic-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #181824;
+    border: 1.5px solid rgba(250, 18, 38, 0.35);
+    border-left: 3.5px solid var(--red-primary);
+    box-shadow: 4px 4px 0 #000000;
+    border-radius: 8px;
+    padding: 0.75rem 1.15rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-comic-card:hover {
+    color: inherit;
+    background: #1f1f30;
+    border-color: var(--red-primary);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #000000;
+}
+
+.contact-comic-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    background: var(--red-primary);
+    color: #ffffff;
+    border: 1.5px solid #000000;
+    box-shadow: 1.5px 1.5px 0 #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.contact-comic-card:hover .contact-comic-icon {
+    transform: scale(1.06);
+}
+
+.contact-comic-meta {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-right: auto;
+    min-width: 0;
+}
+
+.contact-comic-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.15rem;
+}
+
+.contact-comic-val {
+    font-size: 0.92rem;
     font-weight: 700;
     color: #ffffff;
-    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.folio-contact-card:hover .folio-project-arrow {
-    background: var(--orange-primary);
-    color: #fff;
-    transform: rotate(45deg);
+.contact-comic-arrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid #000000;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-left: 0.75rem;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-comic-card:hover .contact-comic-arrow {
+    background: var(--red-primary);
+    color: #ffffff;
+    transform: translate(2px, -2px);
+}
+
+@media (max-width: 991px) {
+    .contact-two-col-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 .folio-footer {
@@ -865,41 +1031,118 @@ body.about-page {
     z-index: 1060 !important;
 }
 
-.modal-content.folio-modal-box {
-    background: #141418;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 24px;
+.comic-project-modal .modal-content.comic-modal-box {
+    background: #14141d;
+    border: 3px solid #000000;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    box-shadow: 8px 8px 0 var(--red-primary), 14px 14px 0 #000000;
     color: #ffffff;
+    position: relative;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-    width: 44px;
-    height: 44px;
+.comic-project-modal .modal-content.comic-modal-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(250, 18, 38, 0.1) 1.5px, transparent 1.5px),
+                      radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 16px 16px, 8px 8px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.comic-modal-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.comic-modal-project-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.comic-modal-carousel-wrap {
+    border: 2.5px solid #000000;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 #000000;
+    overflow: hidden;
+    background: #09090d;
+    position: relative;
+}
+
+.comic-carousel-inner {
+    border-radius: 0;
+}
+
+.comic-carousel-img {
+    max-height: 480px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.comic-carousel-control {
+    width: 42px;
+    height: 42px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: #14141d;
+    border: 2px solid #000000;
+    box-shadow: 3px 3px 0 #000000;
     border-radius: 50%;
-    margin: 0 0.75rem;
-    opacity: 0.9;
+    opacity: 0.95;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin: 0 0.85rem;
     z-index: 10;
-    transition: background 0.2s, border-color 0.2s;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-    background: var(--orange-primary);
-    border-color: var(--orange-primary);
+.comic-carousel-control:hover {
+    background: var(--red-primary);
+    color: #ffffff;
     opacity: 1;
+    transform: translateY(-50%) scale(1.08);
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    width: 18px;
-    height: 18px;
+.comic-modal-info-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.comic-tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(250, 18, 38, 0.12);
+    border: 1.5px solid rgba(250, 18, 38, 0.35);
+    color: #ffccd1;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: 6px;
+    box-shadow: 2px 2px 0 #000000;
+}
+
+.comic-tech-tag i {
+    color: var(--red-primary);
+}
+
+.comic-modal-desc {
+    font-size: 0.95rem;
+    color: #e4e4eb;
+    line-height: 1.75;
+    margin: 0;
+    white-space: pre-line;
 }
 
 @media (max-width: 992px) {
@@ -914,12 +1157,12 @@ body.about-page {
     .folio-about-avatar-wrap {
         max-width: 280px;
     }
-    .folio-about-badge {
-        margin: 0 auto 1rem auto;
+    .folio-about-info-col {
+        align-items: center;
+        text-align: center;
     }
-    .folio-about-role {
-        display: flex;
-        justify-content: center;
+    .comic-about-tag {
+        margin: 0 auto 0.75rem auto;
     }
     .folio-about-actions {
         justify-content: center;
@@ -940,18 +1183,42 @@ body.about-page {
         font-size: 0.8rem;
         padding: 0.4rem 0.75rem;
     }
-    .folio-edu-wrapper {
+    .contact-layout-wrap {
         grid-template-columns: 1fr;
         gap: 2.5rem;
-    }
-    .folio-edu-intro {
-        position: static;
     }
 }
 
 @media (max-width: 576px) {
     .folio-hero-banner {
-        padding: 2.25rem 1.5rem;
-        border-radius: 24px;
+        padding: 2.25rem 1.25rem;
+        border-radius: 16px;
+    }
+    .folio-about-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.65rem;
+    }
+    .comic-btn-primary,
+    .comic-btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    .contact-section {
+        padding: 4rem 1rem 5rem 1rem;
+    }
+    .contact-row-item {
+        padding: 1rem 0.25rem;
+    }
+    .contact-row-left {
+        gap: 0.85rem;
+    }
+    .contact-row-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    .contact-row-val {
+        font-size: 0.9rem;
     }
 }

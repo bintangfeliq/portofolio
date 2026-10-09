@@ -4,77 +4,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${profil != null ? profil.nama + ' | Portfolio' : 'Portfolio'}">Portfolio</title>
-
+    <title>Bintang | Portfolio</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 
-<body>
+<body class="idx-body">
 
-    <img th:src="@{/images/fix.jpg}" src="/images/fix.jpg" alt="" class="idx-bg" aria-hidden="true">
+    <div class="idx-page-container">
 
-    <div class="idx-layout">
+        <main class="idx-hero-section">
+            <div class="idx-hero-grid">
 
-        <header class="folio-nav">
-            <div class="folio-nav-container">
-                <nav class="folio-nav-links">
-                    <a th:href="@{/}" class="folio-link active"><i class="bi bi-house"></i> Beranda</a>
-                    <a th:href="@{/tentang}" class="folio-link"><i class="bi bi-person"></i> Tentang</a>
-                    <a th:href="@{/tentang#pendidikan}" class="folio-link"><i class="bi bi-mortarboard"></i> Pendidikan</a>
-                    <a th:href="@{/tentang#skill}" class="folio-link"><i class="bi bi-code-slash"></i> Skill</a>
-                    <a th:href="@{/tentang#project}" class="folio-link"><i class="bi bi-layers"></i> Project</a>
-                    <a th:href="@{/tentang#kontak}" class="folio-link"><i class="bi bi-envelope"></i> Kontak</a>
-                </nav>
-            </div>
-        </header>
-
-        <main class="idx-hero">
-            <div class="idx-hero-card">
-
-                <img th:src="@{'/images/' + ${profil.foto}}"
-                     alt="Foto Profil"
-                     class="idx-foto">
-
-                <div class="idx-text">
-
-                    <span class="idx-role">
-                        <i class="bi bi-person-badge me-1"></i>Student &amp; Junior Web Developer
-                    </span>
-
-                    <h1 class="idx-nama" th:text="${profil.nama}">Nama</h1>
-
-                    <p class="idx-desc" th:text="${profil.deskripsi}">Deskripsi singkat.</p>
-
-                    <div class="d-flex flex-wrap gap-3">
-                        <a th:href="@{/tentang}" class="idx-btn-red">
-                            <i class="bi bi-person-fill"></i> Profil Saya
-                        </a>
-                        <a th:href="@{/tentang#project}" class="idx-btn-ghost">
-                            <i class="bi bi-layers-fill"></i> Lihat Project
-                        </a>
+                <div class="hero-left-top">
+                    <div class="hero-name-wrapper">
+                        <span class="hero-im-title">I'M</span>
+                        <h1 class="hero-main-name">BINTANG</h1>
                     </div>
+                    <a th:href="@{/tentang}" class="hero-discuss-btn">
+                        <span>Profil Saya</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
 
+                <div class="hero-left-bottom">
+                    <p class="hero-bio-text" th:if="${profil != null and !#strings.isEmpty(profil.deskripsi)}"
+                        th:text="${profil.deskripsi}">
+                        Hello, I'm Bintang, a Web &amp; Software Developer passionate about creating meaningful digital
+                        experiences.
+                    </p>
+                    <p class="hero-bio-text" th:unless="${profil != null and !#strings.isEmpty(profil.deskripsi)}">
+                        Hello, I'm Bintang, a Web &amp; Software Developer passionate about creating meaningful digital
+                        experiences.
+                    </p>
+                </div>
+
+                <div class="hero-center-visual">
+                    <div class="hero-image-wrap">
+                        <img th:src="@{/images/bintang.png(v='3')}" src="/images/bintang.png?v=3" alt="Bintang"
+                            class="hero-center-img">
+                    </div>
+                </div>
+
+                <div class="hero-right-top">
+                    <div class="hero-follow-box">
+                        <span class="hero-follow-label">Kontak</span>
+                        <div class="hero-social-row">
+                            <a th:if="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github)}"
+                                th:href="${kontak.github}" target="_blank" rel="noopener noreferrer"
+                                class="hero-social-circle" title="GitHub" aria-label="GitHub">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            <a th:if="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram)}"
+                                th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer"
+                                class="hero-social-circle" title="Instagram" aria-label="Instagram">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a th:if="${kontak != null and kontak.telepon != null and !#strings.isEmpty(kontak.telepon)}"
+                                th:href="'https://wa.me/' + ${kontak.telepon.startsWith('0') ? '62' + kontak.telepon.substring(1) : kontak.telepon}"
+                                target="_blank" rel="noopener noreferrer" class="hero-social-circle" title="WhatsApp"
+                                aria-label="WhatsApp">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                            <a th:if="${kontak != null and kontak.email != null and !#strings.isEmpty(kontak.email)}"
+                                th:href="'mailto:' + ${kontak.email}" class="hero-social-circle" title="Email"
+                                aria-label="Email">
+                                <i class="bi bi-envelope-fill"></i>
+                            </a>
+                        </div>
+                        <p class="hero-follow-tagline">
+                           hubungi saya melalui media sosial di atas untuk kolaborasi atau pertanyaan.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hero-right-bottom">
+                    <div class="hero-role-wrapper">
+                        <span class="hero-role-word">Student &amp;</span>
+                        <span class="hero-role-word">Junior Web</span>
+                        <span class="hero-role-word">Developer</span>
+                    </div>
                 </div>
 
             </div>
         </main>
 
-        <footer class="glass-bar idx-footer">
-            <div class="idx-footer-inner">
-                <span th:text="${profil != null ? profil.nama : 'Portfolio'}">Portfolio</span>
-                <span>Portfolio<span class="idx-dot">.</span></span>
-            </div>
-        </footer>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
+
 </html>

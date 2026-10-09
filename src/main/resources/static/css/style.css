@@ -1,12 +1,4 @@
-/* =========================================================
-   style.css — Portfolio Project
-   Berlaku untuk: tentang.html, index.html, dashboard.html,
-                  login.html, semua halaman edit/admin
-   ========================================================= */
 
-/* ---------------------------------------------------------
-   GLOBALS — Dipakai semua halaman
-   --------------------------------------------------------- */
 
 html {
     scroll-behavior: smooth;
@@ -19,23 +11,15 @@ body {
     overflow-x: hidden;
 }
 
-/* Warna background utility */
 .latar-item  { background: #0f0f0f; }
 .area-gelap  { background: #151515; }
 
-/* Warna accent merah — dipakai semua halaman */
 .tulisan-merah { color: #fa1226; }
 
-/* Scroll offset untuk sticky header */
 section[id],
 div[id] {
     scroll-margin-top: 72px;
 }
-
-
-/* ---------------------------------------------------------
-   DASHBOARD — Sidebar admin
-   --------------------------------------------------------- */
 
 .menu-samping {
     width: 260px;
@@ -57,7 +41,6 @@ div[id] {
     color: #fff !important;
 }
 
-/* Navbar global (dashboard pakai .navbar .nav-link) */
 .navbar .nav-link {
     transition: color 0.2s ease;
     font-weight: 500;
@@ -68,10 +51,6 @@ div[id] {
 .navbar .nav-link.active {
     color: #fa1226 !important;
 }
-
-/* ---------------------------------------------------------
-   MISC — Dipakai beberapa halaman
-   --------------------------------------------------------- */
 
 .stiker-kuning {
     padding: 3px 10px;
@@ -98,7 +77,6 @@ div[id] {
     transform: translateY(-2px);
 }
 
-/* Bootstrap override tipis — hanya warna */
 .btn-danger          { background-color: #fa1226; border-color: #fa1226; }
 .btn-danger:hover    { background-color: #d4001f; border-color: #d4001f; }
 .btn-outline-danger  { color: #fa1226; border-color: #fa1226; }

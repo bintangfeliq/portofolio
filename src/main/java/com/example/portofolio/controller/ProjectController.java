@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,16 +74,35 @@ public class ProjectController {
     }
 
     public void simpanGambar(Project project, MultipartFile[] files) throws IOException {
-    Path folder = Paths.get("src/main/resources/static/images/");
-    for (MultipartFile file : files) {
-        if (!file.isEmpty()) {
-            String nama = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-            Files.copy(file.getInputStream(), folder.resolve(nama),StandardCopyOption.REPLACE_EXISTING);
+        if (files == null || files.length == 0) {
+            return;
+        }
+        Path folder = Paths.get("src/main/resources/static/images/");
+        if (!Files.exists(folder)) {
+            Files.createDirectories(folder);
+        }
+        Path targetFolder = Paths.get("target/classes/static/images/");
 
-            Gambar gambar = new Gambar();
-            gambar.setGambar(nama);
-            gambar.setProject(project);
-            gambarService.tambahGambar(gambar);
+        for (MultipartFile file : files) {
+            if (file != null && !file.isEmpty()) {
+                String originalFilename = file.getOriginalFilename();
+                String cleanName = (originalFilename != null && !originalFilename.isBlank()) 
+                        ? Paths.get(originalFilename).getFileName().toString() 
+                        : "image.png";
+                String nama = System.currentTimeMillis() + "_" + UUID.randomUUID().toString().substring(0, 8) + "_" + cleanName;
+                Files.copy(file.getInputStream(), folder.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
+
+                if (Files.exists(targetFolder)) {
+                    try {
+                        Files.copy(folder.resolve(nama), targetFolder.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
+                    } catch (Exception ignored) {
+                    }
+                }
+
+                Gambar gambar = new Gambar();
+                gambar.setGambar(nama);
+                gambar.setProject(project);
+                gambarService.tambahGambar(gambar);
             }
         }
     }

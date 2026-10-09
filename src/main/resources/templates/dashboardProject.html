@@ -3,120 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project - Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Kelola Project - Dashboard Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
 </head>
-<body class="latar-item text-light min-vh-100 py-5">
-    
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-secondary">
-            <div>
-                <h2 class="fw-bold mb-1">Kelola <span class="tulisan-merah">Project</span></h2>
-                <p class="text-secondary small mb-0">kelola project</p>
-            </div>
-            <div>
-                <a th:href="@{/dashboard}" class="btn btn-outline-danger btn-sm me-2">Kembali</a>
-            </div>
-        </div>
+<body class="comic-dash-body">
 
-        <div class="row g-4 align-items-start">      
+    <div class="comic-dash-wrapper">
+        
+        <aside class="comic-dash-sidebar">
+            <div class="comic-dash-brand">
+                <a th:href="@{/dashboard}" class="comic-brand-title">
+                    Portfolio<span>.</span>
+                </a>
+            </div>
+
+            <nav class="comic-dash-nav">
+                <span class="comic-nav-section-title">Menu Utama</span>
+                <a th:href="@{/dashboard}" class="comic-nav-item">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a th:href="@{/dashboard/editTentang}" class="comic-nav-item">
+                    <i class="bi bi-person"></i>
+                    <span>Tentang Saya</span>
+                </a>
+                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-nav-item">
+                    <i class="bi bi-mortarboard"></i>
+                    <span>Pendidikan</span>
+                </a>
+                <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-nav-item">
+                    <i class="bi bi-code-slash"></i>
+                    <span>Skill</span>
+                </a>
+                <a th:href="@{/dashboard/dashboardProject}" class="comic-nav-item active">
+                    <i class="bi bi-layers"></i>
+                    <span>Project</span>
+                </a>
+                <a th:href="@{/dashboard/editKontak}" class="comic-nav-item">
+                    <i class="bi bi-envelope"></i>
+                    <span>Kontak</span>
+                </a>
+            </nav>
+
+            <div class="comic-dash-sidebar-footer">
+                <a th:href="@{/}" class="comic-logout-btn">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Keluar</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="comic-dash-main">
             
-            <div class="col-lg-5">
-                <div class="card area-gelap text-light border-secondary shadow p-2 rounded-4">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2">
-                            <i class="bi bi-plus-circle tulisan-merah"></i> Tambah Project
-                        </h4>
+            <div class="comic-dash-header">
+                <div>
+                    <h1 class="comic-dash-header-title">
+                        Kelola <span>Project Portofolio</span>
+                    </h1>
+                    <p class="comic-dash-header-desc">
+                        Tambah karya dan aplikasi baru atau perbarui project yang telah ada.
+                    </p>
+                </div>
+            </div>
 
+            <div class="comic-dash-grid">
+                
+                <div class="comic-panel">
+                    <div class="comic-panel-header">
+                        <h2 class="comic-panel-title">
+                            <i class="bi bi-plus-circle"></i>
+                            <span>Tambah Project</span>
+                        </h2>
+                    </div>
+                    <div class="comic-panel-body">
                         <form th:action="@{/dashboard/project/tambah}" method="POST" enctype="multipart/form-data">
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">Nama Project</label>
-                                <input type="text" name="namaProject" class="form-control bg-dark text-light border-secondary" required>
+                            
+                            <div class="comic-form-group">
+                                <label for="namaProject" class="comic-form-label">Nama Project</label>
+                                <input type="text"
+                                       id="namaProject"
+                                       name="namaProject"
+                                       class="comic-form-control"
+                                       placeholder="Contoh: Aplikasi Manajemen Keuangan"
+                                       required>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">Teknologi yang Digunakan</label>
-                                <input type="text" name="teknologi" class="form-control bg-dark text-light border-secondary" required>
+                            <div class="comic-form-group">
+                                <label for="teknologi" class="comic-form-label">Teknologi yang Digunakan</label>
+                                <input type="text"
+                                       id="teknologi"
+                                       name="teknologi"
+                                       class="comic-form-control"
+                                       placeholder="Contoh: Spring Boot, MySQL, Thymeleaf"
+                                       required>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">Gambar</label>
-                                <input type="file" name="files"  class="form-control bg-dark text-light border-secondary">
+                            <div class="comic-form-group">
+                                <label for="files" class="comic-form-label">
+                                    <i class="bi bi-images"></i> Unggah Foto Project
+                                </label>
+                                <input type="file"
+                                       id="files"
+                                       name="files"
+                                       class="comic-form-control"
+                                       accept="image/*"
+                                       multiple>
+                                <small style="display: block; font-size: 0.76rem; color: var(--text-muted); margin-top: 0.35rem; line-height: 1.4;">
+                                    <i class="bi bi-info-circle"></i> Tekan <strong>Ctrl</strong> (atau <strong>Cmd</strong> di Mac) untuk memilih lebih dari 1 foto sekaligus.
+                                </small>
+                                
+                                                                <div id="previewContainer" style="display: none; margin-top: 0.75rem; padding: 0.75rem; background: #0e0e16; border: 1.5px dashed rgba(255,255,255,0.15); border-radius: 6px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                        <span id="previewCount" style="font-size: 0.78rem; font-weight: 700; color: var(--text-secondary);"></span>
+                                        <button type="button" id="clearFilesBtn" style="background: none; border: none; color: var(--red-primary); font-size: 0.75rem; font-weight: 700; cursor: pointer; padding: 0;">
+                                            <i class="bi bi-trash"></i> Reset Pilihan
+                                        </button>
+                                    </div>
+                                    <div id="previewGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 0.5rem; max-height: 190px; overflow-y: auto;">
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="mb-4">
-                                <label class="form-label text-secondary small">Deskripsi Project</label>
-                                <textarea name="deskripsi" rows="4" class="form-control bg-dark text-light border-secondary"  required></textarea>
+                            <div class="comic-form-group">
+                                <label for="deskripsi" class="comic-form-label">Deskripsi Project</label>
+                                <textarea id="deskripsi"
+                                          name="deskripsi"
+                                          rows="4"
+                                          class="comic-form-control"
+                                          placeholder="Jelaskan fitur dan tujuan dari project ini..."
+                                          required></textarea>
                             </div>
 
-                            <button type="submit" class="tombol-pencet w-100 py-2 fw-semibold text-white">
-                                <i class="bi bi-save me-1"></i> Simpan Project
+                            <button type="submit" class="comic-submit-btn">
+                                <i class="bi bi-save"></i>
+                                <span>Simpan Project</span>
                             </button>
                         </form>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-7">
-                <div class="card area-gelap text-light border-secondary shadow p-2 rounded-4">
-                    <div class="card-body p-4 d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="card-title fw-bold mb-0 d-flex align-items-center gap-2">
-                                <i class="bi bi-folder-check tulisan-merah"></i> Daftar Project
-                            </h4>
-                            <span class="text-secondary small" th:text="${#lists.size(projects)} + ' Project'">0 Project</span>
-                        </div>
-
-                        <div class="table-responsive flex-grow-1">
-                            <table class="table table-dark table-hover align-middle mb-0" style="background: transparent;">
-                                <thead>
-                                    <tr class="text-secondary border-bottom border-secondary small">
-                                        <th scope="col" style="background: transparent; width: 45px;">No</th>
-                                        <th scope="col" style="background: transparent;">Nama Project</th>
-                                        <th scope="col" style="background: transparent;">Teknologi</th>
-                                        <th scope="col" style="background: transparent;">Foto</th>
-                                        <th scope="col" style="background: transparent;" class="text-end">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="p, pStat : ${projects}" class="border-bottom border-secondary border-opacity-25">
-                                        <td style="background: transparent;" class="text-secondary small fw-medium" th:text="${pStat.count}">1</td>
-                                        <td style="background: transparent;" class="fw-semibold text-light" th:text="${p.namaProject}">Aplikasi E-Commerce</td>
-                                        <td style="background: transparent;">
-                                            <span class="badge bg-secondary bg-opacity-25 text-light" th:text="${p.teknologi}">Spring Boot</span>
-                                        </td>
-                                        <td style="background: transparent;">
-                                            <span class="badge bg-dark border border-secondary text-secondary small">
-                                                <i class="bi bi-image tulisan-merah me-1"></i>
-                                                <span th:text="${p.gambar != null ? #lists.size(p.gambar) : 0}">0</span> Foto
-                                            </span>
-                                        </td>
-                                        <td style="background: transparent;" class="text-end">
-                                            <div class="d-inline-flex gap-2">
-                                                <a th:href="@{'/dashboard/dashboardProject/editProject/' + ${p.id}}" class="btn btn-outline-secondary btn-sm py-1 px-2" title="Edit">
-                                                    <i class="bi bi-pencil"></i>
-                                                </a>
-                                                <a th:href="@{'/dashboard/dashboardProject/hapusProject/' + ${p.id}}" 
-                                                   class="btn btn-outline-danger btn-sm py-1 px-2" 
-                                                   onclick="return confirm('Hapus project ini beserta seluruh fotonya?');" title="Hapus">
-                                                    <i class="bi bi-trash"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
+                <div class="comic-panel">
+                    <div class="comic-panel-header">
+                        <h2 class="comic-panel-title">
+                            <i class="bi bi-folder-check"></i>
+                            <span>Daftar Project</span>
+                        </h2>
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);" th:text="${#lists.size(projects)} + ' Project'">0 Project</span>
+                    </div>
+                    <div class="comic-panel-body" style="padding: 0;">
+                        <table class="comic-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px;">No</th>
+                                    <th>Nama Project</th>
+                                    <th>Teknologi</th>
+                                    <th>Foto</th>
+                                    <th style="text-align: right;">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="p, pStat : ${projects}">
+                                    <td th:text="${pStat.count}">1</td>
+                                    <td class="comic-table-project-name" th:text="${p.namaProject}">Aplikasi E-Commerce</td>
+                                    <td style="font-size: 0.8rem;" th:text="${p.teknologi}">Spring Boot</td>
+                                    <td>
+                                        <span style="font-size: 0.78rem; color: var(--text-muted);" th:text="${p.gambar != null ? #lists.size(p.gambar) : 0} + ' Foto'">0 Foto</span>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <div style="display: inline-flex; gap: 0.35rem;">
+                                            <a th:href="@{'/dashboard/dashboardProject/editProject/' + ${p.id}}" 
+                                               class="comic-table-action-btn" 
+                                               title="Edit Project">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <a th:href="@{'/dashboard/dashboardProject/hapusProject/' + ${p.id}}" 
+                                               class="comic-table-action-btn" 
+                                               onclick="return confirm('Hapus project ini beserta seluruh fotonya?');" 
+                                               title="Hapus">
+                                                <i class="bi bi-trash" style="color: var(--red-primary);"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr th:if="${#lists.isEmpty(projects)}">
+                                    <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                        Belum ada data project yang ditambahkan.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
             </div>
 
-        </div>
+        </main>
+
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const fileInput = document.getElementById('files');
+        const previewContainer = document.getElementById('previewContainer');
+        const previewGrid = document.getElementById('previewGrid');
+        const previewCount = document.getElementById('previewCount');
+        const clearFilesBtn = document.getElementById('clearFilesBtn');
+
+        if (fileInput) {
+            fileInput.addEventListener('change', function () {
+                const files = Array.from(this.files || []);
+                previewGrid.innerHTML = '';
+
+                if (files.length > 0) {
+                    previewContainer.style.display = 'block';
+                    previewCount.textContent = files.length + ' foto dipilih';
+
+                    files.forEach((file) => {
+                        if (file.type.startsWith('image/')) {
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                const item = document.createElement('div');
+                                item.style.position = 'relative';
+                                item.style.height = '70px';
+                                item.style.borderRadius = '5px';
+                                item.style.overflow = 'hidden';
+                                item.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+                                item.style.background = '#1a1a24';
+
+                                const img = document.createElement('img');
+                                img.src = e.target.result;
+                                img.style.width = '100%';
+                                img.style.height = '100%';
+                                img.style.objectFit = 'cover';
+                                img.title = file.name;
+
+                                item.appendChild(img);
+                                previewGrid.appendChild(item);
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                } else {
+                    previewContainer.style.display = 'none';
+                }
+            });
+
+            if (clearFilesBtn) {
+                clearFilesBtn.addEventListener('click', function () {
+                    fileInput.value = '';
+                    previewGrid.innerHTML = '';
+                    previewContainer.style.display = 'none';
+                });
+            }
+        }
+    </script>
 </body>
 </html>

@@ -3,131 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendidikan - Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Kelola Pendidikan - Dashboard Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
 </head>
-<body class="latar-item text-light min-vh-100 py-5">
-    
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-secondary">
-            <div>
-                <h2 class="fw-bold mb-1">Kelola <span class="tulisan-merah">Pendidikan</span></h2>
-                <p class="text-secondary small mb-0">Ubah & kelola data riwayat pendidikan portfolio</p>
-            </div>
-            <div>
-                <a th:href="@{/dashboard}" class="btn btn-outline-danger btn-sm me-2">Kembali</a>
-            </div>
-        </div>
+<body class="comic-dash-body">
 
-        <div class="row g-4 align-items-start">      
+    <div class="comic-dash-wrapper">
+        
+        <aside class="comic-dash-sidebar">
+            <div class="comic-dash-brand">
+                <a th:href="@{/dashboard}" class="comic-brand-title">
+                    Portfolio<span>.</span>
+                </a>
+            </div>
+
+            <nav class="comic-dash-nav">
+                <span class="comic-nav-section-title">Menu Utama</span>
+                <a th:href="@{/dashboard}" class="comic-nav-item">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a th:href="@{/dashboard/editTentang}" class="comic-nav-item">
+                    <i class="bi bi-person"></i>
+                    <span>Tentang Saya</span>
+                </a>
+                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-nav-item active">
+                    <i class="bi bi-mortarboard"></i>
+                    <span>Pendidikan</span>
+                </a>
+                <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-nav-item">
+                    <i class="bi bi-code-slash"></i>
+                    <span>Skill</span>
+                </a>
+                <a th:href="@{/dashboard/dashboardProject}" class="comic-nav-item">
+                    <i class="bi bi-layers"></i>
+                    <span>Project</span>
+                </a>
+                <a th:href="@{/dashboard/editKontak}" class="comic-nav-item">
+                    <i class="bi bi-envelope"></i>
+                    <span>Kontak</span>
+                </a>
+            </nav>
+
+            <div class="comic-dash-sidebar-footer">
+                <a th:href="@{/}" class="comic-logout-btn">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Keluar</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="comic-dash-main">
             
-            <div class="col-lg-5">
-                <div class="card area-gelap text-light border-secondary shadow p-2 rounded-4">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-4 d-flex align-items-center gap-2">
-                            <i class="bi bi-plus-circle tulisan-merah"></i> Tambah Pendidikan
-                        </h4>
+            <div class="comic-dash-header">
+                <div>
+                    <h1 class="comic-dash-header-title">
+                        Kelola <span>Riwayat Pendidikan</span>
+                    </h1>
+                    <p class="comic-dash-header-desc">
+                        Tambah, perbarui, dan atur riwayat pendidikan untuk ditampilkan di portfolio.
+                    </p>
+                </div>
+            </div>
 
+            <div class="comic-dash-grid">
+                
+                <div class="comic-panel">
+                    <div class="comic-panel-header">
+                        <h2 class="comic-panel-title">
+                            <i class="bi bi-plus-circle"></i>
+                            <span>Tambah Pendidikan</span>
+                        </h2>
+                    </div>
+                    <div class="comic-panel-body">
                         <form th:action="@{/dashboard/pendidikan/tambah}" method="POST">
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">Nama Sekolah</label>
-                                <input type="text" name="nama" class="form-control bg-dark text-light border-secondary" placeholder="Contoh: SMK Assalaam Bandung" required>
+                            
+                            <div class="comic-form-group">
+                                <label for="nama" class="comic-form-label">Nama Sekolah / Institusi</label>
+                                <input type="text"
+                                       id="nama"
+                                       name="nama"
+                                       class="comic-form-control"
+                                       placeholder="Contoh: SMK Assalaam Bandung"
+                                       required>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label text-secondary small">Tingkat Pendidikan</label>
-                                <input type="text" name="tingkat" class="form-control bg-dark text-light border-secondary" placeholder="Contoh: SMK / SMA / S1 / SMP" required>
+                            <div class="comic-form-group">
+                                <label for="tingkat" class="comic-form-label">Tingkat Pendidikan</label>
+                                <input type="text"
+                                       id="tingkat"
+                                       name="tingkat"
+                                       class="comic-form-control"
+                                       placeholder="Contoh: SMK, SMA, S1"
+                                       required>
                             </div>
 
-                            <div class="row g-2 mb-4">
-                                <div class="col-6">
-                                    <label class="form-label text-secondary small">Tahun Mulai</label>
-                                    <input type="number" name="tahunMulai" class="form-control bg-dark text-light border-secondary" placeholder="Contoh: 2022" required>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;" class="comic-form-group">
+                                <div>
+                                    <label for="tahunMulai" class="comic-form-label">Tahun Mulai</label>
+                                    <input type="number"
+                                           id="tahunMulai"
+                                           name="tahunMulai"
+                                           class="comic-form-control"
+                                           placeholder="2021"
+                                           required>
                                 </div>
-                                <div class="col-6">
-                                    <label class="form-label text-secondary small">Tahun Selesai</label>
-                                    <input type="number" name="tahunSelsai" class="form-control bg-dark text-light border-secondary" placeholder="Contoh: 2025">
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-text text-secondary" style="font-size: 11px;">
-                                        Kosongkan tahun selesai jika pendidikan masih berlangsung sampai saat ini.
-                                    </div>
+                                <div>
+                                    <label for="tahunSelsai" class="comic-form-label">Tahun Selesai</label>
+                                    <input type="number"
+                                           id="tahunSelsai"
+                                           name="tahunSelsai"
+                                           class="comic-form-control"
+                                           placeholder="2024">
                                 </div>
                             </div>
+                            <p style="font-size: 0.76rem; color: var(--text-muted); margin: -0.5rem 0 1.25rem 0;">
+                                Kosongkan tahun selesai jika masih berlangsung.
+                            </p>
 
-                            <button type="submit" class="tombol-pencet w-100 py-2 fw-semibold text-white">
-                                <i class="bi bi-save me-1"></i> Simpan Pendidikan
+                            <button type="submit" class="comic-submit-btn">
+                                <i class="bi bi-save"></i>
+                                <span>Simpan Pendidikan</span>
                             </button>
                         </form>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-7">
-                <div class="card area-gelap text-light border-secondary shadow p-2 rounded-4">
-                    <div class="card-body p-4 d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="card-title fw-bold mb-0 d-flex align-items-center gap-2">
-                                <i class="bi bi-mortarboard tulisan-merah"></i> Riwayat Pendidikan
-                            </h4>
-                            <span class="text-secondary small" th:text="${#lists.size(pendidikan)} + ' Pendidikan'">0 Pendidikan</span>
-                        </div>
-
-                        <div class="table-responsive flex-grow-1">
-                            <table class="table table-dark table-hover align-middle mb-0" style="background: transparent;">
-                                <thead>
-                                    <tr class="text-secondary border-bottom border-secondary small">
-                                        <th scope="col" style="background: transparent; width: 45px;">No</th>
-                                        <th scope="col" style="background: transparent;">Nama Sekolah</th>
-                                        <th scope="col" style="background: transparent;">Tingkat</th>
-                                        <th scope="col" style="background: transparent;">Periode</th>
-                                        <th scope="col" style="background: transparent;" class="text-end">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="p, pStat : ${pendidikan}" class="border-bottom border-secondary border-opacity-25">
-                                        <td style="background: transparent;" class="text-secondary small fw-medium" th:text="${pStat.count}">1</td>
-                                        <td style="background: transparent;" class="fw-semibold text-light" th:text="${p.nama}">SMK Assalaam Bandung</td>
-                                        <td style="background: transparent;">
-                                            <span class="badge bg-secondary bg-opacity-25 text-light" th:text="${p.tingkat}">SMK</span>
-                                        </td>
-                                        <td style="background: transparent;" class="small text-secondary">
-                                            <span th:text="${p.tahunMulai}">2022</span>
-                                            <span> - </span>
-                                            <span th:if="${p.tahunSelsai != null}" th:text="${p.tahunSelsai}">2025</span>
-                                            <span th:if="${p.tahunSelsai == null}" class="stiker-kuning">Sekarang</span>
-                                        </td>
-                                        <td style="background: transparent;" class="text-end">
-                                            <div class="d-inline-flex gap-2">
-                                                <a th:href="@{'/dashboard/dashboardPendidikan/editPendidikan/' + ${p.id}}" class="btn btn-outline-secondary btn-sm py-1 px-2" title="Edit">
-                                                    <i class="bi bi-pencil"></i>
-                                                </a>
-                                                <a th:href="@{'/dashboard/dashboardPendidikan/hapusPendidikan/' + ${p.id}}" 
-                                                   class="btn btn-outline-danger btn-sm py-1 px-2" 
-                                                   onclick="return confirm('Hapus data pendidikan ini?');" title="Hapus">
-                                                    <i class="bi bi-trash"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr th:if="${#lists.isEmpty(pendidikan)}">
-                                        <td colspan="5" class="text-center text-secondary small py-4" style="background: transparent;">
-                                            Belum ada data pendidikan yang ditambahkan.
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
+                <div class="comic-panel">
+                    <div class="comic-panel-header">
+                        <h2 class="comic-panel-title">
+                            <i class="bi bi-mortarboard"></i>
+                            <span>Daftar Riwayat Pendidikan</span>
+                        </h2>
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);" th:text="${#lists.size(pendidikan)} + ' Data'">0 Data</span>
+                    </div>
+                    <div class="comic-panel-body" style="padding: 0;">
+                        <table class="comic-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px;">No</th>
+                                    <th>Sekolah</th>
+                                    <th>Tingkat</th>
+                                    <th>Periode</th>
+                                    <th style="text-align: right;">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="p, pStat : ${pendidikan}">
+                                    <td th:text="${pStat.count}">1</td>
+                                    <td class="comic-table-project-name" th:text="${p.nama}">SMK Assalaam Bandung</td>
+                                    <td>
+                                        <span style="color: var(--red-primary); font-weight: 700; font-size: 0.78rem;" th:text="${p.tingkat}">SMK</span>
+                                    </td>
+                                    <td style="font-size: 0.8rem;">
+                                        <span th:text="${p.tahunMulai}">2021</span> - 
+                                        <span th:text="${p.tahunSelsai != null ? p.tahunSelsai : 'Sekarang'}">2024</span>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <div style="display: inline-flex; gap: 0.35rem;">
+                                            <a th:href="@{'/dashboard/dashboardPendidikan/editPendidikan/' + ${p.id}}" 
+                                               class="comic-table-action-btn" 
+                                               title="Edit Pendidikan">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <a th:href="@{'/dashboard/dashboardPendidikan/hapusPendidikan/' + ${p.id}}" 
+                                               class="comic-table-action-btn" 
+                                               onclick="return confirm('Hapus data pendidikan ini?');" 
+                                               title="Hapus">
+                                                <i class="bi bi-trash" style="color: var(--red-primary);"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr th:if="${#lists.isEmpty(pendidikan)}">
+                                    <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                        Belum ada riwayat pendidikan yang ditambahkan.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
             </div>
 
-        </div>
+        </main>
+
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
