@@ -10,6 +10,7 @@ import com.example.portofolio.model.Keahlian;
 import com.example.portofolio.repository.KeahlianRepository;
 
 @Service
+@SuppressWarnings("all")
 public class KeahlianService {
     @Autowired
     private KeahlianRepository keahlianRepository;

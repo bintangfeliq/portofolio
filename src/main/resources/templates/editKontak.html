@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Kontak - Dashboard Admin</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,130 +18,68 @@
         
         <aside class="comic-dash-sidebar">
             <div class="comic-dash-brand">
-                <a th:href="@{/dashboard}" class="comic-brand-title">
-                    Portfolio<span>.</span>
-                </a>
+                <a th:href="@{/dashboard}" class="comic-brand-title">Portfolio<span>.</span></a>
             </div>
 
             <nav class="comic-dash-nav">
                 <span class="comic-nav-section-title">Menu Utama</span>
-                <a th:href="@{/dashboard}" class="comic-nav-item">
-                    <i class="bi bi-grid-1x2-fill"></i>
-                    <span>Dashboard</span>
-                </a>
-                <a th:href="@{/dashboard/editTentang}" class="comic-nav-item">
-                    <i class="bi bi-person"></i>
-                    <span>Tentang Saya</span>
-                </a>
-                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-nav-item">
-                    <i class="bi bi-mortarboard"></i>
-                    <span>Pendidikan</span>
-                </a>
-                <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-nav-item">
-                    <i class="bi bi-code-slash"></i>
-                    <span>Skill</span>
-                </a>
-                <a th:href="@{/dashboard/dashboardProject}" class="comic-nav-item">
-                    <i class="bi bi-layers"></i>
-                    <span>Project</span>
-                </a>
-                <a th:href="@{/dashboard/editKontak}" class="comic-nav-item active">
-                    <i class="bi bi-envelope"></i>
-                    <span>Kontak</span>
-                </a>
+                <a th:href="@{/dashboard}" class="comic-nav-item"><i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span></a>
+                <a th:href="@{/dashboard/editTentang}" class="comic-nav-item"><i class="bi bi-person"></i><span>Tentang Saya</span></a>
+                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-nav-item"><i class="bi bi-mortarboard"></i><span>Pendidikan</span></a>
+                <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-nav-item"><i class="bi bi-code-slash"></i><span>Skill</span></a>
+                <a th:href="@{/dashboard/dashboardProject}" class="comic-nav-item"><i class="bi bi-layers"></i><span>Project</span></a>
+                <a th:href="@{/dashboard/editKontak}" class="comic-nav-item active"><i class="bi bi-envelope"></i><span>Kontak</span></a>
             </nav>
 
             <div class="comic-dash-sidebar-footer">
-                <a th:href="@{/}" class="comic-logout-btn">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Keluar</span>
-                </a>
+                <a th:href="@{/}" class="comic-logout-btn"><i class="bi bi-box-arrow-right"></i><span>Keluar</span></a>
             </div>
         </aside>
 
         <main class="comic-dash-main">
-            
             <div class="comic-dash-header">
                 <div>
-                    <h1 class="comic-dash-header-title">
-                        Kelola <span>Informasi Kontak</span>
-                    </h1>
-                    <p class="comic-dash-header-desc">
-                        Perbarui saluran komunikasi dan tautan media sosial Anda.
-                    </p>
+                    <h1 class="comic-dash-header-title">Kelola <span>Informasi Kontak</span></h1>
+                    <p class="comic-dash-header-desc">Perbarui saluran komunikasi dan tautan media sosial Anda.</p>
                 </div>
             </div>
 
             <div class="comic-dash-grid">
-                
                 <div class="comic-panel">
                     <div class="comic-panel-header">
-                        <h2 class="comic-panel-title">
-                            <i class="bi bi-pencil-square"></i>
-                            <span>Form Update Kontak</span>
-                        </h2>
+                        <h2 class="comic-panel-title">Form Update Kontak</h2>
                     </div>
                     <div class="comic-panel-body">
                         <form th:action="@{/dashboard/editKontak}" th:object="${kontak}" method="POST">
                             
                             <div class="comic-form-group">
                                 <label for="email" class="comic-form-label">Alamat Email</label>
-                                <input type="email"
-                                       id="email"
-                                       name="email"
-                                       th:value="${kontak.email}"
-                                       class="comic-form-control"
-                                       placeholder="nama@email.com"
-                                       required>
+                                <input type="email" id="email" name="email" th:value="${kontak.email}" class="comic-form-control" placeholder="nama@email.com" required>
                             </div>
 
                             <div class="comic-form-group">
                                 <label for="telepon" class="comic-form-label">No. Telepon / WhatsApp</label>
-                                <input type="text"
-                                       id="telepon"
-                                       name="telepon"
-                                       th:value="${kontak.telepon}"
-                                       class="comic-form-control"
-                                       placeholder="08123456789"
-                                       required>
+                                <input type="text" id="telepon" name="telepon" th:value="${kontak.telepon}" class="comic-form-control" placeholder="08123456789" required>
                             </div>
 
                             <div class="comic-form-group">
                                 <label for="github" class="comic-form-label">Profil GitHub</label>
-                                <input type="text"
-                                       id="github"
-                                       name="github"
-                                       th:value="${kontak.github}"
-                                       class="comic-form-control"
-                                       placeholder="https://github.com/username"
-                                       required>
+                                <input type="text" id="github" name="github" th:value="${kontak.github}" class="comic-form-control" placeholder="https://github.com/username" required>
                             </div>
 
                             <div class="comic-form-group">
                                 <label for="instagram" class="comic-form-label">Profil Instagram</label>
-                                <input type="text"
-                                       id="instagram"
-                                       name="instagram"
-                                       th:value="${kontak.instagram}"
-                                       class="comic-form-control"
-                                       placeholder="https://instagram.com/username"
-                                       required>
+                                <input type="text" id="instagram" name="instagram" th:value="${kontak.instagram}" class="comic-form-control" placeholder="https://instagram.com/username" required>
                             </div>
 
-                            <button type="submit" class="comic-submit-btn">
-                                <i class="bi bi-save"></i>
-                                <span>Simpan Kontak</span>
-                            </button>
+                            <button type="submit" class="comic-submit-btn"><span>Simpan Kontak</span></button>
                         </form>
                     </div>
                 </div>
 
                 <div class="comic-panel">
                     <div class="comic-panel-header">
-                        <h2 class="comic-panel-title">
-                            <i class="bi bi-eye"></i>
-                            <span>Kontak Saat Ini</span>
-                        </h2>
+                        <h2 class="comic-panel-title">Kontak Saat Ini</h2>
                     </div>
                     <div class="comic-panel-body">
                         <div class="comic-contact-list">
@@ -148,40 +87,19 @@
                                 <span class="comic-contact-label">
                                     <i class="bi bi-envelope-fill"></i> Email
                                 </span>
-                                <a th:if="${kontak != null and kontak.email != null}" 
-                                   th:href="'mailto:' + ${kontak.email}" 
-                                   class="comic-panel-link" 
-                                   th:text="${kontak.email}">email</a>
+                                <a th:if="${kontak != null and kontak.email != null}"  th:href="'mailto:' + ${kontak.email}"  class="comic-panel-link"  th:text="${kontak.email}">email</a>
                             </div>
                             <div class="comic-contact-row">
-                                <span class="comic-contact-label">
-                                    <i class="bi bi-whatsapp"></i> WhatsApp
-                                </span>
-                                <a th:if="${kontak != null and kontak.telepon != null}" 
-                                   th:href="'https://wa.me/' + ${kontak.telepon}" 
-                                   target="_blank" 
-                                   class="comic-panel-link" 
-                                   th:text="${kontak.telepon}">telepon</a>
+                                <span class="comic-contact-label"><i class="bi bi-whatsapp"></i> WhatsApp</span>
+                                <a th:if="${kontak != null and kontak.telepon != null}"  th:href="'https://wa.me/' + ${kontak.telepon}"  target="_blank"  class="comic-panel-link"  th:text="${kontak.telepon}">telepon</a>
                             </div>
                             <div class="comic-contact-row">
-                                <span class="comic-contact-label">
-                                    <i class="bi bi-github"></i> GitHub
-                                </span>
-                                <a th:if="${kontak != null and kontak.github != null}" 
-                                   th:href="${kontak.github}" 
-                                   target="_blank" 
-                                   class="comic-panel-link" 
-                                   th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">github</a>
+                                <span class="comic-contact-label"><i class="bi bi-github"></i> GitHub</span>
+                                <a th:if="${kontak != null and kontak.github != null}" th:href="${kontak.github}"  target="_blank"  class="comic-panel-link"  th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">github</a>
                             </div>
                             <div class="comic-contact-row">
-                                <span class="comic-contact-label">
-                                    <i class="bi bi-instagram"></i> Instagram
-                                </span>
-                                <a th:if="${kontak != null and kontak.instagram != null}" 
-                                   th:href="${kontak.instagram}" 
-                                   target="_blank" 
-                                   class="comic-panel-link" 
-                                   th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">instagram</a>
+                                <span class="comic-contact-label"><i class="bi bi-instagram"></i> Instagram</span>
+                                <a th:if="${kontak != null and kontak.instagram != null}"  th:href="${kontak.instagram}"  target="_blank"  class="comic-panel-link"  th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">instagram</a>
                             </div>
                         </div>
                     </div>

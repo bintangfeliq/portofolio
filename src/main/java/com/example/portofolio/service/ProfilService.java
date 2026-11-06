@@ -10,6 +10,7 @@ import com.example.portofolio.model.Profil;
 import com.example.portofolio.repository.ProfilRepository;
 
 @Service
+@SuppressWarnings("all")
 public class ProfilService {
     @Autowired
     private ProfilRepository profilRepository;

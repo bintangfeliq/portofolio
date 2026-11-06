@@ -1,531 +1,377 @@
 <!DOCTYPE html>
 <html lang="id" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="'Tentang - ' + ${profil != null ? profil.nama : 'Portfolio'}">Tentang Saya</title>
-    <link rel="icon" type="image/png" th:href="@{/images/brow.png}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <link rel="stylesheet" th:href="@{/css/tentang.css}">
-    <link rel="stylesheet" th:href="@{/css/container-scroll.css}">
-    <link rel="stylesheet" th:href="@{/css/education-orbit.css}">
-    <link rel="stylesheet" th:href="@{/css/skill-scroller.css}">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Muhammad Bintang Feliq | Portfolio</title>
+        <meta name="keywords" content="Muhammad Bintang Feliq, Bintang Feliq, Portofolio Bintang Feliq, Muhammad bintang">
+        <meta name="description" content="Portofolio resmi Muhammad Bintang Feliq (Bintang Feliq)">
+        <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+        <link rel="stylesheet" th:href="@{/css/tentang.css}">
+        <link rel="stylesheet" th:href="@{/css/container-scroll.css}">
+        <link rel="stylesheet" th:href="@{/css/education-orbit.css}">
+        <link rel="stylesheet" th:href="@{/css/skill-scroller.css}">
+    </head>
 
-<body class="about-page">
-
-    <div class="ab-bg-ambient" aria-hidden="true"></div>
-
-    <header class="folio-nav">
-        <div class="folio-nav-container">
-            <nav class="folio-nav-links">
-                <a th:href="@{/}" class="folio-link"><i class="bi bi-house"></i> Beranda</a>
-                <a href="#tentang" class="folio-link"><i class="bi bi-person"></i> Tentang</a>
-                <a href="#pendidikan" class="folio-link"><i class="bi bi-mortarboard"></i> Pendidikan</a>
-                <a href="#skill" class="folio-link"><i class="bi bi-code-slash"></i> Skill</a>
-                <a href="#project" class="folio-link"><i class="bi bi-layers"></i> Project</a>
-                <a href="#kontak" class="folio-link"><i class="bi bi-envelope"></i> Kontak</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-
-        <section class="folio-intro-section">
-            <div class="folio-intro-container">
-                <span class="comic-intro-tag">PROFIL</span>
-                <h1 class="folio-intro-title">
-                    Mengenal Lebih Dekat <br>
-                    <span class="folio-title-highlight">Dengan Saya</span>
-                </h1>
-                <p class="folio-intro-desc">
-                    Selamat datang di halaman Profil Saya. Di sini, Kamu dapat menemukan informasi mengenai latar belakang pendidikan, keahlian, proyek yang sudah saya kerjakan, dan Kontak untuk menghubungi saya.
-                </p>
-                <div class="folio-intro-scroll-hint">
-                    <a href="#tentang" class="folio-scroll-btn" aria-label="Scroll ke konten">
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                </div>
+    <body class="about-page">
+        <div class="ab-bg-ambient" aria-hidden="true"></div>
+        <header class="folio-nav">
+            <div class="folio-nav-container">
+                <nav class="folio-nav-links">
+                    <a th:href="@{/}" class="folio-link"><i class="bi bi-house"></i> Beranda</a>
+                    <a href="#tentang" class="folio-link"><i class="bi bi-person"></i> Tentang</a>
+                    <a href="#pendidikan" class="folio-link"><i class="bi bi-mortarboard"></i> Pendidikan</a>
+                    <a href="#skill" class="folio-link"><i class="bi bi-code-slash"></i> Skill</a>
+                    <a href="#project" class="folio-link"><i class="bi bi-layers"></i> Project</a>
+                    <a href="#kontak" class="folio-link"><i class="bi bi-envelope"></i> Kontak</a>
+                </nav>
             </div>
-        </section>
+        </header>
 
-        <section id="tentang" class="container-scroll-wrap">
-            <div class="container-scroll-stage">
+        <main>
 
-                <div class="container-scroll-card folio-hero-banner">
-                    <div class="folio-about-grid">
+            <section class="folio-intro-section">
+                <div class="folio-intro-container">
+                    <span class="comic-intro-tag">PROFIL</span>
+                    <h1 class="folio-intro-title">Mengenal Lebih Dekat <br><span class="folio-title-highlight">Dengan Saya</span></h1>
+                    <p class="folio-intro-desc">Selamat datang di halaman Profil
+                        Saya. Di sini, Kamu dapat menemukan informasi mengenai
+                        latar belakang pendidikan, keahlian, proyek yang sudah
+                        saya kerjakan, dan Kontak untuk menghubungi saya.</p>
+                    <div class="folio-intro-scroll-hint">
+                        <a href="#tentang" class="folio-scroll-btn" aria-label="Scroll ke konten"><i class="bi bi-chevron-down"></i></a>
+                    </div>
+                </div>
+            </section>
 
-                        <div class="folio-about-photo-col">
-                            <div class="comic-dossier-card">
-                                <div class="folio-about-avatar-wrap">
-                                    <img th:if="${profil != null and profil.foto != null}"
-                                         th:src="@{'/images/' + ${profil.foto}}"
-                                         alt="Foto Profil"
-                                         class="folio-about-img">
-                                    <img th:unless="${profil != null and profil.foto != null}"
-                                         th:src="@{/images/portrait_matched.jpg}"
-                                         alt="Foto Profil"
-                                         class="folio-about-img">
+            <section id="tentang" class="container-scroll-wrap">
+                <div class="container-scroll-stage">
+                    <div class="container-scroll-card folio-hero-banner">
+                        <div class="folio-about-grid">
+                            <div class="folio-about-photo-col">
+                                <div class="folio-profile-card">
+                                    <img th:if="${profil != null and profil.foto != null}" th:src="@{'/images/' + ${profil.foto}}" alt="Foto Profil" class="profile-card-avatar">
+                                    <img th:unless="${profil != null and profil.foto != null}" th:src="@{/images/portrait_matched.jpg}" alt="Foto Profil" class="profile-card-avatar">
                                 </div>
+                            </div>
+
+                            <div class="folio-about-info-col">
+                                <h2 class="folio-about-title">Halo, saya <span class="folio-title-highlight" th:text="${profil != null ? profil.nama : 'Muhammad Bintang Feliq'}">Muhammad Bintang Feliq</span></h2>
+                                <div class="folio-about-bio-wrap">
+                                    <p class="folio-about-bio" th:text="${profil.tentangSaya}">Tentang Saya</p>
+                                </div>
+                                <div class="folio-about-actions">
+                                    <a href="#kontak" class="comic-btn-primary"><i class="bi bi-chat-text-fill"></i><span>Hubungi Saya</span><i class="bi bi-arrow-right"></i></a>
+                                    <a th:if="${profil != null and profil.cv != null and !#strings.isEmpty(profil.cv)}" th:href="@{'/images/' + ${profil.cv}}" target="_blank" rel="noopener noreferrer" class="comic-btn-secondary"><i class="bi bi-file-earmark-person-fill"></i>
+                                        <span>Lihat CV</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="pendidikan" class="folio-section education-section">
+                <div class="folio-container">
+                    <div class="education-grid">
+                        <div class="education-info-col">
+                            <div class="folio-section-header">
+                                <span class="folio-section-tag"><i class="bi bi-mortarboard-fill"></i> Riwayat Pendidikan</span>
+                                <h2 class="folio-section-heading">Pendidikan</h2>
+                                <p class="folio-section-lead">Jejak pendidikan formal yang telah saya tempuh, dari pendidikan dasar hingga kejuruan Rekayasa Perangkat Lunak.</p>
                             </div>
                         </div>
 
-                        <div class="folio-about-info-col">
-                            <h2 class="folio-about-title">
-                                Halo, saya <span class="folio-title-highlight" th:text="${profil != null ? profil.nama : 'Muhammad Bintang Feliq'}">Muhammad Bintang Feliq</span>
-                            </h2>
-                            <div class="comic-about-speech-box">
-                                <p class="folio-about-bio" th:text="${profil.tentangSaya}">
-                                    Tentang Saya
-                                </p>
-                                <div class="comic-speech-tail" aria-hidden="true"></div>
-                            </div>
-                            <div class="folio-about-actions">
-                                <a href="#kontak" class="comic-btn-primary">
-                                    <i class="bi bi-chat-text-fill"></i>
-                                    <span>Hubungi Saya</span>
-                                    <i class="bi bi-arrow-right"></i>
-                                </a>
-                                <a th:if="${profil != null and profil.cv != null and !#strings.isEmpty(profil.cv)}"
-                                   th:href="@{'/images/' + ${profil.cv}}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="comic-btn-secondary">
-                                    <i class="bi bi-file-earmark-person-fill"></i>
-                                    <span>Lihat CV</span>
-                                </a>
+                        <div class="education-orbit-col">
+                            <div class="education-orbit-wrapper">
+                                <div class="education-orbit-stage">
+                                    <div class="education-orbit-track-outer"></div>
+                                    <div class="education-orbit-track-inner"></div>
+                                    <div class="education-core">
+                                        <div class="education-core-glow"></div>
+                                        <i class="bi bi-mortarboard-fill education-core-icon"></i>
+                                    </div>
+
+                                    <div class="education-orbit-track">
+                                        <div th:each="p, pStat : ${pendidikan}" class="education-orbit-item" th:style="'--angle: ' + (${pStat.index} * 360 / ${pStat.size}) + 'deg;'">
+                                            <div class="education-node-wrapper">
+                                                <button type="button" class="education-orbit-node" th:aria-label="${p.tingkat} + ' - ' + ${p.nama}">
+                                                    <span class="education-node-inner">
+                                                        <span class="education-node-label" th:text="${p.tingkat}">SD</span>
+                                                    </span>
+                                                </button>
+
+                                                <div class="education-chart-popover">
+                                                    <div class="edu-popover-header">
+                                                        <span class="edu-popover-badge" th:text="${p.tingkat}">SMK</span>
+                                                        <div class="edu-popover-period">
+                                                            <i class="bi bi-calendar3"></i>
+                                                            <span th:text="${p.tahunMulai} + ' – ' + (${p.tahunSelsai != null ? p.tahunSelsai : 'Sekarang'})">2021 – 2024</span>
+                                                        </div>
+                                                    </div>
+                                                    <h4 class="edu-popover-school" th:text="${p.nama}">Nama Sekolah</h4>
+                                                    <div class="edu-popover-arrow"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
+            </section>
 
-            </div>
-        </section>
+            <section id="skill" class="folio-section">
+                <div class="folio-container">
+                    <div class="folio-section-header">
+                        <span class="folio-section-tag"><i class="bi bi-code-slash"></i> Keahlian Teknis</span>
+                        <h2 class="folio-section-heading">Skill &amp; Keahlian</h2>
+                        <p class="folio-section-lead"> Skill dan Keahlian yang saya Kuasai, baik dalam pengembangan perangkat lunak maupun dalam bidang teknologi informasi.</p>
+                    </div>
 
-        <section id="pendidikan" class="folio-section education-section">
-            <div class="folio-container">
-                <div class="education-grid">
+                    <div class="brand-scroller-container">
+                        <div class="brand-scroller-row">
+                            <div class="brand-scroller-track track-left">
+                                <div class="brand-scroller-group">
+                                    <div th:each="k : ${keahlian}" class="brand-item">
+                                        <span class="brand-icon"><i class="bi bi-code-slash"></i></span>
+                                        <span class="brand-name" th:text="${k.nama}">Nama Skill</span>
+                                    </div>
+                                </div>
+                                <div class="brand-scroller-group" aria-hidden="true">
+                                    <div th:each="k : ${keahlian}" class="brand-item">
+                                        <span class="brand-icon"><i class="bi bi-code-slash"></i></span>
+                                        <span class="brand-name" th:text="${k.nama}">Nama Skill</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="education-info-col">
-                        <div class="folio-section-header">
-                            <span class="folio-section-tag"><i class="bi bi-mortarboard-fill"></i> Riwayat Pendidikan</span>
-                            <h2 class="folio-section-heading">Pendidikan</h2>
+                        <div class="brand-scroller-row">
+                            <div class="brand-scroller-track track-right">
+                                <div class="brand-scroller-group">
+                                    <div th:each="k : ${keahlian}" class="brand-item">
+                                        <span class="brand-icon"><i class="bi bi-code-slash"></i></span>
+                                        <span class="brand-name" th:text="${k.nama}">Nama Skill</span>
+                                    </div>
+                                </div>
+                                <div class="brand-scroller-group" aria-hidden="true">
+                                    <div th:each="k : ${keahlian}" class="brand-item">
+                                        <span class="brand-icon">
+                                            <i class="bi bi-code-slash"></i>
+                                        </span>
+                                        <span class="brand-name" th:text="${k.nama}">Nama Skill</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="project" class="folio-section project-section-area">
+                <div class="folio-container">
+                    <div class="folio-section-header">
+                        <span class="folio-section-tag"><i class="bi bi-layers-fill"></i> Showcase Portofolio</span>
+                        <h2 class="folio-section-heading">Karya &amp; <span  class="folio-title-highlight">Project</span></h2>
+                        <p class="folio-section-lead">Dokumentasi aplikasi dan karya perangkat lunak yang Sudah saya buat.</p>
+                    </div>
+
+                    <div class="project-showcase-grid" th:if="${projects != null and !#lists.isEmpty(projects)}">
+                        <article th:each="p, pStat : ${projects}" class="folder-card" data-bs-toggle="modal" th:data-bs-target="'#modalProject-' + ${p.id}" role="button" tabindex="0" th:aria-label="'Lihat detail ' + ${p.namaProject}">
+                            <div class="folder-banner">
+                                <img th:if="${p.gambar != null and !#lists.isEmpty(p.gambar)}" th:src="@{'/images/' + ${p.gambar[0].gambar}}" th:alt="${p.namaProject}" class="folder-banner-img" loading="lazy">
+                                <div th:unless="${p.gambar != null and !#lists.isEmpty(p.gambar)}" class="folder-banner-placeholder">
+                                    <i class="bi bi-laptop"></i>
+                                </div>
+                                <div class="folder-banner-gradient" aria-hidden="true"></div>
+                                <div class="folder-banner-tag" th:text="${p.teknologi != null and !#strings.isEmpty(p.teknologi) ? #strings.replace(p.teknologi, ',', ' •') : 'Project Showcase'}">Taskello App Card Design</div>
+                            </div>
+
+                            <div class="folder-panel">
+                                <svg class="folder-tab-svg" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+                                    <path d="M 0,300 L 0,0 L 145,0 C 168,0 182,34 210,34 L 400,34 L 400,300 Z" fill="#1E1E1E" />
+                                </svg>
+
+                                <div class="folder-panel-content">
+                                    <div class="folder-header-info">
+                                        <div class="folder-title">
+                                            <i class="bi bi-images"></i>
+                                            <span th:text="${p.gambar != null and !#lists.isEmpty(p.gambar) ? #lists.size(p.gambar) + ' Foto' : '1 Foto'}">2 Foto</span>
+                                        </div>
+                                        <p class="folder-subtitle" th:text="${p.deskripsi != null ? p.deskripsi : 'Application Development'}">Notes &amp; Journaling</p>
+                                    </div>
+
+                                    <div class="folder-footer">
+                                        <h3 class="folder-project-name" th:text="${p.namaProject}">Nama Project</h3>
+                                        <div class="folder-arrow-btn" aria-hidden="true">
+                                            <i class="bi bi-arrow-up-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="project-empty-state" th:if="${projects == null or #lists.isEmpty(projects)}">
+                        <div class="project-empty-icon"><i class="bi bi-folder2-open"></i></div>
+                        <h3>Belum Ada Project</h3>
+                        <p>Dokumentasi project portofolio akan segera ditambahkan di sini.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="kontak" class="folio-section contact-section">
+                <div class="folio-container">
+                    <div class="contact-two-col-layout">
+
+                        <div class="contact-info-col">
+                            <span class="folio-section-tag"><i class="bi bi-chat-dots-fill"></i> Hubungi Saya</span>
+                            <h2 class="folio-section-heading">Mari <span class="folio-title-highlight">Terhubung</span></h2>
                             <p class="folio-section-lead">
-                                Jejak pendidikan formal yang telah saya tempuh, dari pendidikan dasar hingga kejuruan Rekayasa Perangkat Lunak.
+                                Tertarik untuk berkolaborasi dalam sebuah
+                                project, memiliki pertanyaan seputar teknologi,
+                                atau sekadar ingin berdiskusi? Jangan ragu untuk
+                                menghubungi saya melalui kontak berikut.
                             </p>
                         </div>
+
+                        <div class="contact-comic-grid">
+                            <a th:if="${kontak != null and kontak.email != null and !#strings.isEmpty(kontak.email)}" th:href="'mailto:' + ${kontak.email}" class="contact-comic-card">
+                                <div class="contact-comic-icon">
+                                    <i class="bi bi-envelope-fill"></i>
+                                </div>
+                                <div class="contact-comic-meta">
+                                    <span class="contact-comic-label">EMAIL</span>
+                                    <span class="contact-comic-val" th:text="${kontak.email}">email@example.com</span>
+                                </div>
+                                <div class="contact-comic-arrow">
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </div>
+                            </a>
+
+                            <a th:if="${kontak != null and kontak.telepon != null and !#strings.isEmpty(kontak.telepon)}" th:href="'https://wa.me/' + ${kontak.telepon.startsWith('0') ? '62' + kontak.telepon.substring(1) : kontak.telepon}" target="_blank" rel="noopener noreferrer" class="contact-comic-card">
+                                <div class="contact-comic-icon">
+                                    <i class="bi bi-whatsapp"></i>
+                                </div>
+                                <div class="contact-comic-meta">
+                                    <span class="contact-comic-label">TELEPON</span>
+                                    <span class="contact-comic-val" th:text="${kontak.telepon}">08xxxxxxxxxx</span>
+                                </div>
+                                <div class="contact-comic-arrow">
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </div>
+                            </a>
+
+                            <a th:if="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github)}" th:href="${kontak.github}" target="_blank" rel="noopener noreferrer" class="contact-comic-card">
+                                <div class="contact-comic-icon">
+                                    <i class="bi bi-github"></i>
+                                </div>
+                                <div class="contact-comic-meta">
+                                    <span class="contact-comic-label">GITHUB</span>
+                                    <span class="contact-comic-val" th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">username</span>
+                                </div>
+                                <div class="contact-comic-arrow">
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </div>
+                            </a>
+
+                            <a th:if="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram)}" th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer" class="contact-comic-card">
+                                <div class="contact-comic-icon">
+                                    <i class="bi bi-instagram"></i>
+                                </div>
+                                <div class="contact-comic-meta">
+                                    <span class="contact-comic-label">INSTAGRAM</span>
+                                    <span class="contact-comic-val" th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">@username</span>
+                                </div>
+                                <div class="contact-comic-arrow">
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </div>
+                            </a>
+                        </div>
+
                     </div>
+                </div>
+            </section>
 
-                    <div class="education-orbit-col">
-                        <div class="education-orbit-wrapper">
-                            <div class="education-orbit-stage">
+        </main>
 
-                                <div class="education-orbit-track-outer"></div>
-                                <div class="education-orbit-track-inner"></div>
+        <footer class="folio-footer">
+            <div class="folio-footer-inner">
+                <span>&copy; <span th:text="${#calendars.year(#calendars.createNow())}">2026</span>
+                    <span th:text="${profil != null ? profil.nama : 'Portfolio'}">Portfolio</span>. All rights reserved.</span>
+                <span>Crafted with passion &amp; modern web standards.</span>
+            </div>
+        </footer>
 
-                                <div class="education-core">
-                                    <div class="education-core-glow"></div>
-                                    <i class="bi bi-mortarboard-fill education-core-icon"></i>
+        <div th:each="p, pStat : ${projects}">
+            <div class="modal fade modern-project-modal" th:id="'modalProject-' + ${p.id}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content project-modal-card">
+                        <button type="button" class="project-modal-close" data-bs-dismiss="modal" aria-label="Tutup"><i class="bi bi-x-lg"></i></button>
+
+                        <div class="project-modal-media-wrap">
+                            <span class="modal-media-badge">
+                                <i class="bi bi-stars"></i>
+                                <span th:text="${p.teknologi != null and !#strings.isEmpty(p.teknologi) ? #strings.arraySplit(p.teknologi, ',')[0].trim() : 'Featured'}">Featured</span></span>
+
+                            <div th:if="${p.gambar != null and !#lists.isEmpty(p.gambar)}" th:id="'carouselProject-' + ${p.id}" class="carousel slide modal-carousel" data-bs-ride="false" data-bs-interval="false">
+
+                                <div class="carousel-indicators modal-carousel-dots" th:if="${#lists.size(p.gambar) > 1}">
+                                    <button th:each="g, gStat : ${p.gambar}" type="button" th:data-bs-target="'#carouselProject-' + ${p.id}" th:data-bs-slide-to="${gStat.index}" th:class="${gStat.first} ? 'active' : ''" th:aria-current="${gStat.first} ? 'true' : 'false'" th:aria-label="'Slide ' + ${gStat.count}"></button>
                                 </div>
 
-                                <div class="education-orbit-track">
-                                    <div th:each="p, pStat : ${pendidikan}"
-                                         class="education-orbit-item"
-                                         th:style="'--angle: ' + (${pStat.index} * 360 / ${pStat.size}) + 'deg;'">
-                                        <button type="button"
-                                                class="education-orbit-node"
-                                                th:classappend="${pStat.last} ? ' node-current' : ''"
-                                                data-bs-toggle="modal"
-                                                th:data-bs-target="'#modalEdu-' + ${p.id}"
-                                                th:aria-label="${p.tingkat} + ' - ' + ${p.nama}">
-                                            <span class="education-node-inner">
-                                                <span class="education-node-label" th:text="${p.tingkat}">SD</span>
-                                            </span>
-                                        </button>
+                                <div class="carousel-inner modal-carousel-inner">
+                                    <div th:each="g, gStat : ${p.gambar}" th:class="${gStat.first} ? 'carousel-item active' : 'carousel-item'">
+                                        <img th:src="@{'/images/' + ${g.gambar}}" class="d-block w-100 modal-carousel-img" th:alt="${p.namaProject}">
                                     </div>
                                 </div>
 
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="skill" class="folio-section">
-            <div class="folio-container">
-                <div class="folio-section-header">
-                    <span class="folio-section-tag"><i class="bi bi-code-slash"></i> Keahlian Teknis</span>
-                    <h2 class="folio-section-heading">Skill &amp; Keahlian</h2>
-                    <p class="folio-section-lead">
-                        Skill dan Keahlian yang saya Kuasai, baik dalam pengembangan perangkat lunak maupun dalam bidang teknologi informasi.
-                    </p>
-                </div>
-
-                <div class="brand-scroller-container">
-                    <div class="brand-scroller-row">
-                        <div class="brand-scroller-track track-left">
-                            <div class="brand-scroller-group">
-                                <div th:each="k : ${keahlian}" class="brand-item">
-                                    <span class="brand-icon">
-                                        <i class="bi bi-code-slash"></i>
-                                    </span>
-                                    <span class="brand-name" th:text="${k.nama}">Nama Skill</span>
-                                </div>
-                            </div>
-                            <div class="brand-scroller-group" aria-hidden="true">
-                                <div th:each="k : ${keahlian}" class="brand-item">
-                                    <span class="brand-icon">
-                                        <i class="bi bi-code-slash"></i>
-                                    </span>
-                                    <span class="brand-name" th:text="${k.nama}">Nama Skill</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="brand-scroller-row">
-                        <div class="brand-scroller-track track-right">
-                            <div class="brand-scroller-group">
-                                <div th:each="k : ${keahlian}" class="brand-item">
-                                    <span class="brand-icon">
-                                        <i class="bi bi-code-slash"></i>
-                                    </span>
-                                    <span class="brand-name" th:text="${k.nama}">Nama Skill</span>
-                                </div>
-                            </div>
-                            <div class="brand-scroller-group" aria-hidden="true">
-                                <div th:each="k : ${keahlian}" class="brand-item">
-                                    <span class="brand-icon">
-                                        <i class="bi bi-code-slash"></i>
-                                    </span>
-                                    <span class="brand-name" th:text="${k.nama}">Nama Skill</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="project" class="folio-section project-section-area">
-            <div class="folio-container">
-                <div class="folio-section-header">
-                    <span class="folio-section-tag"><i class="bi bi-layers-fill"></i> Showcase Portofolio</span>
-                    <h2 class="folio-section-heading">Karya &amp; <span class="folio-title-highlight">Project</span></h2>
-                    <p class="folio-section-lead">
-                        Dokumentasi aplikasi dan karya perangkat lunak yang telah saya rancang dan kembangkan.
-                    </p>
-                </div>
-
-                <div class="project-showcase-grid" th:if="${projects != null and !#lists.isEmpty(projects)}">
-                    <article th:each="p, pStat : ${projects}" class="project-card-item">
-                        <div class="project-card-inner">
-                            <div class="project-card-media"
-                                 data-bs-toggle="modal"
-                                 th:data-bs-target="'#modalProject-' + ${p.id}"
-                                 role="button"
-                                 tabindex="0"
-                                 aria-label="Lihat detail project">
-                                <img th:if="${p.gambar != null and !#lists.isEmpty(p.gambar)}"
-                                     th:src="@{'/images/' + ${p.gambar[0].gambar}}"
-                                     th:alt="${p.namaProject}"
-                                     class="project-card-img"
-                                     loading="lazy">
-                                <div th:unless="${p.gambar != null and !#lists.isEmpty(p.gambar)}"
-                                     class="project-card-placeholder">
-                                    <i class="bi bi-laptop"></i>
-                                    <span>Preview Project</span>
-                                </div>
-
-                                <div class="project-card-badges">
-                                    <span class="project-num-badge" th:text="'PROJ #' + ${pStat.index + 1 < 10 ? '0' + (pStat.index + 1) : (pStat.index + 1)}">PROJ #01</span>
-                                    <span class="project-photo-badge" th:if="${p.gambar != null and !#lists.isEmpty(p.gambar) and #lists.size(p.gambar) > 1}">
-                                        <i class="bi bi-images"></i>
-                                        <span th:text="${#lists.size(p.gambar)} + ' Foto'">Foto</span>
-                                    </span>
-                                </div>
-
-                                <div class="project-media-hover-overlay">
-                                    <span class="hover-preview-btn">
-                                        <i class="bi bi-eye-fill"></i>
-                                        <span>Lihat Detail</span>
-                                    </span>
-                                </div>
+                                <button th:if="${#lists.size(p.gambar) > 1}" class="carousel-control-prev modal-carousel-arrow" type="button" th:data-bs-target="'#carouselProject-' + ${p.id}" data-bs-slide="prev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+                                <button th:if="${#lists.size(p.gambar) > 1}" class="carousel-control-next modal-carousel-arrow" type="button" th:data-bs-target="'#carouselProject-' + ${p.id}" data-bs-slide="next" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
                             </div>
 
-                            <div class="project-card-content">
-                                <h3 class="project-card-title"
-                                    data-bs-toggle="modal"
-                                    th:data-bs-target="'#modalProject-' + ${p.id}"
-                                    role="button"
-                                    th:text="${p.namaProject}">
-                                    Nama Project
-                                </h3>
-
-                                <p class="project-card-desc" th:text="${p.deskripsi}">
-                                    Deskripsi project.
-                                </p>
-
-                                <div class="project-card-tech" th:if="${p.teknologi != null and !#strings.isEmpty(p.teknologi)}">
-                                    <div th:each="tech : ${#strings.arraySplit(p.teknologi, ',')}"
-                                         class="project-tech-pill"
-                                         th:text="${#strings.trim(tech)}">Teknologi</div>
-                                </div>
-
-                                <div class="project-card-actions">
-                                    <button type="button"
-                                            class="comic-btn-primary project-btn-view"
-                                            data-bs-toggle="modal"
-                                            th:data-bs-target="'#modalProject-' + ${p.id}">
-                                        <span>Detail Project</span>
-                                        <i class="bi bi-arrow-up-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="project-empty-state" th:if="${projects == null or #lists.isEmpty(projects)}">
-                    <div class="project-empty-icon"><i class="bi bi-folder2-open"></i></div>
-                    <h3>Belum Ada Project</h3>
-                    <p>Dokumentasi project portofolio akan segera ditambahkan di sini.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="kontak" class="folio-section contact-section">
-            <div class="folio-container">
-                <div class="contact-two-col-layout">
-
-                    <div class="contact-info-col">
-                        <span class="folio-section-tag"><i class="bi bi-chat-dots-fill"></i> Hubungi Saya</span>
-                        <h2 class="folio-section-heading">Mari <span class="folio-title-highlight">Terhubung</span></h2>
-                        <p class="folio-section-lead">
-                            Tertarik untuk berkolaborasi dalam sebuah project, memiliki pertanyaan seputar teknologi, atau sekadar ingin berdiskusi? Jangan ragu untuk menghubungi saya melalui kontak berikut.
-                        </p>
-                    </div>
-
-                    <div class="contact-comic-grid">
-                        <a th:if="${kontak != null and kontak.email != null and !#strings.isEmpty(kontak.email)}"
-                           th:href="'mailto:' + ${kontak.email}"
-                           class="contact-comic-card">
-                            <div class="contact-comic-icon">
-                                <i class="bi bi-envelope-fill"></i>
-                            </div>
-                            <div class="contact-comic-meta">
-                                <span class="contact-comic-label">EMAIL</span>
-                                <span class="contact-comic-val" th:text="${kontak.email}">email@example.com</span>
-                            </div>
-                            <div class="contact-comic-arrow">
-                                <i class="bi bi-arrow-up-right"></i>
-                            </div>
-                        </a>
-
-                        <a th:if="${kontak != null and kontak.telepon != null and !#strings.isEmpty(kontak.telepon)}"
-                           th:href="'https://wa.me/' + ${kontak.telepon.startsWith('0') ? '62' + kontak.telepon.substring(1) : kontak.telepon}"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="contact-comic-card">
-                            <div class="contact-comic-icon">
-                                <i class="bi bi-whatsapp"></i>
-                            </div>
-                            <div class="contact-comic-meta">
-                                <span class="contact-comic-label">WHATSAPP / TELEPON</span>
-                                <span class="contact-comic-val" th:text="${kontak.telepon}">08xxxxxxxxxx</span>
-                            </div>
-                            <div class="contact-comic-arrow">
-                                <i class="bi bi-arrow-up-right"></i>
-                            </div>
-                        </a>
-
-                        <a th:if="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github)}"
-                           th:href="${kontak.github}"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="contact-comic-card">
-                            <div class="contact-comic-icon">
-                                <i class="bi bi-github"></i>
-                            </div>
-                            <div class="contact-comic-meta">
-                                <span class="contact-comic-label">GITHUB</span>
-                                <span class="contact-comic-val"
-                                      th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">username</span>
-                            </div>
-                            <div class="contact-comic-arrow">
-                                <i class="bi bi-arrow-up-right"></i>
-                            </div>
-                        </a>
-
-                        <a th:if="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram)}"
-                           th:href="${kontak.instagram}"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="contact-comic-card">
-                            <div class="contact-comic-icon">
-                                <i class="bi bi-instagram"></i>
-                            </div>
-                            <div class="contact-comic-meta">
-                                <span class="contact-comic-label">INSTAGRAM</span>
-                                <span class="contact-comic-val"
-                                      th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">@username</span>
-                            </div>
-                            <div class="contact-comic-arrow">
-                                <i class="bi bi-arrow-up-right"></i>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="folio-footer">
-        <div class="folio-footer-inner">
-            <span>&copy; <span th:text="${#calendars.year(#calendars.createNow())}">2026</span> <span th:text="${profil != null ? profil.nama : 'Portfolio'}">Portfolio</span>. All rights reserved.</span>
-            <span>Crafted with passion &amp; modern web standards.</span>
-        </div>
-    </footer>
-
-    <div th:each="p, pStat : ${projects}">
-        <div class="modal fade comic-project-modal"
-             th:id="'modalProject-' + ${p.id}"
-             tabindex="-1"
-             aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content comic-modal-box">
-
-                    <div class="comic-modal-header">
-                        <div class="comic-modal-title-wrap">
-                            <span class="comic-modal-badge" th:text="'PROJ #' + ${pStat.index + 1 < 10 ? '0' + (pStat.index + 1) : (pStat.index + 1)}">PROJ #01</span>
-                            <h3 class="comic-modal-project-title" th:text="${p.namaProject}">Nama Project</h3>
-                        </div>
-                        <button type="button"
-                                class="comic-modal-close-btn"
-                                data-bs-dismiss="modal"
-                                aria-label="Tutup"><i class="bi bi-x-lg"></i></button>
-                    </div>
-
-                    <div class="modal-body comic-modal-body">
-                        <div th:if="${p.gambar != null and !#lists.isEmpty(p.gambar)}" class="comic-modal-carousel-wrap mb-4">
-                            <div th:id="'carouselProject-' + ${p.id}"
-                                 class="carousel slide"
-                                 data-bs-ride="false"
-                                 data-bs-interval="false">
-                                <div class="carousel-inner comic-carousel-inner">
-                                    <div th:each="g, gStat : ${p.gambar}"
-                                         th:class="${gStat.first} ? 'carousel-item active text-center' : 'carousel-item text-center'">
-                                        <img th:src="@{'/images/' + ${g.gambar}}"
-                                             class="d-block w-100 comic-carousel-img"
-                                             th:alt="${p.namaProject}">
-                                    </div>
-                                </div>
-                                <button th:if="${#lists.size(p.gambar) > 1}"
-                                        class="carousel-control-prev comic-carousel-control"
-                                        type="button"
-                                        th:data-bs-target="'#carouselProject-' + ${p.id}"
-                                        data-bs-slide="prev"
-                                        aria-label="Previous">
-                                    <i class="bi bi-chevron-left"></i>
-                                </button>
-                                <button th:if="${#lists.size(p.gambar) > 1}"
-                                        class="carousel-control-next comic-carousel-control"
-                                        type="button"
-                                        th:data-bs-target="'#carouselProject-' + ${p.id}"
-                                        data-bs-slide="next"
-                                        aria-label="Next">
-                                    <i class="bi bi-chevron-right"></i>
-                                </button>
+                            <div th:unless="${p.gambar != null and !#lists.isEmpty(p.gambar)}" class="modal-media-placeholder">
+                                <i class="bi bi-laptop"></i>
                             </div>
                         </div>
 
-                        <div class="comic-modal-info-bar mb-3" th:if="${p.teknologi != null and !#strings.isEmpty(p.teknologi)}">
-                            <div class="comic-tech-tag">
-                                <i class="bi bi-cpu-fill"></i>
-                                <div th:text="${p.teknologi}">Teknologi</div>
+                        <div class="project-modal-body">
+                            <h3 class="project-modal-heading" th:text="${p.namaProject}">Nama Project</h3>
+                            <p class="project-modal-description" th:text="${p.deskripsi}">Deskripsi project lengkap.</p>
+                            <div class="project-modal-tech-stack" th:if="${p.teknologi != null and !#strings.isEmpty(p.teknologi)}">
+                                <span th:each="tech : ${#strings.arraySplit(p.teknologi, ',')}" class="tech-stack-pill" th:text="${#strings.trim(tech)}">Laravel</span>
                             </div>
                         </div>
 
-                        <div class="comic-modal-speech">
-                            <span class="comic-modal-sub">MISSION BRIEFING &amp; DESKRIPSI</span>
-                            <p class="comic-modal-desc" th:text="${p.deskripsi}">Deskripsi project.</p>
+                        <div class="project-modal-actions">
+                            <button type="button" class="modal-pill-btn-primary" data-bs-dismiss="modal">
+                                <span>Tutup Detail</span>
+                                <span class="arrow-circle"><i class="bi bi-arrow-up-right"></i></span>
+                            </button>
                         </div>
                     </div>
-
-                    <div class="modal-footer comic-modal-footer">
-                        <button type="button"
-                                class="comic-btn-primary comic-modal-dismiss-btn"
-                                data-bs-dismiss="modal">
-                            <span>Tutup</span>
-                        </button>
-                    </div>
-
                 </div>
             </div>
         </div>
-    </div>
 
-    <div th:each="p, pStat : ${pendidikan}">
-        <div class="modal fade education-modal"
-             th:id="'modalEdu-' + ${p.id}"
-             tabindex="-1"
-             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content comic-modal-box">
-
-                    <div class="comic-modal-header">
-                        <span class="comic-modal-badge" th:text="${p.tingkat}">SMK</span>
-                        <button type="button"
-                                class="comic-modal-close-btn"
-                                data-bs-dismiss="modal"
-                                aria-label="Tutup"><i class="bi bi-x-lg"></i></button>
-                    </div>
-
-                    <div class="modal-body comic-modal-body">
-                        <div class="comic-modal-speech">
-                            <span class="comic-modal-sub">INSTITUSI</span>
-                            <h3 class="comic-modal-school" th:text="${p.nama}">Nama Sekolah</h3>
-                            <div class="comic-modal-info-row">
-                                <div class="comic-modal-info-item">
-                                    <i class="bi bi-calendar3"></i>
-                                    <span th:text="${p.tahunMulai} + ' – ' + (${p.tahunSelsai != null ? p.tahunSelsai : 'Sekarang'})">2021 – 2024</span>
-                                </div>
-                                <div class="comic-modal-info-item">
-                                    <i class="bi bi-mortarboard-fill"></i>
-                                    <span th:text="${p.tingkat}">SMK</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer comic-modal-footer">
-                        <button type="button"
-                                class="comic-btn-primary comic-modal-dismiss-btn"
-                                data-bs-dismiss="modal">
-                            <span>Tutup</span>
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script th:src="@{/js/container-scroll.js}"></script>
-    <script th:src="@{/js/education-orbit.js}"></script>
-    <script th:src="@{/js/skill-scroller.js}"></script>
-    <script th:src="@{/js/navbar-scrollspy.js}"></script>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <script th:src="@{/js/container-scroll.js}"></script>
+        <script th:src="@{/js/education-orbit.js}"></script>
+        <script th:src="@{/js/skill-scroller.js}"></script>
+        <script th:src="@{/js/navbar-scrollspy.js}"></script>
+    </body>
 </html>

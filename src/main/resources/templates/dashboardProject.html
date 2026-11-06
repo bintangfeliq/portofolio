@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Project - Dashboard Admin</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -65,9 +66,6 @@
                     <h1 class="comic-dash-header-title">
                         Kelola <span>Project Portofolio</span>
                     </h1>
-                    <p class="comic-dash-header-desc">
-                        Tambah karya dan aplikasi baru atau perbarui project yang telah ada.
-                    </p>
                 </div>
             </div>
 
@@ -75,10 +73,7 @@
                 
                 <div class="comic-panel">
                     <div class="comic-panel-header">
-                        <h2 class="comic-panel-title">
-                            <i class="bi bi-plus-circle"></i>
-                            <span>Tambah Project</span>
-                        </h2>
+                        <h2 class="comic-panel-title">Tambah Project</h2>
                     </div>
                     <div class="comic-panel-body">
                         <form th:action="@{/dashboard/project/tambah}" method="POST" enctype="multipart/form-data">
@@ -89,7 +84,7 @@
                                        id="namaProject"
                                        name="namaProject"
                                        class="comic-form-control"
-                                       placeholder="Contoh: Aplikasi Manajemen Keuangan"
+                                       placeholder="Aplikasi Manajemen Keuangan"
                                        required>
                             </div>
 
@@ -99,23 +94,18 @@
                                        id="teknologi"
                                        name="teknologi"
                                        class="comic-form-control"
-                                       placeholder="Contoh: Spring Boot, MySQL, Thymeleaf"
+                                       placeholder="Spring Boot, MySQL, Thymeleaf"
                                        required>
                             </div>
 
                             <div class="comic-form-group">
-                                <label for="files" class="comic-form-label">
-                                    <i class="bi bi-images"></i> Unggah Foto Project
-                                </label>
+                                <label for="files" class="comic-form-label">Unggah Foto Project</label>
                                 <input type="file"
                                        id="files"
                                        name="files"
                                        class="comic-form-control"
                                        accept="image/*"
                                        multiple>
-                                <small style="display: block; font-size: 0.76rem; color: var(--text-muted); margin-top: 0.35rem; line-height: 1.4;">
-                                    <i class="bi bi-info-circle"></i> Tekan <strong>Ctrl</strong> (atau <strong>Cmd</strong> di Mac) untuk memilih lebih dari 1 foto sekaligus.
-                                </small>
                                 
                                                                 <div id="previewContainer" style="display: none; margin-top: 0.75rem; padding: 0.75rem; background: #0e0e16; border: 1.5px dashed rgba(255,255,255,0.15); border-radius: 6px;">
                                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
@@ -131,28 +121,17 @@
 
                             <div class="comic-form-group">
                                 <label for="deskripsi" class="comic-form-label">Deskripsi Project</label>
-                                <textarea id="deskripsi"
-                                          name="deskripsi"
-                                          rows="4"
-                                          class="comic-form-control"
-                                          placeholder="Jelaskan fitur dan tujuan dari project ini..."
-                                          required></textarea>
+                                <textarea id="deskripsi" name="deskripsi" rows="4" class="comic-form-control" placeholder="Jelaskan fitur dan tujuan dari project ini" required></textarea>
                             </div>
 
-                            <button type="submit" class="comic-submit-btn">
-                                <i class="bi bi-save"></i>
-                                <span>Simpan Project</span>
-                            </button>
+                            <button type="submit" class="comic-submit-btn"><span>Simpan Project</span></button>
                         </form>
                     </div>
                 </div>
 
                 <div class="comic-panel">
                     <div class="comic-panel-header">
-                        <h2 class="comic-panel-title">
-                            <i class="bi bi-folder-check"></i>
-                            <span>Daftar Project</span>
-                        </h2>
+                        <h2 class="comic-panel-title">Daftar Project</h2>
                         <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);" th:text="${#lists.size(projects)} + ' Project'">0 Project</span>
                     </div>
                     <div class="comic-panel-body" style="padding: 0;">
@@ -171,29 +150,17 @@
                                     <td th:text="${pStat.count}">1</td>
                                     <td class="comic-table-project-name" th:text="${p.namaProject}">Aplikasi E-Commerce</td>
                                     <td style="font-size: 0.8rem;" th:text="${p.teknologi}">Spring Boot</td>
-                                    <td>
-                                        <span style="font-size: 0.78rem; color: var(--text-muted);" th:text="${p.gambar != null ? #lists.size(p.gambar) : 0} + ' Foto'">0 Foto</span>
-                                    </td>
+                                    <td><span style="font-size: 0.78rem; color: var(--text-muted);" th:text="${p.gambar != null ? #lists.size(p.gambar) : 0} + ' Foto'">0 Foto</span></td>
                                     <td style="text-align: right;">
                                         <div style="display: inline-flex; gap: 0.35rem;">
-                                            <a th:href="@{'/dashboard/dashboardProject/editProject/' + ${p.id}}" 
-                                               class="comic-table-action-btn" 
-                                               title="Edit Project">
-                                                <i class="bi bi-pencil"></i>
-                                            </a>
-                                            <a th:href="@{'/dashboard/dashboardProject/hapusProject/' + ${p.id}}" 
-                                               class="comic-table-action-btn" 
-                                               onclick="return confirm('Hapus project ini beserta seluruh fotonya?');" 
-                                               title="Hapus">
-                                                <i class="bi bi-trash" style="color: var(--red-primary);"></i>
+                                            <a th:href="@{'/dashboard/dashboardProject/editProject/' + ${p.id}}"  class="comic-table-action-btn"  title="Edit Project"><i class="bi bi-pencil"></i></a>
+                                            <a th:href="@{'/dashboard/dashboardProject/hapusProject/' + ${p.id}}"  class="comic-table-action-btn"  onclick="return confirm('Hapus project ini beserta seluruh fotonya?');"  title="Hapus"><i class="bi bi-trash" style="color: var(--red-primary);"></i>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr th:if="${#lists.isEmpty(projects)}">
-                                    <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">
-                                        Belum ada data project yang ditambahkan.
-                                    </td>
+                                    <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">Belum ada data project yang ditambahkan.</td>
                                 </tr>
                             </tbody>
                         </table>

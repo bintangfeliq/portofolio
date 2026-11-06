@@ -14,7 +14,7 @@ body {
 .latar-item  { background: #0f0f0f; }
 .area-gelap  { background: #151515; }
 
-.tulisan-merah { color: #fa1226; }
+.tulisan-merah { color: #e02438; }
 
 section[id],
 div[id] {
@@ -49,7 +49,7 @@ div[id] {
 .navbar .nav-link:hover,
 .navbar .nav-link:focus,
 .navbar .nav-link.active {
-    color: #fa1226 !important;
+    color: #e02438 !important;
 }
 
 .stiker-kuning {
@@ -73,11 +73,11 @@ div[id] {
 }
 
 .tombol-pencet:hover {
-    background: #fa1226;
+    background: #e02438;
     transform: translateY(-2px);
 }
 
-.btn-danger          { background-color: #fa1226; border-color: #fa1226; }
-.btn-danger:hover    { background-color: #d4001f; border-color: #d4001f; }
-.btn-outline-danger  { color: #fa1226; border-color: #fa1226; }
-.btn-outline-danger:hover { background-color: #fa1226; color: #fff; }
+.btn-danger          { background-color: #e02438; border-color: #e02438; }
+.btn-danger:hover    { background-color: #be1226; border-color: #be1226; }
+.btn-outline-danger  { color: #e02438; border-color: #e02438; }
+.btn-outline-danger:hover { background-color: #e02438; color: #fff; }

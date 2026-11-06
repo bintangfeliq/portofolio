@@ -2,7 +2,8 @@
 
 :root {
     --bg-main: #07070b;
-    --red-primary: #fa1226;
+    --red-primary: #e02438;
+    --red-hover: #be1226;
     --blue-accent: #1d4ed8;
     --blue-hover: #2563eb;
     --text-primary: #ffffff;
@@ -40,10 +41,10 @@ body.idx-body {
         linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
         radial-gradient(circle at 50% 30%, rgba(29, 78, 216, 0.12) 0%, transparent 65%),
         linear-gradient(to bottom, rgba(6, 6, 9, 0.05) 0%, rgba(6, 6, 9, 0.35) 100%),
-        url('/images/inipass.jpg');
+        url('../images/inipass.jpg');
     background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
     background-size: 80px 80px, 80px 80px, 100% 100%, 100% 100%, 100% 100%;
-    background-position: 0 0, 0 0, center center, center center, center center;
+    background-position: 0 0, 0 0, center center, center center, top center;
     background-attachment: fixed;
 }
 
@@ -113,8 +114,8 @@ body.idx-body {
 
 .folio-link.active {
     color: #fff;
-    background: rgba(250, 18, 38, 0.16);
-    border: 1px solid rgba(250, 18, 38, 0.35);
+    background: rgba(224, 36, 56, 0.16);
+    border: 1px solid rgba(224, 36, 56, 0.35);
 }
 
 .idx-hero-section {
@@ -181,14 +182,14 @@ body.idx-body {
     display: inline-flex;
     align-items: center;
     gap: 0.65rem;
-    background: var(--blue-accent);
+    background: var(--red-primary);
     color: #ffffff;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 700;
     padding: 0.68rem 1.55rem;
     border-radius: 999px;
-    box-shadow: 0 6px 20px rgba(29, 78, 216, 0.45);
+    box-shadow: 0 6px 20px rgba(224, 36, 56, 0.45);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -198,10 +199,10 @@ body.idx-body {
 }
 
 .hero-discuss-btn:hover {
-    background: var(--blue-hover);
+    background: var(--red-hover);
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 26px rgba(37, 99, 235, 0.6);
+    box-shadow: 0 8px 26px rgba(224, 36, 56, 0.6);
 }
 
 .hero-discuss-btn:hover i {
@@ -311,11 +312,11 @@ body.idx-body {
 }
 
 .hero-social-circle:hover {
-    background: var(--blue-accent);
-    border-color: #3b82f6;
+    background: var(--red-primary);
+    border-color: var(--red-primary);
     color: #ffffff;
     transform: translateY(-3px);
-    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.5);
+    box-shadow: 0 4px 14px rgba(224, 36, 56, 0.5);
 }
 
 .hero-follow-tagline {
@@ -349,7 +350,24 @@ body.idx-body {
     letter-spacing: -0.025em;
     text-transform: uppercase;
     color: #ffffff;
-    display: block;
+    display: inline-block;
+    min-height: 1.05em;
+}
+
+.type-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.85em;
+    vertical-align: -0.05em;
+    background-color: var(--red-primary);
+    margin-left: 4px;
+    border-radius: 1px;
+    animation: typeBlink 0.8s ease-in-out infinite;
+}
+
+@keyframes typeBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 @media (max-width: 991px) {

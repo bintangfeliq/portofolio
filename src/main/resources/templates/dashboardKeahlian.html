@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Skill - Dashboard Admin</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -65,9 +66,6 @@
                     <h1 class="comic-dash-header-title">
                         Kelola <span>Keahlian &amp; Skill</span>
                     </h1>
-                    <p class="comic-dash-header-desc">
-                        Tambah dan kelola teknologi, framework, atau keahlian yang Anda kuasai.
-                    </p>
                 </div>
             </div>
 
@@ -75,50 +73,29 @@
                 
                 <div class="comic-panel">
                     <div class="comic-panel-header">
-                        <h2 class="comic-panel-title">
-                            <i class="bi bi-plus-circle"></i>
-                            <span>Tambah Keahlian</span>
-                        </h2>
+                        <h2 class="comic-panel-title">Tambah Keahlian</h2>
                     </div>
                     <div class="comic-panel-body">
                         <form th:action="@{/dashboard/keahlian/tambah}" method="POST">
                             
                             <div class="comic-form-group">
                                 <label for="nama" class="comic-form-label">Nama Skill</label>
-                                <input type="text"
-                                       id="nama"
-                                       name="nama"
-                                       class="comic-form-control"
-                                       placeholder="Contoh: Java, Spring Boot, React, MySQL"
-                                       required>
+                                <input type="text" id="nama" name="nama" class="comic-form-control" placeholder="Contoh: Java, Spring Boot, React, MySQL" required>
                             </div>
 
                             <div class="comic-form-group">
-                                <label for="deskripsi" class="comic-form-label">Keterangan / Deskripsi</label>
-                                <input type="text"
-                                       id="deskripsi"
-                                       name="deskripsi"
-                                       class="comic-form-control"
-                                       placeholder="Contoh: Mahir atau Masih dipelajari">
-                                <p style="font-size: 0.76rem; color: var(--text-muted); margin: 0.35rem 0 0 0;">
-                                    Gunakan kata <em>"Masih dipelajari"</em> jika skill dalam tahap pembelajaran.
-                                </p>
+                                <label for="deskripsi" class="comic-form-label">Deskripsi</label>
+                                <input type="text" id="deskripsi" name="deskripsi" class="comic-form-control" placeholder="Contoh: Mahir atau Masih dipelajari">
                             </div>
 
-                            <button type="submit" class="comic-submit-btn">
-                                <i class="bi bi-save"></i>
-                                <span>Simpan Keahlian</span>
-                            </button>
+                            <button type="submit" class="comic-submit-btn"><span>Simpan Keahlian</span></button>
                         </form>
                     </div>
                 </div>
 
                 <div class="comic-panel">
                     <div class="comic-panel-header">
-                        <h2 class="comic-panel-title">
-                            <i class="bi bi-code-slash"></i>
-                            <span>Daftar Keahlian</span>
-                        </h2>
+                        <h2 class="comic-panel-title">Daftar Keahlian</h2>
                         <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);" th:text="${#lists.size(keahlian)} + ' Skill'">0 Skill</span>
                     </div>
                     <div class="comic-panel-body" style="padding: 0;">
@@ -140,24 +117,13 @@
                                     </td>
                                     <td style="text-align: right;">
                                         <div style="display: inline-flex; gap: 0.35rem;">
-                                            <a th:href="@{'/dashboard/dashboardKeahlian/editKeahlian/' + ${k.id}}" 
-                                               class="comic-table-action-btn" 
-                                               title="Edit Skill">
-                                                <i class="bi bi-pencil"></i>
-                                            </a>
-                                            <a th:href="@{'/dashboard/dashboardKeahlian/hapusKeahlian/' + ${k.id}}" 
-                                               class="comic-table-action-btn" 
-                                               onclick="return confirm('Hapus keahlian ini?');" 
-                                               title="Hapus">
-                                                <i class="bi bi-trash" style="color: var(--red-primary);"></i>
-                                            </a>
+                                            <a th:href="@{'/dashboard/dashboardKeahlian/editKeahlian/' + ${k.id}}"  class="comic-table-action-btn"  title="Edit Skill"><i class="bi bi-pencil"></i></a>
+                                            <a th:href="@{'/dashboard/dashboardKeahlian/hapusKeahlian/' + ${k.id}}"  class="comic-table-action-btn"  onclick="return confirm('Hapus keahlian ini?');"  title="Hapus"> <i class="bi bi-trash" style="color: var(--red-primary);"></i></a>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr th:if="${#lists.isEmpty(keahlian)}">
-                                    <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 2rem;">
-                                        Belum ada keahlian yang ditambahkan.
-                                    </td>
+                                    <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 2rem;">Belum ada keahlian yang ditambahkan.</td>
                                 </tr>
                             </tbody>
                         </table>

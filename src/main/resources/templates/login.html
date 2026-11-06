@@ -3,82 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Command Access - Admin Clearance</title>
+    <title>Masuk - Dashboard Portfolio</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
-<body class="comic-login-body">
+<body class="bg-[#121212] text-white font-['Plus_Jakarta_Sans',sans-serif] min-h-screen w-screen overflow-x-hidden m-0 p-0 selection:bg-red-600 selection:text-white">
 
-    <div class="comic-login-halftone" aria-hidden="true"></div>
-    <div class="comic-login-ambient" aria-hidden="true"></div>
+    <div class="flex flex-col md:flex-row h-screen w-screen overflow-hidden bg-[#121212]">
 
-    <div class="comic-login-container">
-        <div class="comic-login-card">
-            <div class="comic-login-inner">
+        <div class="w-full md:w-[48%] lg:w-[45%] h-full bg-[#121212] flex flex-col justify-between p-6 sm:p-10 lg:p-14 overflow-y-auto z-10">
+            
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-2.5">
+                    <div class="flex -space-x-1.5">
+                        <div class="w-5 h-5 rounded-full bg-neutral-500/80"></div>
+                        <div class="w-5 h-5 rounded-full bg-neutral-200"></div>
+                    </div>
+                    <span class="text-xs font-semibold tracking-wider text-neutral-400 uppercase">Portfolio</span>
+                </div>
+                <a th:href="@{/}" class="text-neutral-400 hover:text-white text-xs inline-flex items-center gap-1.5 transition-colors px-2.5 py-1.5 rounded-lg hover:bg-neutral-800/60" title="Ke Halaman Utama"><i class="bi bi-house"></i><span>Beranda</span></a>
+            </div>
 
-                <div class="comic-login-header">
-                    <h1 class="comic-login-title">
-                        Masuk <span class="comic-title-highlight">Dashboard</span>
-                    </h1>
-                    <p class="comic-login-subtitle">
-                        Autentikasi keamanan untuk mengelola konten portfolio.
-                    </p>
+            <div class="w-full max-w-sm mx-auto my-auto py-6">
+                
+                <div class="mb-8">
+                    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">Selamat Datang Kembali</h1>
+                    <p class="text-xs sm:text-sm text-neutral-400">Kelola karya dan proyek Anda di sini.</p>
                 </div>
 
-                <div th:if="${pesanError != null}" class="comic-login-alert" role="alert">
-                    <i class="bi bi-exclamation-triangle-fill"></i>
+                <div th:if="${pesanError != null}" class="mb-5 p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 text-red-300 text-xs flex items-center gap-2.5">
+                    <i class="bi bi-exclamation-triangle-fill text-red-400 flex-shrink-0"></i>
                     <span th:text="${pesanError}">Username atau password salah</span>
                 </div>
 
-                <form th:action="@{/login}" method="POST">
-                    <div class="comic-form-group">
-                        <label for="username" class="comic-form-label">
-                            <i class="bi bi-person-badge-fill"></i>
-                            <span>Username</span>
-                        </label>
-                        <input type="text"
-                               id="username"
-                               name="username"
-                               class="comic-form-input"
-                               placeholder="Masukkan username"
-                               autocomplete="username"
-                               required autofocus>
+                <form th:action="@{/login}" method="POST" class="space-y-4">
+                    <div>
+                        <label for="username" class="block text-xs font-medium text-neutral-400 mb-1.5">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Masukkan username atau email" required autofocus autocomplete="username"
+                               class="w-full px-4 py-3.5 rounded-xl bg-[#181818] border border-neutral-800 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-200">
                     </div>
 
-                    <div class="comic-form-group">
-                        <label for="password" class="comic-form-label">
-                            <i class="bi bi-key-fill"></i>
-                            <span>Password</span>
-                        </label>
-                        <input type="password"
-                               id="password"
-                               name="password"
-                               class="comic-form-input"
-                               placeholder="••••••••"
-                               autocomplete="current-password"
-                               required>
+                    <div>
+                        <label for="password" class="block text-xs font-medium text-neutral-400 mb-1.5">Password</label>
+                        <div class="relative">
+                            <input type="password" id="password" name="password" placeholder="Masukkan password" required autocomplete="current-password"
+                                   class="w-full pl-4 pr-11 py-3.5 rounded-xl bg-[#181818] border border-neutral-800 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all duration-200">
+                            <button type="button" onclick="togglePassword()" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white transition-colors p-1" title="Tampilkan/Sembunyikan password">
+                                <i id="password-toggle-icon" class="bi bi-eye text-base"></i>
+                            </button>
+                        </div>
                     </div>
 
-                    <button type="submit" class="comic-submit-btn">
-                        <span>Verifikasi &amp; Masuk</span>
-                        <i class="bi bi-arrow-right-short" style="font-size: 1.3rem;"></i>
+                    <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-red-600 hover:bg-red-700 active:scale-[0.99] text-white font-semibold text-sm tracking-wide shadow-lg shadow-red-600/25 transition-all duration-200 flex items-center justify-center gap-2">
+                        <span>Masuk ke Dashboard</span>
+                        <i class="bi bi-arrow-right"></i>
                     </button>
                 </form>
 
-                <div class="comic-login-footer">
-                    <a th:href="@{/}" class="comic-back-link">
-                        <i class="bi bi-arrow-left"></i>
-                        <span>Kembali ke Beranda</span>
-                    </a>
-                </div>
+            </div>
 
+            <div class="w-full text-center py-2">
+                <a th:href="@{/}" class="text-xs text-neutral-500 hover:text-neutral-300 inline-flex items-center gap-1.5 transition-colors">
+                    <i class="bi bi-arrow-left"></i>
+                    <span>Kembali ke Beranda Website</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="relative h-full hidden md:block md:w-[52%] lg:w-[55%] p-3 lg:p-4 bg-[#121212]">
+            <div class="relative w-full h-full rounded-l-[32px] overflow-hidden shadow-2xl">
+                <img th:src="@{/images/masuk.jpg}" alt="Artistic visual" class="w-full h-full object-cover select-none pointer-events-none">
             </div>
         </div>
+
     </div>
+
+    <script>
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const icon = document.getElementById('password-toggle-icon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+        }
+    </script>
 
 </body>
 </html>

@@ -10,6 +10,7 @@ import com.example.portofolio.model.Kontak;
 import com.example.portofolio.repository.KontakRepository;
 
 @Service
+@SuppressWarnings("all")
 public class KontakService {
 
     @Autowired

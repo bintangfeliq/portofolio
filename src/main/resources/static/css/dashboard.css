@@ -1,6 +1,6 @@
 :root {
-    --red-primary: #fa1226;
-    --red-hover: #d4001f;
+    --red-primary: #e02438;
+    --red-hover: #be1226;
     --bg-main: #0c0c12;
     --bg-sidebar: #101017;
     --bg-panel: #14141d;
@@ -29,45 +29,46 @@ body.comic-dash-body {
     display: flex;
     min-height: 100vh;
     position: relative;
+    background-color: #b91c1c;
 }
 
 .comic-dash-sidebar {
     width: 250px;
-    background-color: var(--bg-sidebar);
-    border-right: 2px solid var(--border-ink);
+    background-color: #b91c1c;
+    border-right: none;
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    z-index: 1000;
+    z-index: 90;
     overflow-y: auto;
 }
 
 .comic-dash-brand {
-    padding: 1.5rem 1.25rem;
-    border-bottom: 2px solid var(--border-ink);
-    background: #0b0b10;
+    padding: 1.5rem 1.4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    background: transparent;
     flex-shrink: 0;
 }
 
 .comic-brand-title {
     font-size: 1.3rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: #ffffff;
     text-decoration: none;
     display: block;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
 }
 
 .comic-brand-title span {
-    color: var(--red-primary);
+    color: #000000;
 }
 
 .comic-dash-nav {
     flex-grow: 1;
-    padding: 1.25rem 0.75rem;
+    padding: 1.25rem 0.85rem;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
@@ -76,10 +77,10 @@ body.comic-dash-body {
 .comic-nav-section-title {
     font-size: 0.68rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    padding: 0.5rem 0.75rem 0.25rem 0.75rem;
+    color: rgba(255, 255, 255, 0.65);
+    padding: 0.5rem 0.85rem 0.35rem 0.85rem;
 }
 
 .comic-nav-item {
@@ -87,45 +88,45 @@ body.comic-dash-body {
     align-items: center;
     gap: 0.75rem;
     padding: 0.65rem 0.85rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.88);
     text-decoration: none;
     font-size: 0.88rem;
     font-weight: 600;
-    border-radius: 6px;
-    border-left: 3px solid transparent;
-    transition: all 0.15s ease;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.18s ease;
 }
 
 .comic-nav-item i {
     font-size: 1.05rem;
-    color: var(--text-muted);
-    transition: color 0.15s ease;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.18s ease;
 }
 
 .comic-nav-item:hover {
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.18);
 }
 
 .comic-nav-item:hover i {
-    color: var(--red-primary);
+    color: #ffffff;
 }
 
 .comic-nav-item.active {
-    color: var(--text-primary);
-    background: #181824;
-    border-left: 3px solid var(--red-primary);
+    color: #ffffff;
+    background: #000000;
     font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
 }
 
 .comic-nav-item.active i {
-    color: var(--red-primary);
+    color: #ffffff;
 }
 
 .comic-dash-sidebar-footer {
     padding: 1rem 0.85rem;
-    border-top: 2px solid var(--border-ink);
-    background: #0b0b10;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    background: transparent;
     flex-shrink: 0;
 }
 
@@ -136,21 +137,27 @@ body.comic-dash-body {
     justify-content: center;
     gap: 0.5rem;
     padding: 0.65rem 1rem;
-    border-radius: 6px;
-    background: transparent;
-    border: 1.5px solid rgba(250, 18, 38, 0.4);
-    color: var(--red-primary);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    color: #ffffff;
     font-size: 0.84rem;
     font-weight: 700;
     text-decoration: none;
-    transition: all 0.15s ease;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    transition: all 0.18s ease;
 }
 
 .comic-logout-btn:hover {
-    background: var(--red-primary);
+    background: #000000;
     color: #ffffff;
-    border-color: var(--red-primary);
-    box-shadow: 2px 2px 0 var(--border-ink);
+    border-color: #000000;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    transform: none;
 }
 
 .comic-dash-main {
@@ -158,7 +165,12 @@ body.comic-dash-body {
     flex-grow: 1;
     padding: 2rem 2.5rem 3.5rem 2.5rem;
     min-height: 100vh;
-    max-width: 1280px;
+    background-color: var(--bg-main);
+    border-top-left-radius: 32px;
+    border-bottom-left-radius: 32px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.45);
+    position: relative;
+    z-index: 100;
 }
 
 .comic-dash-header {
@@ -515,8 +527,38 @@ body.comic-dash-body {
     outline: none;
     color: #e2e2ee;
     border-color: var(--red-primary);
-    box-shadow: 0 0 0 3px rgba(250, 18, 38, 0.18);
+    box-shadow: 0 0 0 3px rgba(224, 36, 56, 0.18);
     background: #141420;
+}
+
+.comic-form-control[type="file"] {
+    display: flex;
+    align-items: center;
+    padding: 0.45rem 0.65rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.comic-form-control[type="file"]::-webkit-file-upload-button,
+.comic-form-control[type="file"]::file-selector-button {
+    background: #1a1a26;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 0.45rem 0.95rem;
+    margin-right: 0.85rem;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.comic-form-control[type="file"]::-webkit-file-upload-button:hover,
+.comic-form-control[type="file"]::file-selector-button:hover {
+    background: var(--red-primary);
+    border-color: var(--red-primary);
+    color: #ffffff;
 }
 
 .comic-submit-btn {
@@ -690,17 +732,180 @@ body.comic-dash-body {
     }
 }
 
+.dash-profile-contact-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 22px;
+    padding: 1.25rem 1.65rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.dash-pc-avatar-wrap {
+    width: 86px;
+    height: 96px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #f1f5f9;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dash-pc-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+.dash-pc-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.dash-pc-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dash-pc-name {
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+}
+
+.dash-pc-role {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    line-height: 1.4;
+}
+
+.dash-pc-role-title {
+    font-weight: 700;
+    font-style: italic;
+    color: #334155;
+}
+
+.dash-pc-role-meta {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.dash-pc-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.dash-pc-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.88rem;
+    text-decoration: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease;
+}
+
+.dash-pc-btn:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #0f172a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.dash-pc-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem 2rem;
+    margin-top: 1rem;
+}
+
+.dash-pc-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.84rem;
+    color: #334155;
+    font-weight: 500;
+    min-width: 0;
+}
+
+.dash-pc-info-item i {
+    color: #64748b;
+    font-size: 0.95rem;
+    width: 16px;
+    display: inline-flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dash-pc-info-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
 @media (max-width: 768px) {
+    .dash-profile-contact-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem 1.25rem;
+    }
+    .dash-pc-title-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .dash-pc-role {
+        justify-content: center;
+    }
+    .dash-pc-info-grid {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+    }
+    .dash-pc-info-item {
+        justify-content: center;
+    }
     .comic-dash-sidebar {
         position: static;
         width: 100%;
         height: auto;
         border-right: none;
-        border-bottom: 2px solid var(--border-ink);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.18);
     }
     .comic-dash-main {
         margin-left: 0;
         padding: 1.25rem 1rem 2.5rem 1rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        box-shadow: none;
     }
     .comic-dash-nav {
         flex-direction: row;

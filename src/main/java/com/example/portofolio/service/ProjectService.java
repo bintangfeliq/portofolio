@@ -10,6 +10,7 @@ import com.example.portofolio.model.Project;
 import com.example.portofolio.repository.ProjectRepository;
 
 @Service
+@SuppressWarnings("all")
 public class ProjectService {
 
     @Autowired

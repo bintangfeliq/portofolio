@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bintang | Portfolio</title>
+    <title>Muhammad Bintang Feliq | Portfolio</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}">
+    <meta name="keywords" content="Muhammad Bintang Feliq, Bintang Feliq, Portofolio Bintang Feliq, Muhammad bintang">
+    <meta name="description" content="Portofolio resmi Muhammad Bintang Feliq (Bintang Feliq)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -20,37 +21,24 @@
 <body class="idx-body">
 
     <div class="idx-page-container">
-
         <main class="idx-hero-section">
             <div class="idx-hero-grid">
-
                 <div class="hero-left-top">
                     <div class="hero-name-wrapper">
                         <span class="hero-im-title">I'M</span>
                         <h1 class="hero-main-name">BINTANG</h1>
                     </div>
-                    <a th:href="@{/tentang}" class="hero-discuss-btn">
-                        <span>Profil Saya</span>
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
+                    <a th:href="@{/tentang}" class="hero-discuss-btn"><span>Profil Saya</span><i class="bi bi-arrow-right"></i></a>
                 </div>
 
                 <div class="hero-left-bottom">
-                    <p class="hero-bio-text" th:if="${profil != null and !#strings.isEmpty(profil.deskripsi)}"
-                        th:text="${profil.deskripsi}">
-                        Hello, I'm Bintang, a Web &amp; Software Developer passionate about creating meaningful digital
-                        experiences.
-                    </p>
-                    <p class="hero-bio-text" th:unless="${profil != null and !#strings.isEmpty(profil.deskripsi)}">
-                        Hello, I'm Bintang, a Web &amp; Software Developer passionate about creating meaningful digital
-                        experiences.
-                    </p>
+                    <p class="hero-bio-text" th:if="${profil != null and !#strings.isEmpty(profil.deskripsi)}" th:text="${profil.deskripsi}">Hello, I'm Bintang, a Web &amp; Software Developer passionate about creating meaningful digital experiences.</p>
+                    <p class="hero-bio-text" th:unless="${profil != null and !#strings.isEmpty(profil.deskripsi)}">Hello, I'm Bintang, a Web &amp; Software Developer passionate about creating meaningful digital experiences.</p>
                 </div>
 
                 <div class="hero-center-visual">
                     <div class="hero-image-wrap">
-                        <img th:src="@{/images/bintang.png(v='3')}" src="/images/bintang.png?v=3" alt="Bintang"
-                            class="hero-center-img">
+                        <img th:src="@{/images/fix.png}" src="/images/fix.png" alt="Bintang" class="hero-center-img">
                     </div>
                 </div>
 
@@ -58,39 +46,20 @@
                     <div class="hero-follow-box">
                         <span class="hero-follow-label">Kontak</span>
                         <div class="hero-social-row">
-                            <a th:if="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github)}"
-                                th:href="${kontak.github}" target="_blank" rel="noopener noreferrer"
-                                class="hero-social-circle" title="GitHub" aria-label="GitHub">
-                                <i class="bi bi-github"></i>
-                            </a>
-                            <a th:if="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram)}"
-                                th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer"
-                                class="hero-social-circle" title="Instagram" aria-label="Instagram">
-                                <i class="bi bi-instagram"></i>
-                            </a>
-                            <a th:if="${kontak != null and kontak.telepon != null and !#strings.isEmpty(kontak.telepon)}"
-                                th:href="'https://wa.me/' + ${kontak.telepon.startsWith('0') ? '62' + kontak.telepon.substring(1) : kontak.telepon}"
-                                target="_blank" rel="noopener noreferrer" class="hero-social-circle" title="WhatsApp"
-                                aria-label="WhatsApp">
-                                <i class="bi bi-whatsapp"></i>
-                            </a>
-                            <a th:if="${kontak != null and kontak.email != null and !#strings.isEmpty(kontak.email)}"
-                                th:href="'mailto:' + ${kontak.email}" class="hero-social-circle" title="Email"
-                                aria-label="Email">
-                                <i class="bi bi-envelope-fill"></i>
-                            </a>
+                            <a th:if="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github)}" th:href="${kontak.github}" target="_blank" rel="noopener noreferrer" class="hero-social-circle" title="GitHub" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                            <a th:if="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram)}" th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer" class="hero-social-circle" title="Instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a th:if="${kontak != null and kontak.telepon != null and !#strings.isEmpty(kontak.telepon)}" th:href="'https://wa.me/' + ${kontak.telepon.startsWith('0') ? '62' + kontak.telepon.substring(1) : kontak.telepon}" target="_blank" rel="noopener noreferrer" class="hero-social-circle" title="WhatsApp" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                            <a th:if="${kontak != null and kontak.email != null and !#strings.isEmpty(kontak.email)}" th:href="'mailto:' + ${kontak.email}" class="hero-social-circle" title="Email" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
                         </div>
-                        <p class="hero-follow-tagline">
-                            I design intuitive interfaces and build user-centric web applications.
-                        </p>
+                        <p class="hero-follow-tagline">Saya senang merancang tampilan menarik dan membangun aplikasi web yang memberikan pengalaman terbaik bagi pengguna</p>
                     </div>
                 </div>
 
                 <div class="hero-right-bottom">
                     <div class="hero-role-wrapper">
-                        <span class="hero-role-word">Student &amp;</span>
-                        <span class="hero-role-word">Junior Web</span>
-                        <span class="hero-role-word">Developer</span>
+                        <span class="hero-role-word" data-type-text="STUDENT &amp;"></span>
+                        <span class="hero-role-word" data-type-text="JUNIOR WEB"></span>
+                        <span class="hero-role-word" data-type-text="DEVELOPER"></span>
                     </div>
                 </div>
 
@@ -100,6 +69,49 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const lines = document.querySelectorAll('.hero-role-word[data-type-text]');
+            if (!lines || lines.length === 0) return;
+
+            const cursor = document.createElement('span');
+            cursor.className = 'type-cursor';
+
+            let lineIndex = 0;
+            let charIndex = 0;
+            const typingSpeed = 85;
+            const lineDelay = 320;
+
+            if (lines[0]) {
+                lines[0].appendChild(cursor);
+            }
+
+            function typeWriter() {
+                if (lineIndex < lines.length) {
+                    const currentLine = lines[lineIndex];
+                    const fullText = currentLine.getAttribute('data-type-text');
+
+                    if (charIndex < fullText.length) {
+                        const textNode = document.createTextNode(fullText.charAt(charIndex));
+                        currentLine.insertBefore(textNode, cursor);
+                        charIndex++;
+                        setTimeout(typeWriter, typingSpeed);
+                    } else {
+                        lineIndex++;
+                        charIndex = 0;
+                        if (lineIndex < lines.length) {
+                            setTimeout(function () {
+                                lines[lineIndex].appendChild(cursor);
+                                typeWriter();
+                            }, lineDelay);
+                        }
+                    }
+                }
+            }
+
+            setTimeout(typeWriter, 500);
+        });
+    </script>
 </body>
 
 </html>

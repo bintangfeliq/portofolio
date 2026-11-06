@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Pendidikan - Dashboard Admin</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,133 +15,70 @@
 <body class="comic-dash-body">
 
     <div class="comic-dash-wrapper">
-        
         <aside class="comic-dash-sidebar">
             <div class="comic-dash-brand">
-                <a th:href="@{/dashboard}" class="comic-brand-title">
-                    Portfolio<span>.</span>
-                </a>
+                <a th:href="@{/dashboard}" class="comic-brand-title">Portfolio<span>.</span></a>
             </div>
 
             <nav class="comic-dash-nav">
                 <span class="comic-nav-section-title">Menu Utama</span>
-                <a th:href="@{/dashboard}" class="comic-nav-item">
-                    <i class="bi bi-grid-1x2-fill"></i>
-                    <span>Dashboard</span>
-                </a>
-                <a th:href="@{/dashboard/editTentang}" class="comic-nav-item">
-                    <i class="bi bi-person"></i>
-                    <span>Tentang Saya</span>
-                </a>
-                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-nav-item active">
-                    <i class="bi bi-mortarboard"></i>
-                    <span>Pendidikan</span>
-                </a>
-                <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-nav-item">
-                    <i class="bi bi-code-slash"></i>
-                    <span>Skill</span>
-                </a>
-                <a th:href="@{/dashboard/dashboardProject}" class="comic-nav-item">
-                    <i class="bi bi-layers"></i>
-                    <span>Project</span>
-                </a>
-                <a th:href="@{/dashboard/editKontak}" class="comic-nav-item">
-                    <i class="bi bi-envelope"></i>
-                    <span>Kontak</span>
-                </a>
+                <a th:href="@{/dashboard}" class="comic-nav-item"><i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span></a>
+                <a th:href="@{/dashboard/editTentang}" class="comic-nav-item"><i class="bi bi-person"></i><span>Tentang Saya</span></a>
+                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-nav-item active"><i class="bi bi-mortarboard"></i><span>Pendidikan</span></a>
+                <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-nav-item"><i class="bi bi-code-slash"></i><span>Skill</span></a>
+                <a th:href="@{/dashboard/dashboardProject}" class="comic-nav-item"><i class="bi bi-layers"></i><span>Project</span></a>
+                <a th:href="@{/dashboard/editKontak}" class="comic-nav-item"><i class="bi bi-envelope"></i><span>Kontak</span></a>
             </nav>
 
             <div class="comic-dash-sidebar-footer">
-                <a th:href="@{/}" class="comic-logout-btn">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Keluar</span>
-                </a>
+                <a th:href="@{/}" class="comic-logout-btn"><i class="bi bi-box-arrow-right"></i><span>Keluar</span></a>
             </div>
         </aside>
 
         <main class="comic-dash-main">
-            
             <div class="comic-dash-header">
                 <div>
-                    <h1 class="comic-dash-header-title">
-                        Ubah <span>Data Pendidikan</span>
-                    </h1>
-                    <p class="comic-dash-header-desc">
-                        Perbarui rincian institusi atau periode riwayat pendidikan.
-                    </p>
+                    <h1 class="comic-dash-header-title">Ubah <span>Data Pendidikan</span></h1>
+                    <p class="comic-dash-header-desc">Perbarui rincian institusi atau periode riwayat pendidikan.</p>
                 </div>
                 <div>
-                    <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-header-btn">
-                        <i class="bi bi-arrow-left"></i>
-                        <span>Kembali ke Pendidikan</span>
-                    </a>
+                    <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-header-btn"><i class="bi bi-arrow-left"></i><span>Kembali ke Pendidikan</span></a>
                 </div>
             </div>
 
             <div style="max-width: 600px;">
                 <div class="comic-panel">
                     <div class="comic-panel-header">
-                        <h2 class="comic-panel-title">
-                            <i class="bi bi-pencil-square"></i>
-                            <span>Form Update Pendidikan</span>
-                        </h2>
+                        <h2 class="comic-panel-title">Form Update Pendidikan</h2>
                     </div>
                     <div class="comic-panel-body">
                         <form th:action="@{/dashboard/dashboardPendidikan/editPendidikan/{id}(id=${pendidikan.id})}" th:object="${pendidikan}" method="POST">
                             
                             <div class="comic-form-group">
-                                <label for="nama" class="comic-form-label">Nama Sekolah / Institusi</label>
-                                <input type="text"
-                                       id="nama"
-                                       name="nama"
-                                       th:field="*{nama}"
-                                       class="comic-form-control"
-                                       required>
+                                <label for="nama" class="comic-form-label">Nama Sekolah</label>
+                                <input type="text" id="nama" name="nama" th:field="*{nama}" class="comic-form-control" required>
                             </div>
 
                             <div class="comic-form-group">
                                 <label for="tingkat" class="comic-form-label">Tingkat Pendidikan</label>
-                                <input type="text"
-                                       id="tingkat"
-                                       name="tingkat"
-                                       th:field="*{tingkat}"
-                                       class="comic-form-control"
-                                       required>
+                                <input type="text" id="tingkat" name="tingkat" th:field="*{tingkat}" class="comic-form-control" required>
                             </div>
 
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;" class="comic-form-group">
                                 <div>
                                     <label for="tahunMulai" class="comic-form-label">Tahun Mulai</label>
-                                    <input type="number"
-                                           id="tahunMulai"
-                                           name="tahunMulai"
-                                           th:field="*{tahunMulai}"
-                                           class="comic-form-control"
-                                           required>
+                                    <input type="number" id="tahunMulai" name="tahunMulai" th:field="*{tahunMulai}" class="comic-form-control" required>
                                 </div>
                                 <div>
                                     <label for="tahunSelsai" class="comic-form-label">Tahun Selesai</label>
-                                    <input type="number"
-                                           id="tahunSelsai"
-                                           name="tahunSelsai"
-                                           th:field="*{tahunSelsai}"
-                                           class="comic-form-control">
+                                    <input type="number" id="tahunSelsai"  name="tahunSelsai" th:field="*{tahunSelsai}" class="comic-form-control">
                                 </div>
                             </div>
-                            <p style="font-size: 0.76rem; color: var(--text-muted); margin: -0.5rem 0 1.25rem 0;">
-                                Kosongkan tahun selesai jika masih berlangsung.
-                            </p>
 
                             <div style="display: flex; gap: 0.75rem;">
-                                <button type="submit" class="comic-submit-btn" style="flex: 1;">
-                                    <i class="bi bi-check-circle"></i>
-                                    <span>Simpan Perubahan</span>
-                                </button>
-                                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-header-btn" style="padding: 0.75rem 1.25rem;">
-                                    <span>Batal</span>
-                                </a>
+                                <button type="submit" class="comic-submit-btn" style="flex: 1;"><span>Simpan Perubahan</span></button>
+                                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-header-btn" style="padding: 0.75rem 1.25rem;"><span>Batal</span></a>
                             </div>
-
                         </form>
                     </div>
                 </div>

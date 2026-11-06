@@ -3,8 +3,7 @@
         var section = document.querySelector('.education-section');
         if (!section) return;
 
-        var track = section.querySelector('.education-orbit-track');
-        var modals = document.querySelectorAll('.education-modal');
+        var wrappers = section.querySelectorAll('.education-node-wrapper');
 
         if ('IntersectionObserver' in window) {
             var observer = new IntersectionObserver(function (entries) {
@@ -23,16 +22,29 @@
             section.classList.add('is-visible');
         }
 
-        if (track && modals.length) {
-            modals.forEach(function (modalEl) {
-                modalEl.addEventListener('show.bs.modal', function () {
-                    track.classList.add('is-paused');
+        wrappers.forEach(function (wrap) {
+            var btn = wrap.querySelector('.education-orbit-node');
+            if (!btn) return;
+
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var wasActive = wrap.classList.contains('is-active-popover');
+                wrappers.forEach(function (w) {
+                    w.classList.remove('is-active-popover');
                 });
-                modalEl.addEventListener('hidden.bs.modal', function () {
-                    track.classList.remove('is-paused');
-                });
+                if (!wasActive) {
+                    wrap.classList.add('is-active-popover');
+                }
             });
-        }
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.education-node-wrapper')) {
+                wrappers.forEach(function (w) {
+                    w.classList.remove('is-active-popover');
+                });
+            }
+        });
     }
 
     if (document.readyState === 'loading') {

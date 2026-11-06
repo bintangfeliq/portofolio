@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Portfolio</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,44 +18,21 @@
         
         <aside class="comic-dash-sidebar">
             <div class="comic-dash-brand">
-                <a th:href="@{/dashboard}" class="comic-brand-title">
-                    Portfolio<span>.</span>
-                </a>
+                <a th:href="@{/dashboard}" class="comic-brand-title">Portfolio<span>.</span></a>
             </div>
 
             <nav class="comic-dash-nav">
                 <span class="comic-nav-section-title">Menu Utama</span>
-                <a th:href="@{/dashboard}" class="comic-nav-item active">
-                    <i class="bi bi-grid-1x2-fill"></i>
-                    <span>Dashboard</span>
-                </a>
-                <a th:href="@{/dashboard/editTentang}" class="comic-nav-item">
-                    <i class="bi bi-person"></i>
-                    <span>Tentang Saya</span>
-                </a>
-                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-nav-item">
-                    <i class="bi bi-mortarboard"></i>
-                    <span>Pendidikan</span>
-                </a>
-                <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-nav-item">
-                    <i class="bi bi-code-slash"></i>
-                    <span>Skill</span>
-                </a>
-                <a th:href="@{/dashboard/dashboardProject}" class="comic-nav-item">
-                    <i class="bi bi-layers"></i>
-                    <span>Project</span>
-                </a>
-                <a th:href="@{/dashboard/editKontak}" class="comic-nav-item">
-                    <i class="bi bi-envelope"></i>
-                    <span>Kontak</span>
-                </a>
+                <a th:href="@{/dashboard}" class="comic-nav-item active"><i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span></a>
+                <a th:href="@{/dashboard/editTentang}" class="comic-nav-item"><i class="bi bi-person"></i><span>Tentang Saya</span></a>
+                <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-nav-item"><i class="bi bi-mortarboard"></i><span>Pendidikan</span></a>
+                <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-nav-item"><i class="bi bi-code-slash"></i><span>Skill</span></a>
+                <a th:href="@{/dashboard/dashboardProject}" class="comic-nav-item"><i class="bi bi-layers"></i><span>Project</span></a>
+                <a th:href="@{/dashboard/editKontak}" class="comic-nav-item"><i class="bi bi-envelope"></i><span>Kontak</span></a>
             </nav>
 
             <div class="comic-dash-sidebar-footer">
-                <a th:href="@{/}" class="comic-logout-btn">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Keluar</span>
-                </a>
+                <a th:href="@{/}" class="comic-logout-btn"><i class="bi bi-box-arrow-right"></i><span>Keluar</span></a>
             </div>
         </aside>
 
@@ -77,32 +55,46 @@
                 </div>
             </div>
 
-            <div class="comic-stats-bar">
-                <div class="comic-stat-box">
-                    <div class="comic-stat-icon">
-                        <i class="bi bi-layers-fill"></i>
-                    </div>
-                    <div class="comic-stat-info">
-                        <span class="comic-stat-number" th:text="${projects != null ? #lists.size(projects) : 0}">0</span>
-                        <span class="comic-stat-name">Total Project</span>
-                    </div>
+            <div class="dash-profile-contact-card">
+                <div class="dash-pc-avatar-wrap">
+                    <img th:if="${profil != null and profil.foto != null}" th:src="@{'/images/' + ${profil.foto}}" alt="Foto Profil" class="dash-pc-avatar">
+                    <img th:unless="${profil != null and profil.foto != null}" th:src="@{/images/portrait_matched.jpg}" alt="Foto Profil" class="dash-pc-avatar">
                 </div>
-                <div class="comic-stat-box">
-                    <div class="comic-stat-icon">
-                        <i class="bi bi-code-slash"></i>
+                <div class="dash-pc-content">
+                    <div class="dash-pc-title-row">
+                        <div>
+                            <h2 class="dash-pc-name" th:text="${profil != null ? profil.nama : 'Muhammad Bintang Feliq'}">Muhammad Bintang Feliq</h2>
+                            <div class="dash-pc-role">
+                                <span class="dash-pc-role-title">Web Developer</span>
+                                <span class="dash-pc-role-meta" th:text="${profil != null and profil.alamat != null ? profil.alamat + ' &bull; SMK Assalaam Bandung' : 'SMK Assalaam Bandung'}">Bandung &bull; SMK Assalaam Bandung</span>
+                            </div>
+                        </div>
+                        <div class="dash-pc-actions">
+                            <a th:href="@{/dashboard/editTentang}" class="dash-pc-btn" title="Ubah Profil / Tentang Saya">
+                                <i class="bi bi-person"></i>
+                            </a>
+                            <a th:href="@{/dashboard/editKontak}" class="dash-pc-btn" title="Ubah Kontak">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="comic-stat-info">
-                        <span class="comic-stat-number" th:text="${keahlian != null ? #lists.size(keahlian) : 0}">0</span>
-                        <span class="comic-stat-name">Total Skill</span>
-                    </div>
-                </div>
-                <div class="comic-stat-box">
-                    <div class="comic-stat-icon">
-                        <i class="bi bi-mortarboard-fill"></i>
-                    </div>
-                    <div class="comic-stat-info">
-                        <span class="comic-stat-number" th:text="${pendidikan != null ? #lists.size(pendidikan) : 0}">0</span>
-                        <span class="comic-stat-name">Riwayat Pendidikan</span>
+                    <div class="dash-pc-info-grid">
+                        <div class="dash-pc-info-item">
+                            <i class="bi bi-telephone"></i>
+                            <span th:text="${kontak != null and kontak.telepon != null ? kontak.telepon : '-'}">+62 851-2123-4353</span>
+                        </div>
+                        <div class="dash-pc-info-item">
+                            <i class="bi bi-envelope"></i>
+                            <span th:text="${kontak != null and kontak.email != null ? kontak.email : '-'}">bintangfeliq1@gmail.com</span>
+                        </div>
+                        <div class="dash-pc-info-item">
+                            <i class="bi bi-geo-alt"></i>
+                            <span th:text="${profil != null and profil.alamat != null ? profil.alamat : 'Bandung'}">Bandung</span>
+                        </div>
+                        <div class="dash-pc-info-item">
+                            <i class="bi bi-building"></i>
+                            <span th:text="${kontak != null and kontak.github != null ? kontak.github.replace('https://github.com/', '').replace('/', '') : 'SMK Assalaam Bandung'}">bintangfeliq</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -113,13 +105,9 @@
                     
                     <div class="comic-panel">
                         <div class="comic-panel-header">
-                            <h2 class="comic-panel-title">
-                                <i class="bi bi-layers"></i>
-                                <span>Project Terbaru</span>
-                            </h2>
+                            <h2 class="comic-panel-title">Project Terbaru</h2>
                             <a th:href="@{/dashboard/dashboardProject}" class="comic-panel-link">
                                 <span>Kelola Project</span>
-                                <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                         <div class="comic-panel-body" style="padding: 0;">
@@ -157,13 +145,32 @@
 
                     <div class="comic-panel">
                         <div class="comic-panel-header">
-                            <h2 class="comic-panel-title">
-                                <i class="bi bi-mortarboard"></i>
-                                <span>Riwayat Pendidikan</span>
-                            </h2>
+                            <h2 class="comic-panel-title">Keahlian</h2>
+                            <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-panel-link">
+                                <span>Kelola Skill</span>
+                            </a>
+                        </div>
+                        <div class="comic-panel-body">
+                            <div class="comic-skill-list">
+                                <span th:each="k : ${keahlian}" class="comic-skill-tag" th:text="${k.nama}">
+                                    Skill
+                                </span>
+                                <span th:if="${#lists.isEmpty(keahlian)}" style="color: var(--text-muted); font-size: 0.85rem; text-align: center; width: 100%; padding: 1rem;">
+                                    Belum ada data keahlian.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="comic-dash-col">
+                    
+                    <div class="comic-panel">
+                        <div class="comic-panel-header">
+                            <h2 class="comic-panel-title">Riwayat Pendidikan</h2>
                             <a th:href="@{/dashboard/dashboardPendidikan}" class="comic-panel-link">
                                 <span>Kelola Pendidikan</span>
-                                <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                         <div class="comic-panel-body">
@@ -180,74 +187,6 @@
                                 <div th:if="${#lists.isEmpty(pendidikan)}" style="color: var(--text-muted); font-size: 0.85rem; text-align: center; padding: 1.5rem;">
                                     Belum ada data pendidikan.
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="comic-dash-col">
-                    
-                    <div class="comic-panel">
-                        <div class="comic-panel-header">
-                            <h2 class="comic-panel-title">
-                                <i class="bi bi-envelope"></i>
-                                <span>Informasi Kontak</span>
-                            </h2>
-                            <a th:href="@{/dashboard/editKontak}" class="comic-panel-link">
-                                <span>Ubah Kontak</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                        <div class="comic-panel-body">
-                            <div class="comic-contact-list">
-                                <div class="comic-contact-row">
-                                    <span class="comic-contact-label">
-                                        <i class="bi bi-envelope-fill"></i> Email
-                                    </span>
-                                    <span class="comic-contact-val" th:text="${kontak != null and kontak.email != null ? kontak.email : '-'}">-</span>
-                                </div>
-                                <div class="comic-contact-row">
-                                    <span class="comic-contact-label">
-                                        <i class="bi bi-whatsapp"></i> WhatsApp
-                                    </span>
-                                    <span class="comic-contact-val" th:text="${kontak != null and kontak.telepon != null ? kontak.telepon : '-'}">-</span>
-                                </div>
-                                <div class="comic-contact-row">
-                                    <span class="comic-contact-label">
-                                        <i class="bi bi-github"></i> GitHub
-                                    </span>
-                                    <span class="comic-contact-val" th:text="${kontak != null and kontak.github != null ? kontak.github.replace('https://github.com/', '').replace('/', '') : '-'}">-</span>
-                                </div>
-                                <div class="comic-contact-row">
-                                    <span class="comic-contact-label">
-                                        <i class="bi bi-instagram"></i> Instagram
-                                    </span>
-                                    <span class="comic-contact-val" th:text="${kontak != null and kontak.instagram != null ? kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '') : '-'}">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="comic-panel">
-                        <div class="comic-panel-header">
-                            <h2 class="comic-panel-title">
-                                <i class="bi bi-code-slash"></i>
-                                <span>Keahlian</span>
-                            </h2>
-                            <a th:href="@{/dashboard/dashboardKeahlian}" class="comic-panel-link">
-                                <span>Kelola Skill</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                        <div class="comic-panel-body">
-                            <div class="comic-skill-list">
-                                <span th:each="k : ${keahlian}" class="comic-skill-tag" th:text="${k.nama}">
-                                    Skill
-                                </span>
-                                <span th:if="${#lists.isEmpty(keahlian)}" style="color: var(--text-muted); font-size: 0.85rem; text-align: center; width: 100%; padding: 1rem;">
-                                    Belum ada data keahlian.
-                                </span>
                             </div>
                         </div>
                     </div>

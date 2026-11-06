@@ -9,6 +9,7 @@ import com.example.portofolio.model.Gambar;
 import com.example.portofolio.repository.GambarRepository;
 
 @Service
+@SuppressWarnings("all")
 public class GambarService {
     @Autowired
     private GambarRepository gambarRepository;
