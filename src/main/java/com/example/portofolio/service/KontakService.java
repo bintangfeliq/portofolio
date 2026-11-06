@@ -29,11 +29,24 @@ public class KontakService {
     }
 
     public Optional<Kontak> cariSesuaiId(Long id){
-        return kontakRepository.findById(id);
+        Optional<Kontak> opt = kontakRepository.findById(id);
+        if (opt.isPresent()) {
+            return opt;
+        }
+        List<Kontak> all = kontakRepository.findAll();
+        if (!all.isEmpty()) {
+            return Optional.of(all.get(0));
+        }
+        Kontak defaultKontak = new Kontak();
+        defaultKontak.setEmail("bintangfeliq1@gmail.com");
+        defaultKontak.setTelepon("+62 851-2123-4353");
+        defaultKontak.setGithub("https://github.com/bintangfeliq/");
+        defaultKontak.setInstagram("https://www.instagram.com/bntng.blue/");
+        return Optional.of(kontakRepository.save(defaultKontak));
     }
 
     public Kontak updateKontak(Long id, Kontak dataBaru){
-        Kontak kontak = kontakRepository.findById(id).orElseThrow(() -> new RuntimeException("Kontak tidak ada"));
+        Kontak kontak = cariSesuaiId(id).orElseGet(() -> new Kontak());
         kontak.setEmail(dataBaru.getEmail());
         kontak.setTelepon(dataBaru.getTelepon());
         kontak.setGithub(dataBaru.getGithub());
