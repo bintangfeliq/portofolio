@@ -1,6 +1,5 @@
 package com.example.portofolio.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +13,7 @@ import com.example.portofolio.service.KeahlianService;
 @Controller
 public class KeahlianController {
 
-    @Autowired
-    private KeahlianService keahlianService;
+    private final KeahlianService keahlianService;
 
     public KeahlianController(KeahlianService keahlianService) {
         this.keahlianService = keahlianService;

@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap');
-
 :root {
     --bg-main: #07070b;
     --red-primary: #e02438;
@@ -13,51 +12,36 @@
     --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Inter', sans-serif;
 }
-
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
-html, body {
-    height: 100%;
+html {
     margin: 0;
     padding: 0;
     background-color: var(--bg-main);
     color: var(--text-primary);
     font-family: var(--font-body);
-    overflow: hidden;
+    overflow: hidden !important;
+    height: 100vh;
     -webkit-font-smoothing: antialiased;
 }
-
 body.idx-body {
     height: 100vh;
     max-height: 100vh;
-    overflow: hidden;
-    background-color: #060609;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        radial-gradient(circle at 50% 30%, rgba(29, 78, 216, 0.12) 0%, transparent 65%),
-        linear-gradient(to bottom, rgba(6, 6, 9, 0.05) 0%, rgba(6, 6, 9, 0.35) 100%),
-        url('../images/inipass.jpg');
-    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
-    background-size: 80px 80px, 80px 80px, 100% 100%, 100% 100%, 100% 100%;
-    background-position: 0 0, 0 0, center center, center center, top center;
-    background-attachment: fixed;
+    overflow: hidden !important;
+    background-color: #f2ede4;
 }
-
 .idx-page-container {
     position: relative;
     z-index: 2;
     height: 100vh;
     max-height: 100vh;
-    overflow: hidden;
+    overflow: hidden !important;
     display: flex;
     flex-direction: column;
 }
-
 .folio-nav {
     position: absolute;
     top: 0;
@@ -71,7 +55,6 @@ body.idx-body {
     padding: 1.15rem 1.5rem 0.5rem 1.5rem;
     width: 100%;
 }
-
 .folio-nav-container {
     max-width: 1240px;
     margin: 0 auto;
@@ -79,7 +62,6 @@ body.idx-body {
     align-items: center;
     justify-content: center;
 }
-
 .folio-nav-links {
     display: flex;
     align-items: center;
@@ -92,7 +74,6 @@ body.idx-body {
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
 }
-
 .folio-link {
     color: var(--text-secondary);
     text-decoration: none;
@@ -105,19 +86,16 @@ body.idx-body {
     align-items: center;
     gap: 0.4rem;
 }
-
 .folio-link:hover,
 .folio-link.active {
     color: #fff;
     background: rgba(255, 255, 255, 0.08);
 }
-
 .folio-link.active {
     color: #fff;
     background: rgba(224, 36, 56, 0.16);
     border: 1px solid rgba(224, 36, 56, 0.35);
 }
-
 .idx-hero-section {
     flex: 1;
     height: 100vh;
@@ -129,7 +107,6 @@ body.idx-body {
     position: relative;
     overflow: hidden;
 }
-
 .idx-hero-grid {
     display: grid;
     grid-template-columns: 1fr minmax(360px, 580px) 1fr;
@@ -142,7 +119,6 @@ body.idx-body {
     align-items: center;
     position: relative;
 }
-
 .hero-left-top {
     grid-column: 1;
     grid-row: 1;
@@ -151,11 +127,9 @@ body.idx-body {
     flex-direction: column;
     align-items: flex-start;
 }
-
 .hero-name-wrapper {
     margin-bottom: 1.25rem;
 }
-
 .hero-im-title {
     font-family: var(--font-heading);
     font-size: clamp(2.8rem, 5vw, 4.6rem);
@@ -166,7 +140,6 @@ body.idx-body {
     letter-spacing: -0.02em;
     display: block;
 }
-
 .hero-main-name {
     font-family: var(--font-heading);
     font-size: clamp(3.4rem, 6.2vw, 5.8rem);
@@ -177,45 +150,12 @@ body.idx-body {
     margin: 0;
     text-transform: uppercase;
 }
-
-.hero-discuss-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    background: var(--red-primary);
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 700;
-    padding: 0.68rem 1.55rem;
-    border-radius: 999px;
-    box-shadow: 0 6px 20px rgba(224, 36, 56, 0.45);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-discuss-btn i {
-    font-size: 1rem;
-    transition: transform 0.2s ease;
-}
-
-.hero-discuss-btn:hover {
-    background: var(--red-hover);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 26px rgba(224, 36, 56, 0.6);
-}
-
-.hero-discuss-btn:hover i {
-    transform: translateX(4px);
-}
-
 .hero-left-bottom {
     grid-column: 1;
     grid-row: 2;
     align-self: end;
     padding-bottom: 2.2rem;
 }
-
 .hero-bio-text {
     font-size: 0.95rem;
     line-height: 1.65;
@@ -224,7 +164,6 @@ body.idx-body {
     margin: 0;
     font-weight: 400;
 }
-
 .hero-center-visual {
     grid-column: 2;
     grid-row: 1 / span 2;
@@ -239,7 +178,6 @@ body.idx-body {
     z-index: 5;
     pointer-events: none;
 }
-
 .hero-image-wrap {
     width: 100%;
     height: 100%;
@@ -249,7 +187,6 @@ body.idx-body {
     position: relative;
     line-height: 0;
 }
-
 .hero-center-img {
     width: auto;
     max-width: 100%;
@@ -263,7 +200,6 @@ body.idx-body {
     filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85));
     pointer-events: none;
 }
-
 .hero-right-top {
     grid-column: 3;
     grid-row: 1;
@@ -271,13 +207,13 @@ body.idx-body {
     align-self: center;
     text-align: left;
 }
-
 .hero-follow-box {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 250px;
+    min-height: 146px;
 }
-
 .hero-follow-label {
     font-family: var(--font-heading);
     font-size: 1rem;
@@ -287,14 +223,12 @@ body.idx-body {
     display: block;
     letter-spacing: -0.01em;
 }
-
 .hero-social-row {
     display: flex;
     align-items: center;
     gap: 0.6rem;
     margin-bottom: 0.85rem;
 }
-
 .hero-social-circle {
     width: 38px;
     height: 38px;
@@ -310,7 +244,6 @@ body.idx-body {
     transition: all 0.2s ease;
     backdrop-filter: blur(10px);
 }
-
 .hero-social-circle:hover {
     background: var(--red-primary);
     border-color: var(--red-primary);
@@ -318,15 +251,6 @@ body.idx-body {
     transform: translateY(-3px);
     box-shadow: 0 4px 14px rgba(224, 36, 56, 0.5);
 }
-
-.hero-follow-tagline {
-    font-size: 0.88rem;
-    line-height: 1.5;
-    color: var(--text-muted);
-    max-width: 250px;
-    margin: 0;
-}
-
 .hero-right-bottom {
     grid-column: 3;
     grid-row: 2;
@@ -335,13 +259,14 @@ body.idx-body {
     padding-bottom: 2.2rem;
     text-align: right;
 }
-
 .hero-role-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    min-height: 3.25em;
+    min-width: 260px;
+    contain: layout style paint;
 }
-
 .hero-role-word {
     font-family: var(--font-heading);
     font-size: clamp(2.2rem, 3.8vw, 3.4rem);
@@ -352,31 +277,38 @@ body.idx-body {
     color: #ffffff;
     display: inline-block;
     min-height: 1.05em;
+    white-space: nowrap;
 }
-
 .type-cursor {
     display: inline-block;
     width: 3px;
     height: 0.85em;
     vertical-align: -0.05em;
-    background-color: var(--red-primary);
+    background-color: var(--red-primary, #e02438);
     margin-left: 4px;
     border-radius: 1px;
     animation: typeBlink 0.8s ease-in-out infinite;
+    will-change: opacity;
+    transform: translateZ(0);
+    contain: strict;
 }
-
 @keyframes typeBlink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
-
 @media (max-width: 991px) {
     html, body.idx-body, .idx-page-container {
         height: auto;
         max-height: none;
         overflow-y: auto;
     }
-
+    body.idx-body {
+        background-size: cover;
+    }
     .folio-nav {
         position: sticky;
         background: rgba(8, 8, 12, 0.85);
@@ -384,13 +316,11 @@ body.idx-body {
         -webkit-backdrop-filter: blur(16px);
         padding: 0.85rem 1rem;
     }
-
     .idx-hero-section {
         height: auto;
         max-height: none;
         padding: 2rem 1.5rem;
     }
-
     .idx-hero-grid {
         height: auto;
         display: flex;
@@ -399,62 +329,50 @@ body.idx-body {
         text-align: center;
         gap: 2rem;
     }
-
     .hero-left-top {
         align-items: center;
         text-align: center;
         padding-top: 1rem;
         order: 1;
     }
-
     .hero-center-visual {
         order: 2;
         max-height: 500px;
         align-self: center;
     }
-
     .hero-center-img {
         max-height: 480px;
     }
-
     .hero-right-bottom {
         order: 3;
         align-self: center;
         text-align: center;
         padding-bottom: 0;
     }
-
     .hero-role-wrapper {
         align-items: center;
     }
-
     .hero-left-bottom {
         order: 4;
         align-self: center;
         text-align: center;
         padding-bottom: 0;
     }
-
     .hero-bio-text {
         max-width: 480px;
     }
-
     .hero-right-top {
         order: 5;
         align-self: center;
         text-align: center;
         padding-top: 0;
     }
-
     .hero-follow-box {
         align-items: center;
-    }
-
-    .hero-follow-tagline {
-        max-width: 380px;
+        width: auto;
+        min-height: auto;
     }
 }
-
 @media (max-width: 768px) {
     .folio-nav {
         padding: 0.65rem 1rem;

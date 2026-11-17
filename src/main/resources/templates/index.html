@@ -11,107 +11,132 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" th:href="@{/images/portfolio-bg.png}" href="/images/portfolio-bg.png" type="image/png">
+    <link rel="preload" as="image" th:href="@{/images/bintang-kece.png}" href="/images/bintang-kece.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&family=Syne:wght@700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css(v='52')}" href="/css/style.css?v=52">
+    <link rel="stylesheet" th:href="@{/css/index.css(v='27')}" href="/css/index.css?v=27">
+    <link rel="stylesheet" th:href="@{/css/scroll-animation.css}">
 </head>
 
-<body class="idx-body">
+<body class="idx-body is-loading">
 
     <div class="idx-page-container">
-        <main class="idx-hero-section">
-            <div class="idx-hero-grid">
-                <div class="hero-left-top">
-                    <div class="hero-name-wrapper">
-                        <span class="hero-im-title">I'M</span>
-                        <h1 class="hero-main-name">BINTANG</h1>
-                    </div>
-                    <a th:href="@{/tentang}" class="hero-discuss-btn"><span>Profil Saya</span><i class="bi bi-arrow-right"></i></a>
-                </div>
-
-                <div class="hero-left-bottom">
-                    <p class="hero-bio-text" th:if="${profil != null and !#strings.isEmpty(profil.deskripsi)}" th:text="${profil.deskripsi}">Hello, I'm Bintang, a Web &amp; Software Developer passionate about creating meaningful digital experiences.</p>
-                    <p class="hero-bio-text" th:unless="${profil != null and !#strings.isEmpty(profil.deskripsi)}">Hello, I'm Bintang, a Web &amp; Software Developer passionate about creating meaningful digital experiences.</p>
-                </div>
-
-                <div class="hero-center-visual">
-                    <div class="hero-image-wrap">
-                        <img th:src="@{/images/fix.png}" src="/images/fix.png" alt="Bintang" class="hero-center-img">
-                    </div>
-                </div>
-
-                <div class="hero-right-top">
-                    <div class="hero-follow-box">
-                        <span class="hero-follow-label">Kontak</span>
-                        <div class="hero-social-row">
-                            <a th:if="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github)}" th:href="${kontak.github}" target="_blank" rel="noopener noreferrer" class="hero-social-circle" title="GitHub" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                            <a th:if="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram)}" th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer" class="hero-social-circle" title="Instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                            <a th:if="${kontak != null and kontak.telepon != null and !#strings.isEmpty(kontak.telepon)}" th:href="'https://wa.me/' + ${kontak.telepon.startsWith('0') ? '62' + kontak.telepon.substring(1) : kontak.telepon}" target="_blank" rel="noopener noreferrer" class="hero-social-circle" title="WhatsApp" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-                            <a th:if="${kontak != null and kontak.email != null and !#strings.isEmpty(kontak.email)}" th:href="'mailto:' + ${kontak.email}" class="hero-social-circle" title="Email" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-                        </div>
-                        <p class="hero-follow-tagline">Saya senang merancang tampilan menarik dan membangun aplikasi web yang memberikan pengalaman terbaik bagi pengguna</p>
-                    </div>
-                </div>
-
-                <div class="hero-right-bottom">
-                    <div class="hero-role-wrapper">
-                        <span class="hero-role-word" data-type-text="STUDENT &amp;"></span>
-                        <span class="hero-role-word" data-type-text="JUNIOR WEB"></span>
-                        <span class="hero-role-word" data-type-text="DEVELOPER"></span>
-                    </div>
-                </div>
-
+        <section class="hero-section-new">
+            <div class="hero-bg-text-img">
+                <img th:src="@{/images/portfolio-bg.png}" src="/images/portfolio-bg.png" alt="Portfolio Background" fetchpriority="high" decoding="async">
             </div>
-        </main>
 
+            <div class="inline-wave-loader" id="inlineWaveLoader" aria-hidden="true">
+                <svg class="wave-svg-naked" id="liquidWaveSvg" viewBox="0 0 360 80" width="360" height="80" preserveAspectRatio="none">
+                    <!-- 3 Lapisan Gelombang Cair -->
+                    <path id="waveLayer3" fill="rgba(229, 50, 34, 0.22)"></path>
+                    <path id="waveLayer2" fill="rgba(229, 50, 34, 0.50)"></path>
+                    <path id="waveLayer1" fill="#e53222"></path>
+
+                    <!-- 4 Percikan Droplet Kecil di Atas Ombak -->
+                    <circle class="wave-droplet" id="drop1" cx="110" cy="45" r="3" fill="#e53222" />
+                    <circle class="wave-droplet" id="drop2" cx="165" cy="38" r="3.8" fill="#e53222" />
+                    <circle class="wave-droplet" id="drop3" cx="215" cy="42" r="2.6" fill="#e53222" />
+                    <circle class="wave-droplet" id="drop4" cx="255" cy="48" r="3.2" fill="#e53222" />
+
+                    <!-- Garis Alas Putih Bersih Ber-shadow Tipis -->
+                    <rect id="waveBaseBar" x="0" y="70" width="360" height="7" rx="3.5" fill="#f7f5f0" stroke="rgba(13,13,13,0.18)" stroke-width="1" />
+                </svg>
+                <div class="inline-loader-meta">
+                    <span class="inline-loader-status" id="loaderStatus">INITIALIZING</span>
+                    <span class="inline-loader-percent" id="loaderPercent">0%</span>
+                </div>
+            </div>
+
+            <svg class="lanyard-svg-layer" id="lanyardSvg">
+                <path id="ropeShadow" d="" stroke="rgba(0,0,0,0.22)" stroke-width="34" fill="none" stroke-linecap="round" />
+                <path id="ropePath" d="" stroke="#1a1a1c" stroke-width="30" fill="none" stroke-linecap="round" />
+            </svg>
+
+            <div class="hero-lanyard-right-zone">
+                <div class="lanyard-card-assembly" id="lanyardAssembly">
+                    <div class="lanyard-clasp-wrapper">
+                        <svg class="lanyard-metal-clasp" width="46" height="80" viewBox="0 0 46 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="dRingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#1c1c1f" />
+                                    <stop offset="25%" stop-color="#3c3c42" />
+                                    <stop offset="50%" stop-color="#4d4d54" />
+                                    <stop offset="75%" stop-color="#35353a" />
+                                    <stop offset="100%" stop-color="#18181a" />
+                                </linearGradient>
+                                <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#45454c" />
+                                    <stop offset="25%" stop-color="#2d2d32" />
+                                    <stop offset="65%" stop-color="#1f1f22" />
+                                    <stop offset="100%" stop-color="#121214" />
+                                </linearGradient>
+                                <linearGradient id="bevelLight" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#70707a" />
+                                    <stop offset="40%" stop-color="#3f3f45" />
+                                    <stop offset="100%" stop-color="#1c1c1f" />
+                                </linearGradient>
+                                <linearGradient id="swivelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#18181a" />
+                                    <stop offset="35%" stop-color="#4a4a52" />
+                                    <stop offset="65%" stop-color="#333338" />
+                                    <stop offset="100%" stop-color="#151517" />
+                                </linearGradient>
+                            </defs>
+
+                            <path d="M 8 5 C 8 3 9.5 1.5 12 1.5 L 34 1.5 C 36.5 1.5 38 3 38 5 L 38.5 8 C 38.5 14 31 20 27 21 L 19 21 C 15 20 7.5 14 7.5 8 Z" fill="url(#dRingGrad)" stroke="#121214" stroke-width="1" />
+                            <path d="M 11 2.2 L 35 2.2" stroke="#757580" stroke-width="1.2" stroke-linecap="round" />
+                            <rect x="11" y="4.8" width="24" height="6.4" rx="3.2" fill="#111113" stroke="#222226" stroke-width="0.8" />
+                            <rect x="12.5" y="5.8" width="21" height="4.4" rx="2" fill="#202024" />
+
+                            <rect x="17.5" y="21" width="11" height="3.5" rx="1.5" fill="url(#swivelGrad)" stroke="#111112" stroke-width="0.7" />
+                            <rect x="19" y="24.5" width="8" height="3.2" rx="1" fill="#1e1e22" stroke="#111112" stroke-width="0.6" />
+                            <circle cx="23" cy="26" r="1.2" fill="#52525a" />
+                            <rect x="17" y="27.7" width="12" height="4" rx="1.8" fill="url(#swivelGrad)" stroke="#111112" stroke-width="0.7" />
+                            <path d="M 18 28.5 L 28 28.5" stroke="#686872" stroke-width="0.6" stroke-linecap="round" />
+
+                            <path d="M 19.5 31.7 C 19.5 31.7 15.5 38 15.5 50 C 15.5 64 17 73 23 77.5 C 28.5 81 33 76 33 68.5 C 33 63.5 30.5 60 28.8 60 C 27.5 60 26.5 61 26.5 62.5 C 26.5 65.5 28.2 67.5 28.2 69.5 C 28.2 73.5 25.5 75.5 23 74 C 19.5 72 19 64 19 53 C 19 43 21 37 22.5 31.7 Z" fill="url(#bodyGrad)" stroke="#101012" stroke-width="0.9" stroke-linejoin="round" />
+                            <path d="M 16.5 40 C 16 48 16.2 62 18.2 70 C 19.8 74 22 76.5 24 76.5" stroke="url(#bevelLight)" stroke-width="1.1" stroke-linecap="round" fill="none" />
+
+                            <path d="M 23.5 36 C 26 36 30 38.5 35 42 C 37 43.5 37 46 35.5 47 C 33.8 48 31 46.5 28.5 44 L 24 42 Z" fill="url(#bevelLight)" stroke="#111113" stroke-width="0.8" />
+                            <line x1="33" y1="42.5" x2="35.5" y2="45" stroke="#757580" stroke-width="0.9" stroke-linecap="round" />
+                            <line x1="31" y1="41" x2="33.5" y2="43.5" stroke="#757580" stroke-width="0.9" stroke-linecap="round" />
+                            <line x1="29" y1="39.5" x2="31.5" y2="42" stroke="#757580" stroke-width="0.9" stroke-linecap="round" />
+
+                            <path d="M 24.2 41.5 L 28.5 60.5" stroke="#25252a" stroke-width="2.8" stroke-linecap="round" />
+                            <path d="M 24.2 41.5 L 28.5 60.5" stroke="#484850" stroke-width="1.2" stroke-linecap="round" />
+                            <line x1="27.8" y1="60" x2="29.2" y2="60.8" stroke="#111112" stroke-width="0.9" />
+                            <circle cx="23" cy="37" r="1.3" fill="#3e3e44" stroke="#111113" stroke-width="0.6" />
+                        </svg>
+                    </div>
+
+                    <div class="id-card-frosted-holder">
+                        <div class="card-slot-top"></div>
+                        <div class="id-card-insert-white">
+                            <div class="card-photo-wrapper">
+                                <img th:src="@{/images/bintang-kece.png}" src="/images/bintang-kece.png" alt="Muhammad Bintang Feliq" width="230" height="235" fetchpriority="high" decoding="async" draggable="false">
+                            </div>
+                            <div class="card-btn-wrapper">
+                                <a th:href="@{/profil}" href="/profil" class="card-profile-btn" id="cardProfileBtn">
+                                    <span>Lihat Profil</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const lines = document.querySelectorAll('.hero-role-word[data-type-text]');
-            if (!lines || lines.length === 0) return;
-
-            const cursor = document.createElement('span');
-            cursor.className = 'type-cursor';
-
-            let lineIndex = 0;
-            let charIndex = 0;
-            const typingSpeed = 85;
-            const lineDelay = 320;
-
-            if (lines[0]) {
-                lines[0].appendChild(cursor);
-            }
-
-            function typeWriter() {
-                if (lineIndex < lines.length) {
-                    const currentLine = lines[lineIndex];
-                    const fullText = currentLine.getAttribute('data-type-text');
-
-                    if (charIndex < fullText.length) {
-                        const textNode = document.createTextNode(fullText.charAt(charIndex));
-                        currentLine.insertBefore(textNode, cursor);
-                        charIndex++;
-                        setTimeout(typeWriter, typingSpeed);
-                    } else {
-                        lineIndex++;
-                        charIndex = 0;
-                        if (lineIndex < lines.length) {
-                            setTimeout(function () {
-                                lines[lineIndex].appendChild(cursor);
-                                typeWriter();
-                            }, lineDelay);
-                        }
-                    }
-                }
-            }
-
-            setTimeout(typeWriter, 500);
-        });
-    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer th:src="@{/js/scroll-animation.js}"></script>
+    <script defer th:src="@{/js/main.js(v='27')}" src="/js/main.js?v=27"></script>
+    <script defer th:src="@{/js/lanyard-physics.js(v='17')}" src="/js/lanyard-physics.js?v=17"></script>
 </body>
 
 </html>

@@ -103,7 +103,7 @@
                         <div th:if="${project.gambar != null and !#lists.isEmpty(project.gambar)}" 
                              style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.85rem;">
                             <div th:each="g : ${project.gambar}" style="position: relative; border: 1.5px solid var(--border-ink); border-radius: 6px; overflow: hidden; height: 110px; background: #000;">
-                                <img th:src="@{'/images/' + ${g.gambar}}"  alt="Foto Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img th:src="@{'/uploads/' + ${g.gambar}}"  alt="Foto Project" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
                                 <a th:href="@{'/dashboard/dashboardProject/hapusGambar/' + ${g.id}(projectId=${project.id})}"  style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: var(--red-primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 13px; box-shadow: 1px 1px 0 #000;" title="Hapus Foto"><i class="bi bi-x"></i> </a>
                             </div>
                         </div>

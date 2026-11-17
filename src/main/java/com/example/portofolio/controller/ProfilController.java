@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +18,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.portofolio.model.Profil;
 import com.example.portofolio.service.ProfilService;
 
-
 @Controller
 public class ProfilController {
 
-    @Autowired
-    private ProfilService profilService;
+    private final ProfilService profilService;
 
-    public ProfilController(ProfilService profilService){
+    @Value("${app.upload.dir:uploads/}")
+    private String uploadDir;
+
+    public ProfilController(ProfilService profilService) {
         this.profilService = profilService;
     }
 
@@ -37,8 +38,9 @@ public class ProfilController {
     }
 
     @PostMapping("/dashboard/editTentang")
-    public String updateProfil(@ModelAttribute Profil profil, @RequestParam(value = "fileFoto", required = false) MultipartFile fileFoto, @RequestParam(value = "fileCv", required = false) MultipartFile fileCv
-    ) throws IOException {
+    public String updateProfil(@ModelAttribute Profil profil,
+                               @RequestParam(value = "fileFoto", required = false) MultipartFile fileFoto,
+                               @RequestParam(value = "fileCv", required = false) MultipartFile fileCv) throws IOException {
         Profil dataLama = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada"));
         if (fileFoto != null && !fileFoto.isEmpty()) {
             profil.setFoto(simpanFoto(fileFoto));
@@ -55,10 +57,17 @@ public class ProfilController {
         return "redirect:/dashboard/editTentang";
     }
 
-   public String simpanFoto(MultipartFile file) throws IOException {
-    String nama = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-    Path folder = Paths.get("src/main/resources/static/images/");
-    Files.copy(file.getInputStream(), folder.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
-    return nama;
+    public String simpanFoto(MultipartFile file) throws IOException {
+        Path targetDir = Paths.get(uploadDir).toAbsolutePath().normalize();
+        if (!Files.exists(targetDir)) {
+            Files.createDirectories(targetDir);
+        }
+        String originalFilename = file.getOriginalFilename();
+        String cleanName = (originalFilename != null && !originalFilename.isBlank())
+                ? Paths.get(originalFilename).getFileName().toString()
+                : "file.bin";
+        String nama = System.currentTimeMillis() + "_" + cleanName;
+        Files.copy(file.getInputStream(), targetDir.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
+        return nama;
     }
 }

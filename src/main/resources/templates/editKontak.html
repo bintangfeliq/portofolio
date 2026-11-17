@@ -91,15 +91,15 @@
                             </div>
                             <div class="comic-contact-row">
                                 <span class="comic-contact-label"><i class="bi bi-whatsapp"></i> WhatsApp</span>
-                                <a th:if="${kontak != null and kontak.telepon != null}"  th:href="'https://wa.me/' + ${kontak.telepon}"  target="_blank"  class="comic-panel-link"  th:text="${kontak.telepon}">telepon</a>
+                                <a th:if="${kontak != null and kontak.telepon != null}"  th:href="'https://wa.me/' + ${kontak.telepon}"  target="_blank"  rel="noopener noreferrer"  class="comic-panel-link"  th:text="${kontak.telepon}">telepon</a>
                             </div>
                             <div class="comic-contact-row">
                                 <span class="comic-contact-label"><i class="bi bi-github"></i> GitHub</span>
-                                <a th:if="${kontak != null and kontak.github != null}" th:href="${kontak.github}"  target="_blank"  class="comic-panel-link"  th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">github</a>
+                                <a th:if="${kontak != null and kontak.github != null}" th:href="${kontak.github}"  target="_blank"  rel="noopener noreferrer"  class="comic-panel-link"  th:text="${kontak.github.replace('https://github.com/', '').replace('/', '')}">github</a>
                             </div>
                             <div class="comic-contact-row">
                                 <span class="comic-contact-label"><i class="bi bi-instagram"></i> Instagram</span>
-                                <a th:if="${kontak != null and kontak.instagram != null}"  th:href="${kontak.instagram}"  target="_blank"  class="comic-panel-link"  th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">instagram</a>
+                                <a th:if="${kontak != null and kontak.instagram != null}"  th:href="${kontak.instagram}"  target="_blank"  rel="noopener noreferrer"  class="comic-panel-link"  th:text="${kontak.instagram.replace('https://www.instagram.com/', '').replace('/', '')}">instagram</a>
                             </div>
                         </div>
                     </div>

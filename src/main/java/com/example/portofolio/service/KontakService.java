@@ -3,7 +3,6 @@ package com.example.portofolio.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.portofolio.model.Kontak;
@@ -13,22 +12,13 @@ import com.example.portofolio.repository.KontakRepository;
 @SuppressWarnings("all")
 public class KontakService {
 
-    @Autowired
-    private KontakRepository kontakRepository;
+    private final KontakRepository kontakRepository;
 
-    public KontakService(KontakRepository kontakRepository){
+    public KontakService(KontakRepository kontakRepository) {
         this.kontakRepository = kontakRepository;
     }
 
-    public Kontak tambahKontak(Kontak kontak){
-        return kontakRepository.save(kontak);
-    }
-
-    public List<Kontak> semuaKontak(){
-        return kontakRepository.findAll();
-    }
-
-    public Optional<Kontak> cariSesuaiId(Long id){
+    public Optional<Kontak> cariSesuaiId(Long id) {
         Optional<Kontak> opt = kontakRepository.findById(id);
         if (opt.isPresent()) {
             return opt;
@@ -45,16 +35,12 @@ public class KontakService {
         return Optional.of(kontakRepository.save(defaultKontak));
     }
 
-    public Kontak updateKontak(Long id, Kontak dataBaru){
-        Kontak kontak = cariSesuaiId(id).orElseGet(() -> new Kontak());
+    public Kontak updateKontak(Long id, Kontak dataBaru) {
+        Kontak kontak = cariSesuaiId(id).orElseGet(Kontak::new);
         kontak.setEmail(dataBaru.getEmail());
         kontak.setTelepon(dataBaru.getTelepon());
         kontak.setGithub(dataBaru.getGithub());
         kontak.setInstagram(dataBaru.getInstagram());
         return kontakRepository.save(kontak);
-    }
-
-    public void hapusKontak(Long id){
-        kontakRepository.deleteById(id);
     }
 }

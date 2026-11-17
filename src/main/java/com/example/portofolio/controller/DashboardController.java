@@ -3,7 +3,6 @@ package com.example.portofolio.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.portofolio.repository.PendidikanRepository;
 import com.example.portofolio.service.KeahlianService;
@@ -11,22 +10,16 @@ import com.example.portofolio.service.KontakService;
 import com.example.portofolio.service.ProfilService;
 import com.example.portofolio.service.ProjectService;
 
-
 @Controller
 public class DashboardController {
 
-    @Autowired
-    private ProfilService profilService;
-    @Autowired
-    private KontakService kontakService;
-    @Autowired
-    private PendidikanRepository pendidikanRepository;
-    @Autowired
-    private KeahlianService keahlianService;
-    @Autowired
-    private ProjectService projectService;
+    private final ProfilService profilService;
+    private final KontakService kontakService;
+    private final PendidikanRepository pendidikanRepository;
+    private final KeahlianService keahlianService;
+    private final ProjectService projectService;
 
-    public DashboardController(ProfilService profilService, KontakService kontakService, PendidikanRepository pendidikanRepository, KeahlianService keahlianService, ProjectService projectService){
+    public DashboardController(ProfilService profilService, KontakService kontakService, PendidikanRepository pendidikanRepository, KeahlianService keahlianService, ProjectService projectService) {
         this.profilService = profilService;
         this.kontakService = kontakService;
         this.pendidikanRepository = pendidikanRepository;

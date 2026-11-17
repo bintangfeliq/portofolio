@@ -2,7 +2,6 @@ package com.example.portofolio.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,18 +18,14 @@ import com.example.portofolio.service.ProjectService;
 
 @Controller
 public class PortofolioController {
-    @Autowired
-    private ProfilService profilService;
-    @Autowired
-    private KontakService kontakService;
-    @Autowired
-    private PendidikanRepository pendidikanRepository;
-    @Autowired
-    private KeahlianService keahlianService;
-    @Autowired
-    private ProjectService projectService;
 
-    public PortofolioController(ProfilService profilService,  KontakService kontakService,  PendidikanRepository pendidikanRepository, KeahlianService keahlianService, ProjectService projectService){
+    private final ProfilService profilService;
+    private final KontakService kontakService;
+    private final PendidikanRepository pendidikanRepository;
+    private final KeahlianService keahlianService;
+    private final ProjectService projectService;
+
+    public PortofolioController(ProfilService profilService, KontakService kontakService, PendidikanRepository pendidikanRepository, KeahlianService keahlianService, ProjectService projectService) {
         this.profilService = profilService;
         this.kontakService = kontakService;
         this.pendidikanRepository = pendidikanRepository;
@@ -39,8 +34,8 @@ public class PortofolioController {
     }
 
     @GetMapping("/")
-    public String index(Model model){
-        Profil profil = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada")); 
+    public String index(Model model) {
+        Profil profil = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada"));
         Kontak kontak = kontakService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Kontak tidak ada"));
         List<Pendidikan> pendidikan = pendidikanRepository.findAllByOrderByTahunMulaiAsc();
         List<Keahlian> keahlian = keahlianService.semuaKeahlian();
@@ -52,9 +47,9 @@ public class PortofolioController {
         return "index";
     }
 
-    @GetMapping("/tentang")
-    public String tentang(Model model){
-        Profil profil = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada")); 
+    @GetMapping({"/tentang", "/profil"})
+    public String tentang(Model model) {
+        Profil profil = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada"));
         Kontak kontak = kontakService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Kontak tidak ada"));
         List<Pendidikan> pendidikan = pendidikanRepository.findAllByOrderByTahunMulaiAsc();
         List<Keahlian> keahlian = keahlianService.semuaKeahlian();

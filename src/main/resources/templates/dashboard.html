@@ -48,7 +48,7 @@
                     </p>
                 </div>
                 <div>
-                    <a th:href="@{/}" target="_blank" class="comic-header-btn">
+                    <a th:href="@{/}" target="_blank" rel="noopener noreferrer" class="comic-header-btn">
                         <i class="bi bi-box-arrow-up-right"></i>
                         <span>Lihat Website</span>
                     </a>
@@ -57,8 +57,8 @@
 
             <div class="dash-profile-contact-card">
                 <div class="dash-pc-avatar-wrap">
-                    <img th:if="${profil != null and profil.foto != null}" th:src="@{'/images/' + ${profil.foto}}" alt="Foto Profil" class="dash-pc-avatar">
-                    <img th:unless="${profil != null and profil.foto != null}" th:src="@{/images/portrait_matched.jpg}" alt="Foto Profil" class="dash-pc-avatar">
+                    <img th:if="${profil != null and profil.foto != null}" th:src="@{'/uploads/' + ${profil.foto}}" alt="Foto Profil" class="dash-pc-avatar" loading="lazy">
+                    <img th:unless="${profil != null and profil.foto != null}" th:src="@{/images/brow.png}" alt="Foto Profil" class="dash-pc-avatar" loading="lazy">
                 </div>
                 <div class="dash-pc-content">
                     <div class="dash-pc-title-row">

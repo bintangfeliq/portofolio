@@ -54,7 +54,7 @@
                                 <div class="comic-form-row">
                                     <div class="comic-file-card">
                                         <div class="comic-file-card-header">
-                                            <img th:src="@{'/images/' + ${profil != null and profil.foto != null ? profil.foto : 'profil.jpg'}}"  alt="Foto Profil"  class="comic-avatar-preview">
+                                            <img th:src="@{'/uploads/' + ${profil != null and profil.foto != null ? profil.foto : 'profil.jpg'}}"  alt="Foto Profil"  class="comic-avatar-preview" loading="lazy">
                                             <div>
                                                 <label for="fileFoto" class="comic-form-label" style="margin-bottom: 0.2rem;">Ganti Foto Profil</label>
                                             </div>
@@ -70,7 +70,7 @@
                                             <div style="flex: 1; min-width: 0;">
                                                 <label for="fileCv" class="comic-form-label" style="margin-bottom: 0.2rem;">Ganti Berkas CV</label>
                                                 <div style="font-size: 0.78rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"  th:text="${profil != null and profil.cv != null and !#strings.isEmpty(profil.cv) ? profil.cv : 'Belum ada berkas CV'}">CV.pdf</div>
-                                                <a th:if="${profil != null and profil.cv != null and !#strings.isEmpty(profil.cv)}" th:href="@{'/images/' + ${profil.cv}}"  target="_blank"  class="comic-cv-link" style="margin-top: 0.35rem; display: inline-flex;"><i class="bi bi-box-arrow-up-right"></i><span>Lihat CV</span></a>
+                                                <a th:if="${profil != null and profil.cv != null and !#strings.isEmpty(profil.cv)}" th:href="@{'/uploads/' + ${profil.cv}}"  target="_blank"  rel="noopener noreferrer"  class="comic-cv-link" style="margin-top: 0.35rem; display: inline-flex;"><i class="bi bi-box-arrow-up-right"></i><span>Lihat CV</span></a>
                                             </div>
                                         </div>
                                         <input type="file" id="fileCv" name="fileCv"  class="comic-form-control" accept=".pdf,.doc,.docx">

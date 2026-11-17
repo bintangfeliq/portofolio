@@ -5,10 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,19 +22,19 @@ import com.example.portofolio.model.Project;
 import com.example.portofolio.service.GambarService;
 import com.example.portofolio.service.ProjectService;
 
-
 @Controller
 public class ProjectController {
 
-    @Autowired
-    private ProjectService projectService;
-    @Autowired
-    private GambarService gambarService;
+    private final ProjectService projectService;
+    private final GambarService gambarService;
 
-   public ProjectController(ProjectService projectService, GambarService gambarService){
-    this.projectService = projectService;
-    this.gambarService = gambarService;
-   }
+    @Value("${app.upload.dir:uploads/}")
+    private String uploadDir;
+
+    public ProjectController(ProjectService projectService, GambarService gambarService) {
+        this.projectService = projectService;
+        this.gambarService = gambarService;
+    }
 
     @GetMapping("/dashboard/dashboardProject")
     public String editProject(Model model) {
@@ -56,7 +55,7 @@ public class ProjectController {
     }
 
     @PostMapping("/dashboard/dashboardProject/editProject/{id}")
-    public String updateProject(@PathVariable Long id, @ModelAttribute Project project,@RequestParam(value = "files", required = false) MultipartFile[] files) throws IOException {
+    public String updateProject(@PathVariable Long id, @ModelAttribute Project project, @RequestParam(value = "files", required = false) MultipartFile[] files) throws IOException {
         simpanGambar(projectService.updateProject(id, project), files);
         return "redirect:/dashboard/dashboardProject";
     }
@@ -77,27 +76,19 @@ public class ProjectController {
         if (files == null || files.length == 0) {
             return;
         }
-        Path folder = Paths.get("src/main/resources/static/images/");
-        if (!Files.exists(folder)) {
-            Files.createDirectories(folder);
+        Path targetDir = Paths.get(uploadDir).toAbsolutePath().normalize();
+        if (!Files.exists(targetDir)) {
+            Files.createDirectories(targetDir);
         }
-        Path targetFolder = Paths.get("target/classes/static/images/");
 
         for (MultipartFile file : files) {
             if (file != null && !file.isEmpty()) {
                 String originalFilename = file.getOriginalFilename();
-                String cleanName = (originalFilename != null && !originalFilename.isBlank()) 
-                        ? Paths.get(originalFilename).getFileName().toString() 
+                String cleanName = (originalFilename != null && !originalFilename.isBlank())
+                        ? Paths.get(originalFilename).getFileName().toString()
                         : "image.png";
                 String nama = System.currentTimeMillis() + "_" + UUID.randomUUID().toString().substring(0, 8) + "_" + cleanName;
-                Files.copy(file.getInputStream(), folder.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
-
-                if (Files.exists(targetFolder)) {
-                    try {
-                        Files.copy(folder.resolve(nama), targetFolder.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
-                    } catch (Exception ignored) {
-                    }
-                }
+                Files.copy(file.getInputStream(), targetDir.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
 
                 Gambar gambar = new Gambar();
                 gambar.setGambar(nama);

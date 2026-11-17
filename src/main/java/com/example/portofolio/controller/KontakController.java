@@ -1,6 +1,5 @@
 package com.example.portofolio.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,14 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.portofolio.model.Kontak;
 import com.example.portofolio.service.KontakService;
 
-
 @Controller
 public class KontakController {
 
-    @Autowired
-    private KontakService kontakService;
+    private final KontakService kontakService;
 
-    public KontakController(KontakService kontakService){
+    public KontakController(KontakService kontakService) {
         this.kontakService = kontakService;
     }
 

@@ -3,7 +3,6 @@ package com.example.portofolio.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.portofolio.model.Profil;
@@ -12,22 +11,14 @@ import com.example.portofolio.repository.ProfilRepository;
 @Service
 @SuppressWarnings("all")
 public class ProfilService {
-    @Autowired
-    private ProfilRepository profilRepository;
+
+    private final ProfilRepository profilRepository;
 
     public ProfilService(ProfilRepository profilRepository) {
         this.profilRepository = profilRepository;
     }
- 
-    public Profil tambahProfil(Profil profil){
-        return profilRepository.save(profil);
-    }
 
-    public List<Profil> semuaProfil(){
-        return profilRepository.findAll();
-    }
-
-    public Optional<Profil> cariSesuaiId(Long id){
+    public Optional<Profil> cariSesuaiId(Long id) {
         Optional<Profil> opt = profilRepository.findById(id);
         if (opt.isPresent()) {
             return opt;
@@ -45,8 +36,9 @@ public class ProfilService {
         defaultProfil.setCv("1788229251963_CV.jpg");
         return Optional.of(profilRepository.save(defaultProfil));
     }
-    public Profil updateProfil(Long id, Profil dataBaru){
-        Profil profil = cariSesuaiId(id).orElseGet(() -> new Profil());
+
+    public Profil updateProfil(Long id, Profil dataBaru) {
+        Profil profil = cariSesuaiId(id).orElseGet(Profil::new);
         profil.setNama(dataBaru.getNama());
         profil.setAlamat(dataBaru.getAlamat());
         profil.setDeskripsi(dataBaru.getDeskripsi());
@@ -54,9 +46,5 @@ public class ProfilService {
         profil.setFoto(dataBaru.getFoto());
         profil.setCv(dataBaru.getCv());
         return profilRepository.save(profil);
-    }
-
-    public void hapusProfil(Long id){
-        profilRepository.deleteById(id);
     }
 }

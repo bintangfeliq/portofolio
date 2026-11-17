@@ -26,4 +26,11 @@ public class Project {
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Gambar> gambar;
+
+    public String getGambarUrl() {
+        if (gambar != null && !gambar.isEmpty() && gambar.get(0).getGambar() != null) {
+            return "/uploads/" + gambar.get(0).getGambar();
+        }
+        return "/images/brow.png";
+    }
 }

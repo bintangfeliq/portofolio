@@ -39,28 +39,22 @@
         'postman': 'devicon-postman-plain colored',
         'vscode': 'devicon-vscode-plain colored'
     };
-
     var customSvgs = {
         'office': '<svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" fill="#F25022"/><rect x="13" y="2" width="9" height="9" fill="#7FBA00"/><rect x="2" y="13" width="9" height="9" fill="#00A4EF"/><rect x="13" y="13" width="9" height="9" fill="#FFB900"/></svg>'
     };
-
     function resolveSkillIcon(name) {
         var raw = (name || '').trim().toLowerCase();
         if (!raw) return '<i class="bi bi-code-slash"></i>';
-
         if (raw.indexOf('office') !== -1 || raw.indexOf('microsoft') !== -1 || raw.indexOf('word') !== -1 || raw.indexOf('excel') !== -1 || raw.indexOf('powerpoint') !== -1) {
             return customSvgs['office'];
         }
-
         if (deviconMap[raw]) {
             return '<i class="' + deviconMap[raw] + '"></i>';
         }
-
         var cleaned = raw.replace(/[^a-z0-9]/g, '');
         if (deviconMap[cleaned]) {
             return '<i class="' + deviconMap[cleaned] + '"></i>';
         }
-
         var keys = Object.keys(deviconMap);
         for (var i = 0; i < keys.length; i++) {
             var key = keys[i];
@@ -68,14 +62,11 @@
                 return '<i class="' + deviconMap[key] + '"></i>';
             }
         }
-
         return '<i class="bi bi-code-slash"></i>';
     }
-
     function initBrandScroller() {
         var container = document.querySelector('.brand-scroller-container');
         if (!container) return;
-
         var items = container.querySelectorAll('.brand-item');
         items.forEach(function (item) {
             var iconBox = item.querySelector('.brand-icon');
@@ -85,12 +76,10 @@
                 iconBox.innerHTML = resolveSkillIcon(name);
             }
         });
-
         var rows = container.querySelectorAll('.brand-scroller-row');
         rows.forEach(function (row) {
             var track = row.querySelector('.brand-scroller-track');
             if (!track) return;
-
             var groups = track.querySelectorAll('.brand-scroller-group');
             if (groups.length === 1) {
                 var clone = groups[0].cloneNode(true);
@@ -99,7 +88,6 @@
             }
         });
     }
-
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initBrandScroller);
     } else {

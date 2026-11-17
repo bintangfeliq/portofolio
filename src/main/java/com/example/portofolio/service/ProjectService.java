@@ -3,7 +3,6 @@ package com.example.portofolio.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.portofolio.model.Project;
@@ -13,30 +12,25 @@ import com.example.portofolio.repository.ProjectRepository;
 @SuppressWarnings("all")
 public class ProjectService {
 
-    @Autowired
-    private ProjectRepository projectRepository;
+    private final ProjectRepository projectRepository;
 
-    public ProjectService(ProjectRepository projectRepository){
+    public ProjectService(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 
-    public Project tambahProject(Project project){
+    public Project tambahProject(Project project) {
         return projectRepository.save(project);
     }
 
-    public List<Project> semuaProject(){
+    public List<Project> semuaProject() {
         return projectRepository.findAll();
     }
 
-    public List<Project> SemuaProject(){
-        return projectRepository.findAll();
-    }
-
-    public Optional<Project> cariSesuaiId(Long id){
+    public Optional<Project> cariSesuaiId(Long id) {
         return projectRepository.findById(id);
     }
 
-    public Project updateProject(Long id, Project dataBaru){
+    public Project updateProject(Long id, Project dataBaru) {
         Project project = projectRepository.findById(id).orElseThrow(() -> new RuntimeException("Project Tidak Ada"));
         project.setNamaProject(dataBaru.getNamaProject());
         project.setDeskripsi(dataBaru.getDeskripsi());
@@ -44,7 +38,7 @@ public class ProjectService {
         return projectRepository.save(project);
     }
 
-    public void hapusProject(Long id){
+    public void hapusProject(Long id) {
         projectRepository.deleteById(id);
     }
 }
