@@ -127,51 +127,47 @@
         const clearFilesBtn = document.getElementById('clearFilesBtn');
 
         if (fileInput) {
-            fileInput.addEventListener('change', function () {
-                const files = Array.from(this.files || []);
+            fileInput.addEventListener('change', () => {
+                const files = Array.from(fileInput.files || []);
                 previewGrid.innerHTML = '';
+                previewContainer.style.display = files.length > 0 ? 'block' : 'none';
+                if (!files.length) return;
 
-                if (files.length > 0) {
-                    previewContainer.style.display = 'block';
-                    previewCount.textContent = files.length + ' foto dipilih';
+                previewCount.textContent = `${files.length} foto dipilih`;
+                files.filter((file) => file.type.startsWith('image/')).forEach((file) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const item = document.createElement('div');
+                        Object.assign(item.style, {
+                            position: 'relative',
+                            height: '70px',
+                            borderRadius: '5px',
+                            overflow: 'hidden',
+                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                            background: '#1a1a24'
+                        });
 
-                    files.forEach((file) => {
-                        if (file.type.startsWith('image/')) {
-                            const reader = new FileReader();
-                            reader.onload = function (e) {
-                                const item = document.createElement('div');
-                                item.style.position = 'relative';
-                                item.style.height = '70px';
-                                item.style.borderRadius = '5px';
-                                item.style.overflow = 'hidden';
-                                item.style.border = '1px solid rgba(255, 255, 255, 0.2)';
-                                item.style.background = '#1a1a24';
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.title = file.name;
+                        Object.assign(img.style, {
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover'
+                        });
 
-                                const img = document.createElement('img');
-                                img.src = e.target.result;
-                                img.style.width = '100%';
-                                img.style.height = '100%';
-                                img.style.objectFit = 'cover';
-                                img.title = file.name;
-
-                                item.appendChild(img);
-                                previewGrid.appendChild(item);
-                            };
-                            reader.readAsDataURL(file);
-                        }
-                    });
-                } else {
-                    previewContainer.style.display = 'none';
-                }
+                        item.appendChild(img);
+                        previewGrid.appendChild(item);
+                    };
+                    reader.readAsDataURL(file);
+                });
             });
 
-            if (clearFilesBtn) {
-                clearFilesBtn.addEventListener('click', function () {
-                    fileInput.value = '';
-                    previewGrid.innerHTML = '';
-                    previewContainer.style.display = 'none';
-                });
-            }
+            clearFilesBtn?.addEventListener('click', () => {
+                fileInput.value = '';
+                previewGrid.innerHTML = '';
+                previewContainer.style.display = 'none';
+            });
         }
     </script>
 </body>

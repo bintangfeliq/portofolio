@@ -1,11 +1,11 @@
 :root {
     --bg-dark: #121212;
-    --red-primary: #dc2626;
-    --red-hover: #b91c1c;
 }
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
+
 html, body {
     margin: 0;
     padding: 0;
@@ -16,17 +16,20 @@ html, body {
     color: #ffffff;
     overflow-x: hidden;
 }
+
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
     -webkit-text-fill-color: #ffffff;
-    -webkit-box-shadow: 0 0 0px 1000px #181818 inset;
+    -webkit-box-shadow: 0 0 0 1000px #181818 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
+
 .login-photo-frame {
     border-radius: 32px !important;
     overflow: hidden !important;
 }
+
 .login-photo-img {
     border-radius: 32px !important;
     display: block;

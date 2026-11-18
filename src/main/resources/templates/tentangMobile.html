@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Muhammad Bintang Feliq | Profil</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}">
+    <meta name="keywords" content="Muhammad Bintang Feliq, Bintang Feliq, Portofolio Bintang Feliq, Muhammad bintang">
+    <meta name="description" content="Profil dan portofolio resmi Muhammad Bintang Feliq">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800;900&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800;900&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    </noscript>
+    <link rel="stylesheet" th:href="@{/css/style.css(v='55')}" href="/css/style.css?v=55">
+    <link rel="stylesheet" th:href="@{/css/tentang.css(v='49')}" href="/css/tentang.css?v=49">
+    <link rel="stylesheet" th:href="@{/css/mobile.css(v='31')}" href="/css/mobile.css?v=31">
+</head>
+
+<body class="mz-body">
+
+    <header class="mz-header">
+        <div class="mz-header-inner" id="mzNavInner">
+            <div class="mz-pill-bg" aria-hidden="true">
+                <div class="mz-pill-slider">
+                    <div class="mz-pill-wing"></div>
+                    <svg class="mz-pill-notch-svg" viewBox="0 0 84 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0 H4 C13 0 15 9 16 14 C19 25 29 33 42 33 C55 33 65 25 68 14 C69 9 71 0 80 0 H84 V52 H0 Z" fill="rgba(18, 18, 24, 0.92)" />
+                    </svg>
+                    <div class="mz-pill-wing"></div>
+                </div>
+            </div>
+            <div class="mz-nav-circle" id="mzNavCircle" aria-hidden="true"></div>
+            <nav class="mz-nav-pills" aria-label="Navigasi Halaman">
+                <a th:href="@{/}" class="mz-nav-pill" title="Beranda" aria-label="Beranda"><i class="bi bi-house"></i></a>
+                <a href="#tentang" class="mz-nav-pill active" title="Tentang" aria-label="Tentang"><i class="bi bi-person"></i></a>
+                <a href="#skill" class="mz-nav-pill" title="Skill" aria-label="Skill"><i class="bi bi-code-slash"></i></a>
+                <a href="#project" class="mz-nav-pill" title="Project" aria-label="Project"><i class="bi bi-layers"></i></a>
+                <a href="#pendidikan" class="mz-nav-pill" title="Pendidikan" aria-label="Pendidikan"><i class="bi bi-mortarboard"></i></a>
+                <a href="#kontak" class="mz-nav-pill" title="Kontak" aria-label="Kontak"><i class="bi bi-envelope"></i></a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="paper-marquee-divider-wrapper">
+            <div class="paper-marquee-divider">
+                <img th:src="@{/images/paper-tear-banner.webp(v='4')}" src="/images/paper-tear-banner.webp?v=4"
+                    alt="Paper Tear Divider" class="paper-banner-bg" loading="lazy" decoding="async" width="1400" height="460">
+
+                <div class="marquee-overlay">
+                    <svg class="marquee-curve-svg" viewBox="0 0 1400 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                        <defs>
+                            <path id="marqueeCurvePath" d="M -200,85 Q 700,385 1600,85" />
+                        </defs>
+                        <text class="marquee-curve-text" dominant-baseline="central">
+                            <textPath id="marqueeTextPath" href="#marqueeCurvePath" startOffset="0px">
+                                <tspan id="marqueeUnit">STUDENT &amp; JUNIOR WEB DEVELOPER&#160;&#160;<tspan class="marquee-sym">✦ ♣</tspan>&#160;&#160;&#160;</tspan>
+                                <tspan>STUDENT &amp; JUNIOR WEB DEVELOPER&#160;&#160;<tspan class="marquee-sym">✦ ♣</tspan>&#160;&#160;&#160;</tspan>
+                                <tspan>STUDENT &amp; JUNIOR WEB DEVELOPER&#160;&#160;<tspan class="marquee-sym">✦ ♣</tspan>&#160;&#160;&#160;</tspan>
+                                <tspan>STUDENT &amp; JUNIOR WEB DEVELOPER&#160;&#160;<tspan class="marquee-sym">✦ ♣</tspan>&#160;&#160;&#160;</tspan>
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+
+                <div class="banner-person-clip" id="profileCardContainer">
+                    <img th:src="@{/images/kece.webp}" src="/images/kece.webp" alt="Muhammad Bintang Feliq"
+                        class="banner-person-img" id="profileCard" loading="lazy" decoding="async" width="425" height="595">
+                </div>
+
+                <img th:src="@{/images/paper-tear-bottom.webp(v='4')}" src="/images/paper-tear-bottom.webp?v=4"
+                    alt="Paper Tear Foreground" class="paper-banner-bottom-fg" loading="lazy" decoding="async" width="1400" height="180">
+            </div>
+        </div>
+
+        <section id="tentang" class="mz-section mz-section-cream mz-about-after-tear">
+            <div class="mz-container">
+                <div class="mz-profile-card">
+                    <div class="mz-profile-top">
+                        <div class="mz-avatar-frame">
+                            <img th:if="${profil != null and profil.foto != null}"
+                                th:src="@{'/uploads/' + ${profil.foto}}" alt="Foto Profil"
+                                class="mz-avatar-img" width="170" height="210" fetchpriority="high" decoding="async">
+                            <img th:unless="${profil != null and profil.foto != null}"
+                                th:src="@{/images/brow.png}" alt="Foto Profil"
+                                class="mz-avatar-img" width="170" height="210" fetchpriority="high" decoding="async">
+                        </div>
+
+                        <div>
+                            <h1 class="mz-profile-title">
+                                Halo, saya <span th:text="${profil != null ? profil.nama : 'Muhammad Bintang Feliq'}">Muhammad Bintang Feliq</span>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <p class="mz-profile-bio" th:text="${profil != null ? profil.tentangSaya : ''}">Tentang Saya</p>
+
+                    <div class="mz-cta-row">
+                        <a href="#kontak" class="mz-btn-primary">
+                            <i class="bi bi-chat-text-fill"></i>
+                            <span>Hubungi Saya</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a th:if="${profil != null and profil.cv != null and !#strings.isEmpty(profil.cv)}"
+                            th:href="@{'/uploads/' + ${profil.cv}}" target="_blank" rel="noopener noreferrer"
+                            class="mz-btn-secondary">
+                            <i class="bi bi-file-earmark-person-fill"></i>
+                            <span>Lihat CV</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="about-skill-tear-divider">
+            <img th:src="@{/images/antara.webp}" src="/images/antara.webp" alt="Section Tear Divider"
+                class="about-skill-tear-img" loading="lazy" decoding="async" width="1400" height="120">
+        </div>
+
+        <section id="skill" class="mz-section mz-section-red">
+            <span class="mz-watermark" aria-hidden="true">01</span>
+            <div class="mz-container">
+                <h2 class="mz-heading">TECHNICAL <span class="mz-stamp-white">SKILLS</span></h2>
+                <p class="mz-lead">Peralatan tempur &amp; stack teknologi utama yang saya gunakan untuk membangun sistem backend dan aplikasi web.</p>
+
+                <div class="mz-skills-grid">
+                    <div th:each="k : ${keahlian}" class="mz-skill-card">
+                        <span class="mz-skill-icon"><i class="bi bi-code-slash"></i></span>
+                        <span class="mz-skill-name" th:text="${k.nama}">Nama Skill</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project" class="mz-section mz-section-red">
+            <span class="mz-watermark" aria-hidden="true">02</span>
+            <div class="mz-container">
+                <h2 class="mz-heading">KARYA &amp; <span class="mz-stamp-white">PROJECT</span></h2>
+                <p class="mz-lead">Dokumentasi aplikasi dan karya perangkat lunak yang sudah saya buat.</p>
+
+                <div class="mz-projects-carousel" th:if="${projects != null and !#lists.isEmpty(projects)}">
+                    <div th:each="project : ${projects}" class="folder-container folder-card-item"
+                        th:data-title="${project.namaProject}" th:data-desc="${project.deskripsi}"
+                        th:data-tech="${project.teknologi}" th:data-image="${project.gambarUrl}"
+                        th:data-images="${project.gambar != null and !#lists.isEmpty(project.gambar) ? #strings.listJoin(project.gambar.![gambar], '|') : ''}"
+                        onclick="openProjectModalFromCard(this)">
+                        <svg class="folder-back-svg folder-back-dark" viewBox="0 0 290 230" fill="none">
+                            <path
+                                d="M 0 26 C 0 11.67, 11.67 0, 26 0 L 96 0 C 112 0, 124 10, 134 22 L 138 27 C 146 36, 154 38, 166 38 L 264 38 C 278.33 38, 290 49.67, 290 64 L 290 204 C 290 218.33, 278.33 230, 264 230 L 26 230 C 11.67 230, 0 218.33, 0 204 Z"
+                                fill="#0d0e12" stroke="rgba(255, 255, 255, 0.14)" stroke-width="1.2" />
+                        </svg>
+
+                        <div class="papers-wrapper">
+                            <div class="paper paper-left"
+                                th:if="${project.gambar != null and #lists.size(project.gambar) >= 2}">
+                                <img th:src="@{'/uploads/' + ${project.gambar[1].gambar}}"
+                                    th:alt="${project.namaProject}" class="project-preview-img" loading="lazy"
+                                    decoding="async" width="94" height="106">
+                            </div>
+
+                            <div class="paper paper-center"
+                                th:if="${project.gambar != null and !#lists.isEmpty(project.gambar)}">
+                                <img th:src="@{'/uploads/' + ${project.gambar[0].gambar}}"
+                                    th:alt="${project.namaProject}" class="project-preview-img" loading="lazy"
+                                    decoding="async" width="104" height="127">
+                            </div>
+
+                            <div class="paper paper-right"
+                                th:if="${project.gambar != null and #lists.size(project.gambar) >= 3}">
+                                <img th:src="@{'/uploads/' + ${project.gambar[2].gambar}}"
+                                    th:alt="${project.namaProject}" class="project-preview-img" loading="lazy"
+                                    decoding="async" width="89" height="99">
+                            </div>
+                        </div>
+
+                        <div class="folder-front">
+                            <div class="pocket-grooves">
+                                <div class="groove-line"></div>
+                                <div class="groove-line"></div>
+                                <div class="groove-line"></div>
+                            </div>
+                            <div class="folder-front-ui">
+                                <span class="folder-label" th:text="${project.namaProject}">Nama Project</span>
+                                <div class="action-btn">&#x2197;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-empty-state" th:if="${projects == null or #lists.isEmpty(projects)}">
+                    <div class="project-empty-icon"><i class="bi bi-folder2-open"></i></div>
+                    <h3>Belum Ada Project</h3>
+                    <p>Dokumentasi project portofolio akan segera ditambahkan di sini.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="about-skill-tear-divider mz-tear-red-to-white">
+            <img th:src="@{/images/antara.webp}" src="/images/antara.webp" alt="Section Tear Divider"
+                class="about-skill-tear-img" loading="lazy" decoding="async" width="1400" height="120">
+        </div>
+
+        <section id="pendidikan" class="mz-section mz-section-white">
+            <span class="mz-watermark" aria-hidden="true">03</span>
+            <div class="mz-container">
+                <h2 class="mz-heading">PENDIDIKAN <span class="mz-stamp-red">SAYA</span></h2>
+                <p class="mz-lead">Riwayat jenjang pendidikan formal dan fokus keahlian. Ketuk nama sekolah untuk melihat detail.</p>
+
+                <div class="edu-accordion-group" th:if="${pendidikan != null and !#lists.isEmpty(pendidikan)}">
+                    <div th:each="p : ${pendidikan}" class="edu-row-item">
+                        <button class="edu-row-btn" type="button">
+                            <span th:text="${p.nama}">SMK Assalaam Bandung</span>
+                            <span class="edu-chevron">▼</span>
+                        </button>
+                        <div class="edu-row-panel">
+                            <p><strong th:text="${p.tingkat} + ' (' + ${p.tahunMulai} + ' - ' + (${p.tahunSelsai != null ? p.tahunSelsai : 'Sekarang'}) + ')'">Tingkat</strong> — Riwayat pendidikan formal dan pengembangan kompetensi di <span th:text="${p.nama}"></span>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="edu-accordion-group" th:unless="${pendidikan != null and !#lists.isEmpty(pendidikan)}">
+                    <div class="edu-row-item">
+                        <button class="edu-row-btn" type="button">
+                            <span>SMK Assalaam Bandung</span>
+                            <span class="edu-chevron">▼</span>
+                        </button>
+                        <div class="edu-row-panel">
+                            <p><strong>SMK - Rekayasa Perangkat Lunak (2023 - 2026)</strong> — Fokus pada Java Spring Boot, Laravel, PostgreSQL, dan pengembangan web modern.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak" class="mz-section mz-section-white">
+            <div class="mz-container">
+                <h2 class="mz-heading">MARI <span class="mz-stamp-red">TERHUBUNG</span></h2>
+                <p class="mz-lead">Tertarik berkolaborasi dalam sebuah project atau ingin berdiskusi? Hubungi saya melalui kanal berikut.</p>
+
+                <div class="mz-contact-stack">
+                    <a th:if="${kontak != null and kontak.email != null and !#strings.isEmpty(kontak.email)}"
+                        th:href="'mailto:' + ${kontak.email}" class="mz-contact-card">
+                        <span class="mz-contact-icon"><i class="bi bi-envelope-fill"></i></span>
+                        <span class="mz-contact-meta">
+                            <span class="mz-contact-label">Email</span>
+                            <span class="mz-contact-val" th:text="${kontak.email}">email@example.com</span>
+                        </span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+
+                    <a th:if="${kontak != null and kontak.telepon != null and !#strings.isEmpty(kontak.telepon)}"
+                        th:href="'https://wa.me/' + ${kontak.telepon.replace('+', '').replace('-', '').replace(' ', '').startsWith('0') ? '62' + kontak.telepon.replace('+', '').replace('-', '').replace(' ', '').substring(1) : kontak.telepon.replace('+', '').replace('-', '').replace(' ', '')}"
+                        target="_blank" rel="noopener noreferrer" class="mz-contact-card">
+                        <span class="mz-contact-icon"><i class="bi bi-whatsapp"></i></span>
+                        <span class="mz-contact-meta">
+                            <span class="mz-contact-label">WhatsApp / Telepon</span>
+                            <span class="mz-contact-val" th:text="${kontak.telepon}">08xxxxxxxxxx</span>
+                        </span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+
+                    <a th:if="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github)}"
+                        th:href="${kontak.github}" target="_blank" rel="noopener noreferrer" class="mz-contact-card">
+                        <span class="mz-contact-icon"><i class="bi bi-github"></i></span>
+                        <span class="mz-contact-meta">
+                            <span class="mz-contact-label">GitHub</span>
+                            <span class="mz-contact-val" th:text="${kontak.github.replace('https://github.com/', '').replace('http://github.com/', '').replace('/', '')}">username</span>
+                        </span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+
+                    <a th:if="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram)}"
+                        th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer" class="mz-contact-card">
+                        <span class="mz-contact-icon"><i class="bi bi-instagram"></i></span>
+                        <span class="mz-contact-meta">
+                            <span class="mz-contact-label">Instagram</span>
+                            <span class="mz-contact-val" th:text="'@' + ${kontak.instagram.replace('https://www.instagram.com/', '').replace('https://instagram.com/', '').replace('/', '').replace('@', '')}">@username</span>
+                        </span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="projectModal" class="project-modal-overlay">
+        <div class="project-modal-card">
+            <button class="modal-close-btn" onclick="closeProjectModal()">&times;</button>
+            <div id="modalHeaderSlider" class="modal-header-image">
+                <div id="modalSliderTrack" class="modal-slider-track">
+                    <img id="modalImg" th:src="@{/images/brow.png}" alt="Project Preview" width="520" height="250" loading="lazy" decoding="async">
+                </div>
+                <button type="button" id="modalPrevBtn" class="modal-slide-nav prev" onclick="prevModalSlide(event)" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+                <button type="button" id="modalNextBtn" class="modal-slide-nav next" onclick="nextModalSlide(event)" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+                <div id="modalSlideDots" class="modal-slide-dots"></div>
+            </div>
+            <div class="modal-body-content">
+                <div class="modal-info-left">
+                    <h3 id="modalSubTitle">Project</h3>
+                    <p id="modalDesc" class="modal-description"></p>
+                    <hr class="modal-divider">
+                    <div id="modalStatsGrid" class="modal-stats-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script defer th:src="@{/js/profile-3d.js(v='3')}" src="/js/profile-3d.js?v=3"></script>
+    <script defer th:src="@{/js/project-modal.js(v='4')}" src="/js/project-modal.js?v=4"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const iconMap = {
+                python: 'devicon-python-plain colored',
+                java: 'devicon-java-plain colored',
+                spring: 'devicon-spring-original colored',
+                javascript: 'devicon-javascript-plain colored',
+                php: 'devicon-php-plain colored',
+                laravel: 'devicon-laravel-original colored',
+                flutter: 'devicon-flutter-plain colored',
+                react: 'devicon-react-original colored',
+                vue: 'devicon-vuejs-plain colored',
+                angular: 'devicon-angularjs-plain colored',
+                svelte: 'devicon-svelte-plain colored',
+                node: 'devicon-nodejs-plain colored',
+                nodejs: 'devicon-nodejs-plain colored',
+                next: 'devicon-nextjs-plain',
+                nextjs: 'devicon-nextjs-plain',
+                nuxt: 'devicon-nuxtjs-plain colored',
+                html: 'devicon-html5-plain colored',
+                html5: 'devicon-html5-plain colored',
+                css: 'devicon-css3-plain colored',
+                css3: 'devicon-css3-plain colored',
+                sass: 'devicon-sass-original colored',
+                tailwind: 'devicon-tailwindcss-original colored',
+                tailwindcss: 'devicon-tailwindcss-original colored',
+                bootstrap: 'devicon-bootstrap-plain colored',
+                postgresql: 'devicon-postgresql-plain colored',
+                postgres: 'devicon-postgresql-plain colored',
+                mysql: 'devicon-mysql-original colored',
+                mongodb: 'devicon-mongodb-plain colored',
+                django: 'devicon-django-plain colored',
+                git: 'devicon-git-plain colored',
+                github: 'devicon-github-original',
+                figma: 'devicon-figma-plain colored',
+                canva: 'devicon-canva-original colored',
+                photoshop: 'devicon-photoshop-plain colored',
+                illustrator: 'devicon-illustrator-plain colored',
+                premiere: 'devicon-premierepro-plain colored',
+                postman: 'devicon-postman-plain colored',
+                vscode: 'devicon-vscode-plain colored'
+            };
+
+            const officeSvg = '<svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" fill="#F25022"/><rect x="13" y="2" width="9" height="9" fill="#7FBA00"/><rect x="2" y="13" width="9" height="9" fill="#00A4EF"/><rect x="13" y="13" width="9" height="9" fill="#FFB900"/></svg>';
+            const officeKeywords = ['office', 'microsoft', 'word', 'excel', 'powerpoint'];
+
+            document.querySelectorAll('.mz-skill-card').forEach((card) => {
+                const iconEl = card.querySelector('.mz-skill-icon');
+                const raw = (card.querySelector('.mz-skill-name')?.textContent || '').trim().toLowerCase();
+                if (!iconEl || !raw) return;
+
+                if (officeKeywords.some((kw) => raw.includes(kw))) {
+                    iconEl.innerHTML = officeSvg;
+                    return;
+                }
+
+                const cleaned = raw.replace(/[^a-z0-9]/g, '');
+                const matched = iconMap[raw]
+                    || iconMap[cleaned]
+                    || Object.entries(iconMap).find(([k]) => raw.includes(k))?.[1];
+                if (matched) {
+                    iconEl.innerHTML = `<i class="${matched}"></i>`;
+                }
+            });
+
+            const eduRows = document.querySelectorAll('.edu-row-item');
+            eduRows.forEach((row) => {
+                row.querySelector('.edu-row-btn')?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const isOpen = row.classList.contains('open');
+                    eduRows.forEach((r) => r.classList.remove('open'));
+                    if (!isOpen) row.classList.add('open');
+                });
+            });
+
+            const navInner = document.getElementById('mzNavInner');
+            const navLinks = Array.from(document.querySelectorAll('.mz-nav-pill[href^="#"]'));
+            const sections = navLinks.map((link) => ({
+                link,
+                el: document.querySelector(link.getAttribute('href'))
+            })).filter((item) => item.el);
+
+            const moveNavIndicator = (targetLink) => {
+                if (!targetLink || !navInner) return;
+                const innerRect = navInner.getBoundingClientRect();
+                const linkRect = targetLink.getBoundingClientRect();
+                const centerInInner = (linkRect.left - innerRect.left) + (linkRect.width / 2);
+                navInner.style.setProperty('--nav-x', `${centerInInner.toFixed(1)}px`);
+            };
+
+            let lastActiveLink = null;
+            let isClickScrolling = false;
+            let clickScrollTimer = null;
+
+            const setActiveNav = (targetLink) => {
+                if (!targetLink || targetLink === lastActiveLink) return;
+                lastActiveLink = targetLink;
+                navLinks.forEach((l) => l.classList.toggle('active', l === targetLink));
+                moveNavIndicator(targetLink);
+            };
+
+            navLinks.forEach((link) => {
+                link.addEventListener('click', () => {
+                    isClickScrolling = true;
+                    clearTimeout(clickScrollTimer);
+                    setActiveNav(link);
+                    clickScrollTimer = setTimeout(() => {
+                        isClickScrolling = false;
+                    }, 700);
+                });
+            });
+
+            const updateActiveNav = () => {
+                if (!sections.length || isClickScrolling) return;
+                const scrollPos = window.scrollY + 120;
+                const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 30;
+                let active = sections[0].link;
+
+                if (atBottom) {
+                    active = sections[sections.length - 1].link;
+                } else {
+                    for (const item of sections) {
+                        if (item.el.offsetTop <= scrollPos) active = item.link;
+                    }
+                }
+
+                setActiveNav(active);
+            };
+
+            window.addEventListener('resize', () => moveNavIndicator(lastActiveLink || navLinks[0]), { passive: true });
+
+            let navTicking = false;
+            window.addEventListener('scroll', () => {
+                if (navTicking) return;
+                requestAnimationFrame(() => {
+                    updateActiveNav();
+                    navTicking = false;
+                });
+                navTicking = true;
+            }, { passive: true });
+            updateActiveNav();
+        });
+    </script>
+</body>
+
+</html>

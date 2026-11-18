@@ -26,7 +26,6 @@
                     </div>
                     <span class="text-xs font-semibold tracking-wider text-neutral-400 uppercase">Portfolio</span>
                 </div>
-                <a th:href="@{/}" class="text-neutral-400 hover:text-white text-xs inline-flex items-center gap-1.5 transition-colors px-2.5 py-1.5 rounded-lg hover:bg-neutral-800/60" title="Ke Halaman Utama"><i class="bi bi-house"></i><span>Beranda</span></a>
             </div>
 
             <div class="w-full max-w-sm mx-auto my-auto py-6">
@@ -88,15 +87,10 @@
         function togglePassword() {
             const input = document.getElementById('password');
             const icon = document.getElementById('password-toggle-icon');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.remove('bi-eye');
-                icon.classList.add('bi-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.remove('bi-eye-slash');
-                icon.classList.add('bi-eye');
-            }
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+            icon.classList.toggle('bi-eye', !isPassword);
+            icon.classList.toggle('bi-eye-slash', isPassword);
         }
     </script>
 

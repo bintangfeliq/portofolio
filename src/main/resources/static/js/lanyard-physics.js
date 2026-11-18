@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (moveDist > 6) {
                 hasDragged = true;
             }
-            let rawX = mouseX - startX;
-            let rawY = mouseY - startY;
+            const rawX = mouseX - startX;
+            const rawY = mouseY - startY;
             targetX = Math.max(-240, Math.min(240, rawX));
             targetY = Math.max(-40, Math.min(200, rawY));
             targetRotateY = targetX * 0.05;
@@ -145,12 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
             currentRotateX += (targetRotateX - currentRotateX) * 0.25;
             currentRotateY += (targetRotateY - currentRotateY) * 0.25;
         }
+        drawElasticRibbon();
         assembly.style.transform = 
             `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) ` +
             `rotateX(${currentRotateX.toFixed(2)}deg) ` +
             `rotateY(${currentRotateY.toFixed(2)}deg) ` +
             `rotateZ(${(currentRotateY * 0.15).toFixed(2)}deg)`;
-        drawElasticRibbon();
         requestAnimationFrame(renderLoop);
     }
     renderLoop();

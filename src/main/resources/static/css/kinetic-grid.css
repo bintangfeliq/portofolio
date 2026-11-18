@@ -1,40 +1,39 @@
 #kinetic-grid-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-  background-color: #0b0b0e;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    background-color: #0b0b0e;
 }
+
 .ab-bg-ambient {
-  z-index: 1 !important;
+    z-index: 1 !important;
 }
+
 main {
-  position: relative;
-  z-index: 2;
-  margin: 0;
-  padding: 0;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
 }
-.folio-footer {
-  position: relative;
-  z-index: 2;
-}
+
 .folio-nav {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999 !important;
-  background: transparent !important;
-  border-bottom: none !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999 !important;
+    background: transparent !important;
+    border-bottom: none !important;
 }
+
 .container-scroll-stage,
 .container-scroll-card.folio-hero-banner,
 .folio-hero-banner {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }

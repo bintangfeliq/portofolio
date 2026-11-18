@@ -41,18 +41,18 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/uploads/**")
                 .addResourceLocations(uploadUri)
-                .setCacheControl(CacheControl.maxAge(Duration.ofDays(7)).cachePublic());
+                .setCacheControl(CacheControl.maxAge(Duration.ofDays(365)).cachePublic());
 
         registry.addResourceHandler("/css/**")
                 .addResourceLocations("classpath:/static/css/")
-                .setCacheControl(CacheControl.maxAge(Duration.ofDays(30)).cachePublic());
+                .setCacheControl(CacheControl.maxAge(Duration.ofDays(365)).cachePublic());
 
         registry.addResourceHandler("/js/**")
                 .addResourceLocations("classpath:/static/js/")
-                .setCacheControl(CacheControl.maxAge(Duration.ofDays(30)).cachePublic());
+                .setCacheControl(CacheControl.maxAge(Duration.ofDays(365)).cachePublic());
 
         registry.addResourceHandler("/images/**")
                 .addResourceLocations("classpath:/static/images/")
-                .setCacheControl(CacheControl.maxAge(Duration.ofDays(30)).cachePublic());
+                .setCacheControl(CacheControl.maxAge(Duration.ofDays(365)).cachePublic());
     }
 }

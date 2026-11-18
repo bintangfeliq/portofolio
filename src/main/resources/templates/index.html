@@ -11,15 +11,18 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" th:href="@{/images/portfolio-bg.png}" href="/images/portfolio-bg.png" type="image/png">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="image" th:href="@{/images/portfolio-bg.png}" href="/images/portfolio-bg.png" type="image/png" fetchpriority="high">
     <link rel="preload" as="image" th:href="@{/images/bintang-kece.png}" href="/images/bintang-kece.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&family=Syne:wght@700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&family=Syne:wght@700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" th:href="@{/css/style.css(v='52')}" href="/css/style.css?v=52">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&family=Syne:wght@700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </noscript>
+    <link rel="stylesheet" th:href="@{/css/style.css(v='55')}" href="/css/style.css?v=55">
     <link rel="stylesheet" th:href="@{/css/index.css(v='27')}" href="/css/index.css?v=27">
-    <link rel="stylesheet" th:href="@{/css/scroll-animation.css}">
 </head>
 
 <body class="idx-body is-loading">
@@ -32,18 +35,13 @@
 
             <div class="inline-wave-loader" id="inlineWaveLoader" aria-hidden="true">
                 <svg class="wave-svg-naked" id="liquidWaveSvg" viewBox="0 0 360 80" width="360" height="80" preserveAspectRatio="none">
-                    <!-- 3 Lapisan Gelombang Cair -->
                     <path id="waveLayer3" fill="rgba(229, 50, 34, 0.22)"></path>
                     <path id="waveLayer2" fill="rgba(229, 50, 34, 0.50)"></path>
                     <path id="waveLayer1" fill="#e53222"></path>
-
-                    <!-- 4 Percikan Droplet Kecil di Atas Ombak -->
                     <circle class="wave-droplet" id="drop1" cx="110" cy="45" r="3" fill="#e53222" />
                     <circle class="wave-droplet" id="drop2" cx="165" cy="38" r="3.8" fill="#e53222" />
                     <circle class="wave-droplet" id="drop3" cx="215" cy="42" r="2.6" fill="#e53222" />
                     <circle class="wave-droplet" id="drop4" cx="255" cy="48" r="3.2" fill="#e53222" />
-
-                    <!-- Garis Alas Putih Bersih Ber-shadow Tipis -->
                     <rect id="waveBaseBar" x="0" y="70" width="360" height="7" rx="3.5" fill="#f7f5f0" stroke="rgba(13,13,13,0.18)" stroke-width="1" />
                 </svg>
                 <div class="inline-loader-meta">
@@ -133,10 +131,8 @@
         </section>
     </div>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script defer th:src="@{/js/scroll-animation.js}"></script>
-    <script defer th:src="@{/js/main.js(v='27')}" src="/js/main.js?v=27"></script>
-    <script defer th:src="@{/js/lanyard-physics.js(v='17')}" src="/js/lanyard-physics.js?v=17"></script>
+    <script defer th:src="@{/js/main.js(v='29')}" src="/js/main.js?v=29"></script>
+    <script defer th:src="@{/js/lanyard-physics.js(v='18')}" src="/js/lanyard-physics.js?v=18"></script>
 </body>
 
 </html>

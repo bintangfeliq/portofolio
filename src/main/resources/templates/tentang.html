@@ -10,16 +10,19 @@
     <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" th:href="@{/images/download.gif(v='3')}" href="/images/download.gif?v=3">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="image" th:href="@{/images/hero-poster.jpg}" href="/images/hero-poster.jpg" fetchpriority="high">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap" media="print" onload="this.media='all'">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <link rel="stylesheet" th:href="@{/css/style.css(v='53')}" href="/css/style.css?v=53">
-    <link rel="stylesheet" th:href="@{/css/tentang.css(v='45')}" href="/css/tentang.css?v=45">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    </noscript>
+    <link rel="stylesheet" th:href="@{/css/style.css(v='55')}" href="/css/style.css?v=55">
+    <link rel="stylesheet" th:href="@{/css/tentang.css(v='49')}" href="/css/tentang.css?v=49">
     <link rel="stylesheet" th:href="@{/css/container-scroll.css(v='2')}" href="/css/container-scroll.css?v=2">
     <link rel="stylesheet" th:href="@{/css/skill-scroller.css(v='3')}" href="/css/skill-scroller.css?v=3">
     <link rel="stylesheet" th:href="@{/css/scroll-animation.css}">
@@ -45,8 +48,11 @@
     <main>
 
         <section class="folio-intro-gif-hero">
-            <img th:src="@{/images/download.gif(v='3')}" src="/images/download.gif?v=3" alt="Hero Background"
-                class="folio-hero-bg-img" width="1400" height="900" fetchpriority="high" decoding="async">
+            <video class="folio-hero-bg-img" id="heroBgVideo" autoplay loop muted playsinline preload="metadata"
+                th:poster="@{/images/hero-poster.jpg}" poster="/images/hero-poster.jpg" width="1400" height="900">
+                <source th:src="@{/images/download.webm}" src="/images/download.webm" type="video/webm">
+                <source th:src="@{/images/download.mp4}" src="/images/download.mp4" type="video/mp4" onerror="fallbackHeroGif()">
+            </video>
         </section>
 
         <div class="paper-marquee-divider-wrapper">
@@ -78,8 +84,8 @@
 
                 <div class="banner-person-clip" id="profileCardContainer">
                     <img th:src="@{/images/kece.webp}" src="/images/kece.webp" alt="Muhammad Bintang Feliq"
-                        class="banner-person-img" id="profileCard" loading="lazy" decoding="async" width="460"
-                        height="600">
+                        class="banner-person-img" id="profileCard" loading="lazy" decoding="async" width="425"
+                        height="595">
                 </div>
 
                 <img th:src="@{/images/paper-tear-bottom.webp(v='4')}" src="/images/paper-tear-bottom.webp?v=4"
@@ -96,19 +102,19 @@
                             <div class="folio-profile-card">
                                 <img th:if="${profil != null and profil.foto != null}"
                                     th:src="@{'/uploads/' + ${profil.foto}}" alt="Foto Profil"
-                                    class="profile-card-avatar" loading="lazy" decoding="async" width="280"
-                                    height="340">
+                                    class="profile-card-avatar" loading="lazy" decoding="async" width="348"
+                                    height="435">
                                 <img th:unless="${profil != null and profil.foto != null}" th:src="@{/images/brow.png}"
                                     alt="Foto Profil" class="profile-card-avatar" loading="lazy" decoding="async"
-                                    width="280" height="340">
+                                    width="348" height="435">
                             </div>
                         </div>
 
                         <div class="folio-about-info-col">
-                            <h2 class="folio-about-title" data-aos="fade-right">Halo, saya <span
+                            <h1 class="folio-about-title" data-aos="fade-right">Halo, saya <span
                                     class="folio-title-highlight"
                                     th:text="${profil != null ? profil.nama : 'Muhammad Bintang Feliq'}">Muhammad
-                                    Bintang Feliq</span></h2>
+                                    Bintang Feliq</span></h1>
                             <div class="folio-about-bio-wrap" data-aos="fade-up" data-aos-delay="150">
                                 <p class="folio-about-bio" th:text="${profil.tentangSaya}">Tentang Saya</p>
                             </div>
@@ -188,11 +194,8 @@
             </div>
         </section>
 
-        <!-- TRACK SCROLL TIRAI MERAH MENYUSUT (PROJECT -> PENDIDIKAN -> KONTAK) -->
         <div class="horizontal-scroll-track" id="horizontalTrack">
             <div class="horizontal-sticky-viewport">
-
-                <!-- LAPISAN 1 (PALING BELAKANG, z-index: 2): SECTION KONTAK (100% LAYAR PUTIH) -->
                 <section class="contact-stage-underlay folio-section contact-section" id="contact">
                     <div id="kontak"></div>
                     <div class="folio-container">
@@ -278,10 +281,8 @@
                     </div>
                 </section>
 
-                <!-- LAPISAN 2 (TENGAH, z-index: 5): KANVAS PUTIH PENDIDIKAN (50% KANAN) -->
                 <section class="edu-white-underlay" id="pendidikan">
                     <div class="edu-right-half-content">
-                        <!-- Dynamic List from Database -->
                         <div class="edu-accordion-group" th:if="${pendidikan != null and !#lists.isEmpty(pendidikan)}">
                             <div th:each="p : ${pendidikan}" class="edu-row-item">
                                 <button class="edu-row-btn" type="button">
@@ -294,7 +295,6 @@
                             </div>
                         </div>
 
-                        <!-- Static Fallback -->
                         <div class="edu-accordion-group" th:unless="${pendidikan != null and !#lists.isEmpty(pendidikan)}">
                             <div class="edu-row-item">
                                 <button class="edu-row-btn" type="button">
@@ -349,10 +349,7 @@
                     </div>
                 </section>
 
-                <!-- LAPISAN DEPAN (z-index: 10): TIRAI MERAH YANG MENYUSUT DARI 100% KE 50% KIRI -->
                 <div class="red-curtain-layer" id="redCurtain">
-                    
-                    <!-- Konten 1: Karya & Project (Akan bergeser keluar ke kiri) -->
                     <section class="curtain-project-content folio-section project-section-area" id="project">
                         <span class="section-red-watermark" aria-hidden="true">02</span>
                         <div class="folio-container">
@@ -422,7 +419,6 @@
                         </div>
                     </section>
 
-                    <!-- Konten 2: Header Pendidikan Saya (Masuk mengisi 50% tirai merah kiri) -->
                     <div class="curtain-edu-header" id="curtainEduHeader">
                         <span class="edu-decor-star" aria-hidden="true">✳</span>
                         <span class="edu-bg-watermark" aria-hidden="true">03</span>
@@ -440,7 +436,6 @@
 
                 </div>
 
-                <!-- Indikator Progres Bawah -->
                 <div class="h-scroll-progress-wrap">
                     <div class="h-scroll-progress-bar" id="hScrollBar"></div>
                 </div>
@@ -464,17 +459,11 @@
                 <button type="button" id="modalNextBtn" class="modal-slide-nav next" onclick="nextModalSlide(event)"
                     aria-label="Next"><i class="bi bi-chevron-right"></i></button>
                 <div id="modalSlideDots" class="modal-slide-dots"></div>
-                <div class="modal-header-overlay">
-                    <div class="modal-title-group">
-                        <h3 id="modalTitle">Perpustakaan Digital Nusantara</h3>
-                        <p id="modalCategory">Laravel • Web Application</p>
-                    </div>
-                </div>
             </div>
 
             <div class="modal-body-content">
                 <div class="modal-info-left">
-                    <h4 id="modalSubTitle">Web App Management System</h4>
+                    <h3 id="modalSubTitle">Web App Management System</h3>
                     <p id="modalDesc" class="modal-description">
                         Aplikasi manajemen perpustakaan digital berbasis Laravel yang mencakup autentikasi berbasis
                         role, manajemen katalog buku, dan pelacakan peminjaman.
@@ -491,15 +480,14 @@
         </div>
     </div>
 
-    <script defer th:src="@{/js/main.js(v='19')}" src="/js/main.js?v=19"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer th:src="@{/js/main.js(v='29')}" src="/js/main.js?v=29"></script>
     <script defer th:src="@{/js/container-scroll.js}"></script>
     <script defer th:src="@{/js/skill-scroller.js}"></script>
-    <script defer th:src="@{/js/navbar-scrollspy.js(v='3')}" src="/js/navbar-scrollspy.js?v=3"></script>
+    <script defer th:src="@{/js/navbar-scrollspy.js(v='4')}" src="/js/navbar-scrollspy.js?v=4"></script>
     <script defer th:src="@{/js/scroll-animation.js}"></script>
     <script defer th:src="@{/js/kinetic-grid.js}"></script>
-    <script defer th:src="@{/js/profile-3d.js(v='2')}" src="/js/profile-3d.js?v=2"></script>
-    <script defer th:src="@{/js/project-modal.js(v='3')}" src="/js/project-modal.js?v=3"></script>
+    <script defer th:src="@{/js/profile-3d.js(v='3')}" src="/js/profile-3d.js?v=3"></script>
+    <script defer th:src="@{/js/project-modal.js(v='4')}" src="/js/project-modal.js?v=4"></script>
 </body>
 
 </html>

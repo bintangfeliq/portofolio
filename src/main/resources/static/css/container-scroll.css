@@ -5,9 +5,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem 1.25rem 5rem 1.25rem;
+    padding: 3rem 1.25rem 5rem;
     overflow: visible;
 }
+
 .container-scroll-stage {
     width: 100%;
     max-width: 1240px;
@@ -16,6 +17,7 @@
     perspective: 1000px;
     -webkit-perspective: 1000px;
 }
+
 .container-scroll-card {
     max-width: 1240px;
     margin: 0 auto;
@@ -23,34 +25,37 @@
     border-radius: 32px;
     border: 3px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 0 rgba(0, 0, 0, 0.3),
-                0 9px 20px rgba(0, 0, 0, 0.29),
-                0 37px 37px rgba(0, 0, 0, 0.26),
-                0 84px 50px rgba(0, 0, 0, 0.15),
-                0 149px 60px rgba(0, 0, 0, 0.04),
-                0 233px 65px rgba(0, 0, 0, 0.01),
-                0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+        0 9px 20px rgba(0, 0, 0, 0.29),
+        0 37px 37px rgba(0, 0, 0, 0.26),
+        0 84px 50px rgba(0, 0, 0, 0.15),
+        0 149px 60px rgba(0, 0, 0, 0.04),
+        0 233px 65px rgba(0, 0, 0, 0.01),
+        0 0 0 1px rgba(255, 255, 255, 0.15) inset;
     transform-origin: top center;
     transform-style: preserve-3d;
     will-change: transform;
     transform: rotateX(20deg) scale(0.93);
     transition: transform 0.05s linear;
 }
+
 .container-scroll-card.folio-hero-banner {
     background: transparent !important;
-    background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
+
 @media (max-width: 992px) {
     .container-scroll-card {
         border-radius: 26px;
         border-width: 2px;
     }
 }
+
 @media (max-width: 768px) {
     .container-scroll-wrap {
-        padding: 2rem 0.75rem 3.5rem 0.75rem;
+        padding: 2rem 0.75rem 3.5rem;
     }
+
     .container-scroll-card {
         border-radius: 20px;
         transform: rotateX(15deg) scale(0.86);

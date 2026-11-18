@@ -2,7 +2,6 @@
     --red-primary: #e02438;
     --red-hover: #be1226;
     --bg-main: #0c0c12;
-    --bg-sidebar: #101017;
     --bg-panel: #14141d;
     --bg-subtle: #181824;
     --border-ink: #000000;
@@ -97,7 +96,8 @@ body.comic-dash-body {
     color: #ffffff;
     background: rgba(0, 0, 0, 0.18);
 }
-.comic-nav-item:hover i {
+.comic-nav-item:hover i,
+.comic-nav-item.active i {
     color: #ffffff;
 }
 .comic-nav-item.active {
@@ -105,9 +105,6 @@ body.comic-dash-body {
     background: #000000;
     font-weight: 700;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
-}
-.comic-nav-item.active i {
-    color: #ffffff;
 }
 .comic-dash-sidebar-footer {
     padding: 1rem 0.85rem;
@@ -250,9 +247,6 @@ body.comic-dash-body {
     align-items: center;
     gap: 0.5rem;
     color: var(--text-primary);
-}
-.comic-panel-title i {
-    color: var(--red-primary);
 }
 .comic-panel-link {
     font-size: 0.8rem;
@@ -508,15 +502,12 @@ body.comic-dash-body {
     font-size: 0.92rem;
     font-weight: 800;
     color: var(--text-primary);
-    margin: 0 0 0.85rem 0;
+    margin: 0 0 0.85rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     border-bottom: 1px solid var(--border-subtle);
     padding-bottom: 0.5rem;
-}
-.comic-form-section-title i {
-    color: var(--red-primary);
 }
 .comic-form-row {
     display: grid;

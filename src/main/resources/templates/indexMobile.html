@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Muhammad Bintang Feliq | Portfolio</title>
+    <link rel="icon" type="image/png" th:href="@{/images/brow.png?v=2}">
+    <meta name="keywords" content="Muhammad Bintang Feliq, Bintang Feliq, Portofolio Bintang Feliq, Muhammad bintang">
+    <meta name="description" content="Portofolio resmi Muhammad Bintang Feliq (Bintang Feliq)">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="image" th:href="@{/images/bintang-kece.png}" href="/images/bintang-kece.png" type="image/png" fetchpriority="high">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800;900&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </noscript>
+    <link rel="stylesheet" th:href="@{/css/style.css(v='55')}" href="/css/style.css?v=55">
+    <link rel="stylesheet" th:href="@{/css/index-mobile.css(v='1')}" href="/css/index-mobile.css?v=1">
+</head>
+
+<body class="mob-body is-loading">
+
+    <div class="mob-loader-center" id="inlineWaveLoader" aria-hidden="true">
+        <svg class="wave-svg-naked" id="liquidWaveSvg" viewBox="0 0 360 80" width="360" height="80" preserveAspectRatio="none">
+            <path id="waveLayer3" fill="rgba(229, 50, 34, 0.22)"></path>
+            <path id="waveLayer2" fill="rgba(229, 50, 34, 0.50)"></path>
+            <path id="waveLayer1" fill="#e53222"></path>
+            <circle class="wave-droplet" id="drop1" cx="110" cy="45" r="3" fill="#e53222" />
+            <circle class="wave-droplet" id="drop2" cx="165" cy="38" r="3.8" fill="#e53222" />
+            <circle class="wave-droplet" id="drop3" cx="215" cy="42" r="2.6" fill="#e53222" />
+            <circle class="wave-droplet" id="drop4" cx="255" cy="48" r="3.2" fill="#e53222" />
+            <rect id="waveBaseBar" x="0" y="70" width="360" height="7" rx="3.5" fill="#f7f5f0" stroke="rgba(13,13,13,0.18)" stroke-width="1" />
+        </svg>
+        <div class="inline-loader-meta">
+            <span class="inline-loader-status" id="loaderStatus">INITIALIZING</span>
+            <span class="inline-loader-percent" id="loaderPercent">0%</span>
+        </div>
+    </div>
+
+    <main class="mob-hero" id="beranda">
+        <svg class="mob-lanyard-svg" id="lanyardSvg">
+            <path id="ropeShadow" d="" stroke="rgba(0,0,0,0.22)" stroke-width="28" fill="none" stroke-linecap="round" />
+            <path id="ropePath" d="" stroke="#1a1a1c" stroke-width="24" fill="none" stroke-linecap="round" />
+        </svg>
+
+        <div class="mob-lanyard-zone" id="lanyardZone">
+            <div class="mob-lanyard-assembly" id="lanyardAssembly">
+                <div class="lanyard-clasp-wrapper">
+                    <svg class="lanyard-metal-clasp" width="46" height="80" viewBox="0 0 46 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="mobDRing" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#1c1c1f" />
+                                <stop offset="50%" stop-color="#4d4d54" />
+                                <stop offset="100%" stop-color="#18181a" />
+                            </linearGradient>
+                            <linearGradient id="mobBody" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#45454c" />
+                                <stop offset="65%" stop-color="#1f1f22" />
+                                <stop offset="100%" stop-color="#121214" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 8 5 C 8 3 9.5 1.5 12 1.5 L 34 1.5 C 36.5 1.5 38 3 38 5 L 38.5 8 C 38.5 14 31 20 27 21 L 19 21 C 15 20 7.5 14 7.5 8 Z" fill="url(#mobDRing)" stroke="#121214" stroke-width="1" />
+                        <rect x="17.5" y="21" width="11" height="3.5" rx="1.5" fill="#2c2c32" stroke="#111112" stroke-width="0.7" />
+                        <rect x="17" y="27.7" width="12" height="4" rx="1.8" fill="#2c2c32" stroke="#111112" stroke-width="0.7" />
+                        <path d="M 19.5 31.7 C 19.5 31.7 15.5 38 15.5 50 C 15.5 64 17 73 23 77.5 C 28.5 81 33 76 33 68.5 C 33 63.5 30.5 60 28.8 60 C 27.5 60 26.5 61 26.5 62.5 C 26.5 65.5 28.2 67.5 28.2 69.5 C 28.2 73.5 25.5 75.5 23 74 C 19.5 72 19 64 19 53 C 19 43 21 37 22.5 31.7 Z" fill="url(#mobBody)" stroke="#101012" stroke-width="0.9" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <div class="id-card-frosted-holder">
+                    <div class="card-slot-top"></div>
+                    <div class="id-card-insert-white">
+                        <div class="card-photo-wrapper">
+                            <img th:src="@{/images/bintang-kece.png}" src="/images/bintang-kece.png" alt="Muhammad Bintang Feliq" width="212" height="215" fetchpriority="high" decoding="async" draggable="false">
+                        </div>
+                        <div class="card-btn-wrapper">
+                            <a th:href="@{/profil}" href="/profil" class="card-profile-btn">
+                                <span>Lihat Profil</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('inlineWaveLoader');
+            const wave1 = document.getElementById('waveLayer1');
+            const wave2 = document.getElementById('waveLayer2');
+            const wave3 = document.getElementById('waveLayer3');
+            const droplets = ['drop1', 'drop2', 'drop3', 'drop4'].map((id) => document.getElementById(id));
+            const statusText = document.getElementById('loaderStatus');
+            const percentText = document.getElementById('loaderPercent');
+
+            const zone = document.getElementById('lanyardZone');
+            const assembly = document.getElementById('lanyardAssembly');
+            const ropePath = document.getElementById('ropePath');
+            const ropeShadow = document.getElementById('ropeShadow');
+            const clasp = document.querySelector('.lanyard-metal-clasp');
+            const hero = document.querySelector('.mob-hero');
+
+            const dropPhysics = {
+                active: false,
+                y: -window.innerHeight * 1.1,
+                vy: 0,
+                targetY: 0,
+                angle: -7,
+                vAngle: 0,
+                targetAngle: 0,
+                lastTime: 0
+            };
+
+            function stepDropPhysics(now) {
+                if (!dropPhysics.active || !zone) return;
+
+                const dt = Math.max(0.001, Math.min((now - dropPhysics.lastTime) / 1000, 0.033));
+                dropPhysics.lastTime = now;
+
+                const forceY = (dropPhysics.targetY - dropPhysics.y) * 140;
+                dropPhysics.vy = (dropPhysics.vy + forceY * dt) * Math.exp(-13.5 * dt);
+                dropPhysics.y += dropPhysics.vy * dt;
+
+                const forceAngle = (dropPhysics.targetAngle - dropPhysics.angle) * 36;
+                dropPhysics.vAngle = (dropPhysics.vAngle + forceAngle * dt) * Math.exp(-1.95 * dt);
+                dropPhysics.angle += dropPhysics.vAngle * dt;
+
+                zone.style.opacity = '1';
+                zone.style.transform = `translate3d(0, ${dropPhysics.y.toFixed(2)}px, 0) rotate(${dropPhysics.angle.toFixed(3)}deg)`;
+
+                const settled =
+                    Math.abs(dropPhysics.y) < 0.05 &&
+                    Math.abs(dropPhysics.vy) < 0.05 &&
+                    Math.abs(dropPhysics.angle) < 0.02 &&
+                    Math.abs(dropPhysics.vAngle) < 0.02;
+
+                if (settled) {
+                    dropPhysics.y = 0;
+                    dropPhysics.angle = 0;
+                    dropPhysics.active = false;
+                    zone.style.transform = 'translate3d(0, 0px, 0) rotate(0deg)';
+                } else {
+                    requestAnimationFrame(stepDropPhysics);
+                }
+            }
+
+            function launchLanyardDrop() {
+                if (!zone) return;
+                dropPhysics.y = -window.innerHeight * 1.05;
+                dropPhysics.vy = 220;
+                dropPhysics.angle = -6.5;
+                dropPhysics.vAngle = 38;
+                dropPhysics.lastTime = performance.now();
+
+                zone.style.opacity = '1';
+                zone.style.transform = `translate3d(0, ${dropPhysics.y.toFixed(2)}px, 0) rotate(${dropPhysics.angle.toFixed(3)}deg)`;
+
+                if (!dropPhysics.active) {
+                    dropPhysics.active = true;
+                    requestAnimationFrame(stepDropPhysics);
+                }
+
+                const nudge = (clientX) => {
+                    const rect = zone.getBoundingClientRect();
+                    const hitFromLeft = (clientX - rect.left) < rect.width / 2;
+                    dropPhysics.vAngle += hitFromLeft ? 18 : -18;
+                    dropPhysics.lastTime = performance.now();
+                    if (!dropPhysics.active) {
+                        dropPhysics.active = true;
+                        requestAnimationFrame(stepDropPhysics);
+                    }
+                };
+
+                zone.addEventListener('mouseenter', (e) => nudge(e.clientX));
+                zone.addEventListener('touchstart', (e) => {
+                    if (e.touches?.[0]) nudge(e.touches[0].clientX);
+                }, { passive: true });
+            }
+
+            if (assembly && ropePath && clasp && hero) {
+                let isDragging = false;
+                let hasDragged = false;
+                let dragStartPos = { x: 0, y: 0 };
+                let startX = 0, startY = 0;
+                let targetX = 0, targetY = 0;
+                let currentX = 0, currentY = 0;
+                let vx = 0, vy = 0;
+                let targetRotateX = 0, targetRotateY = 0;
+                let currentRotateX = 0, currentRotateY = 0;
+                let fixedAnchorX = window.innerWidth / 2;
+
+                const updateAnchor = () => {
+                    fixedAnchorX = hero.offsetWidth / 2;
+                };
+                updateAnchor();
+                window.addEventListener('resize', updateAnchor);
+
+                const getPoint = (e) => (e.touches && e.touches.length ? e.touches[0] : e);
+
+                const onStart = (e) => {
+                    const p = getPoint(e);
+                    isDragging = true;
+                    hasDragged = false;
+                    dragStartPos = { x: p.clientX, y: p.clientY };
+                    startX = p.clientX - targetX;
+                    startY = p.clientY - targetY;
+                    assembly.style.cursor = 'grabbing';
+                };
+
+                const onMove = (e) => {
+                    if (!isDragging) return;
+                    const p = getPoint(e);
+                    if (Math.hypot(p.clientX - dragStartPos.x, p.clientY - dragStartPos.y) > 6) {
+                        hasDragged = true;
+                    }
+                    targetX = Math.max(-140, Math.min(140, p.clientX - startX));
+                    targetY = Math.max(-30, Math.min(120, p.clientY - startY));
+                    targetRotateY = targetX * 0.06;
+                    targetRotateX = -targetY * 0.06;
+                    if (e.touches && e.cancelable) e.preventDefault();
+                };
+
+                const onEnd = () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    targetX = 0;
+                    targetY = 0;
+                    targetRotateX = 0;
+                    targetRotateY = 0;
+                    assembly.style.cursor = 'grab';
+                    setTimeout(() => { hasDragged = false; }, 60);
+                };
+
+                assembly.addEventListener('mousedown', onStart);
+                assembly.addEventListener('touchstart', onStart, { passive: true });
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('touchmove', onMove, { passive: false });
+                window.addEventListener('mouseup', onEnd);
+                window.addEventListener('touchend', onEnd);
+                window.addEventListener('touchcancel', onEnd);
+
+                assembly.querySelector('.card-profile-btn')?.addEventListener('click', (e) => {
+                    if (hasDragged) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                });
+
+                const drawRibbon = () => {
+                    const heroRect = hero.getBoundingClientRect();
+                    const claspRect = clasp.getBoundingClientRect();
+                    const clipX = (claspRect.left - heroRect.left) + claspRect.width / 2;
+                    const clipY = (claspRect.top - heroRect.top) + 4;
+                    const anchorY = -90;
+                    const controlX = fixedAnchorX + ((clipX - fixedAnchorX) * 0.45);
+                    const controlY = anchorY + ((clipY - anchorY) * 0.55) + (Math.abs(clipX - fixedAnchorX) * 0.1);
+                    ropePath.setAttribute('d', `M ${fixedAnchorX} ${anchorY} Q ${controlX} ${controlY} ${clipX} ${clipY}`);
+                    ropeShadow?.setAttribute('d', `M ${fixedAnchorX + 4} ${anchorY} Q ${controlX + 5} ${controlY + 2} ${clipX + 4} ${clipY + 2}`);
+                };
+
+                const renderLanyard = () => {
+                    if (!document.body.classList.contains('is-loading')) {
+                        if (!isDragging) {
+                            vx = (vx + (targetX - currentX) * 0.09) * 0.75;
+                            vy = (vy + (targetY - currentY) * 0.09) * 0.75;
+                            currentX += vx;
+                            currentY += vy;
+                            currentRotateX += (targetRotateX - currentRotateX) * 0.15;
+                            currentRotateY += (targetRotateY - currentRotateY) * 0.15;
+                        } else {
+                            currentX += (targetX - currentX) * 0.35;
+                            currentY += (targetY - currentY) * 0.35;
+                            currentRotateX += (targetRotateX - currentRotateX) * 0.25;
+                            currentRotateY += (targetRotateY - currentRotateY) * 0.25;
+                        }
+
+                        drawRibbon();
+                        assembly.style.transform =
+                            `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) ` +
+                            `rotateX(${currentRotateX.toFixed(2)}deg) ` +
+                            `rotateY(${currentRotateY.toFixed(2)}deg) ` +
+                            `rotateZ(${(currentRotateY * 0.15).toFixed(2)}deg)`;
+                    }
+                    requestAnimationFrame(renderLanyard);
+                };
+
+                renderLanyard();
+            }
+
+            if (loader && wave1 && wave2 && wave3) {
+                const W = 360;
+                const baseBottomY = 70;
+                const duration = 2600;
+                const startTime = performance.now();
+
+                const createWave = (phase, maxHeight, crestCount, speedOffset) => {
+                    let d = `M 8 ${baseBottomY} `;
+                    for (let x = 8; x <= W - 8; x += 4) {
+                        const normX = (x - 8) / (W - 16);
+                        const edgeTaper = Math.pow(Math.sin(normX * Math.PI), 0.75);
+                        const primary = Math.sin(normX * Math.PI * crestCount - phase);
+                        const secondary = Math.sin(normX * Math.PI * (crestCount * 1.7) + phase * 1.35 + speedOffset) * 0.42;
+                        const ripple = Math.cos(normX * Math.PI * (crestCount * 2.8) - phase * 2.1) * 0.18;
+                        const combined = (primary + secondary + ripple + 1.4) / 2.8;
+                        const waveH = Math.max(2, combined * maxHeight * edgeTaper);
+                        d += `L ${x} ${(baseBottomY - waveH).toFixed(2)} `;
+                    }
+                    return `${d}L ${W - 8} ${baseBottomY} Z`;
+                };
+
+                const renderWave = (now) => {
+                    const elapsed = now - startTime;
+                    const rawRatio = Math.min(1, elapsed / duration);
+                    const easedRatio = rawRatio < 0.5
+                        ? 2 * rawRatio * rawRatio
+                        : 1 - Math.pow(-2 * rawRatio + 2, 2) / 2;
+
+                    const pct = Math.floor(easedRatio * 100);
+                    const phase = elapsed * 0.0105;
+                    const activeHeight = 14 + (easedRatio * 34) + (Math.sin(rawRatio * Math.PI) * 10);
+
+                    wave3.setAttribute('d', createWave(phase * 0.72, activeHeight * 1.12, 3.2, 1.2));
+                    wave2.setAttribute('d', createWave(phase * 0.92 + 0.8, activeHeight * 1.04, 3.8, 2.5));
+                    wave1.setAttribute('d', createWave(phase * 1.15, activeHeight, 4.2, 0));
+
+                    droplets.forEach((drop, idx) => {
+                        if (!drop) return;
+                        const jump = Math.sin(phase * 1.3 + idx * 1.7);
+                        const bx = 115 + idx * 45 + Math.cos(phase * 0.8 + idx) * 12;
+                        const by = baseBottomY - activeHeight * 0.75 - Math.max(0, jump) * 16;
+                        drop.setAttribute('cx', bx.toFixed(1));
+                        drop.setAttribute('cy', by.toFixed(1));
+                        drop.style.opacity = (rawRatio > 0.1 && rawRatio < 0.94 && jump > 0.15 ? 0.9 : 0).toFixed(2);
+                    });
+
+                    if (percentText) percentText.textContent = `${pct}%`;
+                    if (statusText) {
+                        statusText.textContent = pct < 35 ? 'INITIALIZING' : pct < 85 ? 'LOADING PORTFOLIO' : 'READY';
+                    }
+
+                    if (rawRatio < 1) {
+                        requestAnimationFrame(renderWave);
+                    } else {
+                        loader.classList.add('is-draining');
+                        setTimeout(() => {
+                            loader.classList.add('is-hidden');
+                            document.body.classList.remove('is-loading');
+                            launchLanyardDrop();
+                            setTimeout(() => loader.remove(), 450);
+                        }, 280);
+                    }
+                };
+
+                requestAnimationFrame(renderWave);
+            }
+        });
+    </script>
+</body>
+
+</html>
