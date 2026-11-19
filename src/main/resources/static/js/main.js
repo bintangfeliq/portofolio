@@ -1,17 +1,3 @@
-window.fallbackHeroGif = () => {
-    const video = document.getElementById('heroBgVideo');
-    if (!video || !video.parentNode) return;
-    const img = document.createElement('img');
-    img.src = '/images/download.gif?v=3';
-    img.alt = 'Hero Background';
-    img.className = 'folio-hero-bg-img';
-    img.width = 1400;
-    img.height = 900;
-    img.setAttribute('fetchpriority', 'high');
-    img.decoding = 'async';
-    video.parentNode.replaceChild(img, video);
-};
-
 document.addEventListener('DOMContentLoaded', () => {
     const inlineLoader = document.getElementById('inlineWaveLoader');
     const wave1 = document.getElementById('waveLayer1');
@@ -311,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('load', recalcBounds, { passive: true });
 
         if (typeof ResizeObserver !== 'undefined') {
-            new ResizeObserver(recalcBounds).observe(document.body);
+            new ResizeObserver(() => requestAnimationFrame(recalcBounds)).observe(document.body);
         }
 
         recalcBounds();

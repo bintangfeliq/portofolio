@@ -11,21 +11,41 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="image" th:href="@{/images/kece.webp}" href="/images/kece.webp" fetchpriority="high">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800;900&display=swap" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800;900&display=swap">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     </noscript>
-    <link rel="stylesheet" th:href="@{/css/style.css(v='55')}" href="/css/style.css?v=55">
-    <link rel="stylesheet" th:href="@{/css/tentang.css(v='49')}" href="/css/tentang.css?v=49">
-    <link rel="stylesheet" th:href="@{/css/mobile.css(v='31')}" href="/css/mobile.css?v=31">
+    <link rel="stylesheet" th:href="@{/css/style.css(v='56')}" href="/css/style.css?v=56" media="print" onload="this.media='all'">
+    <link rel="stylesheet" th:href="@{/css/tentang.css(v='51')}" href="/css/tentang.css?v=51" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" th:href="@{/css/style.css(v='56')}" href="/css/style.css?v=56">
+        <link rel="stylesheet" th:href="@{/css/tentang.css(v='51')}" href="/css/tentang.css?v=51">
+    </noscript>
+    <link rel="stylesheet" th:href="@{/css/mobile.css(v='39')}" href="/css/mobile.css?v=39">
 </head>
 
 <body class="mz-body">
+
+    <svg style="display:none" aria-hidden="true">
+        <symbol id="bi-house" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/></symbol>
+        <symbol id="bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/></symbol>
+        <symbol id="bi-code-slash" viewBox="0 0 16 16"><path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/></symbol>
+        <symbol id="bi-layers" viewBox="0 0 16 16"><path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0zM8 9.433 1.562 6 8 2.567 14.438 6z"/></symbol>
+        <symbol id="bi-mortarboard" viewBox="0 0 16 16"><path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/><path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/></symbol>
+        <symbol id="bi-envelope" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></symbol>
+        <symbol id="bi-chat-text-fill" viewBox="0 0 16 16"><path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M4.5 5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z"/></symbol>
+        <symbol id="bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></symbol>
+        <symbol id="bi-file-earmark-person-fill" viewBox="0 0 16 16"><path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0m2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755"/></symbol>
+        <symbol id="bi-folder2-open" viewBox="0 0 16 16"><path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7z"/></symbol>
+        <symbol id="bi-envelope-fill" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></symbol>
+        <symbol id="bi-whatsapp" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></symbol>
+        <symbol id="bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></symbol>
+        <symbol id="bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></symbol>
+        <symbol id="bi-arrow-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/></symbol>
+        <symbol id="bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/></symbol>
+        <symbol id="bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/></symbol>
+    </svg>
 
     <header class="mz-header">
         <div class="mz-header-inner" id="mzNavInner">
@@ -40,12 +60,12 @@
             </div>
             <div class="mz-nav-circle" id="mzNavCircle" aria-hidden="true"></div>
             <nav class="mz-nav-pills" aria-label="Navigasi Halaman">
-                <a th:href="@{/}" class="mz-nav-pill" title="Beranda" aria-label="Beranda"><i class="bi bi-house"></i></a>
-                <a href="#tentang" class="mz-nav-pill active" title="Tentang" aria-label="Tentang"><i class="bi bi-person"></i></a>
-                <a href="#skill" class="mz-nav-pill" title="Skill" aria-label="Skill"><i class="bi bi-code-slash"></i></a>
-                <a href="#project" class="mz-nav-pill" title="Project" aria-label="Project"><i class="bi bi-layers"></i></a>
-                <a href="#pendidikan" class="mz-nav-pill" title="Pendidikan" aria-label="Pendidikan"><i class="bi bi-mortarboard"></i></a>
-                <a href="#kontak" class="mz-nav-pill" title="Kontak" aria-label="Kontak"><i class="bi bi-envelope"></i></a>
+                <a th:href="@{/}" class="mz-nav-pill" title="Beranda" aria-label="Beranda"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-house"/></svg></i></a>
+                <a href="#tentang" class="mz-nav-pill active" title="Tentang" aria-label="Tentang"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-person"/></svg></i></a>
+                <a href="#skill" class="mz-nav-pill" title="Skill" aria-label="Skill"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-code-slash"/></svg></i></a>
+                <a href="#project" class="mz-nav-pill" title="Project" aria-label="Project"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-layers"/></svg></i></a>
+                <a href="#pendidikan" class="mz-nav-pill" title="Pendidikan" aria-label="Pendidikan"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-mortarboard"/></svg></i></a>
+                <a href="#kontak" class="mz-nav-pill" title="Kontak" aria-label="Kontak"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-envelope"/></svg></i></a>
             </nav>
         </div>
     </header>
@@ -54,7 +74,7 @@
         <div class="paper-marquee-divider-wrapper">
             <div class="paper-marquee-divider">
                 <img th:src="@{/images/paper-tear-banner.webp(v='4')}" src="/images/paper-tear-banner.webp?v=4"
-                    alt="Paper Tear Divider" class="paper-banner-bg" loading="lazy" decoding="async" width="1400" height="460">
+                    alt="Paper Tear Divider" class="paper-banner-bg" decoding="async" width="1400" height="460">
 
                 <div class="marquee-overlay">
                     <svg class="marquee-curve-svg" viewBox="0 0 1400 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -74,11 +94,11 @@
 
                 <div class="banner-person-clip" id="profileCardContainer">
                     <img th:src="@{/images/kece.webp}" src="/images/kece.webp" alt="Muhammad Bintang Feliq"
-                        class="banner-person-img" id="profileCard" loading="lazy" decoding="async" width="425" height="595">
+                        class="banner-person-img" id="profileCard" fetchpriority="high" decoding="sync" width="320" height="448">
                 </div>
 
                 <img th:src="@{/images/paper-tear-bottom.webp(v='4')}" src="/images/paper-tear-bottom.webp?v=4"
-                    alt="Paper Tear Foreground" class="paper-banner-bottom-fg" loading="lazy" decoding="async" width="1400" height="180">
+                    alt="Paper Tear Foreground" class="paper-banner-bottom-fg" decoding="async" width="1400" height="460">
             </div>
         </div>
 
@@ -89,10 +109,10 @@
                         <div class="mz-avatar-frame">
                             <img th:if="${profil != null and profil.foto != null}"
                                 th:src="@{'/uploads/' + ${profil.foto}}" alt="Foto Profil"
-                                class="mz-avatar-img" width="170" height="210" fetchpriority="high" decoding="async">
+                                class="mz-avatar-img" width="170" height="210" loading="lazy" decoding="async">
                             <img th:unless="${profil != null and profil.foto != null}"
                                 th:src="@{/images/brow.png}" alt="Foto Profil"
-                                class="mz-avatar-img" width="170" height="210" fetchpriority="high" decoding="async">
+                                class="mz-avatar-img" width="170" height="210" loading="lazy" decoding="async">
                         </div>
 
                         <div>
@@ -106,14 +126,14 @@
 
                     <div class="mz-cta-row">
                         <a href="#kontak" class="mz-btn-primary">
-                            <i class="bi bi-chat-text-fill"></i>
+                            <i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-chat-text-fill"/></svg></i>
                             <span>Hubungi Saya</span>
-                            <i class="bi bi-arrow-right"></i>
+                            <i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-arrow-right"/></svg></i>
                         </a>
                         <a th:if="${profil != null and profil.cv != null and !#strings.isEmpty(profil.cv)}"
                             th:href="@{'/uploads/' + ${profil.cv}}" target="_blank" rel="noopener noreferrer"
                             class="mz-btn-secondary">
-                            <i class="bi bi-file-earmark-person-fill"></i>
+                            <i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-file-earmark-person-fill"/></svg></i>
                             <span>Lihat CV</span>
                         </a>
                     </div>
@@ -134,7 +154,7 @@
 
                 <div class="mz-skills-grid">
                     <div th:each="k : ${keahlian}" class="mz-skill-card">
-                        <span class="mz-skill-icon"><i class="bi bi-code-slash"></i></span>
+                        <span class="mz-skill-icon"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-code-slash"/></svg></i></span>
                         <span class="mz-skill-name" th:text="${k.nama}">Nama Skill</span>
                     </div>
                 </div>
@@ -197,7 +217,7 @@
                 </div>
 
                 <div class="project-empty-state" th:if="${projects == null or #lists.isEmpty(projects)}">
-                    <div class="project-empty-icon"><i class="bi bi-folder2-open"></i></div>
+                    <div class="project-empty-icon"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-folder2-open"/></svg></i></div>
                     <h3>Belum Ada Project</h3>
                     <p>Dokumentasi project portofolio akan segera ditambahkan di sini.</p>
                 </div>
@@ -249,43 +269,43 @@
                 <div class="mz-contact-stack">
                     <a th:if="${kontak != null and kontak.email != null and !#strings.isEmpty(kontak.email)}"
                         th:href="'mailto:' + ${kontak.email}" class="mz-contact-card">
-                        <span class="mz-contact-icon"><i class="bi bi-envelope-fill"></i></span>
+                        <span class="mz-contact-icon"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-envelope-fill"/></svg></i></span>
                         <span class="mz-contact-meta">
                             <span class="mz-contact-label">Email</span>
                             <span class="mz-contact-val" th:text="${kontak.email}">email@example.com</span>
                         </span>
-                        <i class="bi bi-arrow-up-right"></i>
+                        <i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-arrow-up-right"/></svg></i>
                     </a>
 
                     <a th:if="${kontak != null and kontak.telepon != null and !#strings.isEmpty(kontak.telepon)}"
                         th:href="'https://wa.me/' + ${kontak.telepon.replace('+', '').replace('-', '').replace(' ', '').startsWith('0') ? '62' + kontak.telepon.replace('+', '').replace('-', '').replace(' ', '').substring(1) : kontak.telepon.replace('+', '').replace('-', '').replace(' ', '')}"
                         target="_blank" rel="noopener noreferrer" class="mz-contact-card">
-                        <span class="mz-contact-icon"><i class="bi bi-whatsapp"></i></span>
+                        <span class="mz-contact-icon"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-whatsapp"/></svg></i></span>
                         <span class="mz-contact-meta">
-                            <span class="mz-contact-label">WhatsApp / Telepon</span>
+                            <span class="mz-contact-label">WhatsApp</span>
                             <span class="mz-contact-val" th:text="${kontak.telepon}">08xxxxxxxxxx</span>
                         </span>
-                        <i class="bi bi-arrow-up-right"></i>
+                        <i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-arrow-up-right"/></svg></i>
                     </a>
 
                     <a th:if="${kontak != null and kontak.github != null and !#strings.isEmpty(kontak.github)}"
                         th:href="${kontak.github}" target="_blank" rel="noopener noreferrer" class="mz-contact-card">
-                        <span class="mz-contact-icon"><i class="bi bi-github"></i></span>
+                        <span class="mz-contact-icon"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-github"/></svg></i></span>
                         <span class="mz-contact-meta">
                             <span class="mz-contact-label">GitHub</span>
                             <span class="mz-contact-val" th:text="${kontak.github.replace('https://github.com/', '').replace('http://github.com/', '').replace('/', '')}">username</span>
                         </span>
-                        <i class="bi bi-arrow-up-right"></i>
+                        <i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-arrow-up-right"/></svg></i>
                     </a>
 
                     <a th:if="${kontak != null and kontak.instagram != null and !#strings.isEmpty(kontak.instagram)}"
                         th:href="${kontak.instagram}" target="_blank" rel="noopener noreferrer" class="mz-contact-card">
-                        <span class="mz-contact-icon"><i class="bi bi-instagram"></i></span>
+                        <span class="mz-contact-icon"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-instagram"/></svg></i></span>
                         <span class="mz-contact-meta">
                             <span class="mz-contact-label">Instagram</span>
                             <span class="mz-contact-val" th:text="'@' + ${kontak.instagram.replace('https://www.instagram.com/', '').replace('https://instagram.com/', '').replace('/', '').replace('@', '')}">@username</span>
                         </span>
-                        <i class="bi bi-arrow-up-right"></i>
+                        <i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-arrow-up-right"/></svg></i>
                     </a>
                 </div>
             </div>
@@ -297,10 +317,10 @@
             <button class="modal-close-btn" onclick="closeProjectModal()">&times;</button>
             <div id="modalHeaderSlider" class="modal-header-image">
                 <div id="modalSliderTrack" class="modal-slider-track">
-                    <img id="modalImg" th:src="@{/images/brow.png}" alt="Project Preview" width="520" height="250" loading="lazy" decoding="async">
+                    <img id="modalImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Project Preview" width="520" height="250" loading="lazy" decoding="async">
                 </div>
-                <button type="button" id="modalPrevBtn" class="modal-slide-nav prev" onclick="prevModalSlide(event)" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
-                <button type="button" id="modalNextBtn" class="modal-slide-nav next" onclick="nextModalSlide(event)" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+                <button type="button" id="modalPrevBtn" class="modal-slide-nav prev" onclick="prevModalSlide(event)" aria-label="Previous"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-chevron-left"/></svg></i></button>
+                <button type="button" id="modalNextBtn" class="modal-slide-nav next" onclick="nextModalSlide(event)" aria-label="Next"><i class="bi"><svg class="mz-bi-svg" aria-hidden="true"><use href="#bi-chevron-right"/></svg></i></button>
                 <div id="modalSlideDots" class="modal-slide-dots"></div>
             </div>
             <div class="modal-body-content">
@@ -314,7 +334,7 @@
         </div>
     </div>
 
-    <script defer th:src="@{/js/profile-3d.js(v='3')}" src="/js/profile-3d.js?v=3"></script>
+    <script defer th:src="@{/js/profile-3d.js(v='5')}" src="/js/profile-3d.js?v=5"></script>
     <script defer th:src="@{/js/project-modal.js(v='4')}" src="/js/project-modal.js?v=4"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -362,101 +382,165 @@
             const officeSvg = '<svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" fill="#F25022"/><rect x="13" y="2" width="9" height="9" fill="#7FBA00"/><rect x="2" y="13" width="9" height="9" fill="#00A4EF"/><rect x="13" y="13" width="9" height="9" fill="#FFB900"/></svg>';
             const officeKeywords = ['office', 'microsoft', 'word', 'excel', 'powerpoint'];
 
-            document.querySelectorAll('.mz-skill-card').forEach((card) => {
-                const iconEl = card.querySelector('.mz-skill-icon');
-                const raw = (card.querySelector('.mz-skill-name')?.textContent || '').trim().toLowerCase();
-                if (!iconEl || !raw) return;
-
-                if (officeKeywords.some((kw) => raw.includes(kw))) {
-                    iconEl.innerHTML = officeSvg;
-                    return;
+            const initSkillIcons = () => {
+                if (!document.querySelector('link[data-devicon]')) {
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css';
+                    link.media = 'print';
+                    link.onload = function () { this.media = 'all'; };
+                    link.setAttribute('data-devicon', '1');
+                    document.head.appendChild(link);
                 }
-
-                const cleaned = raw.replace(/[^a-z0-9]/g, '');
-                const matched = iconMap[raw]
-                    || iconMap[cleaned]
-                    || Object.entries(iconMap).find(([k]) => raw.includes(k))?.[1];
-                if (matched) {
-                    iconEl.innerHTML = `<i class="${matched}"></i>`;
-                }
-            });
-
-            const eduRows = document.querySelectorAll('.edu-row-item');
-            eduRows.forEach((row) => {
-                row.querySelector('.edu-row-btn')?.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const isOpen = row.classList.contains('open');
-                    eduRows.forEach((r) => r.classList.remove('open'));
-                    if (!isOpen) row.classList.add('open');
-                });
-            });
-
-            const navInner = document.getElementById('mzNavInner');
-            const navLinks = Array.from(document.querySelectorAll('.mz-nav-pill[href^="#"]'));
-            const sections = navLinks.map((link) => ({
-                link,
-                el: document.querySelector(link.getAttribute('href'))
-            })).filter((item) => item.el);
-
-            const moveNavIndicator = (targetLink) => {
-                if (!targetLink || !navInner) return;
-                const innerRect = navInner.getBoundingClientRect();
-                const linkRect = targetLink.getBoundingClientRect();
-                const centerInInner = (linkRect.left - innerRect.left) + (linkRect.width / 2);
-                navInner.style.setProperty('--nav-x', `${centerInInner.toFixed(1)}px`);
-            };
-
-            let lastActiveLink = null;
-            let isClickScrolling = false;
-            let clickScrollTimer = null;
-
-            const setActiveNav = (targetLink) => {
-                if (!targetLink || targetLink === lastActiveLink) return;
-                lastActiveLink = targetLink;
-                navLinks.forEach((l) => l.classList.toggle('active', l === targetLink));
-                moveNavIndicator(targetLink);
-            };
-
-            navLinks.forEach((link) => {
-                link.addEventListener('click', () => {
-                    isClickScrolling = true;
-                    clearTimeout(clickScrollTimer);
-                    setActiveNav(link);
-                    clickScrollTimer = setTimeout(() => {
-                        isClickScrolling = false;
-                    }, 700);
-                });
-            });
-
-            const updateActiveNav = () => {
-                if (!sections.length || isClickScrolling) return;
-                const scrollPos = window.scrollY + 120;
-                const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 30;
-                let active = sections[0].link;
-
-                if (atBottom) {
-                    active = sections[sections.length - 1].link;
-                } else {
-                    for (const item of sections) {
-                        if (item.el.offsetTop <= scrollPos) active = item.link;
-                    }
-                }
-
-                setActiveNav(active);
-            };
-
-            window.addEventListener('resize', () => moveNavIndicator(lastActiveLink || navLinks[0]), { passive: true });
-
-            let navTicking = false;
-            window.addEventListener('scroll', () => {
-                if (navTicking) return;
                 requestAnimationFrame(() => {
-                    updateActiveNav();
-                    navTicking = false;
+                    document.querySelectorAll('.mz-skill-card').forEach((card) => {
+                        const iconEl = card.querySelector('.mz-skill-icon');
+                        const raw = (card.querySelector('.mz-skill-name')?.textContent || '').trim().toLowerCase();
+                        if (!iconEl || !raw) return;
+
+                        if (officeKeywords.some((kw) => raw.includes(kw))) {
+                            iconEl.innerHTML = officeSvg;
+                            return;
+                        }
+
+                        const cleaned = raw.replace(/[^a-z0-9]/g, '');
+                        const matched = iconMap[raw]
+                            || iconMap[cleaned]
+                            || Object.entries(iconMap).find(([k]) => raw.includes(k))?.[1];
+                        if (matched) {
+                            iconEl.innerHTML = `<i class="${matched}"></i>`;
+                        }
+                    });
                 });
-                navTicking = true;
-            }, { passive: true });
-            updateActiveNav();
+            };
+
+            const skillSection = document.getElementById('skill');
+            const setupSkillObserver = () => {
+                if (skillSection && 'IntersectionObserver' in window) {
+                    const skillObs = new IntersectionObserver((entries) => {
+                        if (entries[0].isIntersecting) {
+                            skillObs.disconnect();
+                            initSkillIcons();
+                        }
+                    }, { rootMargin: '20px 0px' });
+                    skillObs.observe(skillSection);
+                } else {
+                    initSkillIcons();
+                }
+            };
+            if (document.readyState === 'complete') {
+                setupSkillObserver();
+            } else {
+                window.addEventListener('load', setupSkillObserver, { once: true });
+            }
+
+            const initInteractiveUi = () => {
+                const eduRows = document.querySelectorAll('.edu-row-item');
+                eduRows.forEach((row) => {
+                    row.querySelector('.edu-row-btn')?.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const isOpen = row.classList.contains('open');
+                        eduRows.forEach((r) => r.classList.remove('open'));
+                        if (!isOpen) row.classList.add('open');
+                    });
+                });
+
+                const navInner = document.getElementById('mzNavInner');
+                const navLinks = Array.from(document.querySelectorAll('.mz-nav-pill[href^="#"]'));
+                const sections = navLinks.map((link) => ({
+                    link,
+                    el: document.querySelector(link.getAttribute('href')),
+                    top: 0
+                })).filter((item) => item.el);
+
+                const navCenterMap = new Map();
+                const measureNavAndSections = () => {
+                    if (navInner) {
+                        const innerRect = navInner.getBoundingClientRect();
+                        navLinks.forEach((link) => {
+                            const rect = link.getBoundingClientRect();
+                            navCenterMap.set(link, (rect.left - innerRect.left) + (rect.width / 2));
+                        });
+                    }
+                    sections.forEach((item) => {
+                        item.top = item.el.offsetTop;
+                    });
+                };
+
+                const moveNavIndicator = (targetLink) => {
+                    const center = navCenterMap.get(targetLink);
+                    if (center !== undefined && navInner) {
+                        navInner.style.setProperty('--nav-x', `${center.toFixed(1)}px`);
+                    }
+                };
+
+                let lastActiveLink = null;
+                let isClickScrolling = false;
+                let clickScrollTimer = null;
+
+                const setActiveNav = (targetLink) => {
+                    if (!targetLink || targetLink === lastActiveLink) return;
+                    lastActiveLink = targetLink;
+                    navLinks.forEach((l) => l.classList.toggle('active', l === targetLink));
+                    moveNavIndicator(targetLink);
+                };
+
+                navLinks.forEach((link) => {
+                    link.addEventListener('click', () => {
+                        isClickScrolling = true;
+                        clearTimeout(clickScrollTimer);
+                        setActiveNav(link);
+                        clickScrollTimer = setTimeout(() => {
+                            isClickScrolling = false;
+                        }, 700);
+                    });
+                });
+
+                const updateActiveNav = () => {
+                    if (!sections.length || isClickScrolling) return;
+                    const scrollPos = window.scrollY + 120;
+                    const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 30;
+                    let active = sections[0].link;
+
+                    if (atBottom) {
+                        active = sections[sections.length - 1].link;
+                    } else {
+                        for (const item of sections) {
+                            if (item.top <= scrollPos) active = item.link;
+                        }
+                    }
+
+                    setActiveNav(active);
+                };
+
+                window.addEventListener('resize', () => {
+                    requestAnimationFrame(() => {
+                        measureNavAndSections();
+                        moveNavIndicator(lastActiveLink || navLinks[0]);
+                    });
+                }, { passive: true });
+
+                let navTicking = false;
+                window.addEventListener('scroll', () => {
+                    if (navTicking) return;
+                    requestAnimationFrame(() => {
+                        updateActiveNav();
+                        navTicking = false;
+                    });
+                    navTicking = true;
+                }, { passive: true });
+
+                requestAnimationFrame(() => {
+                    measureNavAndSections();
+                    updateActiveNav();
+                });
+            };
+
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(initInteractiveUi, { timeout: 250 });
+            } else {
+                setTimeout(initInteractiveUi, 0);
+            }
         });
     </script>
 </body>

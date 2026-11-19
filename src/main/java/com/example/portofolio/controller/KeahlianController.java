@@ -33,7 +33,11 @@ public class KeahlianController {
 
     @GetMapping("/dashboard/dashboardKeahlian/editKeahlian/{id}")
     public String halamanUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("keahlian", keahlianService.cariSesuaiId(id).get());
+        Keahlian keahlian = keahlianService.cariSesuaiId(id).orElse(null);
+        if (keahlian == null) {
+            return "redirect:/dashboard/dashboardKeahlian";
+        }
+        model.addAttribute("keahlian", keahlian);
         return "editKeahlian";
     }
 

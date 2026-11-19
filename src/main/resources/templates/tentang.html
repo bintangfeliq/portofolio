@@ -11,22 +11,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preload" as="image" th:href="@{/images/hero-poster.jpg}" href="/images/hero-poster.jpg" fetchpriority="high">
+    <link rel="preload" as="image" th:href="@{/images/paper-tear-banner.webp(v='4')}" href="/images/paper-tear-banner.webp?v=4" fetchpriority="high">
+    <link rel="preload" as="image" th:if="${hasHeroVideoWebm or hasHeroVideoMp4}" th:href="@{/images/hero-poster.jpg}" href="/images/hero-poster.jpg" fetchpriority="high">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap" media="print" onload="this.media='all'">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    </noscript>
-    <link rel="stylesheet" th:href="@{/css/style.css(v='55')}" href="/css/style.css?v=55">
-    <link rel="stylesheet" th:href="@{/css/tentang.css(v='49')}" href="/css/tentang.css?v=49">
-    <link rel="stylesheet" th:href="@{/css/container-scroll.css(v='2')}" href="/css/container-scroll.css?v=2">
-    <link rel="stylesheet" th:href="@{/css/skill-scroller.css(v='3')}" href="/css/skill-scroller.css?v=3">
+    <link rel="stylesheet" th:href="@{/css/style.css(v='56')}" href="/css/style.css?v=56">
+    <link rel="stylesheet" th:href="@{/css/tentang.css(v='51')}" href="/css/tentang.css?v=51">
+    <link rel="stylesheet" th:href="@{/css/container-scroll.css(v='2')}" href="/css/container-scroll.css?v=2" media="print" onload="this.media='all'">
+    <link rel="stylesheet" th:href="@{/css/skill-scroller.css(v='3')}" href="/css/skill-scroller.css?v=3" media="print" onload="this.media='all'">
     <link rel="stylesheet" th:href="@{/css/scroll-animation.css}">
     <link rel="stylesheet" th:href="@{/css/kinetic-grid.css(v='5')}" href="/css/kinetic-grid.css?v=5">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+        <link rel="stylesheet" th:href="@{/css/container-scroll.css(v='2')}" href="/css/container-scroll.css?v=2">
+        <link rel="stylesheet" th:href="@{/css/skill-scroller.css(v='3')}" href="/css/skill-scroller.css?v=3">
+    </noscript>
 </head>
 
 <body class="about-page">
@@ -48,17 +52,19 @@
     <main>
 
         <section class="folio-intro-gif-hero">
-            <video class="folio-hero-bg-img" id="heroBgVideo" autoplay loop muted playsinline preload="metadata"
+            <video th:if="${hasHeroVideoWebm or hasHeroVideoMp4}" class="folio-hero-bg-img" id="heroBgVideo" autoplay loop muted playsinline preload="metadata"
                 th:poster="@{/images/hero-poster.jpg}" poster="/images/hero-poster.jpg" width="1400" height="900">
-                <source th:src="@{/images/download.webm}" src="/images/download.webm" type="video/webm">
-                <source th:src="@{/images/download.mp4}" src="/images/download.mp4" type="video/mp4" onerror="fallbackHeroGif()">
+                <source th:if="${hasHeroVideoWebm}" th:src="@{/images/download.webm}" src="/images/download.webm" type="video/webm">
+                <source th:if="${hasHeroVideoMp4}" th:src="@{/images/download.mp4}" src="/images/download.mp4" type="video/mp4">
             </video>
+            <img th:unless="${hasHeroVideoWebm or hasHeroVideoMp4}" th:src="@{/images/download.gif(v='3')}" src="/images/download.gif?v=3"
+                alt="Hero Background" class="folio-hero-bg-img" width="1400" height="900" decoding="async">
         </section>
 
         <div class="paper-marquee-divider-wrapper">
             <div class="paper-marquee-divider">
                 <img th:src="@{/images/paper-tear-banner.webp(v='4')}" src="/images/paper-tear-banner.webp?v=4"
-                    alt="Paper Tear Divider" class="paper-banner-bg" loading="lazy" decoding="async" width="1400"
+                    alt="Paper Tear Divider" class="paper-banner-bg" fetchpriority="high" decoding="sync" width="1400"
                     height="460">
 
                 <div class="marquee-overlay">
@@ -90,7 +96,7 @@
 
                 <img th:src="@{/images/paper-tear-bottom.webp(v='4')}" src="/images/paper-tear-bottom.webp?v=4"
                     alt="Paper Tear Foreground" class="paper-banner-bottom-fg" loading="lazy" decoding="async"
-                    width="1400" height="180">
+                    width="1400" height="460">
             </div>
         </div>
 
@@ -451,7 +457,7 @@
 
             <div id="modalHeaderSlider" class="modal-header-image">
                 <div id="modalSliderTrack" class="modal-slider-track">
-                    <img id="modalImg" th:src="@{/images/brow.png}" alt="Project Preview" width="520" height="250"
+                    <img id="modalImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Project Preview" width="520" height="250"
                         loading="lazy" decoding="async">
                 </div>
                 <button type="button" id="modalPrevBtn" class="modal-slide-nav prev" onclick="prevModalSlide(event)"
@@ -480,13 +486,13 @@
         </div>
     </div>
 
-    <script defer th:src="@{/js/main.js(v='29')}" src="/js/main.js?v=29"></script>
-    <script defer th:src="@{/js/container-scroll.js}"></script>
-    <script defer th:src="@{/js/skill-scroller.js}"></script>
-    <script defer th:src="@{/js/navbar-scrollspy.js(v='4')}" src="/js/navbar-scrollspy.js?v=4"></script>
+    <script defer th:src="@{/js/main.js(v='30')}" src="/js/main.js?v=30"></script>
+    <script defer th:src="@{/js/container-scroll.js(v='2')}" src="/js/container-scroll.js?v=2"></script>
+    <script defer th:src="@{/js/skill-scroller.js(v='2')}" src="/js/skill-scroller.js?v=2"></script>
+    <script defer th:src="@{/js/navbar-scrollspy.js(v='6')}" src="/js/navbar-scrollspy.js?v=6"></script>
     <script defer th:src="@{/js/scroll-animation.js}"></script>
-    <script defer th:src="@{/js/kinetic-grid.js}"></script>
-    <script defer th:src="@{/js/profile-3d.js(v='3')}" src="/js/profile-3d.js?v=3"></script>
+    <script defer th:src="@{/js/kinetic-grid.js(v='3')}" src="/js/kinetic-grid.js?v=3"></script>
+    <script defer th:src="@{/js/profile-3d.js(v='4')}" src="/js/profile-3d.js?v=4"></script>
     <script defer th:src="@{/js/project-modal.js(v='4')}" src="/js/project-modal.js?v=4"></script>
 </body>
 

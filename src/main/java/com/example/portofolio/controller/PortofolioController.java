@@ -3,6 +3,7 @@ package com.example.portofolio.controller;
 import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest; // Gunakan jakarta.* untuk Spring Boot 3 / Java 21
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,6 +54,8 @@ public class PortofolioController {
         model.addAttribute("kontak", kontak);
         model.addAttribute("keahlian", keahlian);
         model.addAttribute("projects", projectService.semuaProject());
+        model.addAttribute("hasHeroVideoWebm", new ClassPathResource("static/images/download.webm").exists());
+        model.addAttribute("hasHeroVideoMp4", new ClassPathResource("static/images/download.mp4").exists());
         if (isMobileDevice(request)) {
             return "indexMobile";
         }  
@@ -71,6 +74,8 @@ public class PortofolioController {
         model.addAttribute("kontak", kontak);
         model.addAttribute("keahlian", keahlian);
         model.addAttribute("projects", projectService.semuaProject());
+        model.addAttribute("hasHeroVideoWebm", new ClassPathResource("static/images/download.webm").exists());
+        model.addAttribute("hasHeroVideoMp4", new ClassPathResource("static/images/download.mp4").exists());
         if (isMobileDevice(request)) {
             return "tentangMobile";
         }

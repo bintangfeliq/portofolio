@@ -1,12 +1,7 @@
 package com.example.portofolio.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,22 +12,22 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.portofolio.model.Profil;
 import com.example.portofolio.service.ProfilService;
+import com.example.portofolio.util.UploadHelper;
 
 @Controller
 public class ProfilController {
 
     private final ProfilService profilService;
+    private final UploadHelper uploadHelper;
 
-    @Value("${app.upload.dir:uploads/}")
-    private String uploadDir;
-
-    public ProfilController(ProfilService profilService) {
+    public ProfilController(ProfilService profilService, UploadHelper uploadHelper) {
         this.profilService = profilService;
+        this.uploadHelper = uploadHelper;
     }
 
     @GetMapping("/dashboard/editTentang")
     public String editTentang(Model model) {
-        Profil profil = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada"));
+        Profil profil = profilService.cariSesuaiId(1L).orElseGet(Profil::new);
         model.addAttribute("profil", profil);
         return "editTentang";
     }
@@ -41,33 +36,23 @@ public class ProfilController {
     public String updateProfil(@ModelAttribute Profil profil,
                                @RequestParam(value = "fileFoto", required = false) MultipartFile fileFoto,
                                @RequestParam(value = "fileCv", required = false) MultipartFile fileCv) throws IOException {
-        Profil dataLama = profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada"));
+        Profil dataLama = profilService.cariSesuaiId(1L).orElseGet(Profil::new);
         if (fileFoto != null && !fileFoto.isEmpty()) {
-            profil.setFoto(simpanFoto(fileFoto));
+            String fotoBaru = uploadHelper.saveFile(fileFoto, UploadHelper.IMAGE_EXTENSIONS, false);
+            profil.setFoto(fotoBaru);
+            uploadHelper.deleteFileQuietly(dataLama.getFoto());
         } else {
             profil.setFoto(dataLama.getFoto());
         }
 
         if (fileCv != null && !fileCv.isEmpty()) {
-            profil.setCv(simpanFoto(fileCv));
+            String cvBaru = uploadHelper.saveFile(fileCv, UploadHelper.CV_EXTENSIONS, false);
+            profil.setCv(cvBaru);
+            uploadHelper.deleteFileQuietly(dataLama.getCv());
         } else {
             profil.setCv(dataLama.getCv());
         }
         profilService.updateProfil(1L, profil);
         return "redirect:/dashboard/editTentang";
-    }
-
-    public String simpanFoto(MultipartFile file) throws IOException {
-        Path targetDir = Paths.get(uploadDir).toAbsolutePath().normalize();
-        if (!Files.exists(targetDir)) {
-            Files.createDirectories(targetDir);
-        }
-        String originalFilename = file.getOriginalFilename();
-        String cleanName = (originalFilename != null && !originalFilename.isBlank())
-                ? Paths.get(originalFilename).getFileName().toString()
-                : "file.bin";
-        String nama = System.currentTimeMillis() + "_" + cleanName;
-        Files.copy(file.getInputStream(), targetDir.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
-        return nama;
     }
 }

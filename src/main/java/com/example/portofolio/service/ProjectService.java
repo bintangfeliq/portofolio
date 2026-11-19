@@ -5,17 +5,21 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.portofolio.model.Gambar;
 import com.example.portofolio.model.Project;
 import com.example.portofolio.repository.ProjectRepository;
+import com.example.portofolio.util.UploadHelper;
 
 @Service
 @SuppressWarnings("all")
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
+    private final UploadHelper uploadHelper;
 
-    public ProjectService(ProjectRepository projectRepository) {
+    public ProjectService(ProjectRepository projectRepository, UploadHelper uploadHelper) {
         this.projectRepository = projectRepository;
+        this.uploadHelper = uploadHelper;
     }
 
     public Project tambahProject(Project project) {
@@ -39,6 +43,13 @@ public class ProjectService {
     }
 
     public void hapusProject(Long id) {
-        projectRepository.deleteById(id);
+        projectRepository.findById(id).ifPresent(project -> {
+            if (project.getGambar() != null) {
+                for (Gambar g : project.getGambar()) {
+                    uploadHelper.deleteFileQuietly(g.getGambar());
+                }
+            }
+            projectRepository.deleteById(id);
+        });
     }
 }

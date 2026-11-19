@@ -80,8 +80,8 @@
     };
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initBrandScroller);
+        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(initBrandScroller));
     } else {
-        initBrandScroller();
+        requestAnimationFrame(initBrandScroller);
     }
 })();

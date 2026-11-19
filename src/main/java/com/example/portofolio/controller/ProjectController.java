@@ -1,13 +1,7 @@
 package com.example.portofolio.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,19 +15,19 @@ import com.example.portofolio.model.Gambar;
 import com.example.portofolio.model.Project;
 import com.example.portofolio.service.GambarService;
 import com.example.portofolio.service.ProjectService;
+import com.example.portofolio.util.UploadHelper;
 
 @Controller
 public class ProjectController {
 
     private final ProjectService projectService;
     private final GambarService gambarService;
+    private final UploadHelper uploadHelper;
 
-    @Value("${app.upload.dir:uploads/}")
-    private String uploadDir;
-
-    public ProjectController(ProjectService projectService, GambarService gambarService) {
+    public ProjectController(ProjectService projectService, GambarService gambarService, UploadHelper uploadHelper) {
         this.projectService = projectService;
         this.gambarService = gambarService;
+        this.uploadHelper = uploadHelper;
     }
 
     @GetMapping("/dashboard/dashboardProject")
@@ -76,24 +70,15 @@ public class ProjectController {
         if (files == null || files.length == 0) {
             return;
         }
-        Path targetDir = Paths.get(uploadDir).toAbsolutePath().normalize();
-        if (!Files.exists(targetDir)) {
-            Files.createDirectories(targetDir);
-        }
-
         for (MultipartFile file : files) {
             if (file != null && !file.isEmpty()) {
-                String originalFilename = file.getOriginalFilename();
-                String cleanName = (originalFilename != null && !originalFilename.isBlank())
-                        ? Paths.get(originalFilename).getFileName().toString()
-                        : "image.png";
-                String nama = System.currentTimeMillis() + "_" + UUID.randomUUID().toString().substring(0, 8) + "_" + cleanName;
-                Files.copy(file.getInputStream(), targetDir.resolve(nama), StandardCopyOption.REPLACE_EXISTING);
-
-                Gambar gambar = new Gambar();
-                gambar.setGambar(nama);
-                gambar.setProject(project);
-                gambarService.tambahGambar(gambar);
+                String nama = uploadHelper.saveFile(file, UploadHelper.IMAGE_EXTENSIONS, true);
+                if (nama != null) {
+                    Gambar gambar = new Gambar();
+                    gambar.setGambar(nama);
+                    gambar.setProject(project);
+                    gambarService.tambahGambar(gambar);
+                }
             }
         }
     }

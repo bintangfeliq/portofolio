@@ -25,7 +25,8 @@
         const targetMouse = { x: -1000, y: -1000, active: false };
         const currentMouse = { x: -1000, y: -1000 };
         const ripples = [];
-        let animationId;
+        let animationId = null;
+        let isRunning = false;
 
         const resize = () => {
             width = window.innerWidth;
@@ -37,6 +38,7 @@
             canvas.style.height = `${height}px`;
             ctx.setTransform(1, 0, 0, 1, 0, 0);
             ctx.scale(dpr, dpr);
+            render();
         };
 
         const getWarpedPoint = (x, y) => {
@@ -83,18 +85,21 @@
                 wavelength: 50,
                 decay: 0.982
             });
+            startLoop();
         };
 
         const handlePointerMove = (e) => {
             targetMouse.x = e.clientX;
             targetMouse.y = e.clientY;
             targetMouse.active = true;
+            startLoop();
         };
 
         const handlePointerLeave = () => {
             targetMouse.active = false;
             targetMouse.x = -1000;
             targetMouse.y = -1000;
+            startLoop();
         };
 
         const handleClick = (e) => triggerRipple(e.clientX, e.clientY);
@@ -165,9 +170,28 @@
             }
         };
 
+        const isIdle = () =>
+            !targetMouse.active &&
+            ripples.length === 0 &&
+            Math.abs(currentMouse.x + 1000) < 0.5 &&
+            Math.abs(currentMouse.y + 1000) < 0.5;
+
         const loop = () => {
             update();
             render();
+            if (isIdle()) {
+                currentMouse.x = -1000;
+                currentMouse.y = -1000;
+                isRunning = false;
+                animationId = null;
+                return;
+            }
+            animationId = requestAnimationFrame(loop);
+        };
+
+        const startLoop = () => {
+            if (isRunning) return;
+            isRunning = true;
             animationId = requestAnimationFrame(loop);
         };
 
@@ -175,12 +199,12 @@
         window.addEventListener('mousemove', handlePointerMove, { passive: true });
         window.addEventListener('mouseleave', handlePointerLeave, { passive: true });
         window.addEventListener('click', handleClick, { passive: true });
-        resize();
-        loop();
+        requestAnimationFrame(resize);
 
         return {
             destroy: () => {
-                cancelAnimationFrame(animationId);
+                if (animationId) cancelAnimationFrame(animationId);
+                isRunning = false;
                 window.removeEventListener('resize', resize);
                 window.removeEventListener('mousemove', handlePointerMove);
                 window.removeEventListener('mouseleave', handlePointerLeave);

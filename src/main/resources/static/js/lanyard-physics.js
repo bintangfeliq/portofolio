@@ -15,21 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetRotateX = 0, targetRotateY = 0;
     let currentRotateX = 0, currentRotateY = 0;
     let fixedTopAnchorX = 0;
-    function getHeroOrigin() {
-        const hero = document.querySelector('.hero-section-new');
-        if (!hero) return { left: 0, top: 0 };
-        const r = hero.getBoundingClientRect();
-        return { left: r.left, top: r.top };
-    }
-    function initFixedAnchor() {
-        const zone = document.querySelector('.hero-lanyard-right-zone');
-        if (zone) {
-            fixedTopAnchorX = zone.offsetLeft + (zone.offsetWidth / 2);
+    let cachedHeroOrigin = { left: 0, top: 0 };
+    const heroEl = document.querySelector('.hero-section-new');
+    const zoneEl = document.querySelector('.hero-lanyard-right-zone');
+
+    function updateHeroOrigin() {
+        if (!heroEl) {
+            cachedHeroOrigin = { left: 0, top: 0 };
             return;
         }
-        const heroOrigin = getHeroOrigin();
+        const r = heroEl.getBoundingClientRect();
+        cachedHeroOrigin = { left: r.left, top: r.top };
+    }
+
+    function initFixedAnchor() {
+        updateHeroOrigin();
+        if (zoneEl) {
+            fixedTopAnchorX = zoneEl.offsetLeft + (zoneEl.offsetWidth / 2);
+            return;
+        }
         const claspRect = clasp.getBoundingClientRect();
-        fixedTopAnchorX = (claspRect.left - heroOrigin.left + claspRect.width / 2) - currentX;
+        fixedTopAnchorX = (claspRect.left - cachedHeroOrigin.left + claspRect.width / 2) - currentX;
     }
     initFixedAnchor();
     window.addEventListener('load', initFixedAnchor);
@@ -106,10 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     function drawElasticRibbon() {
-        const heroOrigin = getHeroOrigin();
         const claspRect = clasp.getBoundingClientRect();
-        const clipX = (claspRect.left - heroOrigin.left) + claspRect.width / 2;
-        const clipY = (claspRect.top - heroOrigin.top) + 4;
+        const clipX = (claspRect.left - cachedHeroOrigin.left) + claspRect.width / 2;
+        const clipY = (claspRect.top - cachedHeroOrigin.top) + 4;
         const anchorX = fixedTopAnchorX;
         const anchorY = -100;
         const deltaX = clipX - anchorX;

@@ -75,7 +75,6 @@ html, body.mob-body {
     pointer-events: none;
     z-index: 10;
     overflow: visible !important;
-    transition: opacity 0.35s ease;
 }
 
 body.is-loading .mob-lanyard-svg {

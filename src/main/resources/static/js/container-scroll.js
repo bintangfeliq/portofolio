@@ -11,15 +11,22 @@
             const maxRotate = isMobile ? 15 : 20;
             const startScale = isMobile ? 0.86 : 0.93;
 
+            const updates = [];
             wraps.forEach((wrap) => {
+                const card = wrap.querySelector('.container-scroll-card');
+                if (!card) return;
                 const rect = wrap.getBoundingClientRect();
                 const progress = Math.max(0, Math.min(1, (startPoint - rect.top) / (startPoint - endPoint)));
                 const rotateVal = maxRotate * (1 - progress);
                 const scaleVal = startScale + (1 - startScale) * progress;
-                const card = wrap.querySelector('.container-scroll-card');
-                if (card) {
-                    card.style.transform = `rotateX(${rotateVal.toFixed(2)}deg) scale(${scaleVal.toFixed(3)})`;
-                }
+                updates.push({
+                    card,
+                    transform: `rotateX(${rotateVal.toFixed(2)}deg) scale(${scaleVal.toFixed(3)})`
+                });
+            });
+
+            updates.forEach(({ card, transform }) => {
+                card.style.transform = transform;
             });
         };
 

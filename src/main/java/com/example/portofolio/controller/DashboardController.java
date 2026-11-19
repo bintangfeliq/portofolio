@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.portofolio.model.Kontak;
+import com.example.portofolio.model.Profil;
 import com.example.portofolio.repository.PendidikanRepository;
 import com.example.portofolio.service.KeahlianService;
 import com.example.portofolio.service.KontakService;
@@ -29,8 +31,8 @@ public class DashboardController {
 
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
-        model.addAttribute("profil", profilService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Profil tidak ada")));
-        model.addAttribute("kontak", kontakService.cariSesuaiId(1L).orElseThrow(() -> new RuntimeException("Kontak tidak ada")));
+        model.addAttribute("profil", profilService.cariSesuaiId(1L).orElseGet(Profil::new));
+        model.addAttribute("kontak", kontakService.cariSesuaiId(1L).orElseGet(Kontak::new));
         model.addAttribute("pendidikan", pendidikanRepository.findAllByOrderByTahunMulaiAsc());
         model.addAttribute("keahlian", keahlianService.semuaKeahlian());
         model.addAttribute("projects", projectService.semuaProject());

@@ -3,6 +3,7 @@ package com.example.portofolio.model;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +22,9 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String namaProject;
+    @Column(columnDefinition = "TEXT")
     private String deskripsi;
+    @Column(columnDefinition = "TEXT")
     private String teknologi;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
